@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimai Seikatsu — Mục Lục</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ─── Header ─── */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 24px auto 0;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #9b8fb8;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* ─── Main Container ─── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* ─── Volume Section ─── */
+        .volume {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .volume:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .volume-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .volume-number {
+            font-family: 'Noto Serif', serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #a78bfa;
+        }
+
+        .volume-title {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f0e6ff;
+        }
+
+        .volume-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(167, 139, 250, 0.4), transparent);
+        }
+
+        .volume-toggle {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.1);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .volume-header:hover .volume-toggle {
+            background: rgba(167, 139, 250, 0.2);
+            transform: scale(1.1);
+        }
+
+        .volume-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .volume-header:hover .volume-toggle.collapsed {
+            transform: rotate(-90deg) scale(1.1);
+        }
+
+        /* ─── Chapter Grid ─── */
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+        }
+
+        .chapters.hidden {
+            max-height: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ─── Chapter Card ─── */
+        .chapter-card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: #d4c8e8;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 12px;
+            padding: 18px 20px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .chapter-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(167, 139, 250, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 92, 191, 0.15);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .chapter-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #8b7aab;
+            margin-bottom: 4px;
+        }
+
+        .chapter-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #f0e6ff;
+        }
+
+        .chapter-card:hover .chapter-name {
+            color: #ffffff;
+        }
+
+        /* Special cards */
+        .chapter-card.prologue {
+            border-color: rgba(96, 165, 250, 0.15);
+        }
+
+        .chapter-card.prologue::before {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .chapter-card.prologue .chapter-label {
+            color: #60a5fa;
+        }
+
+        .chapter-card.epilogue {
+            border-color: rgba(251, 191, 36, 0.15);
+        }
+
+        .chapter-card.epilogue::before {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .chapter-card.epilogue .chapter-label {
+            color: #fbbf24;
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #5a5073;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ─── Animations ─── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 500px) {
+            .chapters {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 40px 16px 30px;
+            }
+
+            .volume-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <h1>義妹生活</h1>
+        <p class="subtitle">Gimai Seikatsu — Mục Lục</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Volume 13 -->
+        <section class="volume">
+            <div class="volume-header" onclick="toggleVolume(this)">
+                <div>
+                    <div class="volume-number">Volume</div>
+                    <div class="volume-title">Tập 13</div>
+                </div>
+                <div class="volume-line"></div>
+                <div class="volume-toggle">▾</div>
+            </div>
+            <div class="chapters" id="vol13">
+                <a href="Vol13/Gimai13_C7.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 7</div>
+                    <div class="chapter-name">Chương 7</div>
+                </a>
+                <a href="Vol13/Gimai13_C8.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 8</div>
+                    <div class="chapter-name">Chương 8</div>
+                </a>
+                <a href="Vol13/Gimai13_C9.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 9</div>
+                    <div class="chapter-name">Chương 9</div>
+                </a>
+                <a href="Vol13/Gimai13_Epi.html" class="chapter-card epilogue">
+                    <div class="chapter-label">Epilogue</div>
+                    <div class="chapter-name">Phần Kết</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Volume 14 -->
+        <section class="volume">
+            <div class="volume-header" onclick="toggleVolume(this)">
+                <div>
+                    <div class="volume-number">Volume</div>
+                    <div class="volume-title">Tập 14</div>
+                </div>
+                <div class="volume-line"></div>
+                <div class="volume-toggle">▾</div>
+            </div>
+            <div class="chapters" id="vol14">
+                <a href="Vol14/Gimai14_C0.html" class="chapter-card prologue">
+                    <div class="chapter-label">Prologue</div>
+                    <div class="chapter-name">Mở Đầu</div>
+                </a>
+                <a href="Vol14/Gimai14_C1.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 1</div>
+                    <div class="chapter-name">Chương 1</div>
+                </a>
+                <a href="Vol14/Gimai14_C2.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 2</div>
+                    <div class="chapter-name">Chương 2</div>
+                </a>
+                <a href="Vol14/Gimai14_C3.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 3</div>
+                    <div class="chapter-name">Chương 3</div>
+                </a>
+                <a href="Vol14/Gimai14_C4.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 4</div>
+                    <div class="chapter-name">Chương 4</div>
+                </a>
+                <a href="Vol14/Gimai14_C5.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 5</div>
+                    <div class="chapter-name">Chương 5</div>
+                </a>
+                <a href="Vol14/Gimai14_C6.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 6</div>
+                    <div class="chapter-name">Chương 6</div>
+                </a>
+                <a href="Vol14/Gimai14_C7.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 7</div>
+                    <div class="chapter-name">Chương 7</div>
+                </a>
+                <a href="Vol14/Gimai14_C8.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 8</div>
+                    <div class="chapter-name">Chương 8</div>
+                </a>
+                <a href="Vol14/Gimai14_C9.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 9</div>
+                    <div class="chapter-name">Chương 9</div>
+                </a>
+                <a href="Vol14/Gimai14_C10.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 10</div>
+                    <div class="chapter-name">Chương 10</div>
+                </a>
+                <a href="Vol14/Gimai14_C11.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 11</div>
+                    <div class="chapter-name">Chương 11</div>
+                </a>
+                <a href="Vol14/Gimai14_C12.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 12</div>
+                    <div class="chapter-name">Chương 12</div>
+                </a>
+                <a href="Vol14/Gimai14_C13.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 13</div>
+                    <div class="chapter-name">Chương 13</div>
+                </a>
+                <a href="Vol14/Gimai14_C14.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 14</div>
+                    <div class="chapter-name">Chương 14</div>
+                </a>
+                <a href="Vol14/Gimai14_C15.html" class="chapter-card">
+                    <div class="chapter-label">Chapter 15</div>
+                    <div class="chapter-name">Chương 15</div>
+                </a>
+                <a href="Vol14/Gimai14_Epi.html" class="chapter-card epilogue">
+                    <div class="chapter-label">Epilogue</div>
+                    <div class="chapter-name">Phần Kết</div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        Gimai Seikatsu — 義妹生活
+    </footer>
+
+    <script>
+        function toggleVolume(header) {
+            const chapters = header.nextElementSibling;
+            const toggle = header.querySelector('.volume-toggle');
+
+            if (chapters.classList.contains('hidden')) {
+                chapters.style.maxHeight = chapters.scrollHeight + 'px';
+                chapters.classList.remove('hidden');
+                toggle.classList.remove('collapsed');
+            } else {
+                chapters.style.maxHeight = chapters.scrollHeight + 'px';
+                requestAnimationFrame(() => {
+                    chapters.classList.add('hidden');
+                    toggle.classList.add('collapsed');
+                });
+            }
+        }
+
+        // Set initial max-height for animation
+        document.querySelectorAll('.chapters').forEach(el => {
+            el.style.maxHeight = el.scrollHeight + 'px';
+        });
+    </script>
+
+</body>
+
+</html>
