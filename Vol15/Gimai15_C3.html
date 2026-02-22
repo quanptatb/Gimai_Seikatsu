@@ -3,102 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Gimai Seikatsu Volume 15 Chapter 3</title>
-    <style>
-        body {
-            background-color: #333333;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
+        <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.9;
+            padding: 0 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(167, 139, 250, 0.35);
+            color: #fff;
+        }
+
+        /* ── Scroll Progress Bar ── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa, #c4b5fd);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Headers ── */
         h1, h2 {
             text-align: center;
+            font-family: 'Noto Serif', Georgia, serif;
         }
 
         h1 {
-            border-bottom: 1px solid #777;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 50px 0 14px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: fadeIn 0.8s ease;
         }
 
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            color: #b8a9d4;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease 0.15s both;
+        }
+
+        /* ── Content ── */
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
+            color: #d5d0e0;
+            animation: fadeIn 0.6s ease both;
         }
 
         hr {
-            border-color: #555;
-            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 35px 0;
         }
 
+        /* ── Dialogue & Thought (Vol13) ── */
+        .dialogue {
+            font-weight: 500;
+            color: #e8e0f0;
+        }
+
+        .thought {
+            font-style: italic;
+            color: #a89cc0;
+        }
+
+        /* ── Nav Link ── */
         .nav-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #aaa;
+            color: #9b8fb8;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #c4b5fd;
         }
 
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-top: 1px solid #555;
-            border-bottom: 1px solid #555;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .chapter-nav a {
-            color: #aaa;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .chapter-nav a:hover {
-            color: #fff;
-            background-color: #444;
-        }
-
-        .chapter-nav .disabled {
-            color: #555;
-            padding: 8px 16px;
-        }
-    
+        /* ── Inline Chapter Nav (hidden — replaced by floating) ── */
         .chapter-nav {
             display: none !important;
         }
 
+        /* ── Word Count ── */
         .word-count {
             text-align: center;
-            color: #777;
+            color: #8b7aab;
             font-size: 13px;
-            margin: 0 0 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+            margin: 0 0 35px;
+            padding: 10px 18px;
+            background: rgba(167, 139, 250, 0.06);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 10px;
             letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.8s ease 0.3s both;
         }
 
+        /* ── Floating Nav ── */
         .floating-nav {
             position: fixed;
-            right: -240px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -112,64 +165,117 @@
         .floating-nav .nav-disabled {
             display: block;
             padding: 12px 22px;
-            background: rgba(35, 35, 35, 0.96);
-            color: #bbb;
+            background: rgba(26, 26, 46, 0.92);
+            color: #b8a9d4;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            transition: all 0.25s ease;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 155px;
         }
 
         .floating-nav a:hover {
             color: #fff;
-            background: rgba(55, 55, 55, 0.96);
-            border-color: rgba(255,255,255,0.18);
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.15);
         }
 
         .floating-nav .nav-disabled {
-            color: #555;
+            color: #5a5073;
             cursor: default;
         }
 
+        /* ── Toggle Tab ── */
         .nav-toggle {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
-            width: 26px;
-            height: 54px;
-            background: rgba(55, 55, 55, 0.75);
-            border-radius: 8px 0 0 8px;
+            width: 28px;
+            height: 56px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px 0 0 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #a78bfa;
             font-size: 11px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(167, 139, 250, 0.15);
             border-right: none;
             user-select: none;
         }
 
         .nav-toggle:hover {
-            background: rgba(75, 75, 75, 0.9);
-            color: #fff;
-            width: 30px;
+            background: rgba(40, 35, 65, 0.95);
+            color: #c4b5fd;
+            width: 32px;
         }
 
         .nav-toggle.shifted {
-            right: 210px;
+            right: 215px;
         }
 
+        /* ── Scroll to Top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #c4b5fd;
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 16px 50px;
+            }
+
             .nav-toggle {
                 display: none;
             }
@@ -178,16 +284,164 @@
                 top: auto;
                 bottom: 20px;
                 transform: none;
-                right: -240px;
+                right: -250px;
             }
 
             .floating-nav.visible {
                 right: 12px;
             }
+
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    
+
+        /* ── Theme Picker ── */
+        .theme-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .theme-picker-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .theme-picker-btn:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 52px;
+            left: 0;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(26, 26, 46, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .theme-options.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover { transform: scale(1.2); }
+
+        .theme-option.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* ── Theme: Gray ── */
+        body.theme-gray { background: #333 !important; background-image: none !important; color: #fff; }
+        body.theme-gray h1 { background: none !important; -webkit-text-fill-color: #fff; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-gray h1::after { background: linear-gradient(90deg, transparent, #666, transparent); }
+        body.theme-gray h2 { color: #ccc; }
+        body.theme-gray p { color: #e0e0e0; }
+        body.theme-gray .dialogue { color: #eee; }
+        body.theme-gray .thought { color: #bbb; }
+        body.theme-gray hr { background: linear-gradient(90deg, transparent, #555, transparent); }
+        body.theme-gray .word-count { color: #999; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray ::selection { background: rgba(180,180,180,0.3); }
+        body.theme-gray .floating-nav a { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); color: #ccc; }
+        body.theme-gray .floating-nav a:hover { background: rgba(65,65,65,0.95); color: #fff; border-color: rgba(255,255,255,0.2); }
+        body.theme-gray .floating-nav .nav-disabled { color: #666; }
+        body.theme-gray .nav-toggle { background: rgba(60,60,60,0.85); color: #aaa; border-color: rgba(255,255,255,0.08); }
+        body.theme-gray .scroll-top { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); color: #aaa; }
+        body.theme-gray .theme-picker-btn { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); }
+        body.theme-gray .theme-options { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray .theme-option.active { border-color: #aaa; box-shadow: 0 0 0 2px rgba(180,180,180,0.4), 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* ── Theme: Black ── */
+        body.theme-black { background: #080808 !important; background-image: none !important; color: #b0b0b0; }
+        body.theme-black h1 { background: none !important; -webkit-text-fill-color: #ddd; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-black h1::after { background: linear-gradient(90deg, transparent, #333, transparent); }
+        body.theme-black h2 { color: #888; }
+        body.theme-black p { color: #b0b0b0; }
+        body.theme-black .dialogue { color: #c0c0c0; }
+        body.theme-black .thought { color: #777; }
+        body.theme-black hr { background: linear-gradient(90deg, transparent, #2a2a2a, transparent); }
+        body.theme-black .word-count { color: #555; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); }
+        body.theme-black ::selection { background: rgba(150,150,150,0.25); }
+        body.theme-black .floating-nav a { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); color: #888; }
+        body.theme-black .floating-nav a:hover { background: rgba(28,28,28,0.96); color: #ccc; }
+        body.theme-black .floating-nav .nav-disabled { color: #444; }
+        body.theme-black .nav-toggle { background: rgba(18,18,18,0.9); color: #555; border-color: rgba(255,255,255,0.04); }
+        body.theme-black .scroll-top { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); color: #555; }
+        body.theme-black .theme-picker-btn { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-options { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-option.active { border-color: #666; box-shadow: 0 0 0 2px rgba(100,100,100,0.4), 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* ── Theme: White ── */
+        body.theme-white { background: #f5f3ef !important; background-image: none !important; color: #2a2a2a; }
+        body.theme-white h1 { background: none !important; -webkit-text-fill-color: #1a1a1a; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-white h1::after { background: linear-gradient(90deg, transparent, #ccc, transparent); }
+        body.theme-white h2 { color: #555; }
+        body.theme-white p { color: #333; }
+        body.theme-white .dialogue { color: #222; }
+        body.theme-white .thought { color: #666; }
+        body.theme-white hr { background: linear-gradient(90deg, transparent, #ddd, transparent); }
+        body.theme-white .word-count { color: #888; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.theme-white ::selection { background: rgba(124,92,191,0.2); color: #111; }
+        body.theme-white .scroll-progress { background: linear-gradient(90deg, #9575cd, #7c5cbf); }
+        body.theme-white .floating-nav a { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); color: #555; }
+        body.theme-white .floating-nav a:hover { background: rgba(248,248,248,0.98); color: #111; border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body.theme-white .floating-nav .nav-disabled { color: #bbb; }
+        body.theme-white .nav-toggle { background: rgba(255,255,255,0.92); color: #888; border-color: rgba(0,0,0,0.08); }
+        body.theme-white .nav-toggle:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .scroll-top { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); color: #888; }
+        body.theme-white .scroll-top:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .theme-picker-btn { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-options { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-option.active { border-color: #7c5cbf; box-shadow: 0 0 0 2px rgba(124,92,191,0.3), 0 2px 6px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .theme-picker { bottom: 16px; left: 16px; }
+            .theme-picker-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
+<script>(function(){var t=localStorage.getItem('gimai-theme');if(t&&t!=='default')document.body.classList.add('theme-'+t);})()</script>
 
     <div class="chapter-nav">
         <a href="Gimai15_C2.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -197,45 +451,45 @@
 
     <h1>Chương 3 — Năm nhất Đại học, Tháng 6, Asamura Yuuta</h1>
 
-    <p>Anh đưa cuốn sách đã được bọc bìa cẩn thận cho vị khách vừa thanh toán bằng thẻ tín dụng. Vị khách với mái tóc màu bạch kim bước ra khỏi cửa hàng, và anh cất lời “Have a nice day” đúng theo cẩm nang phục vụ.</p>
-    <p>Mặc dù đó là câu chúc chuẩn mực nằm trong mục "Lời chào khi khách ra về" dành cho khách ngoại quốc đến từ các nước nói tiếng Anh, nhưng vừa dứt lời, anh mới muộn màng nhận ra. Chết dở, hôm nay trời mưa cơ mà. Kể từ mùng 6, mùa mưa đã bắt đầu, và dạo gần đây trời cứ mưa rả rích không ngớt.</p>
-    <p>Tất nhiên, câu “Have a nice day!” mang sắc thái tương tự như “Hẹn gặp lại quý khách”, nhưng khi thấy vị khách được nhận câu chúc đó bước ra ngoài và bật ô lên, anh không khỏi suy nghĩ: "Chúc một ngày tốt lành trong cái thời tiết thế này thì có ý nghĩa gì chứ...".</p>
-    <p>── Phải chăng anh đã suy nghĩ quá nhiều?</p>
-    <p>Có lẽ anh thực sự đã suy nghĩ quá nhiều. Tuy nhiên, anh cảm thấy lo lắng rằng việc chỉ học thuộc lòng tiếng Anh từ cẩm nang là không đủ để truyền tải trọn vẹn sắc thái đến người khác. Nhưng nếu hỏi có cách nào khác không, thì anh cũng chẳng nghĩ ra được cách nào.</p>
+    <p>Tôi đưa cuốn sách đã được bọc bìa cẩn thận cho vị khách vừa thanh toán bằng thẻ tín dụng. Vị khách với mái tóc màu bạch kim bước ra khỏi cửa hàng, và tôi cất lời “Have a nice day” đúng theo cẩm nang phục vụ.</p>
+    <p>Mặc dù đó là câu chúc chuẩn mực nằm trong mục "Lời chào khi khách ra về" dành cho khách ngoại quốc đến từ các nước nói tiếng Tôi, nhưng vừa dứt lời, tôi mới muộn màng nhận ra. Chết dở, hôm nay trời mưa cơ mà. Kể từ mùng 6, mùa mưa đã bắt đầu, và dạo gần đây trời cứ mưa rả rích không ngớt.</p>
+    <p>Tất nhiên, câu “Have a nice day!” mang sắc thái tương tự như “Hẹn gặp lại quý khách”, nhưng khi thấy vị khách được nhận câu chúc đó bước ra ngoài và bật ô lên, tôi không khỏi suy nghĩ: "Chúc một ngày tốt lành trong cái thời tiết thế này thì có ý nghĩa gì chứ...".</p>
+    <p>── Phải chăng tôi đã suy nghĩ quá nhiều?</p>
+    <p>Có lẽ tôi thực sự đã suy nghĩ quá nhiều. Tuy nhiên, anh cảm thấy lo lắng rằng việc chỉ học thuộc lòng tiếng Tôi từ cẩm nang là không đủ để truyền tải trọn vẹn sắc thái đến người khác. Nhưng nếu hỏi có cách nào khác không, thì tôi cũng chẳng nghĩ ra được cách nào.</p>
     <p>"Anh làm việc vất vả rồi, Yuuta-senpai."</p>
-    <p>Anh quay đầu về phía phát ra giọng nói và nhìn thấy cô bé hậu bối, Kozono Erina-san, với mái tóc nhuộm màu hung đỏ đang chắp hai tay ra sau lưng và mỉm cười đứng đó.</p>
+    <p>Tôi quay đầu về phía phát ra giọng nói và nhìn thấy cô bé hậu bối, Kozono Erina-san, với mái tóc nhuộm màu hung đỏ đang chắp hai tay ra sau lưng và mỉm cười đứng đó.</p>
     <p>"Dạo gần đây lượng khách nước ngoài tăng lên nhiều quá em nhỉ?"</p>
     <p>"Cả hôm qua lẫn hôm kia, họ cứ như thể canh đúng ca làm của em mà đến ấy."</p>
     <p>"Hôm qua một mình em đã phục vụ tới tầm năm người rồi cơ đấy?"</p>
     <p>Hả, nhiều đến thế cơ à?</p>
-    <p>Biểu cảm ngạc nhiên của anh chắc hẳn đã lộ rõ mồn một, khiến Kozono-san phải bồi thêm: "Nghiêm túc đấy ạ". Điều đó có nghĩa là không phải riêng anh hay gặp khách nói tiếng Anh, mà thực ra anh còn thuộc nhóm ít phải đụng độ họ nhất.</p>
+    <p>Biểu cảm ngạc nhiên của tôi chắc hẳn đã lộ rõ mồn một, khiến Kozono-san phải bồi thêm: "Nghiêm túc đấy ạ". Điều đó có nghĩa là không phải riêng tôi hay gặp khách nói tiếng Tôi, mà thực ra tôi còn thuộc nhóm ít phải đụng độ họ nhất.</p>
     <p>"Vậy là họ cảm thấy bắt chuyện với Kozono dễ dàng hơn sao?"</p>
     <p>"Chắc họ thấy em đang đứng quầy nên cứ thế tiến lại thôi. Chuyện đó cứ xảy ra liên tục."</p>
     <p>"Ồ... ra là vậy."</p>
-    <p>Cô bé hậu bối nhỏ nhắn này có khả năng giao tiếp tiếng Anh gần như trôi chảy. Em ấy giỏi hơn hẳn một đứa cứ lắp bắp xen lẫn tiếng Nhật và tiếng Anh như anh.</p>
+    <p>Cô bé hậu bối nhỏ nhắn này có khả năng giao tiếp tiếng Tôi gần như trôi chảy. Em ấy giỏi hơn hẳn một đứa cứ lắp bắp xen lẫn tiếng Nhật và tiếng Tôi như tôi.</p>
     <p>"Kozono-san tuyệt thật đấy, có thể phục vụ khách bằng tiếng Anh mà không hề nao núng chút nào."</p>
-    <p>Có lẽ do bản tính cởi mở, nên hễ thấy vị khách nào có vẻ bối rối, dù tiếng Anh không phải là ngôn ngữ mẹ đẻ của họ, em ấy vẫn chủ động bước tới và hỏi: “May I help you?”. Nhờ vậy, khách hàng biết rằng họ có thể giao tiếp bằng tiếng Anh, và thế là họ chuyển sang dùng tiếng Anh (dù đó có thể cũng chẳng phải ngôn ngữ chính của họ).</p>
+    <p>Có lẽ do bản tính cởi mở, nên hễ thấy vị khách nào có vẻ bối rối, dù tiếng Tôi không phải là ngôn ngữ mẹ đẻ của họ, em ấy vẫn chủ động bước tới và hỏi: “May I help you?”. Nhờ vậy, khách hàng biết rằng họ có thể giao tiếp bằng tiếng Tôi, và thế là họ chuyển sang dùng tiếng Tôi (dù đó có thể cũng chẳng phải ngôn ngữ chính của họ).</p>
     <p>Cứ thế, những vị khách ngoại quốc khác thấy vậy cũng bắt đầu tìm đến Kozono nhờ giúp đỡ.</p>
     <p>"Giá như anh cũng học tiếng Anh tử tế được như Kozono-san..."</p>
     <p>"À thì, em đã quen với chuyện này từ hồi đi học rồi ạ."</p>
     <p>"Kozono-san, hồi cấp ba em học trường nào vậy?"</p>
     <p>"Ủa em chưa kể với anh sao? Em học trường THPT Quốc tế Aoki."</p>
     <p>"Ồ... ra là thế."</p>
-    <p>Trường THPT Quốc tế Aoki nổi tiếng ở Tokyo vì đặc biệt chú trọng vào giáo dục tiếng Anh. Họ thậm chí còn tự ra đề thi tiếng Anh riêng cho kỳ thi tuyển sinh, và anh nghe nói rằng điểm cộng cho môn tiếng Anh ở đó khá cao. Chính vì thế, ngôi trường này rất được lòng các du học sinh về nước, học sinh trao đổi, và cả con em người nước ngoài đang sinh sống tại Nhật.</p>
+    <p>Trường THPT Quốc tế Aoki nổi tiếng ở Tokyo vì đặc biệt chú trọng vào giáo dục tiếng Tôi. Họ thậm chí còn tự ra đề thi tiếng Tôi riêng cho kỳ thi tuyển sinh, và tôi nghe nói rằng điểm cộng cho môn tiếng Tôi ở đó khá cao. Chính vì thế, ngôi trường này rất được lòng các du học sinh về nước, học sinh trao đổi, và cả con em người nước ngoài đang sinh sống tại Nhật.</p>
     <p>"Không chỉ cấp ba đâu, không hiểu sao cả trường tiểu học lẫn trung học cơ sở em từng học cũng cực kỳ nghiêm túc trong việc dạy ngoại ngữ."</p>
-    <p>Đừng nói là bố mẹ em ấy đã tính toán và chọn trường sẵn từ đầu rồi nhé? Anh thoáng nghĩ như vậy, nhưng vì không chắc chắn nên anh chỉ đáp lại bằng một câu "Vậy à" với tông giọng nhạt nhòa.</p>
+    <p>Đừng nói là bố mẹ em ấy đã tính toán và chọn trường sẵn từ đầu rồi nhé? Tôi thoáng nghĩ như vậy, nhưng vì không chắc chắn nên tôi chỉ đáp lại bằng một câu "Vậy à" với tông giọng nhạt nhòa.</p>
     <p>"Thỉnh thoảng, ngay cả trong những môn học không phải tiếng Anh, giáo viên cũng giảng bài bằng tiếng Anh luôn."</p>
     <p>"Hả?"</p>
     <p>"Ví dụ nhé, trường em có cả giáo viên bản xứ dạy môn mỹ thuật. Trong lớp cũng có khá nhiều bạn bè đến từ các nước nói tiếng Anh. Bọn em thường xuyên dạy tiếng Nhật và tiếng Anh qua lại cho nhau."</p>
     <p>Nghe quốc tế thật đấy!</p>
     <p>"Đó là lý do em đã quá quen với tiếng Anh rồi."</p>
     <p>"Đáng ngưỡng mộ thật."</p>
-    <p>Tuy nhiên, có lẽ anh cần nghiêm túc nâng cao hứng thú của bản thân với giao tiếp tiếng Anh. Cẩm nang phục vụ bằng tiếng Anh đã được soạn thảo từ nửa cuối năm ngoái, và nội điều đó thôi cũng đã là minh chứng rõ ràng cho việc lượng khách quốc tế đang tăng lên. Có thể nói đây là xu thế của thời đại mà toàn bộ chuỗi cửa hàng phải đối mặt.</p>
-    <p>Nhắc mới nhớ, trong giờ kinh tế học, giảng viên của anh cũng từng tình cờ đề cập đến việc lượng du khách nước ngoài đến Nhật Bản đang tăng đều đặn mỗi năm. Lúc nghe câu đó, anh cũng chỉ ậm ừ cho qua giống hệt mấy sinh viên khác: "Ồ, ra vậy", nhưng sau ba ngày liên tiếp phải è cổ ra phục vụ khách bằng tiếng Anh, anh không thể không cảm nhận được sức nóng của sự thật đó.</p>
+    <p>Tuy nhiên, có lẽ tôi cần nghiêm túc nâng cao hứng thú của bản thân với giao tiếp tiếng Tôi. Cẩm nang phục vụ bằng tiếng Tôi đã được soạn thảo từ nửa cuối năm ngoái, và nội điều đó thôi cũng đã là minh chứng rõ ràng cho việc lượng khách quốc tế đang tăng lên. Có thể nói đây là xu thế của thời đại mà toàn bộ chuỗi cửa hàng phải đối mặt.</p>
+    <p>Nhắc mới nhớ, trong giờ kinh tế học, giảng viên của tôi cũng từng tình cờ đề cập đến việc lượng du khách nước ngoài đến Nhật Bản đang tăng đều đặn mỗi năm. Lúc nghe câu đó, tôi cũng chỉ ậm ừ cho qua giống hệt mấy sinh viên khác: "Ồ, ra vậy", nhưng sau ba ngày liên tiếp phải è cổ ra phục vụ khách bằng tiếng Tôi, tôi không thể không cảm nhận được sức nóng của sự thật đó.</p>
 
     <hr>
 
-    <p>Anh mang chuyện này ra kể với mấy anh chị đồng nghiệp lớn tuổi hơn trong giờ giải lao buổi chiều.</p>
+    <p>Tôi mang chuyện này ra kể với mấy anh chị đồng nghiệp lớn tuổi hơn trong giờ giải lao buổi chiều.</p>
     <p>Mặc dù ở các mức độ khác nhau, nhưng hầu như ai cũng thừa nhận rằng họ ngày càng chạm trán nhiều khách hàng sử dụng ngôn ngữ khác ngoài tiếng Nhật.</p>
     <p>"Đã bảo rồi mà, bây giờ là thời đại toàn cầu hóa rồi."</p>
     <p>Kozono-san bước vào phòng nghỉ và buông một câu xanh rờn. Em ấy đã thay bộ đồng phục làm việc ra và mặc lại đồ thường ngày.</p>
@@ -243,214 +497,214 @@
     <p>"Dạ vâng. Nay em có hẹn đi mua sắm với mẹ nên đã xin về sớm. Việc bị cắt giảm thời gian làm việc cùng Yuuta-senpai quả thực là một đòn đả kích nặng nề đối với một cô hậu bối dễ thương như em..."</p>
     <p>"Em diễn hơi sâu rồi đấy."</p>
     <p>"Tất nhiên, anh cũng có quyền cảm thấy hụt hẫng mà, đúng không? Vì anh không còn được tận hưởng những màn tương tác thú vị với cô hậu bối đáng yêu của mình nữa. Đúng không nào? Sen~pai!"</p>
-    <p>Kozono-san dùng cái giọng nũng nịu chảy nước ôm chầm lấy cánh tay phải của anh và cố tình cọ xát cơ thể lại gần.</p>
+    <p>Kozono-san dùng cái giọng nũng nịu chảy nước ôm chầm lấy cánh tay phải của tôi và cố tình cọ xát cơ thể lại gần.</p>
     <p>"Rồi, rồi. Anh hiểu, anh hiểu mà."</p>
-    <p>Trong tình huống này, có lẽ phản ứng tốt nhất là hùa theo và nói rằng anh cũng cảm thấy tiếc. Thế nhưng, anh chỉ muốn em ấy buông cánh tay mình ra. Nếu em ấy cứ kéo tay anh như vậy, anh sợ mình sẽ vô tình chạm vào những chỗ không nên chạm.</p>
+    <p>Trong tình huống này, có lẽ phản ứng tốt nhất là hùa theo và nói rằng tôi cũng cảm thấy tiếc. Thế nhưng, tôi chỉ muốn em ấy buông cánh tay mình ra. Nếu em ấy cứ kéo tay tôi như vậy, tôi sợ mình sẽ vô tình chạm vào những chỗ không nên chạm.</p>
     <p>"Yuuta-senpai... sao anh chẳng có chút phản ứng nào vậy?"</p>
     <p>Không, không phải đâu.</p>
-    <p>Đâu phải là anh không có phản ứng?</p>
+    <p>Đâu phải là tôi không có phản ứng?</p>
     <p>"À thì, thực ra anh đang thấy hơi bối rối đây."</p>
     <p>"Phản ứng của anh y chang như đang phải đối phó với một đứa cháu gái nhỏ phiền phức ấy nhỉ?"</p>
-    <p>Câu nói của em ấy đâm trúng tim đen. Nghĩ kỹ lại thì, anh quả thực đã từng rơi vào tình cảnh này. Cuối năm ngoái, khi về thăm nhà ông nội ở Nagano, mấy đứa nhóc tì con nhà anh họ cũng bám lấy anh y hệt thế này. Cảm giác thật hoài niệm. Mới đó mà đã một năm rưỡi trôi qua rồi. Dù tuổi tác của Kozono-san chẳng kém anh là bao, nhưng với cái vóc dáng hạt tiêu này, trông em ấy cứ như một cô bé tiểu học to xác vậy.</p>
-    <p>Phải chăng đó là lý do khiến anh có suy nghĩ như thế? Chết tiệt. Biểu cảm của Kozono-san ngày càng trở nên nghiêm trọng.</p>
+    <p>Câu nói của em ấy đâm trúng tim đen. Nghĩ kỹ lại thì, tôi quả thực đã từng rơi vào tình cảnh này. Cuối năm ngoái, khi về thăm nhà ông nội ở Nagano, mấy đứa nhóc tì con nhà tôi họ cũng bám lấy tôi y hệt thế này. Cảm giác thật hoài niệm. Mới đó mà đã một năm rưỡi trôi qua rồi. Dù tuổi tác của Kozono-san chẳng kém tôi là bao, nhưng với cái vóc dáng hạt tiêu này, trông em ấy cứ như một cô bé tiểu học to xác vậy.</p>
+    <p>Phải chăng đó là lý do khiến tôi có suy nghĩ như thế? Chết tiệt. Biểu cảm của Kozono-san ngày càng trở nên nghiêm trọng.</p>
     <p>Khuôn mặt em ấy lộ rõ vẻ không vui.</p>
     <p>Và rồi em ấy bắt đầu bắn liên thanh.</p>
     <p>"Chán anh thật đấy! Từ lúc anh lên đại học, thời gian hai đứa làm chung ca ít hẳn đi, em cứ có cảm giác mình bị tước mất quyền lợi trước khi kịp tung ra mấy tuyệt chiêu cưa cẩm mà em đã dày công chuẩn bị. Em chẳng moi được chút dinh dưỡng nào từ cái khuôn mặt hoảng hốt của Yuuta-senpai như em hằng mong đợi. Vậy có nghĩa là đàn chị Ayase cứ liên tục làm chuyện này chuyện kia đến mức cơ thể anh Yuuta quen luôn rồi đúng không? Thói quen quả là một thứ đáng sợ nhỉ? Ồ, ra là vậy."</p>
-    <p>Khoan, khoan, khoan đã. Em ấy bắn rap nhanh đến mức anh nghe chữ được chữ mất. Và tại sao cái tên Saki lại đột ngột nhảy bổ vào cuối câu chuyện thế này?</p>
+    <p>Khoan, khoan, khoan đã. Em ấy bắn rap nhanh đến mức tôi nghe chữ được chữ mất. Và tại sao cái tên Saki lại đột ngột nhảy bổ vào cuối câu chuyện thế này?</p>
     <p>"Dù anh có bước chân vào cánh cửa đại học sớm hơn em hai năm, nhưng em cũng chỉ còn hai năm nữa là thành sinh viên rồi. Em sắp 18 tuổi đến nơi rồi đấy!"</p>
     <p>Điều đó thì đúng.</p>
     <p>"Nói cách khác, cái biển báo 'Trẻ vị thành niên xin miễn tiếp' sắp sửa bị gỡ xuống rồi!"</p>
     <p>Ý em ấy là sao cơ?</p>
     <p>"Em về đây. Chào mọi người, mọi người vất vả rồi!"</p>
-    <p>Sau khi cô nàng hậu bối dậm chân bình bịch bỏ đi và mở toang cánh cửa với một tiếng động chát chúa, anh chỉ còn biết đứng ngây ra đó, không hiểu rốt cuộc em ấy đang ám chỉ điều gì.</p>
-    <p>Bỏ qua những hành động mang đầy ẩn ý bí ẩn của Kozono-san, khi ngẫm nghĩ lại sự việc, hiện thực phũ phàng rằng bản thân không thể giao tiếp bằng tiếng Anh với khách ngoại quốc dẫu đã từng cày cuốc học thi khiến anh cảm thấy khá ủ dột.</p>
-    <p>Có lẽ trình độ tiếng Anh của anh sẽ khá khẩm hơn một chút nếu anh chịu khó cày sách ngoại văn, nhưng xui xẻo thay, hiệu sách nơi anh làm việc lại không có quầy sách ngoại văn. Đang lúc định bụng sẽ mò lên thư viện mượn sách, anh chợt nhớ lại lời dặn dò của Yomiuri-senpai, chị ấy từng nói rằng khi lên đại học, anh sẽ phải tiếp xúc với vô số tiểu luận và tài liệu bằng tiếng Anh, bởi lẽ phần lớn các bài báo khoa học và tài liệu học thuật mới nhất đều được công bố bằng tiếng Anh đầu tiên.</p>
-    <p>Điều này không chỉ giới hạn ở một lĩnh vực nào đó. Khoa học tự nhiên, kỹ thuật, y học, khoa học xã hội, nhân văn... vân vân. Trong mọi chuyên ngành, các bài báo thường được ưu tiên chắp bút bằng tiếng Anh. Tùy thuộc vào lĩnh vực, đôi khi chúng có thể được viết bằng tiếng Đức hoặc tiếng Pháp, nhưng xét theo quy mô dân số, tiếng Trung cũng là một khả năng. Các tạp chí chuyên ngành (journal) nơi xuất bản các bài luận cũng sử dụng tiếng Anh làm ngôn ngữ chính. Khi sử dụng từ "jurnal" trong ngữ cảnh học thuật, nó ám chỉ các tạp chí khoa học, và hầu như tất cả các tạp chí uy tín hàng đầu thế giới đều được biên soạn bằng tiếng Anh.</p>
-    <p>Nói cách khác, tiếng Anh chính là ngôn ngữ chung trong giới học thuật.</p>
-    <p>Đây là một trong những chân lý mà người ta có thể dễ dàng nghiệm ra khi bước chân vào giảng đường đại học. Hễ giảng viên muốn cập nhật những kiến thức mới nhất trong bài giảng, thứ họ yêu cầu sinh viên nghiền ngẫm chắc chắn là các bài luận và tạp chí tiếng Anh.</p>
-    <p>Thế nhưng, dù có bị ép đọc đi chăng nữa, việc đó vẫn chẳng dễ nhằn chút nào. Lấy ví dụ, có một tạp chí xã hội học cực kỳ danh tiếng tên là AJPS, tức [American Journal of Sociology] (Tạp chí Xã hội học Mỹ). Muốn đọc được nó, anh phải truy cập vào trang web chính thức hoặc thư viện của trường. Bởi vì những ấn phẩm học thuật cao cấp kiểu đó đào đâu ra ở mấy hiệu sách bình thường...</p>
+    <p>Sau khi cô nàng hậu bối dậm chân bình bịch bỏ đi và mở toang cánh cửa với một tiếng động chát chúa, tôi chỉ còn biết đứng ngây ra đó, không hiểu rốt cuộc em ấy đang ám chỉ điều gì.</p>
+    <p>Bỏ qua những hành động mang đầy ẩn ý bí ẩn của Kozono-san, khi ngẫm nghĩ lại sự việc, hiện thực phũ phàng rằng bản thân không thể giao tiếp bằng tiếng Tôi với khách ngoại quốc dẫu đã từng cày cuốc học thi khiến anh cảm thấy khá ủ dột.</p>
+    <p>Có lẽ trình độ tiếng Tôi của tôi sẽ khá khẩm hơn một chút nếu anh chịu khó cày sách ngoại văn, nhưng xui xẻo thay, hiệu sách nơi tôi làm việc lại không có quầy sách ngoại văn. Đang lúc định bụng sẽ mò lên thư viện mượn sách, tôi chợt nhớ lại lời dặn dò của Yomiuri-senpai, chị ấy từng nói rằng khi lên đại học, tôi sẽ phải tiếp xúc với vô số tiểu luận và tài liệu bằng tiếng Tôi, bởi lẽ phần lớn các bài báo khoa học và tài liệu học thuật mới nhất đều được công bố bằng tiếng Tôi đầu tiên.</p>
+    <p>Điều này không chỉ giới hạn ở một lĩnh vực nào đó. Khoa học tự nhiên, kỹ thuật, y học, khoa học xã hội, nhân văn... vân vân. Trong mọi chuyên ngành, các bài báo thường được ưu tiên chắp bút bằng tiếng Tôi. Tùy thuộc vào lĩnh vực, đôi khi chúng có thể được viết bằng tiếng Đức hoặc tiếng Pháp, nhưng xét theo quy mô dân số, tiếng Trung cũng là một khả năng. Các tạp chí chuyên ngành (journal) nơi xuất bản các bài luận cũng sử dụng tiếng Tôi làm ngôn ngữ chính. Khi sử dụng từ "jurnal" trong ngữ cảnh học thuật, nó ám chỉ các tạp chí khoa học, và hầu như tất cả các tạp chí uy tín hàng đầu thế giới đều được biên soạn bằng tiếng Tôi.</p>
+    <p>Nói cách khác, tiếng Tôi chính là ngôn ngữ chung trong giới học thuật.</p>
+    <p>Đây là một trong những chân lý mà người ta có thể dễ dàng nghiệm ra khi bước chân vào giảng đường đại học. Hễ giảng viên muốn cập nhật những kiến thức mới nhất trong bài giảng, thứ họ yêu cầu sinh viên nghiền ngẫm chắc chắn là các bài luận và tạp chí tiếng Tôi.</p>
+    <p>Thế nhưng, dù có bị ép đọc đi chăng nữa, việc đó vẫn chẳng dễ nhằn chút nào. Lấy ví dụ, có một tạp chí xã hội học cực kỳ danh tiếng tên là AJPS, tức [American Journal of Sociology] (Tạp chí Xã hội học Mỹ). Muốn đọc được nó, tôi phải truy cập vào trang web chính thức hoặc thư viện của trường. Bởi vì những ấn phẩm học thuật cao cấp kiểu đó đào đâu ra ở mấy hiệu sách bình thường...</p>
     <p>À, ra là vậy, thư viện trường đại học.</p>
-    <p>Ở đó chắc chắn có tàng trữ các tiểu luận và tạp chí học thuật. Số lượng sách ngoại văn chắc cũng không hề nhỏ. Đây có lẽ là cơ hội ngàn vàng để anh vừa làm quen với việc đọc sách tiếng Anh, vừa kết hợp với việc học trên trường. Mặc dù anh biết tỏng rằng việc này chẳng giúp ích mấy cho kỹ năng giao tiếp, nhưng ít ra nó cũng là một bước đệm để anh làm quen với tiếng Anh.</p>
+    <p>Ở đó chắc chắn có tàng trữ các tiểu luận và tạp chí học thuật. Số lượng sách ngoại văn chắc cũng không hề nhỏ. Đây có lẽ là cơ hội ngàn vàng để tôi vừa làm quen với việc đọc sách tiếng Tôi, vừa kết hợp với việc học trên trường. Mặc dù tôi biết tỏng rằng việc này chẳng giúp ích mấy cho kỹ năng giao tiếp, nhưng ít ra nó cũng là một bước đệm để tôi làm quen với tiếng Tôi.</p>
     <p>Chắc cũng không mất mát gì nếu ghé qua đó một chuyến...</p>
-    <p>Ngay lúc vừa bước ra khỏi phòng nghỉ sau giờ giải lao, anh bắt gặp một người phụ nữ lớn tuổi đang bối rối đi loanh quanh trong khu vực quầy hàng. Bà ấy có đôi mắt màu xanh lam và mái tóc nâu. Vị nữ khách hàng mang phong thái quý phái này trạc tuổi trung niên. Dáng vẻ trông có nét giống người Đông Âu.</p>
-    <p>Sau khi hít một hơi thật sâu, anh lôi mớ tiếng Anh trong cẩm nang phục vụ ra khỏi trí nhớ và cất lời: “May I help you?”.</p>
+    <p>Ngay lúc vừa bước ra khỏi phòng nghỉ sau giờ giải lao, tôi bắt gặp một người phụ nữ lớn tuổi đang bối rối đi loanh quanh trong khu vực quầy hàng. Bà ấy có đôi mắt màu xanh lam và mái tóc nâu. Vị nữ khách hàng mang phong thái quý phái này trạc tuổi trung niên. Dáng vẻ trông có nét giống người Đông Âu.</p>
+    <p>Sau khi hít một hơi thật sâu, tôi lôi mớ tiếng Tôi trong cẩm nang phục vụ ra khỏi trí nhớ và cất lời: “May I help you?”.</p>
 
     <hr>
 
-    <p>Lúc anh tan làm thì trời cũng đã quá nửa đêm. Vừa bước chân ra khỏi khu trung tâm mua sắm để đi bộ về nhà, cơn mưa bỗng trút xuống nặng hạt hơn, nên anh đành phải tìm chỗ trú mưa một lát.</p>
-    <p>Anh khẽ nói "Con về rồi đây" ở ngoài cửa, nhưng không gian vắng lặng không một tiếng hồi đáp.</p>
-    <p>Tối nay anh về muộn quá rồi. Theo như tin nhắn trên điện thoại, có vẻ như Saki đã chìm vào giấc ngủ. Cũng phải thôi. Dạo này em ấy bù đầu với lịch học trên trường và kỳ thực tập, nên chắc hẳn đã mệt lử rồi.</p>
+    <p>Lúc tôi tan làm thì trời cũng đã quá nửa đêm. Vừa bước chân ra khỏi khu trung tâm mua sắm để đi bộ về nhà, cơn mưa bỗng trút xuống nặng hạt hơn, nên tôi đành phải tìm chỗ trú mưa một lát.</p>
+    <p>Tôi khẽ nói "Con về rồi đây" ở ngoài cửa, nhưng không gian vắng lặng không một tiếng hồi đáp.</p>
+    <p>Tối nay tôi về muộn quá rồi. Theo như tin nhắn trên điện thoại, có vẻ như Saki đã chìm vào giấc ngủ. Cũng phải thôi. Dạo này em ấy bù đầu với lịch học trên trường và kỳ thực tập, nên chắc hẳn đã mệt lử rồi.</p>
     <p>Trong phòng ăn chỉ còn le lói ánh đèn ngủ.</p>
     <p>Một phần bữa tối được đậy kín cẩn thận bằng lồng bàn lưới dọn sẵn trên bàn dành riêng cho một người. Thực đơn gồm có cá nướng. Cá hồi chăng? Kèm theo đó là một đĩa rau và natto. Một tờ giấy nhớ do Saki để lại được dán ngay ngắn trên mặt bàn. Súp miso đã được cất cẩn thận trong hộp nhựa và bỏ vào tủ lạnh. Chắc tại súp dễ bị thiu hơn cá nướng.</p>
     <p>Mùa hè năm nay có vẻ sẽ nóng đổ lửa, cứ cái đà này thì bước sang tháng Bảy, chắc mọi thứ đều phải tống hết vào tủ lạnh để tránh bị ôi thiu mất.</p>
-    <p>Do không khí ẩm ướt nhớp nháp, anh điều chỉnh máy điều hòa tăng mức hút ẩm lên một chút.</p>
-    <p>Anh hâm nóng lại phần súp miso lấy từ tủ lạnh, xới một bát cơm trắng, rồi chắp tay lại và khẽ nói "itadakimasu" (Xin phép dùng bữa).</p>
-    <p>Anh dùng đũa gỡ từng miếng thịt cá nướng rồi đưa vào miệng.</p>
-    <p>Cảm giác ăn một mình thật nhạt nhẽo và cô đơn. Nhưng anh lại không muốn bật TV vì sợ làm ồn giấc ngủ của bố ở phòng bên.</p>
-    <p>Dù việc lủi thủi ăn cơm một mình vốn dĩ đã là một thói quen quá quen thuộc với anh từ thuở bé, nhưng từ khi có sự hiện diện của Saki ở phía đối diện, việc hai đứa cùng chia sẻ những bữa ăn đã trở thành một phần tất yếu trong cuộc sống của anh, khiến cho sự cô đơn bủa vây lúc này bỗng trở nên trống trải và sâu sắc hơn bao giờ hết.</p>
-    <p>Nhắc mới nhớ, hôm qua người ngủ gục trước lại là anh.</p>
-    <p>Hình như văn phòng của chị Akihiro có một cuộc họp cực kỳ quan trọng, và em ấy đã nhắn tin bảo anh rằng nếu cuộc họp kéo dài, anh cứ ăn tối trước mà không cần phải đợi. Anh đã nghe theo và giải quyết xong bữa tối từ sớm, không biết liệu hôm qua Saki có phải trải qua cái cảm giác quạnh hiu này khi ăn tối một mình không nhỉ?</p>
-    <p>Đáng lý ra anh nên thức đợi em ấy về.</p>
+    <p>Do không khí ẩm ướt nhớp nháp, tôi điều chỉnh máy điều hòa tăng mức hút ẩm lên một chút.</p>
+    <p>Tôi hâm nóng lại phần súp miso lấy từ tủ lạnh, xới một bát cơm trắng, rồi chắp tay lại và khẽ nói "itadakimasu" (Xin phép dùng bữa).</p>
+    <p>Tôi dùng đũa gỡ từng miếng thịt cá nướng rồi đưa vào miệng.</p>
+    <p>Cảm giác ăn một mình thật nhạt nhẽo và cô đơn. Nhưng tôi lại không muốn bật TV vì sợ làm ồn giấc ngủ của bố ở phòng bên.</p>
+    <p>Dù việc lủi thủi ăn cơm một mình vốn dĩ đã là một thói quen quá quen thuộc với tôi từ thuở bé, nhưng từ khi có sự hiện diện của Saki ở phía đối diện, việc hai đứa cùng chia sẻ những bữa ăn đã trở thành một phần tất yếu trong cuộc sống của tôi, khiến cho sự cô đơn bủa vây lúc này bỗng trở nên trống trải và sâu sắc hơn bao giờ hết.</p>
+    <p>Nhắc mới nhớ, hôm qua người ngủ gục trước lại là tôi.</p>
+    <p>Hình như văn phòng của chị Akihiro có một cuộc họp cực kỳ quan trọng, và em ấy đã nhắn tin bảo tôi rằng nếu cuộc họp kéo dài, tôi cứ ăn tối trước mà không cần phải đợi. Tôi đã nghe theo và giải quyết xong bữa tối từ sớm, không biết liệu hôm qua Saki có phải trải qua cái cảm giác quạnh hiu này khi ăn tối một mình không nhỉ?</p>
+    <p>Đáng lý ra tôi nên thức đợi em ấy về.</p>
     <p>Cảm giác như những sự lệch pha nho nhỏ kiểu này đang ngày càng xuất hiện với tần suất dày đặc hơn...</p>
     <p>Mặc dù mang tiếng là sống chung dưới một mái nhà, nhưng hai đứa lại rất khó sắp xếp lịch trình khớp với nhau.</p>
-    <p>Chưa kể, kể từ cái đêm đó, chúng anh chưa có cơ hội được gần gũi thêm lần nào nữa. Hai đứa đã giao kèo là sẽ không táy máy chân tay khi có bố mẹ ở nhà, và sẽ kiên nhẫn chờ đợi thời cơ thích hợp khi cả hai người lớn đều đi vắng.</p>
+    <p>Chưa kể, kể từ cái đêm đó, chúng tôi chưa có cơ hội được gần gũi thêm lần nào nữa. Hai đứa đã giao kèo là sẽ không táy máy chân tay khi có bố mẹ ở nhà, và sẽ kiên nhẫn chờ đợi thời cơ thích hợp khi cả hai người lớn đều đi vắng.</p>
     <p>Nhưng nếu cứ giữ nguyên tắc đó, thì một cơ hội thuận lợi như vậy đâu phải lúc nào cũng từ trên trời rơi xuống. Dù đúng ra hai đứa đã bước sang một chương mới với tư cách là một cặp tình nhân thực thụ, nhưng cảm giác cứ như thể cả hai đang mò mẫm bước đi trong sương mù vậy.</p>
     <p>"Đắng quá."</p>
-    <p>Anh vô ý cắn phải phần cháy đen của miếng cá nướng và buột miệng kêu lên. Cố gắng kìm lại tiếng than vãn vừa trào ra khỏi miệng, anh nuốt vội miếng cơm xuống cổ họng.</p>
+    <p>Tôi vô ý cắn phải phần cháy đen của miếng cá nướng và buột miệng kêu lên. Cố gắng kìm lại tiếng than vãn vừa trào ra khỏi miệng, tôi nuốt vội miếng cơm xuống cổ họng.</p>
 
     <hr>
 
-    <p>Anh vừa nhai bữa sáng vừa ngáp ngắn ngáp dài.</p>
-    <p>"Tối qua con thiếu ngủ à?" Bố anh ngồi bên cạnh vừa hỏi vừa dùng đũa dằm con cá mòi khô (mesashi). Anh gật đầu xác nhận.</p>
+    <p>Tôi vừa nhai bữa sáng vừa ngáp ngắn ngáp dài.</p>
+    <p>"Tối qua con thiếu ngủ à?" Bố tôi ngồi bên cạnh vừa hỏi vừa dùng đũa dằm con cá mòi khô (mesashi). Tôi gật đầu xác nhận.</p>
     <p>"Hôm qua con thức hơi khuya một chút."</p>
     <p>"Anh không sao chứ?"</p>
     <p>Giọng nói đầy vẻ quan tâm cất lên từ Saki đang ngồi đối diện. Lâu lắm rồi ba người mới lại có dịp ngồi ăn sáng cùng nhau như thế này.</p>
     <p>"Anh đi làm thêm về hơi trễ, nên thành ra quỹ thời gian học bài và ôn tập cũng bị đẩy lùi theo..."</p>
-    <p>Lết xác về đến nhà lúc quá nửa đêm, mãi đến tận hai giờ sáng anh mới chợp mắt được. Đã vậy, anh còn phải bò dậy sớm hơn thời cấp ba tận 30 phút, nên thú thực là cơ thể anh đang biểu tình khá dữ dội. Cũng may là lịch học hôm nay khá dễ thở.</p>
-    <p>Dù vậy, anh vẫn phải dậy sớm vì có một tiết toán ngay từ ca đầu tiên.</p>
-    <p>Biết thế anh đã rút bớt thời gian cày cuốc học tập để lăn ra ngủ cho sướng. Nhưng mà, cái ông giảng viên đó bắn rap với tốc độ vượt xa khả năng tiếp thu của anh... Anh đã cố gắng vắt óc ra để lĩnh hội những gì ông ấy giảng, nhưng đến buổi học tiếp theo, ông ấy lại phán xanh rờn rằng phần đó rất quan trọng, khiến anh phải gào thét trong lòng: "Cái quái gì thế này, trong môn đại số tuyến tính thì cái gì mà chả quan trọng cơ chứ?".</p>
+    <p>Lết xác về đến nhà lúc quá nửa đêm, mãi đến tận hai giờ sáng tôi mới chợp mắt được. Đã vậy, tôi còn phải bò dậy sớm hơn thời cấp ba tận 30 phút, nên thú thực là cơ thể tôi đang biểu tình khá dữ dội. Cũng may là lịch học hôm nay khá dễ thở.</p>
+    <p>Dù vậy, tôi vẫn phải dậy sớm vì có một tiết toán ngay từ ca đầu tiên.</p>
+    <p>Biết thế tôi đã rút bớt thời gian cày cuốc học tập để lăn ra ngủ cho sướng. Nhưng mà, cái ông giảng viên đó bắn rap với tốc độ vượt xa khả năng tiếp thu của tôi... Tôi đã cố gắng vắt óc ra để lĩnh hội những gì ông ấy giảng, nhưng đến buổi học tiếp theo, ông ấy lại phán xanh rờn rằng phần đó rất quan trọng, khiến tôi phải gào thét trong lòng: "Cái quái gì thế này, trong môn đại số tuyến tính thì cái gì mà chả quan trọng cơ chứ?".</p>
     <p>"Bố biết ngay mà, đường đến cơ sở Ichinose xa xôi trắc trở quá phải không?"</p>
     <p>"Cũng không hẳn ạ—đường đi thì đúng là xa hơn hồi học trường Suisei thật, nhưng con chỉ phải khởi hành sớm hơn có 30 phút thôi, tính ra thì giờ đi làm của con cũng xấp xỉ giờ đi làm của bố mà."</p>
     <p>"Bố lên giường từ lúc 10 giờ tối, nên bố ngủ đủ 8 tiếng đồng hồ. Bố không muốn con vì ỷ lại vào sức trẻ mà bào mòn thời gian nghỉ ngơi của mình đâu."</p>
     <p>"À, dạ... Con sẽ cố gắng sắp xếp ạ."</p>
-    <p>Câu trả lời của anh nghe sặc mùi ngoại giao của mấy ông chính trị gia.</p>
-    <p>Dù sao đi nữa, nhiệm vụ cấp bách hiện tại là phải thanh toán gọn lẹ bữa sáng đang bày ra trước mặt. Kể từ đêm qua đến giờ, chu kỳ sinh học của anh chỉ quẩn quanh với ăn, ngủ, rồi lại thức dậy để ăn... Cảm giác như mục đích tồn tại duy nhất của anh trên cõi đời này là để tiêu thụ thức ăn vậy. Xen kẽ giữa những chu kỳ đó đáng lẽ ra phải là thời gian dành cho việc học mới đúng.</p>
+    <p>Câu trả lời của tôi nghe sặc mùi ngoại giao của mấy ông chính trị gia.</p>
+    <p>Dù sao đi nữa, nhiệm vụ cấp bách hiện tại là phải thanh toán gọn lẹ bữa sáng đang bày ra trước mặt. Kể từ đêm qua đến giờ, chu kỳ sinh học của tôi chỉ quẩn quanh với ăn, ngủ, rồi lại thức dậy để ăn... Cảm giác như mục đích tồn tại duy nhất của tôi trên cõi đời này là để tiêu thụ thức ăn vậy. Xen kẽ giữa những chu kỳ đó đáng lẽ ra phải là thời gian dành cho việc học mới đúng.</p>
     <p>"A, vâng. Anh cảm ơn."</p>
-    <p>Saki ăn xong trước, em ấy cầm ấm trà rót đầy vào cốc rồi đẩy nó về phía anh.</p>
-    <p>Giờ đi học của Saki vẫn không thay đổi so với thời cấp ba. Hồi trước tháng Năm, em ấy toàn cắn răng dậy sớm cùng anh, nhưng dạo gần đây bài vở trên trường ngày một nặng đô, cộng thêm sự mệt mỏi từ công việc thực tập, nên em ấy thường xuyên dậy trễ hơn anh tầm 30 phút. Lẽ tự nhiên, giờ giấc xuất phát khỏi nhà của hai đứa cũng vì thế mà lệch pha nhau.</p>
-    <p>Sáng nay Saki là đầu bếp chính, nên em ấy phải dậy sớm hơn thường lệ, còn anh thì lại dậy trễ hơn một tẹo, thành thử hai đứa mới có cơ hội giáp mặt và dùng bữa cùng nhau.</p>
+    <p>Saki ăn xong trước, em ấy cầm ấm trà rót đầy vào cốc rồi đẩy nó về phía tôi.</p>
+    <p>Giờ đi học của Saki vẫn không thay đổi so với thời cấp ba. Hồi trước tháng Năm, em ấy toàn cắn răng dậy sớm cùng tôi, nhưng dạo gần đây bài vở trên trường ngày một nặng đô, cộng thêm sự mệt mỏi từ công việc thực tập, nên em ấy thường xuyên dậy trễ hơn tôi tầm 30 phút. Lẽ tự nhiên, giờ giấc xuất phát khỏi nhà của hai đứa cũng vì thế mà lệch pha nhau.</p>
+    <p>Sáng nay Saki là đầu bếp chính, nên em ấy phải dậy sớm hơn thường lệ, còn tôi thì lại dậy trễ hơn một tẹo, thành thử hai đứa mới có cơ hội giáp mặt và dùng bữa cùng nhau.</p>
     <p>Chính những thay đổi vụn vặt đó đã vô tình tạo ra khoảng cách, khiến cho quỹ thời gian hai đứa ở bên nhau cứ thế mà vơi dần đi.</p>
-    <p>Những trăn trở đêm qua lại một lần nữa ùa về giăng kín tâm trí anh. Đi kèm với đó là một nỗi bất an vô hình. Bức tranh tương lai trong tâm trí anh bỗng chốc trở nên u ám và xám xịt. Ngay cả bát cơm nóng hổi trước mặt cũng như bị nhuốm một màu xám xịt—à không, xin lỗi, anh đùa đấy. Là do anh vừa rưới hỗn hợp khoai mỡ nạo (tororo) trộn nước tương lên cơm, nên nó mới có màu xám xám như thế.</p>
+    <p>Những trăn trở đêm qua lại một lần nữa ùa về giăng kín tâm trí tôi. Đi kèm với đó là một nỗi bất an vô hình. Bức tranh tương lai trong tâm trí tôi bỗng chốc trở nên u ám và xám xịt. Ngay cả bát cơm nóng hổi trước mặt cũng như bị nhuốm một màu xám xịt—à không, xin lỗi, tôi đùa đấy. Là do tôi vừa rưới hỗn hợp khoai mỡ nạo (tororo) trộn nước tương lên cơm, nên nó mới có màu xám xám như thế.</p>
     <p>"Khóa học lái xe của con tiến triển đến đâu rồi?"</p>
-    <p>Bố anh đột ngột đổi chủ đề, và anh phải mất vài giây mới load kịp nội dung câu hỏi. Tâm trí đang bận phân tích bát cơm tororo khiến anh khó lòng bẻ lái kịp sang chủ đề trường dạy lái xe.</p>
+    <p>Bố tôi đột ngột đổi chủ đề, và tôi phải mất vài giây mới load kịp nội dung câu hỏi. Tâm trí đang bận phân tích bát cơm tororo khiến tôi khó lòng bẻ lái kịp sang chủ đề trường dạy lái xe.</p>
     <p>"À, dạ. Chắc là cũng ổn ạ."</p>
-    <p>Câu trả lời của anh nghe ậm ờ hết sức.</p>
+    <p>Câu trả lời của tôi nghe ậm ờ hết sức.</p>
     <p>"Ừ, mới học thì lấy đâu ra mà giỏi ngay được."</p>
-    <p>Bố anh không hề bẻ gãy hay khó chịu với câu trả lời ậm ờ đó, mà cố gắng duy trì nhịp độ của cuộc trò chuyện. Một lần nữa, anh lại cảm nhận được sự khác biệt một trời một vực giữa tính cách của anh và bố. Nếu đổi lại là anh, có lẽ anh đã xổ toẹt ra một câu sặc mùi cà khịa kiểu như: "Nói thế là con chả tiến bộ được tí nào phải không?" và phá nát bầu không khí của cuộc trò chuyện.</p>
+    <p>Bố tôi không hề bẻ gãy hay khó chịu với câu trả lời ậm ờ đó, mà cố gắng duy trì nhịp độ của cuộc trò chuyện. Một lần nữa, tôi lại cảm nhận được sự khác biệt một trời một vực giữa tính cách của tôi và bố. Nếu đổi lại là tôi, có lẽ tôi đã xổ toẹt ra một câu sặc mùi cà khịa kiểu như: "Nói thế là con chả tiến bộ được tí nào phải không?" và phá nát bầu không khí của cuộc trò chuyện.</p>
     <p>"Con học được một tháng rồi nhỉ? Đã được học những môn gì rồi?"</p>
     <p>"Lúc đầu thì họ nhồi nhét cho con 10 tiếng lý thuyết. Kiểu như học thuộc làu làu luật lệ giao thông các kiểu ấy ạ."</p>
     <p>"Vẫn chỉ học lý thuyết chay thôi à?"</p>
     <p>"Dạ cũng có học thực hành rồi ạ. Họ cho con cầm lái chạy lòng vòng trong sa hình của trung tâm."</p>
-    <p>Anh cảm thấy khá tự tin với mảng lý thuyết. Sau khi cày xong các bài giảng, nghe đồn bài thi lý thuyết lấy bằng lái xe tạm thời đòi hỏi thí sinh phải đạt tối thiểu 45/50 điểm, nhưng so với cường độ cày cuốc ôn thi đại học thì nhiêu đó nhằm nhò gì.</p>
+    <p>Tôi cảm thấy khá tự tin với mảng lý thuyết. Sau khi cày xong các bài giảng, nghe đồn bài thi lý thuyết lấy bằng lái xe tạm thời đòi hỏi thí sinh phải đạt tối thiểu 45/50 điểm, nhưng so với cường độ cày cuốc ôn thi đại học thì nhiêu đó nhằm nhò gì.</p>
     <p>Vấn đề nan giải thực sự nằm ở những giờ học thực hành cầm vô lăng lái xe trong sa hình.</p>
-    <p>Khi còn là một hành khách ngồi chễm chệ trên ghế phụ trong xe của bố, anh chẳng bao giờ mảy may cảm nhận được điều này, nhưng khi đích thân ngồi vào ghế lái và ôm lấy vô lăng, cảm giác đó thực sự rất—đáng sợ.</p>
+    <p>Khi còn là một hành khách ngồi chễm chệ trên ghế phụ trong xe của bố, tôi chẳng bao giờ mảy may cảm nhận được điều này, nhưng khi đích thân ngồi vào ghế lái và ôm lấy vô lăng, cảm giác đó thực sự rất—đáng sợ.</p>
     <p>Chỉ cần khẽ nhấp chân ga, cỗ máy nặng nề lao vút về phía trước, và cảnh vật hai bên đường cứ thế trôi tuột lại phía sau với một tốc độ kinh hoàng. Cảm giác gia tốc ép vào người mạnh hơn gấp trăm lần so với lúc chạy bộ. Cái câu 'nhanh như bay' quả thực không sai một ly nào.</p>
-    <p>Nghĩ lại thì, anh hầu như chưa bao giờ cọ xát với mấy con game đua xe dạng thùng máy trong các khu vui chơi giải trí. Ngày trước, thằng bạn chí cốt Maru hay rủ rê anh đi đua xe giải trí, nhưng lúc đó anh chả mấy hứng thú, và sau N lần bị anh từ chối phũ phàng, Maru cũng đành bó tay từ bỏ ý định rủ rê.</p>
-    <p>Giá như ngày đó anh chịu khó cày mấy con game mô phỏng kiểu đấy, có khi bây giờ mọi chuyện đã khác. Mà nhắc mới nhớ, hình như ở trường dạy lái xe cũng có trang bị hệ thống mô phỏng lái xe y chang game thùng thì phải. Cái đó gọi là gì nhỉ, "Huấn luyện Dự đoán Nguy hiểm" à? Nghe cái tên thôi đã thấy rợn tóc gáy rồi, và anh đang lo sốt vó chờ đến cái ngày phải học môn đó. Nhỡ thi rớt môn đó thì không biết hậu quả sẽ ra sao nữa.</p>
-    <p>Mới chỉ lết cái xe đi một mình trong sa hình thôi mà đã toát mồ hôi hột thế này, thì đến kiếp nào anh mới đủ tự tin để chở người khác đây?</p>
-    <p>Nghe anh thật thà bộc bạch nỗi lòng, bố anh chỉ biết cười trừ.</p>
+    <p>Nghĩ lại thì, tôi hầu như chưa bao giờ cọ xát với mấy con game đua xe dạng thùng máy trong các khu vui chơi giải trí. Ngày trước, thằng bạn chí cốt Maru hay rủ rê tôi đi đua xe giải trí, nhưng lúc đó tôi chả mấy hứng thú, và sau N lần bị tôi từ chối phũ phàng, Maru cũng đành bó tay từ bỏ ý định rủ rê.</p>
+    <p>Giá như ngày đó anh chịu khó cày mấy con game mô phỏng kiểu đấy, có khi bây giờ mọi chuyện đã khác. Mà nhắc mới nhớ, hình như ở trường dạy lái xe cũng có trang bị hệ thống mô phỏng lái xe y chang game thùng thì phải. Cái đó gọi là gì nhỉ, "Huấn luyện Dự đoán Nguy hiểm" à? Nghe cái tên thôi đã thấy rợn tóc gáy rồi, và tôi đang lo sốt vó chờ đến cái ngày phải học môn đó. Nhỡ thi rớt môn đó thì không biết hậu quả sẽ ra sao nữa.</p>
+    <p>Mới chỉ lết cái xe đi một mình trong sa hình thôi mà đã toát mồ hôi hột thế này, thì đến kiếp nào tôi mới đủ tự tin để chở người khác đây?</p>
+    <p>Nghe tôi thật thà bộc bạch nỗi lòng, bố tôi chỉ biết cười trừ.</p>
     <p>"Bất kỳ ai mới cầm lái cũng đều có tâm lý chung như vậy thôi. Chả có tài xế nào mới học mà đã tự tin thái quá từ đầu cả, mấy thành phần đó mới thực sự là nỗi ám ảnh của đường phố đấy. Thà cứ cẩn tắc vô áy náy còn hơn. Dục tốc bất đạt con ạ. Cứ từ từ rồi con sẽ lái lụa thôi."</p>
     <p>"Con cũng đang mòn mỏi chờ đợi xem đến bao giờ cái ngày tươi sáng đó mới tới đây."</p>
-    <p>Bố anh liên tục trấn an rằng mọi chuyện rồi sẽ đâu vào đấy để xua tan đi sự lo lắng trong anh.</p>
+    <p>Bố tôi liên tục trấn an rằng mọi chuyện rồi sẽ đâu vào đấy để xua tan đi sự lo lắng trong tôi.</p>
     <p>"À, bố thực sự rất mong chờ cái ngày được ngồi trên chiếc xe do chính tay Yuuta cầm lái đấy."</p>
-    <p>Tuy nhiên, anh lại không thể lạc quan nổi như vậy...</p>
+    <p>Tuy nhiên, tôi lại không thể lạc quan nổi như vậy...</p>
     <p>"À mà Saki này, con không có ý định đi học lấy bằng lái xe sao?"</p>
-    <p>Saki nãy giờ vẫn ngồi im lặng nghe hai bố con trò chuyện, bị bố anh hỏi bất ngờ liền đáp: "Hiện tại thì con chưa nghĩ tới chuyện đó ạ."</p>
+    <p>Saki nãy giờ vẫn ngồi im lặng nghe hai bố con trò chuyện, bị bố tôi hỏi bất ngờ liền đáp: "Hiện tại thì con chưa nghĩ tới chuyện đó ạ."</p>
     <p>"Nói thật là, cái kỳ thực tập này đã nhồi nhét vào đầu con một đống thứ mới mẻ rồi. Con có cảm giác não mình không còn dung lượng để chứa thêm bất cứ thứ gì nữa."</p>
     <p>"Cũng phải. Dù sao thì chừng nào con còn sống ở cái thủ đô đông đúc này, việc chưa có bằng lái ô tô cũng chẳng ảnh hưởng gì mấy."</p>
-    <p>Bố anh vừa dứt lời, Saki gật gù đồng tình.</p>
+    <p>Bố tôi vừa dứt lời, Saki gật gù đồng tình.</p>
     <p>"Nhưng nếu con có ý định lấy bằng, thì tranh thủ thi lúc còn trẻ khỏe vẫn hơn. Đợi đến lúc có tuổi rồi mới bắt đầu lạch cạch đi học thì oải lắm."</p>
-    <p>Mặc dù bố anh nói vậy, nhưng thực chất bản thân anh đã cảm thấy vô cùng uể oải khi phải bắt đầu học một thứ mới mẻ rồi.</p>
+    <p>Mặc dù bố tôi nói vậy, nhưng thực chất bản thân tôi đã cảm thấy vô cùng uể oải khi phải bắt đầu học một thứ mới mẻ rồi.</p>
     <p>Bắt đầu một hành trình mới—.</p>
-    <p>Anh thầm cảm thán trong lòng.</p>
+    <p>Tôi thầm cảm thán trong lòng.</p>
     <p>Quả thực là vắt kiệt thể xác lẫn tinh thần.</p>
     <p>"Yuuta—. À, ơ, ý em là, anh hai."</p>
-    <p>Saki xém chút nữa thì buột miệng gọi thẳng tên anh, may mà phanh kịp lúc vì nhận ra có bố đang ngồi lù lù ở đó, em ấy cuống cuồng đổi cách xưng hô. Hửm? Khi anh ngước nhìn, Saki đang chỉ tay về phía chiếc đồng hồ treo tường và nhắc nhở:</p>
+    <p>Saki xém chút nữa thì buột miệng gọi thẳng tên tôi, may mà phanh kịp lúc vì nhận ra có bố đang ngồi lù lù ở đó, em ấy cuống cuồng đổi cách xưng hô. Hửm? Khi tôi ngước nhìn, Saki đang chỉ tay về phía chiếc đồng hồ treo tường và nhắc nhở:</p>
     <p>"Chẳng phải anh sắp trễ giờ rồi sao...?"</p>
-    <p>Anh vội vàng ngoái đầu nhìn theo hướng tay em ấy chỉ. Thấy kim đồng hồ đã điểm đúng cái giờ tử thần, lần này thì đến lượt anh phải xoắn xuýt cả lên. Toang rồi. Nếu lỡ mất chuyến tàu này, chắc chắn anh sẽ đi học muộn.</p>
+    <p>Tôi vội vàng ngoái đầu nhìn theo hướng tay em ấy chỉ. Thấy kim đồng hồ đã điểm đúng cái giờ tử thần, lần này thì đến lượt tôi phải xoắn xuýt cả lên. Toang rồi. Nếu lỡ mất chuyến tàu này, chắc chắn tôi sẽ đi học muộn.</p>
     <p>"Bố, em, con/anh đi đây!"</p>
     <p>"Ừ. Cứ để phần dọn dẹp bát đĩa đó cho em. Nhanh lên, đi lẹ đi!"</p>
-    <p>Quăng lại đống tàn cuộc trên bàn ăn, anh vơ vội lấy chiếc cặp tắp.</p>
-    <p>Anh ba chân bốn cẳng chạy trối chết ra ga và phóng lên tàu ngay lúc tiếng còi báo hiệu tàu sắp chạy vừa vang lên. Vừa thở hồng hộc như cá mắc cạn, anh vừa tựa lưng vào cánh cửa tàu vừa đóng sầm lại.</p>
+    <p>Quăng lại đống tàn cuộc trên bàn ăn, tôi vơ vội lấy chiếc cặp tắp.</p>
+    <p>Tôi ba chân bốn cẳng chạy trối chết ra ga và phóng lên tàu ngay lúc tiếng còi báo hiệu tàu sắp chạy vừa vang lên. Vừa thở hồng hộc như cá mắc cạn, tôi vừa tựa lưng vào cánh cửa tàu vừa đóng sầm lại.</p>
     <p>An toàn hạ cánh. Vừa khít giờ.</p>
 
     <hr>
 
-    <p>Sau pha đổi tàu hú vía suýt trễ, anh cuốc bộ một mạch từ nhà ga vào khuôn viên trường và xuất hiện tại phòng học vừa đúng lúc chuông reo.</p>
-    <p>Anh đang cố gắng ổn định lại nhịp tim đang đập thình thịch bằng cách hít thở sâu liên tục thì cậu bạn Nakamura ngồi cạnh cất tiếng trêu chọc.</p>
+    <p>Sau pha đổi tàu hú vía suýt trễ, tôi cuốc bộ một mạch từ nhà ga vào khuôn viên trường và xuất hiện tại phòng học vừa đúng lúc chuông reo.</p>
+    <p>Tôi đang cố gắng ổn định lại nhịp tim đang đập thình thịch bằng cách hít thở sâu liên tục thì cậu bạn Nakamura ngồi cạnh cất tiếng trêu chọc.</p>
     <p>"Quả là một pha chạy nước rút ngoạn mục. Uầy, hiếm khi thấy ông bạn đi học sát nút thế này đấy."</p>
     <p>"Ừ thì... có tí chuyện trục trặc."</p>
     <p>Cánh cửa trước của phòng học bật mở. Vị giảng viên bước vào và đi thẳng vào bài giảng mà chẳng thèm chào hỏi hay có lấy một câu dạo đầu.</p>
     <p>Đúng là tàn nhẫn. Khốn kiếp cái môn đại số tuyến tính này.</p>
-    <p>Sau khi xong tiết một, hôm nay anh chỉ còn một ca học nữa vào tiết ba. Đồng nghĩa với việc anh có một khoảng thời gian chết kéo dài gần ba tiếng đồng hồ sau giờ nghỉ trưa.</p>
-    <p>Anh quyết định mò lên thư viện trường.</p>
-    <p>Anh lướt qua danh mục tài liệu và nhắm trúng vài cuốn sách ngoại văn. Mấy cuốn tạp chí chuyên ngành Xã hội học thì không cho mượn mang về—chỉ được đọc tại chỗ. Vì quá tò mò, anh quyết định sẽ cắm rễ ở đây để nhai hết hai cuốn.</p>
-    <p>Đối với sách được phép mượn, có ấn bản gốc của cuốn sách mà giáo sư đã nhiệt tình lăng xê, thế là anh quyết định rinh nó về luôn. Ở nhà anh đã có sẵn bản dịch tiếng Nhật rồi, nên có thể mang ra đối chiếu xem thế nào. Ngoài ra, trong lúc sục sạo trên hệ thống danh mục, anh phát hiện ra thư viện cũng có lưu trữ mấy cuốn tiểu thuyết giải trí thông thường.</p>
-    <p>Anh không kiềm chế được sự phấn khích mà thốt lên một tiếng khe khẽ.</p>
-    <p>Đập vào mắt anh là những tựa sách vô cùng hấp dẫn: 'I, ROBOT' và 'Tales of Black Widowers'. Chỉ cần lướt qua tựa đề gốc, anh đã đoán ngay được tên bản dịch tiếng Việt của chúng. Cuốn đầu tiên là 'Tôi là Robot' và cuốn thứ hai là 'Chuyện của những góa phụ đen'. Tuy khác biệt về thể loại, nhưng chúng đều là những đứa con tinh thần của nhà văn Isaac Asimov. Ông ấy là một huyền thoại trong làng văn học Sci-Fi.</p>
-    <p>Cả hai tác phẩm này đều là những tuyển tập truyện ngắn, và anh đã từng say sưa cày nát bản dịch của chúng trong quá khứ. Văn phong của Asimov vốn dĩ rất trong sáng và dễ hiểu, nên anh có dự cảm rằng mình có thể nhai được bản gốc... Vậy nên, anh quyết định chốt đơn mượn luôn hai cuốn này.</p>
-    <p>Làm xong thủ tục mượn sách tại quầy lễ tân, anh tiện tay lật giở vài cuốn tạp chí bày sẵn ở đó. Mấy cuốn tạp chí học thuật này toàn chứa những thuật ngữ chuyên môn đánh đố người đọc, khiến anh phải chau mày vì độ khó nhằn, nhưng tựu trung lại thì anh vẫn nắm bắt được lờ mờ nội dung bài báo... chí ít thì anh tự huyễn hoặc bản thân là như vậy.</p>
-    <p>Kẹp đống sách vừa mượn nách, anh phi xuống căng tin đánh chén bữa trưa sớm, rồi lết xác đến giảng đường chuẩn bị cho ca học tiết ba. Đang lúc lôi sách ngoại văn ra nghiền ngẫm chờ giáo viên vào lớp, Nakamura lại í ới gọi tên anh. Đi cạnh cậu ta là Kikuchi. Bộ ba này rất hay có duyên đụng độ nhau trong các môn học.</p>
+    <p>Sau khi xong tiết một, hôm nay tôi chỉ còn một ca học nữa vào tiết ba. Đồng nghĩa với việc tôi có một khoảng thời gian chết kéo dài gần ba tiếng đồng hồ sau giờ nghỉ trưa.</p>
+    <p>Tôi quyết định mò lên thư viện trường.</p>
+    <p>Tôi lướt qua danh mục tài liệu và nhắm trúng vài cuốn sách ngoại văn. Mấy cuốn tạp chí chuyên ngành Xã hội học thì không cho mượn mang về—chỉ được đọc tại chỗ. Vì quá tò mò, tôi quyết định sẽ cắm rễ ở đây để nhai hết hai cuốn.</p>
+    <p>Đối với sách được phép mượn, có ấn bản gốc của cuốn sách mà giáo sư đã nhiệt tình lăng xê, thế là tôi quyết định rinh nó về luôn. Ở nhà tôi đã có sẵn bản dịch tiếng Nhật rồi, nên có thể mang ra đối chiếu xem thế nào. Ngoài ra, trong lúc sục sạo trên hệ thống danh mục, tôi phát hiện ra thư viện cũng có lưu trữ mấy cuốn tiểu thuyết giải trí thông thường.</p>
+    <p>Tôi không kiềm chế được sự phấn khích mà thốt lên một tiếng khe khẽ.</p>
+    <p>Đập vào mắt tôi là những tựa sách vô cùng hấp dẫn: 'I, ROBOT' và 'Tales of Black Widowers'. Chỉ cần lướt qua tựa đề gốc, tôi đã đoán ngay được tên bản dịch tiếng Việt của chúng. Cuốn đầu tiên là 'Tôi là Robot' và cuốn thứ hai là 'Chuyện của những góa phụ đen'. Tuy khác biệt về thể loại, nhưng chúng đều là những đứa con tinh thần của nhà văn Isaac Asimov. Ông ấy là một huyền thoại trong làng văn học Sci-Fi.</p>
+    <p>Cả hai tác phẩm này đều là những tuyển tập truyện ngắn, và tôi đã từng say sưa cày nát bản dịch của chúng trong quá khứ. Văn phong của Asimov vốn dĩ rất trong sáng và dễ hiểu, nên tôi có dự cảm rằng mình có thể nhai được bản gốc... Vậy nên, tôi quyết định chốt đơn mượn luôn hai cuốn này.</p>
+    <p>Làm xong thủ tục mượn sách tại quầy lễ tân, tôi tiện tay lật giở vài cuốn tạp chí bày sẵn ở đó. Mấy cuốn tạp chí học thuật này toàn chứa những thuật ngữ chuyên môn đánh đố người đọc, khiến tôi phải chau mày vì độ khó nhằn, nhưng tựu trung lại thì tôi vẫn nắm bắt được lờ mờ nội dung bài báo... chí ít thì tôi tự huyễn hoặc bản thân là như vậy.</p>
+    <p>Kẹp đống sách vừa mượn nách, tôi phi xuống căng tin đánh chén bữa trưa sớm, rồi lết xác đến giảng đường chuẩn bị cho ca học tiết ba. Đang lúc lôi sách ngoại văn ra nghiền ngẫm chờ giáo viên vào lớp, Nakamura lại í ới gọi tên tôi. Đi cạnh cậu ta là Kikuchi. Bộ ba này rất hay có duyên đụng độ nhau trong các môn học.</p>
     <p>Nên nói chung là độ thân thiết cũng tăng lên đáng kể.</p>
     <p>"Đọc gì mà trông hàn lâm thế! Vãi chưởng, ông bạn đang cày mấy cuốn sách hại não vãi!"</p>
     <p>Cậu ta làm ra vẻ mặt kinh ngạc tột độ, nhưng cái biểu cảm làm lố đó phản chủ quá. Đích thị là cậu ta đang diễn sâu. Thực tâm cậu ta đâu có sốc đến thế, đúng không?</p>
     <p>"Tôi mượn về đọc thử xem có giúp cải thiện trình độ tiếng Anh được xíu nào không."</p>
-    <p>Nghe anh giải thích, Kikuchi lia mắt đọc tựa đề cuốn sách trên tay anh rồi phán:</p>
+    <p>Nghe tôi giải thích, Kikuchi lia mắt đọc tựa đề cuốn sách trên tay tôi rồi phán:</p>
     <p>"Ừ thì, cách này chắc giúp cày skill đọc hiểu (reading). Nhưng tôi cá là nó đách giúp ích gì cho cái skill giao tiếp tiếng Anh của ông đâu."</p>
     <p>"Vậy là no hope hả?"</p>
     <p>"Ngôn ngữ nói và ngôn ngữ viết nó thuộc hai thái cực khác nhau hoàn toàn, và quan trọng nhất là, ông đách được luyện skill nghe (listening), chuẩn chưa?"</p>
-    <p>Chí lý. Thật ra thì anh cũng đã mường tượng ra cái viễn cảnh đó rồi.</p>
-    <p>Muốn cày giao tiếp tiếng Anh cho tử tế, cách tối ưu nhất là cày file nghe ghi âm sẵn giống như cách Saki đang làm, hoặc bét nhất cũng phải cày phim Âu Mỹ và dũng cảm tắt phụ đề đi. Anh thừa biết nguyên lý đó. Nhưng ngặt nỗi, anh lại là một con nghiện sách.</p>
+    <p>Chí lý. Thật ra thì tôi cũng đã mường tượng ra cái viễn cảnh đó rồi.</p>
+    <p>Muốn cày giao tiếp tiếng Tôi cho tử tế, cách tối ưu nhất là cày file nghe ghi âm sẵn giống như cách Saki đang làm, hoặc bét nhất cũng phải cày phim Âu Mỹ và dũng cảm tắt phụ đề đi. Tôi thừa biết nguyên lý đó. Nhưng ngặt nỗi, tôi lại là một con nghiện sách.</p>
     <p>"Thôi thì, có còn hơn không. Dù sao thì mốt kiểu gì chả phải nhai mấy bài luận khoa học mới nhất. Tập làm quen với mấy cái sớ tiếng Anh dài dằng dặc từ bây giờ cũng là một nước đi khôn ngoan."</p>
     <p>Kikuchi gật gù ra chiều tán thành: "Nói thế cũng có lý."</p>
     <p>"Nhưng tôi đách có hứng thú cày mấy bài luận tiếng Anh đâu!"</p>
     <p>"Thế thì ông xác định tạch môn đi là vừa."</p>
-    <p>Nghe anh phán một câu tỉnh bơ, Nakamura nhăn nhó mặt mày và bắt đầu bài ca than thân trách phận.</p>
+    <p>Nghe tôi phán một câu tỉnh bơ, Nakamura nhăn nhó mặt mày và bắt đầu bài ca than thân trách phận.</p>
     <p>"Bộ phải cày tiếng Anh đến mức thượng thừa thế cơ à?"</p>
     <p>Cậu ta vừa rên rỉ xong thì Kikuchi đã bồi thêm một cú chí mạng.</p>
     <p>"Cái đó còn phụ thuộc vào con đường sự nghiệp mà ông nhắm tới sau khi ra trường, đúng không? Chẳng hạn như ông muốn cày lên Thạc sĩ, Tiến sĩ thì tiếng Anh giao tiếp là điều bắt buộc. Thời nay, người ta mặc định những ai có bằng Thạc sĩ trở lên đều phải chém tiếng Anh như gió. Thậm chí, có những chương trình cao học dạy full 100% bằng tiếng Anh luôn."</p>
     <p>Nói thêm một chút, bằng 'Thạc sĩ' là chứng chỉ dành cho những ai học lên cao học và tốt nghiệp chương trình Thạc sĩ. Còn bằng 'Tiến sĩ' là đích đến của những ai cày xong chương trình Tiến sĩ. Mỗi cấp bậc này ngốn thêm sương sương hai năm và ba năm thanh xuân nữa.</p>
     <p>"Tôi đéo rảnh mà cày lên cao học đâu. Tốt nghiệp đại học xong đi làm cho khỏe, cớ sao phải tự hành hạ bản thân học tiếp làm gì?"</p>
     <p>"Nói đi cũng phải nói lại, đại học sinh ra là để dành cho những con người mang trong mình khát vọng chinh phục những đỉnh cao tri thức." Kikuchi buông một câu triết lý.</p>
-    <p>Dù cậu ta nói không chê vào đâu được, nhưng nhìn thẳng vào thực tế, số lượng sinh viên vác xác đến trường đại học với lý tưởng 'cống hiến cả cuộc đời cho khoa học' chắc đếm trên đầu ngón tay nếu so với mặt bằng chung sinh viên thời nay. Bản thân anh cũng tự lượng sức mình chưa đạt đến cái cảnh giới giác ngộ đó.</p>
+    <p>Dù cậu ta nói không chê vào đâu được, nhưng nhìn thẳng vào thực tế, số lượng sinh viên vác xác đến trường đại học với lý tưởng 'cống hiến cả cuộc đời cho khoa học' chắc đếm trên đầu ngón tay nếu so với mặt bằng chung sinh viên thời nay. Bản thân tôi cũng tự lượng sức mình chưa đạt đến cái cảnh giới giác ngộ đó.</p>
     <p>Biết đâu chừng Kikuchi lại là một ngoại lệ... dù cái giao diện của cậu ta nhìn chả có vẻ gì là một mọt sách chính hiệu.</p>
-    <p>Cuộc tranh luận đang đến hồi gay cấn thì vị giảng viên uy nghi bước vào lớp. Nhanh như chớp, anh tống khứ cuốn sách ngoại văn đang đọc dở vào cặp.</p>
-    <p>Trong lúc dỏng tai lên nghe bài giảng tiết ba, tâm trí anh bỗng trôi dạt về câu nói triết lý mà Kikuchi vừa tuôn ra.</p>
+    <p>Cuộc tranh luận đang đến hồi gay cấn thì vị giảng viên uy nghi bước vào lớp. Nhanh như chớp, tôi tống khứ cuốn sách ngoại văn đang đọc dở vào cặp.</p>
+    <p>Trong lúc dỏng tai lên nghe bài giảng tiết ba, tâm trí tôi bỗng trôi dạt về câu nói triết lý mà Kikuchi vừa tuôn ra.</p>
     <p>—Đại học sinh ra là để dành cho những con người mang trong mình khát vọng chinh phục những đỉnh cao tri thức.</p>
-    <p>Quá chuẩn xác. Mặc dù chưa từng có ý định đu bám con đường học thuật lên cao học, nhưng anh lại mang trong mình một quyết tâm cao độ muốn theo học lớp của Giáo sư Mori tại ngôi trường này. Mục đích đến trường không chỉ đơn thuần là để lấy cái bằng lái xe hay cày cuốc công việc part-time ở hiệu sách buổi tối. Anh muốn khắc cốt ghi tâm điều đó.</p>
+    <p>Quá chuẩn xác. Mặc dù chưa từng có ý định đu bám con đường học thuật lên cao học, nhưng tôi lại mang trong mình một quyết tâm cao độ muốn theo học lớp của Giáo sư Mori tại ngôi trường này. Mục đích đến trường không chỉ đơn thuần là để lấy cái bằng lái xe hay cày cuốc công việc part-time ở hiệu sách buổi tối. Tôi muốn khắc cốt ghi tâm điều đó.</p>
     <p>Tất nhiên, mong muốn thi lấy bằng lái xe để xây dựng tương lai cùng Saki cũng là một sự thật không thể chối cãi.</p>
-    <p>Chuông báo hết tiết ba vang lên, anh thu dọn đồ đạc rời khỏi giảng đường.</p>
-    <p>Mặt trời vẫn còn treo lơ lửng trên đỉnh đầu. Ngồi trên xe buýt tới trường dạy lái xe, anh tranh thủ cày tiếp cuốn sách ngoại văn vừa mượn và vạch sẵn kế hoạch cho chuyến đổ bộ thư viện lần sau.</p>
-    <p>Vì đây mới chỉ là màn chào sân, nên anh chủ yếu dành thời gian lùng sục sách và test thử hệ thống mượn trả. Chắc chuyến tới, anh sẽ tập trung săn lùng mấy cuốn sách được gợi ý làm tài liệu tham khảo trong giáo trình.</p>
-    <p>Đây cũng có thể coi là một thử thách mới mẻ, nên anh muốn duy trì nó thành một thói quen thường nhật.</p>
+    <p>Chuông báo hết tiết ba vang lên, tôi thu dọn đồ đạc rời khỏi giảng đường.</p>
+    <p>Mặt trời vẫn còn treo lơ lửng trên đỉnh đầu. Ngồi trên xe buýt tới trường dạy lái xe, tôi tranh thủ cày tiếp cuốn sách ngoại văn vừa mượn và vạch sẵn kế hoạch cho chuyến đổ bộ thư viện lần sau.</p>
+    <p>Vì đây mới chỉ là màn chào sân, nên tôi chủ yếu dành thời gian lùng sục sách và test thử hệ thống mượn trả. Chắc chuyến tới, tôi sẽ tập trung săn lùng mấy cuốn sách được gợi ý làm tài liệu tham khảo trong giáo trình.</p>
+    <p>Đây cũng có thể coi là một thử thách mới mẻ, nên tôi muốn duy trì nó thành một thói quen thường nhật.</p>
 
     <hr>
 
     <p>Độ khó của các bài thực hành tại trường dạy lái xe đang tăng lên một cách chóng mặt.</p>
-    <p>Nội dung học cũng trở nên phong phú và đa dạng hơn hẳn. Nào là kỹ thuật bẻ lái ôm cua hình chữ S, lùi xe vào chuồng, đề pa ngang dốc, rồi thì cách đỗ xe song song, ti tỉ thứ quy tắc và kỹ thuật đang nhồi nhét vào đầu anh.</p>
-    <p>Dẫu vậy, do quỹ thời gian rảnh rỗi quá hẹp hòi vì phải cân đối giữa lịch học trên trường và ca làm part-time, hành trình chinh phục tấm bằng lái xe của anh chông gai hơn những gì anh tưởng tượng rất nhiều. Giờ đã là cuối tháng Sáu, vậy mà skill lái xe của anh tiến bộ chậm như rùa bò. Khó mà nói trước được liệu anh có kịp rinh tấm bằng về tay trước kỳ nghỉ hè hay không.</p>
-    <p>Giữa những ngày tháng ngập ngụa trong gian truân đó, nơi làm việc của anh lại rục rịch đón nhận những cơn gió đổi thay.</p>
+    <p>Nội dung học cũng trở nên phong phú và đa dạng hơn hẳn. Nào là kỹ thuật bẻ lái ôm cua hình chữ S, lùi xe vào chuồng, đề pa ngang dốc, rồi thì cách đỗ xe song song, ti tỉ thứ quy tắc và kỹ thuật đang nhồi nhét vào đầu tôi.</p>
+    <p>Dẫu vậy, do quỹ thời gian rảnh rỗi quá hẹp hòi vì phải cân đối giữa lịch học trên trường và ca làm part-time, hành trình chinh phục tấm bằng lái xe của tôi chông gai hơn những gì tôi tưởng tượng rất nhiều. Giờ đã là cuối tháng Sáu, vậy mà skill lái xe của tôi tiến bộ chậm như rùa bò. Khó mà nói trước được liệu tôi có kịp rinh tấm bằng về tay trước kỳ nghỉ hè hay không.</p>
+    <p>Giữa những ngày tháng ngập ngụa trong gian truân đó, nơi làm việc của tôi lại rục rịch đón nhận những cơn gió đổi thay.</p>
     <p>Ngày hôm đó──.</p>
-    <p>Vừa đặt chân đến chỗ làm, anh phi thẳng vào phòng quản lý. Anh cần phải chào hỏi quản lý và nộp đơn thanh toán chi phí đi lại tháng trước (Hồi cấp ba, anh toàn đạp xe đi học, nhưng vì trường chỉ cách nhà một trạm tàu điện, nên nếu đi làm bằng tàu điện, phía cửa hàng sẽ đài thọ khoản chi phí này).</p>
-    <p>"Em xin phép vào ạ," anh vừa nói vừa khẽ mở cửa phòng.</p>
-    <p>Bên trong, bác quản lý đang trò chuyện rôm rả với một người đàn ông lạ mặt. Ông chú này có dáng người dong dỏng cao, khoác trên mình bộ vest phẳng phiu. Vì xuất hiện trong phòng quản lý, có lẽ ông ta không phải là người dưng nước lã, nhưng quả thực anh chưa từng chạm mặt ông ta bao giờ. Vài mẩu đối thoại của họ vô tình lọt vào tai anh.</p>
+    <p>Vừa đặt chân đến chỗ làm, tôi phi thẳng vào phòng quản lý. Tôi cần phải chào hỏi quản lý và nộp đơn thanh toán chi phí đi lại tháng trước (Hồi cấp ba, tôi toàn đạp xe đi học, nhưng vì trường chỉ cách nhà một trạm tàu điện, nên nếu đi làm bằng tàu điện, phía cửa hàng sẽ đài thọ khoản chi phí này).</p>
+    <p>"Em xin phép vào ạ," tôi vừa nói vừa khẽ mở cửa phòng.</p>
+    <p>Bên trong, bác quản lý đang trò chuyện rôm rả với một người đàn ông lạ mặt. Ông chú này có dáng người dong dỏng cao, khoác trên mình bộ vest phẳng phiu. Vì xuất hiện trong phòng quản lý, có lẽ ông ta không phải là người dưng nước lã, nhưng quả thực tôi chưa từng chạm mặt ông ta bao giờ. Vài mẩu đối thoại của họ vô tình lọt vào tai tôi.</p>
     <p>"Mùa thu à?"</p>
     <p>"Vì là một đợt đại tu toàn diện, nên ước tính sẽ ngốn khoảng bốn tháng để hoàn thiện."</p>
     <p>"Nếu phải đóng cửa quán trong chừng ấy thời gian, nguy cơ cao là một cơ số nhân viên part-time sẽ dứt áo ra đi. Chắc chúng ta phải rục rịch đăng tin tuyển dụng sớm thôi...... Ồ, Asamura-kun đến rồi đấy à, vào đi cháu."</p>
     <p>"Dạ vâng. À... em mang đơn thanh toán chi phí đi lại đến nộp... Hay là để lát nữa em quay lại ạ?"</p>
-    <p>Thấy họ vẫn tiếp tục câu chuyện dở dang mặc kệ sự hiện diện của anh, anh đoán chừng nội dung cuộc trò chuyện cũng không mang tính tuyệt mật gì cho cam, nhưng biết đâu có những chuyện nội bộ không tiện phô bày trước mặt nhân viên part-time.</p>
+    <p>Thấy họ vẫn tiếp tục câu chuyện dở dang mặc kệ sự hiện diện của tôi, tôi đoán chừng nội dung cuộc trò chuyện cũng không mang tính tuyệt mật gì cho cam, nhưng biết đâu có những chuyện nội bộ không tiện phô bày trước mặt nhân viên part-time.</p>
     <p>"À, không có gì đâu. Cháu cứ tự nhiên. Bọn chú chỉ đang bàn bạc về kế hoạch cải tạo lại cửa hàng mà chú từng đá động qua với cháu thôi."</p>
     <p>"Ồ... dạ vâng. Em hiểu rồi."</p>
-    <p>Anh tiến tới tủ tài liệu, rút tờ mẫu đơn ra, vừa lúi húi điền thông tin vừa dỏng một bên tai nghe ngóng cuộc trò chuyện giữa quản lý và người đàn ông kia.</p>
+    <p>Tôi tiến tới tủ tài liệu, rút tờ mẫu đơn ra, vừa lúi húi điền thông tin vừa dỏng một bên tai nghe ngóng cuộc trò chuyện giữa quản lý và người đàn ông kia.</p>
     <p>Họ đang bàn tính đến kế hoạch cải tạo lại toàn bộ hiệu sách. Quả thật, bác quản lý cũng từng hé lộ sương sương về chuyện này trước đây.</p>
     <p>Nghe đâu họ sẽ khởi công dự án cải tạo quy mô lớn này vào khoảng mùa thu năm sau, và dự kiến đến mùa xuân năm kế tiếp, cửa hàng sẽ lột xác với một diện mạo hoàn toàn mới. Thêm vào đó, có vẻ như họ sẽ thu hẹp mảng kinh doanh sách truyền thống để tập trung nguồn lực phát triển các mảng dịch vụ đa năng khác.</p>
-    <p>Mặc dù có không ít ý kiến trái chiều cho rằng một hiệu sách thì không nên xem nhẹ việc kinh doanh sách cốt lõi, và bản thân anh cũng là một trong những người cảm thấy cực kỳ dị ứng với sự thay đổi này, nhưng biết sao được, đây có lẽ chính là sự nghiệt ngã của quy luật cung cầu. Đứng trước làn sóng du khách quốc tế ồ ạt đổ xô đến Nhật Bản và nhu cầu tiêu dùng ngày càng đa dạng, việc tận dụng tối đa mặt bằng đắc địa ở Shibuya để tối ưu hóa lợi nhuận cũng là điều dễ hiểu.</p>
+    <p>Mặc dù có không ít ý kiến trái chiều cho rằng một hiệu sách thì không nên xem nhẹ việc kinh doanh sách cốt lõi, và bản thân tôi cũng là một trong những người cảm thấy cực kỳ dị ứng với sự thay đổi này, nhưng biết sao được, đây có lẽ chính là sự nghiệt ngã của quy luật cung cầu. Đứng trước làn sóng du khách quốc tế ồ ạt đổ xô đến Nhật Bản và nhu cầu tiêu dùng ngày càng đa dạng, việc tận dụng tối đa mặt bằng đắc địa ở Shibuya để tối ưu hóa lợi nhuận cũng là điều dễ hiểu.</p>
     <p>Bác quản lý vẫn khăng khăng bảo vệ quan điểm: "Chính vì thế, chắc chắn sẽ có không ít du khách ngoại quốc lùng sục mua sách tiếng Nhật làm kỷ niệm", nhưng khi quan sát thái độ của vị nhân vật quyền lực đang ngồi đối diện, có vẻ như ý tưởng đó không mấy lọt tai ông ta.</p>
-    <p>Đúng lúc đó, anh cũng vừa vặn điền xong thông tin vào mẫu đơn.</p>
-    <p>Anh không có lý do chính đáng nào để tiếp tục cắm rễ ở đây, và quan trọng hơn cả, giờ làm việc đã điểm.</p>
+    <p>Đúng lúc đó, tôi cũng vừa vặn điền xong thông tin vào mẫu đơn.</p>
+    <p>Tôi không có lý do chính đáng nào để tiếp tục cắm rễ ở đây, và quan trọng hơn cả, giờ làm việc đã điểm.</p>
     <p>"Em điền xong rồi ạ."</p>
     <p>"Ừ. Cháu cứ để vào rổ tài liệu như mọi khi nhé."</p>
-    <p>Sau khi vâng lời và nộp đơn đúng chỗ, anh bước ra khỏi phòng quản lý.</p>
-    <p>Trong lúc thay đồ thường ngày sang bộ đồng phục và di chuyển ra khu vực quầy hàng, tâm trí anh vẫn còn vương vấn cuộc đối thoại giữa quản lý và vị khách VIP kia.</p>
-    <p>Hình ảnh thân thuộc của hiệu sách này—nơi anh đã gắn bó và cống hiến tuổi trẻ suốt bốn năm ròng rã—rất có thể sẽ bị xóa sổ hoàn toàn.</p>
+    <p>Sau khi vâng lời và nộp đơn đúng chỗ, tôi bước ra khỏi phòng quản lý.</p>
+    <p>Trong lúc thay đồ thường ngày sang bộ đồng phục và di chuyển ra khu vực quầy hàng, tâm trí tôi vẫn còn vương vấn cuộc đối thoại giữa quản lý và vị khách VIP kia.</p>
+    <p>Hình ảnh thân thuộc của hiệu sách này—nơi tôi đã gắn bó và cống hiến tuổi trẻ suốt bốn năm ròng rã—rất có thể sẽ bị xóa sổ hoàn toàn.</p>
     <p>Dòng chảy thời gian cứ lẳng lặng trôi đi như một dòng sông không bao giờ ngừng nghỉ.</p>
     <p>Giống như định luật 2 nhiệt động lực học đã chỉ ra, entropy (mức độ hỗn loạn) trong một hệ cô lập chỉ có thể tăng lên chứ không bao giờ giảm đi.</p>
     <p>Trên cõi đời này, làm gì có cái gọi là vĩnh cửu.</p>
-    <p>Con người ta cũng không thể cứ mãi giậm chân tại một chỗ. Anh một lần nữa thấu hiểu được chân lý rằng thế giới này vốn dĩ luôn vận động và biến đổi khôn lường. Sự biến đổi vô thường đó chính là điều duy nhất không bao giờ thay đổi. Khái niệm "cuộc sống thường nhật" không đồng nghĩa với một vòng lặp tẻ nhạt không có sự thay đổi, mà thực chất, những sự chuyển mình nhỏ nhoi diễn ra mỗi ngày mới chính là những mảnh ghép tạo nên cuộc sống thường nhật đó.</p>
+    <p>Con người ta cũng không thể cứ mãi giậm chân tại một chỗ. Tôi một lần nữa thấu hiểu được chân lý rằng thế giới này vốn dĩ luôn vận động và biến đổi khôn lường. Sự biến đổi vô thường đó chính là điều duy nhất không bao giờ thay đổi. Khái niệm "cuộc sống thường nhật" không đồng nghĩa với một vòng lặp tẻ nhạt không có sự thay đổi, mà thực chất, những sự chuyển mình nhỏ nhoi diễn ra mỗi ngày mới chính là những mảnh ghép tạo nên cuộc sống thường nhật đó.</p>
     <p>Narasaka-san từng nói rằng tuổi 18 chính là vạch xuất phát cho hành trình chuẩn bị hành trang bước vào thế giới của người trưởng thành. Tính từ cột mốc sinh nhật, thấm thoắt đã sáu tháng trôi qua──.</p>
     <p>Môi trường đại học mới, những mối quan hệ mới, vô vàn trải nghiệm mới...</p>
-    <p>Giống như việc Saki bước ra vùng an toàn để dấn thân vào kỳ thực tập tại văn phòng chị Akihiro, anh cũng phải tự mình đi tìm lời giải cho bài toán 'phiên bản tiếp theo của chính mình'.</p>
-    <p>Tự hỏi bản thân xem, liệu anh đã rục rịch chuẩn bị cho chương mới của cuộc đời với tư cách là một người trưởng thành hay chưa?</p>
+    <p>Giống như việc Saki bước ra vùng an toàn để dấn thân vào kỳ thực tập tại văn phòng chị Akihiro, tôi cũng phải tự mình đi tìm lời giải cho bài toán 'phiên bản tiếp theo của chính mình'.</p>
+    <p>Tự hỏi bản thân xem, liệu tôi đã rục rịch chuẩn bị cho chương mới của cuộc đời với tư cách là một người trưởng thành hay chưa?</p>
     <p>Hy vọng rằng mình có thể trưởng thành và phát triển hơn, dù chỉ là từng chút một...</p>
 
     <div class="chapter-nav">
@@ -461,7 +715,12 @@
 
     <script>
         (function() {
-            // Word count
+            // ── Scroll Progress Bar ──
+            var progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            // ── Word Count ──
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -470,16 +729,16 @@
                     total += t.split(/\s+/).length;
                 }
             }
-
             var h1 = document.querySelector('h1');
             if (h1) {
                 var wc = document.createElement('div');
                 wc.className = 'word-count';
                 wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
-                h1.parentNode.insertBefore(wc, h1.nextSibling);
+                var nextEl = h1.nextElementSibling;
+                h1.parentNode.insertBefore(wc, nextEl && nextEl.tagName === 'H2' ? nextEl.nextSibling : h1.nextSibling);
             }
 
-            // Floating nav
+            // ── Floating Nav ──
             var navs = document.querySelectorAll('.chapter-nav');
             if (navs.length > 0) {
                 var src = navs[0];
@@ -503,7 +762,7 @@
                 }
                 document.body.appendChild(floatNav);
 
-                // Toggle tab (PC)
+                // Toggle tab
                 var toggle = document.createElement('div');
                 toggle.className = 'nav-toggle';
                 toggle.id = 'navToggle';
@@ -511,7 +770,6 @@
                 document.body.appendChild(toggle);
 
                 var isOpen = false;
-
                 function toggleNav() {
                     isOpen = !isOpen;
                     floatNav.classList.toggle('visible', isOpen);
@@ -524,7 +782,6 @@
                     toggleNav();
                 });
 
-                // Mobile: tap anywhere to toggle
                 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (isMobile) {
                     document.addEventListener('click', function(e) {
@@ -534,7 +791,83 @@
                     });
                 }
             }
+
+            // ── Scroll to Top Button ──
+            var scrollBtn = document.createElement('div');
+            scrollBtn.className = 'scroll-top';
+            scrollBtn.innerHTML = '\u2191';
+            scrollBtn.title = 'V\u1ec1 \u0111\u1ea7u trang';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ── Scroll Events ──
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                scrollBtn.classList.toggle('visible', scrollTop > 400);
+            }, { passive: true });
         })();
+    </script>
+
+    <script>
+    (function() {
+        var themes = [
+            { id: 'default', label: 'M\u1eb7c \u0111\u1ecbnh', color: 'linear-gradient(135deg, #7c5cbf, #a78bfa)' },
+            { id: 'gray', label: 'X\u00e1m', color: '#555' },
+            { id: 'black', label: '\u0110en', color: '#111' },
+            { id: 'white', label: 'Tr\u1eafng', color: '#eee' }
+        ];
+
+        var saved = localStorage.getItem('gimai-theme') || 'default';
+
+        var picker = document.createElement('div');
+        picker.className = 'theme-picker';
+
+        var btn = document.createElement('div');
+        btn.className = 'theme-picker-btn';
+        btn.innerHTML = '\uD83C\uDFA8';
+        btn.title = '\u0110\u1ed5i giao di\u1ec7n';
+
+        var opts = document.createElement('div');
+        opts.className = 'theme-options';
+
+        themes.forEach(function(t) {
+            var o = document.createElement('div');
+            o.className = 'theme-option' + (t.id === saved ? ' active' : '');
+            o.style.background = t.color;
+            o.title = t.label;
+            if (t.id === 'white') o.style.border = '2px solid #ccc';
+            o.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themes.forEach(function(th) { document.body.classList.remove('theme-' + th.id); });
+                if (t.id !== 'default') document.body.classList.add('theme-' + t.id);
+                localStorage.setItem('gimai-theme', t.id);
+                opts.querySelectorAll('.theme-option').forEach(function(el) { el.classList.remove('active'); });
+                o.classList.add('active');
+            });
+            opts.appendChild(o);
+        });
+
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            opts.classList.toggle('visible', open);
+        });
+
+        document.addEventListener('click', function() {
+            if (open) { open = false; opts.classList.remove('visible'); }
+        });
+
+        picker.appendChild(opts);
+        picker.appendChild(btn);
+        document.body.appendChild(picker);
+    })();
     </script>
 </body>
 </html>

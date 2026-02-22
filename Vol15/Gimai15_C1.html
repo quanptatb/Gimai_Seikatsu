@@ -3,102 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Gimai Seikatsu Volume 15 Chapter 1</title>
-    <style>
-        body {
-            background-color: #333333;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
+        <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.9;
+            padding: 0 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(167, 139, 250, 0.35);
+            color: #fff;
+        }
+
+        /* ── Scroll Progress Bar ── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa, #c4b5fd);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Headers ── */
         h1, h2 {
             text-align: center;
+            font-family: 'Noto Serif', Georgia, serif;
         }
 
         h1 {
-            border-bottom: 1px solid #777;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 50px 0 14px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: fadeIn 0.8s ease;
         }
 
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            color: #b8a9d4;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease 0.15s both;
+        }
+
+        /* ── Content ── */
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
+            color: #d5d0e0;
+            animation: fadeIn 0.6s ease both;
         }
 
         hr {
-            border-color: #555;
-            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 35px 0;
         }
 
+        /* ── Dialogue & Thought (Vol13) ── */
+        .dialogue {
+            font-weight: 500;
+            color: #e8e0f0;
+        }
+
+        .thought {
+            font-style: italic;
+            color: #a89cc0;
+        }
+
+        /* ── Nav Link ── */
         .nav-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #aaa;
+            color: #9b8fb8;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #c4b5fd;
         }
 
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-top: 1px solid #555;
-            border-bottom: 1px solid #555;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .chapter-nav a {
-            color: #aaa;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .chapter-nav a:hover {
-            color: #fff;
-            background-color: #444;
-        }
-
-        .chapter-nav .disabled {
-            color: #555;
-            padding: 8px 16px;
-        }
-    
+        /* ── Inline Chapter Nav (hidden — replaced by floating) ── */
         .chapter-nav {
             display: none !important;
         }
 
+        /* ── Word Count ── */
         .word-count {
             text-align: center;
-            color: #777;
+            color: #8b7aab;
             font-size: 13px;
-            margin: 0 0 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+            margin: 0 0 35px;
+            padding: 10px 18px;
+            background: rgba(167, 139, 250, 0.06);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 10px;
             letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.8s ease 0.3s both;
         }
 
+        /* ── Floating Nav ── */
         .floating-nav {
             position: fixed;
-            right: -240px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -112,64 +165,117 @@
         .floating-nav .nav-disabled {
             display: block;
             padding: 12px 22px;
-            background: rgba(35, 35, 35, 0.96);
-            color: #bbb;
+            background: rgba(26, 26, 46, 0.92);
+            color: #b8a9d4;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            transition: all 0.25s ease;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 155px;
         }
 
         .floating-nav a:hover {
             color: #fff;
-            background: rgba(55, 55, 55, 0.96);
-            border-color: rgba(255,255,255,0.18);
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.15);
         }
 
         .floating-nav .nav-disabled {
-            color: #555;
+            color: #5a5073;
             cursor: default;
         }
 
+        /* ── Toggle Tab ── */
         .nav-toggle {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
-            width: 26px;
-            height: 54px;
-            background: rgba(55, 55, 55, 0.75);
-            border-radius: 8px 0 0 8px;
+            width: 28px;
+            height: 56px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px 0 0 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #a78bfa;
             font-size: 11px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(167, 139, 250, 0.15);
             border-right: none;
             user-select: none;
         }
 
         .nav-toggle:hover {
-            background: rgba(75, 75, 75, 0.9);
-            color: #fff;
-            width: 30px;
+            background: rgba(40, 35, 65, 0.95);
+            color: #c4b5fd;
+            width: 32px;
         }
 
         .nav-toggle.shifted {
-            right: 210px;
+            right: 215px;
         }
 
+        /* ── Scroll to Top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #c4b5fd;
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 16px 50px;
+            }
+
             .nav-toggle {
                 display: none;
             }
@@ -178,16 +284,164 @@
                 top: auto;
                 bottom: 20px;
                 transform: none;
-                right: -240px;
+                right: -250px;
             }
 
             .floating-nav.visible {
                 right: 12px;
             }
+
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    
+
+        /* ── Theme Picker ── */
+        .theme-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .theme-picker-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .theme-picker-btn:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 52px;
+            left: 0;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(26, 26, 46, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .theme-options.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover { transform: scale(1.2); }
+
+        .theme-option.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* ── Theme: Gray ── */
+        body.theme-gray { background: #333 !important; background-image: none !important; color: #fff; }
+        body.theme-gray h1 { background: none !important; -webkit-text-fill-color: #fff; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-gray h1::after { background: linear-gradient(90deg, transparent, #666, transparent); }
+        body.theme-gray h2 { color: #ccc; }
+        body.theme-gray p { color: #e0e0e0; }
+        body.theme-gray .dialogue { color: #eee; }
+        body.theme-gray .thought { color: #bbb; }
+        body.theme-gray hr { background: linear-gradient(90deg, transparent, #555, transparent); }
+        body.theme-gray .word-count { color: #999; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray ::selection { background: rgba(180,180,180,0.3); }
+        body.theme-gray .floating-nav a { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); color: #ccc; }
+        body.theme-gray .floating-nav a:hover { background: rgba(65,65,65,0.95); color: #fff; border-color: rgba(255,255,255,0.2); }
+        body.theme-gray .floating-nav .nav-disabled { color: #666; }
+        body.theme-gray .nav-toggle { background: rgba(60,60,60,0.85); color: #aaa; border-color: rgba(255,255,255,0.08); }
+        body.theme-gray .scroll-top { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); color: #aaa; }
+        body.theme-gray .theme-picker-btn { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); }
+        body.theme-gray .theme-options { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray .theme-option.active { border-color: #aaa; box-shadow: 0 0 0 2px rgba(180,180,180,0.4), 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* ── Theme: Black ── */
+        body.theme-black { background: #080808 !important; background-image: none !important; color: #b0b0b0; }
+        body.theme-black h1 { background: none !important; -webkit-text-fill-color: #ddd; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-black h1::after { background: linear-gradient(90deg, transparent, #333, transparent); }
+        body.theme-black h2 { color: #888; }
+        body.theme-black p { color: #b0b0b0; }
+        body.theme-black .dialogue { color: #c0c0c0; }
+        body.theme-black .thought { color: #777; }
+        body.theme-black hr { background: linear-gradient(90deg, transparent, #2a2a2a, transparent); }
+        body.theme-black .word-count { color: #555; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); }
+        body.theme-black ::selection { background: rgba(150,150,150,0.25); }
+        body.theme-black .floating-nav a { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); color: #888; }
+        body.theme-black .floating-nav a:hover { background: rgba(28,28,28,0.96); color: #ccc; }
+        body.theme-black .floating-nav .nav-disabled { color: #444; }
+        body.theme-black .nav-toggle { background: rgba(18,18,18,0.9); color: #555; border-color: rgba(255,255,255,0.04); }
+        body.theme-black .scroll-top { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); color: #555; }
+        body.theme-black .theme-picker-btn { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-options { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-option.active { border-color: #666; box-shadow: 0 0 0 2px rgba(100,100,100,0.4), 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* ── Theme: White ── */
+        body.theme-white { background: #f5f3ef !important; background-image: none !important; color: #2a2a2a; }
+        body.theme-white h1 { background: none !important; -webkit-text-fill-color: #1a1a1a; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-white h1::after { background: linear-gradient(90deg, transparent, #ccc, transparent); }
+        body.theme-white h2 { color: #555; }
+        body.theme-white p { color: #333; }
+        body.theme-white .dialogue { color: #222; }
+        body.theme-white .thought { color: #666; }
+        body.theme-white hr { background: linear-gradient(90deg, transparent, #ddd, transparent); }
+        body.theme-white .word-count { color: #888; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.theme-white ::selection { background: rgba(124,92,191,0.2); color: #111; }
+        body.theme-white .scroll-progress { background: linear-gradient(90deg, #9575cd, #7c5cbf); }
+        body.theme-white .floating-nav a { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); color: #555; }
+        body.theme-white .floating-nav a:hover { background: rgba(248,248,248,0.98); color: #111; border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body.theme-white .floating-nav .nav-disabled { color: #bbb; }
+        body.theme-white .nav-toggle { background: rgba(255,255,255,0.92); color: #888; border-color: rgba(0,0,0,0.08); }
+        body.theme-white .nav-toggle:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .scroll-top { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); color: #888; }
+        body.theme-white .scroll-top:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .theme-picker-btn { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-options { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-option.active { border-color: #7c5cbf; box-shadow: 0 0 0 2px rgba(124,92,191,0.3), 0 2px 6px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .theme-picker { bottom: 16px; left: 16px; }
+            .theme-picker-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
+<script>(function(){var t=localStorage.getItem('gimai-theme');if(t&&t!=='default')document.body.classList.add('theme-'+t);})()</script>
 
     <div class="chapter-nav">
         <a href="../Vol14/Gimai14_Epi.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -197,103 +451,103 @@
 
     <h1>Chương 1 — Năm nhất Đại học, Tháng 5, Asamura Yuuta</h1>
 
-    <p>Hơi ấm mà anh cảm nhận được trong vòng tay đang dần rời xa. Cứ như thể ngọn lửa sưởi ấm anh vừa bị dội nước dập tắt. Hơi nóng truyền đến từ phía trước cơ thể nhanh chóng tan biến, khiến anh khẽ rùng mình. Anh muốn vươn tay níu giữ lấy hơi ấm ngày một xa xăm ấy, nhưng cánh tay anh lại tê rần, cứng đờ không thể cử động. Để tìm lại hơi ấm đó, anh──.</p>
+    <p>Hơi ấm mà tôi cảm nhận được trong vòng tay đang dần rời xa. Cứ như thể ngọn lửa sưởi ấm tôi vừa bị dội nước dập tắt. Hơi nóng truyền đến từ phía trước cơ thể nhanh chóng tan biến, khiến tôi khẽ rùng mình. Tôi muốn vươn tay níu giữ lấy hơi ấm ngày một xa xăm ấy, nhưng cánh tay tôi lại tê rần, cứng đờ không thể cử động. Để tìm lại hơi ấm đó, anh──.</p>
     <p>Cố gắng gọi thành tiếng rồi chợt bừng tỉnh.</p>
-    <p>Hộc, anh buông một tiếng thở dài.</p>
+    <p>Hộc, tôi buông một tiếng thở dài.</p>
     <p>Là mơ sao?</p>
-    <p>Có vẻ như anh đã thiếp đi trong vô thức.</p>
-    <p>Xuyên qua hàng mi vừa hé mở, trong thứ ánh sáng mờ ảo, anh có thể nhìn thấy khuôn mặt Saki đang say ngủ, hàng mi dài của em khẽ rung động. Mái tóc sáng màu xõa tung dưới đầu. Từ khuôn miệng nhỏ nhắn, những nhịp thở đều đặn, yên bình khẽ vang lên. Cả hai đều không mặc gì. Chúng anh đều đang trần trụi. Dù chỉ là chút ánh bình minh len lỏi qua rèm cửa, anh vẫn có thể nhìn rõ, bởi tấm chăn đắp chung đã bị kéo lên tận vai.</p>
-    <p>Một bên cánh tay anh tê dại. Saki đang dùng tay anh làm gối. Thảo nào anh không thể cử động được. Nhận ra điều đó, giấc mơ ban nãy bỗng trở nên vô cùng hợp lý. Anh nở một nụ cười khổ trước thực tại chẳng thể so bì này.</p>
+    <p>Có vẻ như tôi đã thiếp đi trong vô thức.</p>
+    <p>Xuyên qua hàng mi vừa hé mở, trong thứ ánh sáng mờ ảo, tôi có thể nhìn thấy khuôn mặt Saki đang say ngủ, hàng mi dài của em khẽ rung động. Mái tóc sáng màu xõa tung dưới đầu. Từ khuôn miệng nhỏ nhắn, những nhịp thở đều đặn, yên bình khẽ vang lên. Cả hai đều không mặc gì. Chúng tôi đều đang trần trụi. Dù chỉ là chút ánh bình minh len lỏi qua rèm cửa, tôi vẫn có thể nhìn rõ, bởi tấm chăn đắp chung đã bị kéo lên tận vai.</p>
+    <p>Một bên cánh tay tôi tê dại. Saki đang dùng tay tôi làm gối. Thảo nào tôi không thể cử động được. Nhận ra điều đó, giấc mơ ban nãy bỗng trở nên vô cùng hợp lý. Tôi nở một nụ cười khổ trước thực tại chẳng thể so bì này.</p>
     <p>Saki khẽ hắt xì.</p>
-    <p>Anh vội vàng kéo tấm chăn đang bị hất tung lên. Cùng lúc đó, anh liếc nhìn chiếc đồng hồ đặt cạnh giường.</p>
+    <p>Tôi vội vàng kéo tấm chăn đang bị hất tung lên. Cùng lúc đó, tôi liếc nhìn chiếc đồng hồ đặt cạnh giường.</p>
     <p>6:32 sáng.</p>
-    <p>Vì hôm nay là Chủ Nhật, anh không có lịch học ở trường, chỉ có ca làm thêm ở hiệu sách. Nhưng ca làm cũng phải đến chiều mới bắt đầu, nên anh vẫn còn rất nhiều thời gian.</p>
-    <p>Có lẽ anh nên để em ấy ngủ thêm một chút nữa.</p>
+    <p>Vì hôm nay là Chủ Nhật, tôi không có lịch học ở trường, chỉ có ca làm thêm ở hiệu sách. Nhưng ca làm cũng phải đến chiều mới bắt đầu, nên tôi vẫn còn rất nhiều thời gian.</p>
+    <p>Có lẽ tôi nên để em ấy ngủ thêm một chút nữa.</p>
     <p>Sáng Chủ Nhật thì chẳng có việc gì cần phải vội cả.</p>
-    <p>Bố anh chắc cũng đang ngủ. Ngày thường, ông dậy tầm giờ này, đáng lẽ giờ này ông đã thức rồi, nhưng vào Chủ Nhật, bố anh sẽ không xuất hiện ở phòng khách trước 8 giờ sáng.</p>
-    <p>Dù vậy, nhỡ đâu ông đã tỉnh giấc. Nếu Saki bước ra từ phòng anh mà tình cờ bố đi vệ sinh rồi chạm mặt em ấy ngoài hành lang, mọi chuyện sẽ rất rắc rối. Chưa kể, biết đâu mẹ kế Akiko-san cũng sắp tan làm về nhà.</p>
-    <p>Vừa suy tính xem nên làm gì, anh vừa thử rút cánh tay đang bị Saki gối lên.</p>
+    <p>Bố tôi chắc cũng đang ngủ. Ngày thường, ông dậy tầm giờ này, đáng lẽ giờ này ông đã thức rồi, nhưng vào Chủ Nhật, bố tôi sẽ không xuất hiện ở phòng khách trước 8 giờ sáng.</p>
+    <p>Dù vậy, nhỡ đâu ông đã tỉnh giấc. Nếu Saki bước ra từ phòng tôi mà tình cờ bố đi vệ sinh rồi chạm mặt em ấy ngoài hành lang, mọi chuyện sẽ rất rắc rối. Chưa kể, biết đâu mẹ kế Akiko-san cũng sắp tan làm về nhà.</p>
+    <p>Vừa suy tính xem nên làm gì, tôi vừa thử rút cánh tay đang bị Saki gối lên.</p>
     <p>Tuy nhiên, mọi chuyện không hề suôn sẻ.</p>
     <p>"Ưm..."</p>
-    <p>Em ấy lại càng ôm anh chặt hơn.</p>
-    <p>Làm sao đây? Anh có thể dùng sức rút tay ra, nhưng chắc chắn em ấy sẽ tỉnh giấc.</p>
+    <p>Em ấy lại càng ôm tôi chặt hơn.</p>
+    <p>Làm sao đây? Tôi có thể dùng sức rút tay ra, nhưng chắc chắn em ấy sẽ tỉnh giấc.</p>
     <p>"……nuhma"</p>
     <p>Gì cơ?</p>
-    <p>Em ấy siết chặt lấy tay anh. Anh không biết Saki đang mơ thấy gì, nhưng cảm thấy thú vị đến mức suýt buột miệng thốt lên "Wow". Rất nhanh, anh lấy tay còn lại che miệng mình. Anh không làm em ấy thức giấc đấy chứ?</p>
+    <p>Em ấy siết chặt lấy tay tôi. Tôi không biết Saki đang mơ thấy gì, nhưng cảm thấy thú vị đến mức suýt buột miệng thốt lên "Wow". Rất nhanh, tôi lấy tay còn lại che miệng mình. Tôi không làm em ấy thức giấc đấy chứ?</p>
     <p>……Có vẻ vẫn an toàn.</p>
-    <p>Anh tiếp tục ngắm nhìn khuôn mặt đang say ngủ của em. Tình cờ thức dậy sớm nên anh mới có cơ hội thong thả ngắm nhìn em thế này. Tất nhiên, nếu Saki tỉnh giấc giữa đêm, vị trí của hai đứa sẽ đảo ngược. Khi nghĩ về điều đó, việc cả hai cùng ngủ thiếp đi trong trạng thái không phòng bị chứng tỏ chúng anh hoàn toàn tin tưởng nhau, mang lại cho anh một cảm giác mãn nguyện và bình yên đến lạ.</p>
-    <p>Anh muốn che chở cho người con gái đang ôm chặt cánh tay anh bằng cả tấm lòng. Khi ý nghĩ rằng anh đã trải qua một đêm cùng em ngấm sâu vào tâm trí, anh cảm thấy bản thân đã tiến rất xa so với lúc cố gắng giữ khoảng cách ở những ngày đầu mới gặp. Anh không muốn buông bỏ sự gắn kết hiện tại này.</p>
+    <p>Tôi tiếp tục ngắm nhìn khuôn mặt đang say ngủ của em. Tình cờ thức dậy sớm nên tôi mới có cơ hội thong thả ngắm nhìn em thế này. Tất nhiên, nếu Saki tỉnh giấc giữa đêm, vị trí của hai đứa sẽ đảo ngược. Khi nghĩ về điều đó, việc cả hai cùng ngủ thiếp đi trong trạng thái không phòng bị chứng tỏ chúng tôi hoàn toàn tin tưởng nhau, mang lại cho tôi một cảm giác mãn nguyện và bình yên đến lạ.</p>
+    <p>Tôi muốn che chở cho người con gái đang ôm chặt cánh tay tôi bằng cả tấm lòng. Khi ý nghĩ rằng tôi đã trải qua một đêm cùng em ngấm sâu vào tâm trí, anh cảm thấy bản thân đã tiến rất xa so với lúc cố gắng giữ khoảng cách ở những ngày đầu mới gặp. Tôi không muốn buông bỏ sự gắn kết hiện tại này.</p>
     <p>"Này anh."</p>
-    <p>Anh giật mình. Saki đã mở mắt và đang nhìn anh.</p>
+    <p>Tôi giật mình. Saki đã mở mắt và đang nhìn tôi.</p>
     <p>"...Thật không công bằng."</p>
     <p>Em khẽ thì thầm.</p>
     <p>"Hả?"</p>
     <p>"Sao chỉ có mình anh Yuuta được ngắm em mãi thế."</p>
     <p>"À thì, chỉ là tình cờ anh thức dậy trước thôi."</p>
-    <p>Nghe anh đáp, em hơi chu môi tỏ vẻ không hài lòng. Sau đó, với một chút tinh nghịch trong ánh mắt, em tuyên bố:</p>
+    <p>Nghe tôi đáp, em hơi chu môi tỏ vẻ không hài lòng. Sau đó, với một chút tinh nghịch trong ánh mắt, em tuyên bố:</p>
     <p>"Lần sau em sẽ không thua đâu."</p>
     <p>Thua chuyện gì cơ?</p>
     <p>Ý em đây là cuộc thi xem ai dậy sớm hơn à? Có chuyện đó sao?</p>
     <p>"Nếu thắng, em có quyền ngắm anh thật kỹ, đúng không? Ngắm khuôn mặt lúc ngủ của anh ấy."</p>
-    <p>Vậy phần thưởng là được ngắm anh ngủ sao.</p>
+    <p>Vậy phần thưởng là được ngắm tôi ngủ sao.</p>
     <p>"Ngắm bộ dạng đó thì có gì vui chứ?"</p>
     <p>"Chắc chắn là vui rồi."</p>
-    <p>Anh không nghĩ vậy đâu. Khuôn mặt lúc ngủ của anh trông bình thường lắm.</p>
+    <p>Tôi không nghĩ vậy đâu. Khuôn mặt lúc ngủ của tôi trông bình thường lắm.</p>
     <p>"Thật ra thì cũng hơi xấu hổ. Với lại, lần này anh cũng chỉ tình cờ dậy trước thôi."</p>
     <p>"Đấy, anh thấy chưa?"</p>
     <p>"Hả?"</p>
     <p>"Bị người khác ngắm lúc đang ngủ thì sẽ thấy xấu hổ mà, đúng không?"</p>
     <p>"Ừ thì, đúng là vậy..."</p>
-    <p>Ngay cả khi khuôn mặt anh trông ngớ ngẩn trong lúc không phòng bị──a.</p>
+    <p>Ngay cả khi khuôn mặt tôi trông ngớ ngẩn trong lúc không phòng bị──a.</p>
     <p>"Anh muốn bị gọi là đồ biến thái sao?"</p>
     <p>"Anh xin lỗi."</p>
-    <p>Thấy anh chân thành xin lỗi, em khẽ mỉm cười.</p>
+    <p>Thấy tôi chân thành xin lỗi, em khẽ mỉm cười.</p>
     <p>"Em chỉ đùa thôi."</p>
-    <p>Anh thở phào nhẹ nhõm.</p>
+    <p>Tôi thở phào nhẹ nhõm.</p>
     <p>"Làm sao chỉ vì ngắm khuôn mặt lúc ngủ mà bị gọi là biến thái được. Miễn là công bằng thì không sao. Em không thích sự bất công. Nếu em dậy trước, em cũng sẽ ngắm anh thật kỹ."</p>
     <p>"...Ra là vậy."</p>
     <p>"Về chuyện dậy sớm, em sẽ không thua đâu, nên lần sau em có quyền ngắm anh Yuuta cẩn thận đấy nhé?"</p>
     <p>"...Được rồi. Nếu vậy, anh sẽ chuẩn bị tinh thần cho lúc đó."</p>
-    <p>Anh không biết những cuộc trò chuyện thế này liệu có thường xuyên diễn ra không. Nhưng kỳ lạ thay, những mẩu chuyện phiếm vụn vặt thế này lại khiến anh cảm thấy vô cùng dễ chịu.</p>
+    <p>Tôi không biết những cuộc trò chuyện thế này liệu có thường xuyên diễn ra không. Nhưng kỳ lạ thay, những mẩu chuyện phiếm vụn vặt thế này lại khiến anh cảm thấy vô cùng dễ chịu.</p>
     <p>"Ơ. Khoảng chừng... 7 giờ rồi."</p>
-    <p>Anh nương theo ánh nhìn của Saki và nhìn lên chiếc đồng hồ cạnh giường. Chẳng mấy chốc mà đã gần 7 giờ. Anh bắt đầu hoảng. Tình hình không thể chần chừ thêm được nữa.</p>
+    <p>Tôi nương theo ánh nhìn của Saki và nhìn lên chiếc đồng hồ cạnh giường. Chẳng mấy chốc mà đã gần 7 giờ. Tôi bắt đầu hoảng. Tình hình không thể chần chừ thêm được nữa.</p>
     <p>"Tắm thôi. Anh phải đi tắm! ...Nhưng nếu làm ồn, bố sẽ tỉnh giấc mất."</p>
     <p>"Bình tĩnh nào. Ừm..."</p>
-    <p>Anh cố gắng vắt óc suy nghĩ. Sáng Chủ Nhật bình thường sẽ...</p>
+    <p>Tôi cố gắng vắt óc suy nghĩ. Sáng Chủ Nhật bình thường sẽ...</p>
     <p>"Đừng lo. Saki thỉnh thoảng vẫn tắm sáng mà, đúng không? Nên sẽ không có gì kỳ lạ cả. Trước tiên, em cứ nhẹ nhàng quay về phòng, sau đó giả vờ như vừa mới ngủ dậy và đi vào phòng tắm."</p>
     <p>"Thế còn anh Yuuta thì sao?"</p>
     <p>"Nếu chúng ta căn thời gian chuẩn, mọi chuyện sẽ ổn thôi."</p>
     <p>Chắc vậy.</p>
     <p>"Anh sẽ đợi em tắm xong một lúc rồi mới vào."</p>
-    <p>Saki nhanh chóng mặc lại quần áo rồi bước ra khỏi phòng anh với những bước đi cẩn trọng. Lúc bước đi, em ấy có vẻ hơi khó nhọc, nhưng có lẽ do anh không rõ tình trạng của phụ nữ sau trải nghiệm đó nên mới bận tâm quá mức.</p>
-    <p>Anh nhớ lại xem chúng anh đã lóng ngóng thế nào từ đầu đến cuối. Anh nghĩ mình đã không hành động thô lỗ, nhưng thực sự thì sao nhỉ?</p>
-    <p>Dù sao đi nữa, chúng anh cũng đã vượt qua tình huống này bằng cách vờ như đang trải qua một buổi sáng Chủ Nhật như bao ngày. Có lẽ vậy.</p>
+    <p>Saki nhanh chóng mặc lại quần áo rồi bước ra khỏi phòng tôi với những bước đi cẩn trọng. Lúc bước đi, em ấy có vẻ hơi khó nhọc, nhưng có lẽ do tôi không rõ tình trạng của phụ nữ sau trải nghiệm đó nên mới bận tâm quá mức.</p>
+    <p>Tôi nhớ lại xem chúng tôi đã lóng ngóng thế nào từ đầu đến cuối. Tôi nghĩ mình đã không hành động thô lỗ, nhưng thực sự thì sao nhỉ?</p>
+    <p>Dù sao đi nữa, chúng tôi cũng đã vượt qua tình huống này bằng cách vờ như đang trải qua một buổi sáng Chủ Nhật như bao ngày. Có lẽ vậy.</p>
 
     <hr>
 
-    <p>Sắc xanh của công viên ngày một đậm màu hơn, báo hiệu mùa màng đang chuyển giao. Khi dạo bước về phía Shibuya và nhà ga vào buổi sáng, nhìn thấy những bóng râm sẫm màu dưới tán lá công viên, anh chợt nhận ra mùa hè đã đến rất gần. Trên lịch, đáng lẽ bây giờ đã là đầu hè.</p>
-    <p>Bầu trời trong vắt và ánh nắng gay gắt. Thành thật mà nói, thời tiết khá nóng. Vừa bước dọc theo con dốc thoai thoải kéo dài, anh vừa thở dài.</p>
+    <p>Sắc xanh của công viên ngày một đậm màu hơn, báo hiệu mùa màng đang chuyển giao. Khi dạo bước về phía Shibuya và nhà ga vào buổi sáng, nhìn thấy những bóng râm sẫm màu dưới tán lá công viên, tôi chợt nhận ra mùa hè đã đến rất gần. Trên lịch, đáng lẽ bây giờ đã là đầu hè.</p>
+    <p>Bầu trời trong vắt và ánh nắng gay gắt. Thành thật mà nói, thời tiết khá nóng. Vừa bước dọc theo con dốc thoai thoải kéo dài, tôi vừa thở dài.</p>
     <p>"Đã là mùa hè rồi nhỉ."</p>
     <p>"Mùa mưa thậm chí còn chưa bắt đầu mà."</p>
     <p>Saki đi bên cạnh đáp lại với giọng ngạc nhiên.</p>
     <p>"Nhưng dạo gần đây, cảm giác như không có mùa xuân ấy, chỉ có mùa hè 1, mùa mưa, rồi lại mùa hè 2."</p>
     <p>"Thật vậy sao?"</p>
-    <p>À thì, đó chỉ là cảm giác của anh thôi. Anh không khỏi nghĩ rằng có lẽ Nhật Bản đang dần chuyển sang khí hậu cận nhiệt đới, dù anh chưa tìm kiếm bằng chứng cụ thể nào.</p>
-    <p>Anh nói vậy cũng chỉ vì muốn tìm chủ đề để nói chuyện. Dù chỉ là những câu chuyện phiếm nhỏ nhặt thế này với Saki cũng đủ khiến anh thấy vui vẻ. Và không hiểu sao, anh lại bất giác quay sang nhìn em.</p>
+    <p>À thì, đó chỉ là cảm giác của tôi thôi. Tôi không khỏi nghĩ rằng có lẽ Nhật Bản đang dần chuyển sang khí hậu cận nhiệt đới, dù tôi chưa tìm kiếm bằng chứng cụ thể nào.</p>
+    <p>Tôi nói vậy cũng chỉ vì muốn tìm chủ đề để nói chuyện. Dù chỉ là những câu chuyện phiếm nhỏ nhặt thế này với Saki cũng đủ khiến tôi thấy vui vẻ. Và không hiểu sao, tôi lại bất giác quay sang nhìn em.</p>
     <p>Saki mặc một bộ đồ màu vàng chanh tươi tắn. Cả hai đều đã tốt nghiệp cấp ba nên không còn mặc đồng phục nữa. Một sự thật hiển nhiên nhưng vẫn khiến anh cảm thấy có chút lạ lẫm.</p>
-    <p>Đã khoảng hai tuần trôi qua kể từ đêm anh ở bên em.</p>
-    <p>Anh từng thường xuyên nghĩ rằng đêm đó là bước ngoặt trong cuộc đời và anh không thể quay lại như trước, nhưng dường như chẳng có gì thay đổi trong anh cả. Chỉ là ngày hôm sau anh thấy hơi đau cơ, có lẽ do đã sử dụng những bó cơ bình thường không mấy khi dùng đến. Còn Saki thì sao? Phụ nữ đôi khi cảm thấy không khỏe sau những trải nghiệm như vậy, nhưng... Anh chưa từng nghĩ mình lại chú ý đến sức khỏe của người con gái bên cạnh đến mức này.</p>
+    <p>Đã khoảng hai tuần trôi qua kể từ đêm tôi ở bên em.</p>
+    <p>Tôi từng thường xuyên nghĩ rằng đêm đó là bước ngoặt trong cuộc đời và tôi không thể quay lại như trước, nhưng dường như chẳng có gì thay đổi trong anh cả. Chỉ là ngày hôm sau tôi thấy hơi đau cơ, có lẽ do đã sử dụng những bó cơ bình thường không mấy khi dùng đến. Còn Saki thì sao? Phụ nữ đôi khi cảm thấy không khỏe sau những trải nghiệm như vậy, nhưng... Tôi chưa từng nghĩ mình lại chú ý đến sức khỏe của người con gái bên cạnh đến mức này.</p>
     <p>"Cuộc sống đại học của anh thế nào?"</p>
-    <p>Em đột ngột quay sang hỏi khiến anh khựng lại một nhịp. Vì quá bất ngờ nên anh có chút lúng túng. Có lẽ em nhận ra anh đang mải ngắm mình.</p>
-    <p>Thế nào nhỉ? Cho đến giờ, anh chẳng nghĩ ra được sự kiện mới mẻ nào.</p>
+    <p>Em đột ngột quay sang hỏi khiến tôi khựng lại một nhịp. Vì quá bất ngờ nên tôi có chút lúng túng. Có lẽ em nhận ra tôi đang mải ngắm mình.</p>
+    <p>Thế nào nhỉ? Cho đến giờ, tôi chẳng nghĩ ra được sự kiện mới mẻ nào.</p>
     <p>"Ừm..."</p>
     <p>"A, em xin lỗi. Câu hỏi chung chung quá à? Nếu chỉ hỏi 'thế nào', chắc anh cũng khó trả lời."</p>
-    <p>Chắc hẳn anh đã làm em thấy khó xử. Giờ anh càng nhận thức rõ đây là một trong những khuyết điểm của mình. Đã đến lúc anh cần hiểu rằng khi Saki hỏi như vậy, em không hề tìm kiếm một câu trả lời chính xác.</p>
+    <p>Chắc hẳn tôi đã làm em thấy khó xử. Giờ tôi càng nhận thức rõ đây là một trong những khuyết điểm của mình. Đã đến lúc tôi cần hiểu rằng khi Saki hỏi như vậy, em không hề tìm kiếm một câu trả lời chính xác.</p>
     <p>"Không đâu, anh mới là người phải xin lỗi."</p>
-    <p>Thứ em tìm kiếm không phải là câu trả lời, mà là chính cuộc giao tiếp. Tuy nhiên, khi bị đặt câu hỏi, phản xạ của anh luôn là đi tìm "đáp án", và điều đó đôi khi khá nặng nề. Thực ra, em chỉ muốn trò chuyện, nên thứ cần thiết là một câu trả lời có thể tiếp nối câu chuyện, và thứ em tìm kiếm là sự đồng điệu về mặt cảm xúc.</p>
+    <p>Thứ em tìm kiếm không phải là câu trả lời, mà là chính cuộc giao tiếp. Tuy nhiên, khi bị đặt câu hỏi, phản xạ của tôi luôn là đi tìm "đáp án", và điều đó đôi khi khá nặng nề. Thực ra, em chỉ muốn trò chuyện, nên thứ cần thiết là một câu trả lời có thể tiếp nối câu chuyện, và thứ em tìm kiếm là sự đồng điệu về mặt cảm xúc.</p>
     <p>Vì vậy, trước tiên hãy bắt đầu từ cảm xúc.</p>
     <p>"Cũng vui lắm em ạ."</p>
-    <p>Sau khi trả lời như vậy, anh mới bắt đầu tìm lý do. Tại sao anh lại thấy vui? Đó là vì──.</p>
+    <p>Sau khi trả lời như vậy, tôi mới bắt đầu tìm lý do. Tại sao tôi lại thấy vui? Đó là vì──.</p>
     <p>"Vì có rất nhiều người thú vị."</p>
     <p>"Hê~"</p>
     <p>"Dạo gần đây, anh hay đi ăn với hai cậu bạn tên là Nakamura và Kikuchi."</p>
@@ -302,53 +556,53 @@
     <p>"Em hiện tại cũng vô tình chơi thân với những người như vậy."</p>
     <p>Ra là thế.</p>
     <p>"Đúng như anh nghĩ, vị trí chỗ ngồi ảnh hưởng nhiều nhỉ? ──à."</p>
-    <p>Vì Saki là người hỏi, nên việc anh kể về Nakamura và Kikuchi là điều đương nhiên, nhưng anh vẫn không nhịn được mà muốn hỏi lại. Nhưng khoan đã. Đây đâu phải một buổi tranh luận, nên việc trò chuyện với luật lệ lỏng lẻo một chút cũng chẳng sao. Dù vậy, anh vẫn thấy hơi lấn cấn. Anh cần phải làm quen với điều này.</p>
+    <p>Vì Saki là người hỏi, nên việc tôi kể về Nakamura và Kikuchi là điều đương nhiên, nhưng tôi vẫn không nhịn được mà muốn hỏi lại. Nhưng khoan đã. Đây đâu phải một buổi tranh luận, nên việc trò chuyện với luật lệ lỏng lẻo một chút cũng chẳng sao. Dù vậy, tôi vẫn thấy hơi lấn cấn. Tôi cần phải làm quen với điều này.</p>
     <p>"Chà, thay vì ngồi cạnh, họ lại ngồi ngay sau lưng anh. Ừ thì, anh sẽ kể về họ sau, nhưng anh khá tò mò về Nakamura-kun và Kikuchi-kun. Họ thú vị lắm à?"</p>
-    <p>Hiếm khi thấy Saki tỏ ra ngập ngừng. Hơn nữa, em còn thoáng lộ vẻ bối rối, điều này càng làm anh tò mò, nhưng giờ không có cách nào để gặng hỏi thêm.</p>
-    <p>Anh quyết định kể về những người bạn mới của mình, Nakamura Hironobu và Kikuchi Yuma.</p>
-    <p>Trong suốt ba năm cấp ba, anh chỉ có vài người bạn như Maru, Yoshida hay Shinjou, nên việc trở nên thân thiết với hai cậu này ngay đầu năm đại học có thể coi là một bước đột phá đối với anh. Hơn nữa, có lẽ họ là những "người bạn tếu táo" đầu tiên trong đời anh.</p>
+    <p>Hiếm khi thấy Saki tỏ ra ngập ngừng. Hơn nữa, em còn thoáng lộ vẻ bối rối, điều này càng làm tôi tò mò, nhưng giờ không có cách nào để gặng hỏi thêm.</p>
+    <p>Tôi quyết định kể về những người bạn mới của mình, Nakamura Hironobu và Kikuchi Yuma.</p>
+    <p>Trong suốt ba năm cấp ba, tôi chỉ có vài người bạn như Maru, Yoshida hay Shinjou, nên việc trở nên thân thiết với hai cậu này ngay đầu năm đại học có thể coi là một bước đột phá đối với tôi. Hơn nữa, có lẽ họ là những "người bạn tếu táo" đầu tiên trong đời tôi.</p>
     <p>...Có thể Saki cũng đã làm quen được với những người bạn như vậy.</p>
-    <p>Không, có lẽ anh đã suy nghĩ quá nhiều. Thoạt nhìn, Saki giống hệt một cô nàng gyaru sành sỏi chuyện ăn chơi, nhưng anh biết vẻ ngoài này chỉ là kết quả của nỗ lực cân bằng giữa hình tượng "phụ nữ xinh đẹp" và "phụ nữ trưởng thành" lấy cảm hứng từ mẹ kế Akiko-san. Nghĩa là, sâu bên trong, em ấy khá nghiêm túc.</p>
-    <p>Thay vì tưởng tượng vẩn vơ, tốt hơn là nên tận hưởng cuộc trò chuyện với Saki, vì vậy anh bắt đầu kể về hai cậu bạn tếu táo mới quen. Suốt dọc đường đến nhà ga, Saki lặng lẽ lắng nghe.</p>
+    <p>Không, có lẽ tôi đã suy nghĩ quá nhiều. Thoạt nhìn, Saki giống hệt một cô nàng gyaru sành sỏi chuyện ăn chơi, nhưng tôi biết vẻ ngoài này chỉ là kết quả của nỗ lực cân bằng giữa hình tượng "phụ nữ xinh đẹp" và "phụ nữ trưởng thành" lấy cảm hứng từ mẹ kế Akiko-san. Nghĩa là, sâu bên trong, em ấy khá nghiêm túc.</p>
+    <p>Thay vì tưởng tượng vẩn vơ, tốt hơn là nên tận hưởng cuộc trò chuyện với Saki, vì vậy tôi bắt đầu kể về hai cậu bạn tếu táo mới quen. Suốt dọc đường đến nhà ga, Saki lặng lẽ lắng nghe.</p>
     <p>Những bông hoa đỗ quyên nở rộ trên bụi cây ven công viên cũng đã bắt đầu tàn.</p>
 
     <hr>
 
-    <p>Hai năm đầu đại học dành riêng cho việc nắm vững các nền tảng học thuật. Anh vừa nghĩ về điều đó vừa đưa mắt dõi theo những nét phấn của giảng viên trên bảng đen từ phía cuối giảng đường. Hai năm này được gọi là "chương trình giáo dục đại cương" hay "các môn học cơ sở".</p>
+    <p>Hai năm đầu đại học dành riêng cho việc nắm vững các nền tảng học thuật. Tôi vừa nghĩ về điều đó vừa đưa mắt dõi theo những nét phấn của giảng viên trên bảng đen từ phía cuối giảng đường. Hai năm này được gọi là "chương trình giáo dục đại cương" hay "các môn học cơ sở".</p>
     <p>Vì đây là cơ sở giáo dục bậc cao, nhiều người thường cho rằng sinh viên phải nghiên cứu sâu về chuyên ngành ngay lập tức. Tuy nhiên, trước khi đi sâu vào lĩnh vực cụ thể, sinh viên cần nắm vững nền tảng kiến thức tổng quát, rèn luyện tư duy và sự hiểu biết rộng. Các môn học đại cương được thiết kế chính vì mục đích đó.</p>
     <p>Trong chương trình đại cương, sinh viên phải học liên tục các nguyên lý cơ bản của nhiều lĩnh vực khác nhau, như ngôn ngữ, khoa học tự nhiên, nhân văn và khoa học xã hội. Tất nhiên, điều này không có nghĩa là chương trình học nhàm chán hay dễ dàng.</p>
-    <p>Trên thực tế, dù là đại cương, việc theo kịp bài giảng không hề đơn giản. Nếu không chuẩn bị bài và ôn tập, đôi khi rất khó để nắm bắt được nội dung. Mặt khác, cũng có những lớp học dễ tiếp thu hơn so với dự kiến. Ví dụ như lớp 'Hành vi Người tiêu dùng' mà anh đang tham gia lúc này.</p>
+    <p>Trên thực tế, dù là đại cương, việc theo kịp bài giảng không hề đơn giản. Nếu không chuẩn bị bài và ôn tập, đôi khi rất khó để nắm bắt được nội dung. Mặt khác, cũng có những lớp học dễ tiếp thu hơn so với dự kiến. Ví dụ như lớp 'Hành vi Người tiêu dùng' mà tôi đang tham gia lúc này.</p>
     <p>Giảng viên giải thích rằng người tiêu dùng, tức là những người mua hàng hóa, có thể được phân loại thành nhiều nhóm dựa trên mức độ tiếp nhận sự đổi mới—tức là mức độ họ sẵn sàng chấp nhận những điều mới mẻ. Đây là thuyết 'khuếch tán' do Rogers đề xướng.</p>
     
     <p></p>
     
-    <p>Anh tin rằng nhiều người đã từng nghe qua các thuật ngữ như nhóm đổi mới (innovators), nhóm thích nghi nhanh (early adopters), nhóm đa số chấp nhận sớm (early majority), nhóm đa số chấp nhận muộn (late majority) và nhóm lạc hậu (laggards). Nói tóm lại, có những người sẵn sàng thử nghiệm cái mới chỉ vì nó mới, trong khi cũng có những người kiên quyết trung thành với những gì họ đã quen thuộc. Thuyết 'khuếch tán' của Rogers đã định nghĩa và phân loại những điều mà có lẽ rất nhiều người đã mường tượng ra.</p>
+    <p>Tôi tin rằng nhiều người đã từng nghe qua các thuật ngữ như nhóm đổi mới (innovators), nhóm thích nghi nhanh (early adopters), nhóm đa số chấp nhận sớm (early majority), nhóm đa số chấp nhận muộn (late majority) và nhóm lạc hậu (laggards). Nói tóm lại, có những người sẵn sàng thử nghiệm cái mới chỉ vì nó mới, trong khi cũng có những người kiên quyết trung thành với những gì họ đã quen thuộc. Thuyết 'khuếch tán' của Rogers đã định nghĩa và phân loại những điều mà có lẽ rất nhiều người đã mường tượng ra.</p>
     <p>Điều thú vị là, sự phân loại này có thể áp dụng cho bất kỳ nhóm cộng đồng nào và được cho là có tỷ lệ tương đồng. Những người mang bản tính đổi mới, dù là người Nhật, người Mỹ hay quốc gia nào đi nữa, thường chỉ chiếm khoảng 2,5% tổng số. Nếu trong một nhóm 200 người, chỉ có khoảng 5 người cảm thấy những thứ mới mẻ thực sự mang lại giá trị.</p>
     <p>Từ nhiều góc trong giảng đường, những tiếng xì xào "Ồ" và "Ra là vậy" vang lên như một sự phản hồi cho bài giảng lôi cuốn của vị giảng viên. Qua phản ứng của lớp, có vẻ một số sinh viên vẫn chưa thực sự hiểu rõ. Trong số đó có cả những người trông khá bối rối.</p>
-    <p>"Sao họ cứ phải đặt mấy cái tên phức tạp để phân loại làm gì nhỉ?" Nakamura, ngồi bên trái anh, thắc mắc. Kikuchi, ngồi cạnh Nakamura, cũng gật gù đồng tình: "Tôi đồng ý với Hiro. Khách hàng thì vẫn là khách hàng thôi."</p>
-    <p>Cả hai sau đó quay sang nhìn anh. Hả, hai cậu ta mong chờ gì ở anh chứ?</p>
-    <p>"Lý thuyết này phân loại khách hàng dựa trên đặc điểm của họ thành năm nhóm," anh đáp.</p>
+    <p>"Sao họ cứ phải đặt mấy cái tên phức tạp để phân loại làm gì nhỉ?" Nakamura, ngồi bên trái tôi, thắc mắc. Kikuchi, ngồi cạnh Nakamura, cũng gật gù đồng tình: "Tôi đồng ý với Hiro. Khách hàng thì vẫn là khách hàng thôi."</p>
+    <p>Cả hai sau đó quay sang nhìn tôi. Hả, hai cậu ta mong chờ gì ở tôi chứ?</p>
+    <p>"Lý thuyết này phân loại khách hàng dựa trên đặc điểm của họ thành năm nhóm," tôi đáp.</p>
     <p>"Thế thì sao phải mất công phân biệt làm gì?" Nakamura lại hỏi.</p>
     <p>Tại sao chúng ta cần phải phân loại nhỉ?</p>
-    <p>"À thì, tôi đoán nếu nghe tiếp, thầy sẽ giải thích thôi," anh trả lời. Và đúng như dự đoán, giảng viên bắt đầu diễn giải nhiều khía cạnh khác nhau, nhưng dẫu có nghe, Nakamura và Kikuchi có vẻ vẫn chưa thủng ra được.</p>
+    <p>"À thì, tôi đoán nếu nghe tiếp, thầy sẽ giải thích thôi," tôi trả lời. Và đúng như dự đoán, giảng viên bắt đầu diễn giải nhiều khía cạnh khác nhau, nhưng dẫu có nghe, Nakamura và Kikuchi có vẻ vẫn chưa thủng ra được.</p>
     <p>Điều khó khăn nhất trong việc học là khi ta gặp phải một khái niệm mới chưa từng tiếp xúc bao giờ trong đời. Mặc dù một khi đã hiểu thì nó lại trở nên rất dễ dàng, nhưng việc chấp nhận một 'lối tư duy mới' thường là một thử thách.</p>
-    <p>Sau khi giờ học kết thúc, hai cậu bạn vẫn còn hoang mang bèn nhờ anh giải thích lại bài giảng theo cách của mình.</p>
-    <p>Tại sao chúng ta lại phân loại người tiêu dùng dựa trên hành vi? Anh đã giải thích theo cách hiểu cá nhân như sau.</p>
+    <p>Sau khi giờ học kết thúc, hai cậu bạn vẫn còn hoang mang bèn nhờ tôi giải thích lại bài giảng theo cách của mình.</p>
+    <p>Tại sao chúng ta lại phân loại người tiêu dùng dựa trên hành vi? Tôi đã giải thích theo cách hiểu cá nhân như sau.</p>
     <p>"Các nhóm khách hàng khác nhau đồng nghĩa với việc cách tiếp thị phải khác nhau, và cách họ tiếp cận thông tin cũng khác biệt. Vì vậy, tôi nghĩ việc phân loại đặc điểm của nhóm người mua là rất quan trọng."</p>
     <p>Những người thích sự mới mẻ thường chủ động tìm kiếm thông tin về sản phẩm mới và hay đọc các tạp chí cung cấp thông tin, trong khi những người thích sự quen thuộc có thể sẽ chẳng bao giờ ngó ngàng đến những tạp chí đó. Điều này có nghĩa là chiến lược tiếp thị cần phải được điều chỉnh cho phù hợp.</p>
     <p>Logic này cũng có thể áp dụng ở hiệu sách. Giá sách dành cho tác phẩm đầu tay của tác giả mới hoàn toàn khác với giá sách dành cho các tác phẩm kinh điển. Kệ bày sách bán chạy cũng được đặt riêng biệt với kệ dành cho sách bán ổn định lâu dài. Đại loại là như vậy.</p>
-    <p>Anh đã biết về điều này từ một cuốn sách anh tình cờ đọc được. Cảm thấy nó liên quan đến công việc làm thêm ở hiệu sách, anh đã mua về đọc, và vì thấy quá thú vị, anh lại tiếp tục đọc thêm nhiều sách liên quan khác. Từ đó, anh thậm chí còn lấn sân sang cả những cuốn sách về kinh tế học hành vi, hoàn toàn chỉ vì sở thích cá nhân.</p>
-    <p>Anh cố gắng vận dụng kinh nghiệm làm thêm ở hiệu sách để giải thích sao cho dễ hiểu nhất.</p>
+    <p>Tôi đã biết về điều này từ một cuốn sách tôi tình cờ đọc được. Cảm thấy nó liên quan đến công việc làm thêm ở hiệu sách, tôi đã mua về đọc, và vì thấy quá thú vị, tôi lại tiếp tục đọc thêm nhiều sách liên quan khác. Từ đó, tôi thậm chí còn lấn sân sang cả những cuốn sách về kinh tế học hành vi, hoàn toàn chỉ vì sở thích cá nhân.</p>
+    <p>Tôi cố gắng vận dụng kinh nghiệm làm thêm ở hiệu sách để giải thích sao cho dễ hiểu nhất.</p>
     <p>"Vậy ra, dù nhìn bề ngoài giống nhau, nhưng thực chất mỗi khách hàng đều khác biệt nhỉ?"</p>
-    <p>"Đúng vậy. Ví dụ như nam và nữ. Hay người lớn và trẻ em. Tôi nghĩ mấy cậu sẽ hiểu ngay nếu được phân biệt kiểu đó. Sự khác biệt trong cách con người tiếp nhận những điều mới mẻ cũng ảnh hưởng đến quyết định mua sắm của họ," anh giải thích.</p>
+    <p>"Đúng vậy. Ví dụ như nam và nữ. Hay người lớn và trẻ em. Tôi nghĩ mấy cậu sẽ hiểu ngay nếu được phân biệt kiểu đó. Sự khác biệt trong cách con người tiếp nhận những điều mới mẻ cũng ảnh hưởng đến quyết định mua sắm của họ," tôi giải thích.</p>
     <p>"Vậy Asamu hay đọc mấy cuốn sách kiểu vậy à?"</p>
     <p>"Cậu cũng dị phết đấy, Yuuta."</p>
-    <p>Nakamura nhìn anh với vẻ mặt như thể đang coi anh là một kẻ lập dị.</p>
+    <p>Nakamura nhìn tôi với vẻ mặt như thể đang coi tôi là một kẻ lập dị.</p>
     <p>Không, không, hai cậu này đang nói cái gì vậy? 'Thuyết khuếch tán' là một lý thuyết bắt nguồn từ xã hội học, và đáng lẽ họ cũng là sinh viên khoa Xã hội học mà, đúng không?</p>
-    <p>"Tôi chỉ tình cờ biết thôi," anh đáp.</p>
-    <p>Dù vậy, dựa trên những gì anh đã học qua vài bài giảng, kiến thức mà các giảng viên truyền đạt thường mang lại cảm giác khá quen thuộc. Anh có cảm giác như họ đang giảng dạy trùng hợp với những gì anh đã tự đọc. Nói cách khác, sự mới mẻ không quá rõ rệt đối với anh.</p>
-    <p>Ngược lại, những chủ đề mới mẻ được thêm vào ở cuối buổi học lại càng kích thích sự tò mò của anh hơn. Sau khi chuyển hướng ở phần cuối, có một câu nói khiến anh phải bật cười: "Chà, phần này hơi khó đối với sinh viên năm nhất." Chuông báo hết giờ reo lên đúng lúc đó, khiến anh không khỏi nghĩ rằng thầy đã cố tình làm vậy. Chắc chắn thầy đang cố gắng khơi gợi sự hứng thú của sinh viên và dẫn dắt họ đến chủ đề tiếp theo.</p>
-    <p>Ngay lúc anh đang suy nghĩ như vậy, Nakamura đột nhiên lên tiếng như vừa nhớ ra điều gì đó.</p>
+    <p>"Tôi chỉ tình cờ biết thôi," tôi đáp.</p>
+    <p>Dù vậy, dựa trên những gì tôi đã học qua vài bài giảng, kiến thức mà các giảng viên truyền đạt thường mang lại cảm giác khá quen thuộc. Tôi có cảm giác như họ đang giảng dạy trùng hợp với những gì tôi đã tự đọc. Nói cách khác, sự mới mẻ không quá rõ rệt đối với tôi.</p>
+    <p>Ngược lại, những chủ đề mới mẻ được thêm vào ở cuối buổi học lại càng kích thích sự tò mò của tôi hơn. Sau khi chuyển hướng ở phần cuối, có một câu nói khiến tôi phải bật cười: "Chà, phần này hơi khó đối với sinh viên năm nhất." Chuông báo hết giờ reo lên đúng lúc đó, khiến tôi không khỏi nghĩ rằng thầy đã cố tình làm vậy. Chắc chắn thầy đang cố gắng khơi gợi sự hứng thú của sinh viên và dẫn dắt họ đến chủ đề tiếp theo.</p>
+    <p>Ngay lúc tôi đang suy nghĩ như vậy, Nakamura đột nhiên lên tiếng như vừa nhớ ra điều gì đó.</p>
     <p>"Này Yuuta, hôm nay ra ngoài ăn không?"</p>
     <p>"Ra ngoài? Ý cậu là ăn ngoài trường ấy hả?"</p>
     <p>"Nghe nói Yuma vừa tìm được một chỗ ngon lắm."</p>
@@ -356,57 +610,57 @@
     <p>"Có một đàn anh trong câu lạc bộ đã dẫn tôi đến đó."</p>
     <p>"Hê."</p>
     <p>"Đồ ăn ở đó xuất sắc lắm. Tôi nghĩ Asamu cũng sẽ thích."</p>
-    <p>"Ừm," anh suy nghĩ một lát.</p>
-    <p>Trước khi nghe lời rủ rê này, anh định ăn ở căng tin với thực đơn cơm trứng tráng và súp miso.</p>
-    <p>Một phần trứng tráng giá 200 yên, cơm 150 yên và súp miso 40 yên, tổng cộng combo này chưa tới 500 yên. Theo anh, đây là thực đơn tiết kiệm nhất. Ông nội ở Nagano mỗi lần anh về thăm đều dặn dò bố anh rằng: "Đừng có tằn tiện chuyện ăn uống," nên anh không thực sự có ý thức phải "cắt giảm chi phí ăn uống", nhưng anh cũng không thể tiêu xài hoang phí được. Có lẽ anh có thể tự chuẩn bị cơm hộp, nhưng việc phải dậy sớm hơn 30 phút so với bình thường nghe có vẻ khá khó khăn.</p>
-    <p>Đã hơn một tháng kể từ khi bắt đầu cuộc sống sinh viên, anh nhận ra chi phí đắt đỏ hơn nhiều so với thời cấp ba. Do đó, ý thức tiết kiệm dần hình thành trong anh. Học phí cao—hơn 300.000 yên mỗi học kỳ—(tuy đây là trường công lập nên vẫn đỡ hơn trường tư), cộng thêm giá giáo trình đắt đỏ, sách tham khảo mắc mỏ, chi phí đi lại tăng cao, và chi phí cho các mối quan hệ xã hội cũng tăng lên đáng kể.</p>
-    <p>Khi đi mua sắm cùng Maru ở các cửa hàng anime, hai đứa thường ngồi lỳ hàng giờ ở nhà hàng thức ăn nhanh chỉ với một cốc cà phê, điều này hẳn đã gây phiền toái cho nhà hàng. Tuy nhiên, Nakamura và Kikuchi lại luôn nhiệt tình lùng sục những địa điểm mới quanh trường và rủ anh đi cùng (điều này chứng tỏ cả hai đều thuộc nhóm đổi mới, luôn khao khát những điều mới lạ). Nếu anh cứ hùa theo mọi lời rủ rê của họ, ví tiền của anh sẽ sớm cạn kiệt.</p>
+    <p>"Ừm," tôi suy nghĩ một lát.</p>
+    <p>Trước khi nghe lời rủ rê này, tôi định ăn ở căng tin với thực đơn cơm trứng tráng và súp miso.</p>
+    <p>Một phần trứng tráng giá 200 yên, cơm 150 yên và súp miso 40 yên, tổng cộng combo này chưa tới 500 yên. Theo tôi, đây là thực đơn tiết kiệm nhất. Ông nội ở Nagano mỗi lần tôi về thăm đều dặn dò bố tôi rằng: "Đừng có tằn tiện chuyện ăn uống," nên tôi không thực sự có ý thức phải "cắt giảm chi phí ăn uống", nhưng tôi cũng không thể tiêu xài hoang phí được. Có lẽ tôi có thể tự chuẩn bị cơm hộp, nhưng việc phải dậy sớm hơn 30 phút so với bình thường nghe có vẻ khá khó khăn.</p>
+    <p>Đã hơn một tháng kể từ khi bắt đầu cuộc sống sinh viên, tôi nhận ra chi phí đắt đỏ hơn nhiều so với thời cấp ba. Do đó, ý thức tiết kiệm dần hình thành trong tôi. Học phí cao—hơn 300.000 yên mỗi học kỳ—(tuy đây là trường công lập nên vẫn đỡ hơn trường tư), cộng thêm giá giáo trình đắt đỏ, sách tham khảo mắc mỏ, chi phí đi lại tăng cao, và chi phí cho các mối quan hệ xã hội cũng tăng lên đáng kể.</p>
+    <p>Khi đi mua sắm cùng Maru ở các cửa hàng anime, hai đứa thường ngồi lỳ hàng giờ ở nhà hàng thức ăn nhanh chỉ với một cốc cà phê, điều này hẳn đã gây phiền toái cho nhà hàng. Tuy nhiên, Nakamura và Kikuchi lại luôn nhiệt tình lùng sục những địa điểm mới quanh trường và rủ tôi đi cùng (điều này chứng tỏ cả hai đều thuộc nhóm đổi mới, luôn khao khát những điều mới lạ). Nếu tôi cứ hùa theo mọi lời rủ rê của họ, ví tiền của tôi sẽ sớm cạn kiệt.</p>
     <p>Khu vực xung quanh Đại học Ichinose có mức sống thấp hơn so với trung tâm thành phố, dù sao vẫn tốt hơn Shibuya, nơi một ly cà phê có thể lên tới cả nghìn yên.</p>
     <p>"Nghe nói đó là món ăn linh hồn đối với sinh viên trường Ichinose đấy."</p>
     <p>"Nghe hấp dẫn nhỉ?"</p>
     <p>Món ăn linh hồn, ừm... Món ăn linh hồn nghĩa là món ăn bắt nguồn từ một văn hóa đặc trưng. Cảm giác như nó mang lại một chút hoài niệm, hay nói đúng hơn là gắn liền với những ký ức ở vùng đất đó. Điều này có lẽ đồng nghĩa với việc những sinh viên theo học tại đây chắc chắn đã từng thử qua ít nhất một lần.</p>
     <p>"Chà..."</p>
-    <p>Nghe xong, dù thuộc tuýp người kém chủ động, anh cũng bắt đầu thấy tò mò. Nếu chỉ là một bữa ăn, chắc sẽ không đến nỗi cháy túi. Huống hồ, nếu được gọi là món ăn linh hồn, tức là nó được người dân địa phương ưa chuộng, và anh có thể đoán chắc đây không phải là một món ăn đắt tiền.</p>
+    <p>Nghe xong, dù thuộc tuýp người kém chủ động, tôi cũng bắt đầu thấy tò mò. Nếu chỉ là một bữa ăn, chắc sẽ không đến nỗi cháy túi. Huống hồ, nếu được gọi là món ăn linh hồn, tức là nó được người dân địa phương ưa chuộng, và tôi có thể đoán chắc đây không phải là một món ăn đắt tiền.</p>
     <p>"Được rồi. Nếu hai cậu đã nói đến mức đó, tôi sẽ đi cùng."</p>
     <p>"Chốt! Thời gian là vàng bạc, đi mau thôi!"</p>
 
     <hr>
 
-    <p>Anh, Nakamura và Kikuchi rảo bước về phía nhà ga qua con đường mang tên [Phố Đại Học]. Khi thấy vòng xuyến trước nhà ga, cả nhóm rẽ trái. Hóa ra quán nằm trong một con hẻm nhỏ.</p>
+    <p>Tôi, Nakamura và Kikuchi rảo bước về phía nhà ga qua con đường mang tên [Phố Đại Học]. Khi thấy vòng xuyến trước nhà ga, cả nhóm rẽ trái. Hóa ra quán nằm trong một con hẻm nhỏ.</p>
     <p>"Kìa, nó kìa."</p>
     <p>Kikuchi chỉ tay vào một tấm biển màu trắng thường thấy trên các con phố mua sắm, loại biển sẽ sáng đèn khi trời tối. Phía sau tấm biển là một cánh cửa màu xanh đậm hơi ngả xanh lục. Một tấm bảng nhỏ ghi thực đơn được đặt sao cho có thể nhìn thấy từ ngoài đường.</p>
-    <p>Vừa bước vào, không gian yên tĩnh bên trong một quán ăn không quá rộng lớn đã chào đón chúng anh. Anh cứ nghĩ quán sẽ vắng khách dù nằm gần ga, nhưng khi biết quán có tới hai tầng, anh đã thay đổi suy nghĩ. Quán này hóa ra cũng khá lớn.</p>
+    <p>Vừa bước vào, không gian yên tĩnh bên trong một quán ăn không quá rộng lớn đã chào đón chúng tôi. Tôi cứ nghĩ quán sẽ vắng khách dù nằm gần ga, nhưng khi biết quán có tới hai tầng, tôi đã thay đổi suy nghĩ. Quán này hóa ra cũng khá lớn.</p>
     <p>Ba đứa chọn chỗ ngồi ở phía trong cùng và lướt xem thực đơn.</p>
-    <p>Bánh mì nướng, gratin, pizza, cà ri... Có vẻ như quán phục vụ các món Âu thông thường. Tuy nhiên, vì là lần đầu đến đây, anh hơi bối rối không biết nên chọn món gì...</p>
+    <p>Bánh mì nướng, gratin, pizza, cà ri... Có vẻ như quán phục vụ các món Âu thông thường. Tuy nhiên, vì là lần đầu đến đây, tôi hơi bối rối không biết nên chọn món gì...</p>
     <p>"Món gợi ý ở đây là gì?"</p>
-    <p>Anh quay sang hỏi Kikuchi, người được đàn anh giới thiệu chỗ này.</p>
+    <p>Tôi quay sang hỏi Kikuchi, người được đàn tôi giới thiệu chỗ này.</p>
     <p>"Món nổi tiếng nhất là cà ri. Nhưng nếu là tôi, tôi đề cử món Bò Stroganoff."</p>
     <p>Hê~.</p>
     <p>"Ngon không?"</p>
     <p>"Chắc chắn rồi. Và khẩu phần cũng cực bự nữa."</p>
     <p>"Bự á?"</p>
-    <p>Anh cau mày. Nếu đó là hamburger hay trứng cuộn cơm, dùng từ "bự" thì anh còn hiểu được. Nhưng bò Stroganoff là món thịt bò thái mỏng hầm với nấm và hành tây. Dùng từ "nhiều" thì hợp lý, chứ "bự" nghe có vẻ hơi sai sai.</p>
-    <p>Anh không nhớ mình đã ăn món này nhiều lần, nhưng nghe có vẻ hấp dẫn.</p>
+    <p>Tôi cau mày. Nếu đó là hamburger hay trứng cuộn cơm, dùng từ "bự" thì tôi còn hiểu được. Nhưng bò Stroganoff là món thịt bò thái mỏng hầm với nấm và hành tây. Dùng từ "nhiều" thì hợp lý, chứ "bự" nghe có vẻ hơi sai sai.</p>
+    <p>Tôi không nhớ mình đã ăn món này nhiều lần, nhưng nghe có vẻ hấp dẫn.</p>
     <p>"Nếu tôi nhớ không nhầm thì đó là món ăn truyền thống của Nga, đúng không?"</p>
     <p>"Chuẩn. Tôi chưa đến Nga bao giờ nên cũng không rõ nó có chuẩn vị bản xứ hay không, nhưng chắc nó giống với tưởng tượng của tôi."</p>
     <p>"Được đấy. Tôi sẽ gọi món đó. Còn cậu gọi gì, Yuuta?"</p>
     <p>"Vậy cho tôi giống cậu."</p>
     <p>"Duyệt."</p>
     <p>"Tôi sẽ chọn món cà ri mà lần trước tôi chưa kịp thử."</p>
-    <p>Thế là anh và Nakamura gọi món Bò Stroganoff, còn Kikuchi thì gọi cà ri. Không phải đợi lâu, thức ăn nhanh chóng được dọn lên. Có lẽ vì chúng anh đến sớm hơn một chút so với giờ cao điểm buổi trưa.</p>
+    <p>Thế là tôi và Nakamura gọi món Bò Stroganoff, còn Kikuchi thì gọi cà ri. Không phải đợi lâu, thức ăn nhanh chóng được dọn lên. Có lẽ vì chúng tôi đến sớm hơn một chút so với giờ cao điểm buổi trưa.</p>
     <p>Những đĩa thức ăn được đặt trước mặt.</p>
     <p>"Chà."</p>
     <p>Bự thật...</p>
-    <p>Anh hiểu ngay lập tức. Quả thực, gọi món này là "bự" thì chính xác hơn là "nhiều".</p>
-    <p>Món bò Stroganoff ở nhà hàng này được phục vụ trên một chiếc đĩa khổng lồ chia làm hai nửa, một bên là cơm, một bên là bò hầm Stroganoff. Tuy nhiên, lượng thức ăn thực sự rất khủng. Anh cứ đinh ninh rằng sẽ có một "hòn đảo" cơm nhỏ giữa "biển" nước sốt sền sệt, nhưng anh đã lầm. Chiếc đĩa khổng lồ ngập tràn đến tận mép, phần cơm không bị nén phẳng mà được đắp thành một ngọn đồi cao, trong khi nước sốt đặc sánh tràn trề xung quanh. Ngoại hình món ăn thực sự rất ấn tượng.</p>
-    <p>"Bự đúng không?" Kikuchi hỏi. Anh gật đầu và đáp: "Đúng vậy."</p>
-    <p>Đến bước này, anh đã cảm thấy hài lòng. Đây đúng là một thực đơn lý tưởng cho lứa tuổi sinh viên đang tuổi ăn tuổi lớn.</p>
-    <p>Ngay khi anh đang chuẩn bị càn quét núi thức ăn, một cảnh tượng kỳ lạ đập vào mắt.</p>
+    <p>Tôi hiểu ngay lập tức. Quả thực, gọi món này là "bự" thì chính xác hơn là "nhiều".</p>
+    <p>Món bò Stroganoff ở nhà hàng này được phục vụ trên một chiếc đĩa khổng lồ chia làm hai nửa, một bên là cơm, một bên là bò hầm Stroganoff. Tuy nhiên, lượng thức ăn thực sự rất khủng. Tôi cứ đinh ninh rằng sẽ có một "hòn đảo" cơm nhỏ giữa "biển" nước sốt sền sệt, nhưng tôi đã lầm. Chiếc đĩa khổng lồ ngập tràn đến tận mép, phần cơm không bị nén phẳng mà được đắp thành một ngọn đồi cao, trong khi nước sốt đặc sánh tràn trề xung quanh. Ngoại hình món ăn thực sự rất ấn tượng.</p>
+    <p>"Bự đúng không?" Kikuchi hỏi. Tôi gật đầu và đáp: "Đúng vậy."</p>
+    <p>Đến bước này, tôi đã cảm thấy hài lòng. Đây đúng là một thực đơn lý tưởng cho lứa tuổi sinh viên đang tuổi ăn tuổi lớn.</p>
+    <p>Ngay khi tôi đang chuẩn bị càn quét núi thức ăn, một cảnh tượng kỳ lạ đập vào mắt.</p>
     <p>"Cậu đang làm gì vậy?"</p>
     <p>Nakamura đang chĩa điện thoại vào đĩa thức ăn trước mặt.</p>
     <p>"Tôi đang chuẩn bị đăng lên Instagram."</p>
     <p>"Chụp ảnh đồ ăn á?"</p>
-    <p>Instagram là ứng dụng mạng xã hội chủ yếu dùng để chia sẻ ảnh công khai... hoặc có vẻ là như vậy. Thực ra anh cũng biết về nó, nhưng hầu như chẳng bao giờ xem. À, nhắc mới nhớ, Saki ──.</p>
+    <p>Instagram là ứng dụng mạng xã hội chủ yếu dùng để chia sẻ ảnh công khai... hoặc có vẻ là như vậy. Thực ra tôi cũng biết về nó, nhưng hầu như chẳng bao giờ xem. À, nhắc mới nhớ, Saki ──.</p>
     <p>"Tuyệt! Xong rồi, ảnh đẹp đấy!"</p>
     <p>"Ăn lẹ đi kẻo nguội bây giờ. Sắp đến giờ học chiều rồi đấy."</p>
     <p>Trong khi đó, Kikuchi đã thoăn thoắt đưa thìa lên miệng. Có vẻ món ăn khá cay vì cậu ta liên tục đổ mồ hôi mỗi khi xúc đồ ăn.</p>
@@ -414,143 +668,143 @@
     <p>"Vậy là lần nào cậu cũng chụp à?"</p>
     <p>"Chỉ những lúc đi chơi thôi. Những thứ thú vị như thế này thì phải chia sẻ chứ, đúng không? Đồ ăn thì ăn xong cũng tiêu hóa hết... nhưng, hiểu ý tôi chứ?"</p>
     <p>"Cậu không cần phải gượng ép nói giọng phổ thông đâu."</p>
-    <p>Nakamura vốn nói giọng Kansai, nhưng có vẻ cậu ấy muốn tập nói giọng phổ thông nên thỉnh thoảng hay bắt chước ngữ điệu của người vùng Kanto. Hậu quả là, anh có cảm giác như cả giọng Kansai của cậu ta cũng bị lai tạp.</p>
+    <p>Nakamura vốn nói giọng Kansai, nhưng có vẻ cậu ấy muốn tập nói giọng phổ thông nên thỉnh thoảng hay bắt chước ngữ điệu của người vùng Kanto. Hậu quả là, tôi có cảm giác như cả giọng Kansai của cậu ta cũng bị lai tạp.</p>
     <p>"Điều chỉnh cách nói chuyện cho phù hợp với người khác cũng là một phần của giao tiếp mà. Những thứ thú vị thế này chia sẻ cho mọi người cùng biết vẫn tốt hơn là chỉ giữ cho riêng mình. Nó cũng là một chủ đề hay để trò chuyện sau này."</p>
     <p>"Chủ đề trò chuyện sau này sao..."</p>
-    <p>Nghe vậy, cái nhìn của anh về Nakamura có chút thay đổi. Khi nghĩ về những người có tính cách cởi mở và hoạt ngôn, trong đầu anh sẽ tự động nảy số đến những người bạn thời cấp ba như Narasaka-san, Maru và Yoshida. Mặc dù Nakamura cũng thuộc tuýp người đó, nhưng cậu ta lại là một kiểu người mà anh chưa từng gặp trước đây.</p>
+    <p>Nghe vậy, cái nhìn của tôi về Nakamura có chút thay đổi. Khi nghĩ về những người có tính cách cởi mở và hoạt ngôn, trong đầu tôi sẽ tự động nảy số đến những người bạn thời cấp ba như Narasaka-san, Maru và Yoshida. Mặc dù Nakamura cũng thuộc tuýp người đó, nhưng cậu ta lại là một kiểu người mà tôi chưa từng gặp trước đây.</p>
     <p>"Nhân tiện, Yuuta, cậu không dùng Instagram à? Dạo này tôi ít dùng LINE lắm, nên liên lạc qua đó hơi phiền."</p>
     <p>"Cậu dùng Instagram để nhắn tin luôn à?"</p>
     <p>"Ừ. Nếu kết bạn với nhau thì chắc chắn là nhắn được rồi, đúng không? Tôi có thể liên lạc với Yuma qua đó bất cứ lúc nào, tiện lắm."</p>
     <p>"Ồ, Asamu không có Instagram sao?"</p>
     <p>"Ừm. Thật ra... tôi có tài khoản."</p>
-    <p>Chính anh cũng vừa mới nhớ ra.</p>
-    <p>Năm ngoái, anh từng đi cùng Saki đến xem buổi hòa nhạc của cô bạn Melissa. Lần đó, Saki tình cờ làm quen với một nhà thiết kế tên Akihiro Ruka. Thấy hứng thú, Saki lập tài khoản để theo dõi những bức tranh minh họa và hình ảnh cô ấy đăng tải trên Instagram. Lúc đó, anh cũng lập một tài khoản, dù chưa bao giờ dùng và cứ bỏ xó đến tận bây giờ.</p>
+    <p>Chính tôi cũng vừa mới nhớ ra.</p>
+    <p>Năm ngoái, tôi từng đi cùng Saki đến xem buổi hòa nhạc của cô bạn Melissa. Lần đó, Saki tình cờ làm quen với một nhà thiết kế tên Akihiro Ruka. Thấy hứng thú, Saki lập tài khoản để theo dõi những bức tranh minh họa và hình ảnh cô ấy đăng tải trên Instagram. Lúc đó, tôi cũng lập một tài khoản, dù chưa bao giờ dùng và cứ bỏ xó đến tận bây giờ.</p>
     <p>"Tôi có một cái tài khoản mốc meo chưa từng đụng tới, nhưng nếu tiện hơn thì lát nữa tôi gửi cậu tên tài khoản."</p>
     <p>"Cảm ơn nha. Nào, ăn thôi."</p>
     <p>Nói xong, Nakamura cất điện thoại và bắt đầu dùng bữa. Khẩu phần ăn đồ sộ của đĩa Bò Stroganoff vơi đi nhanh chóng.</p>
     <p>"Yuuta, cậu không ăn à?"</p>
     <p>"Hả? À ừ. Tôi ăn đây."</p>
-    <p>Anh sững người một lúc vì những lời Nakamura vừa nói vẫn còn văng vẳng trong đầu.</p>
-    <p>Anh xúc một thìa phần nước sốt màu nâu sóng sánh ngập nửa đĩa. Khi đưa vào miệng, anh cảm nhận được chút vị chua thanh mát giữa vị kem béo ngậy. Theo lời Kikuchi, vị chua này xuất phát từ kem chua (sour cream). Khi nhai, hương vị đậm đà của thịt bò lan tỏa. Thịt được thái mỏng nên rất dễ ăn, hòa quyện hoàn hảo cùng nấm và hành tây, mang lại cảm giác vô cùng thỏa mãn. Và quan trọng nhất là nó rất ngon.</p>
+    <p>Tôi sững người một lúc vì những lời Nakamura vừa nói vẫn còn văng vẳng trong đầu.</p>
+    <p>Tôi xúc một thìa phần nước sốt màu nâu sóng sánh ngập nửa đĩa. Khi đưa vào miệng, anh cảm nhận được chút vị chua thanh mát giữa vị kem béo ngậy. Theo lời Kikuchi, vị chua này xuất phát từ kem chua (sour cream). Khi nhai, hương vị đậm đà của thịt bò lan tỏa. Thịt được thái mỏng nên rất dễ ăn, hòa quyện hoàn hảo cùng nấm và hành tây, mang lại cảm giác vô cùng thỏa mãn. Và quan trọng nhất là nó rất ngon.</p>
     <p>"Ngon thật đấy."</p>
     <p>"Đúng không?"</p>
-    <p>Kikuchi đáp lại kèm một nụ cười. Anh chợt nhận ra Kikuchi, người thường ngày luôn mang vẻ mặt ủ rũ và hay mỉa mai, lại có những biểu cảm rất trẻ con khi bàn về những món ăn ngon.</p>
-    <p>Tiếp theo, anh xúc một thìa cơm ăn kèm với bò Stroganoff. Sự đậm đà của nước sốt được làm dịu lại khi ăn cùng cơm trắng, tạo nên một sự kết hợp hoàn hảo. Nuốt miếng cơm nóng hổi cùng thịt bò hầm xuống bụng, anh thở hắt ra một hơi mãn nguyện rồi nhấp một ngụm nước. Ngay lập tức, anh lại muốn ăn thêm miếng nữa. Tay anh không thể dừng lại được.</p>
+    <p>Kikuchi đáp lại kèm một nụ cười. Tôi chợt nhận ra Kikuchi, người thường ngày luôn mang vẻ mặt ủ rũ và hay mỉa mai, lại có những biểu cảm rất trẻ con khi bàn về những món ăn ngon.</p>
+    <p>Tiếp theo, tôi xúc một thìa cơm ăn kèm với bò Stroganoff. Sự đậm đà của nước sốt được làm dịu lại khi ăn cùng cơm trắng, tạo nên một sự kết hợp hoàn hảo. Nuốt miếng cơm nóng hổi cùng thịt bò hầm xuống bụng, tôi thở hắt ra một hơi mãn nguyện rồi nhấp một ngụm nước. Ngay lập tức, tôi lại muốn ăn thêm miếng nữa. Tay tôi không thể dừng lại được.</p>
     <p>"Ngon bá cháy. Lát nữa tôi sẽ viết review về chỗ này." Nakamura hớn hở nói.</p>
     <p>"Trên Instagram á?"</p>
     <p>Cậu ta gật đầu. Ra là vậy, không chỉ đăng ảnh mà còn viết cả bình luận nữa.</p>
     <p>Vừa ăn, ba đứa vừa trò chuyện rôm rả, Nakamura chia sẻ rằng mặc dù hay đăng ảnh đồ ăn, nhưng cậu ta cũng thường viết kèm vài dòng nhận xét ngắn gọn nếu món đó ngon. Có lẽ điều này xuất phát từ mong muốn "chia sẻ những điều thú vị với mọi người". Trong khi đó, Kikuchi có vẻ có rất nhiều bạn bè là "chiến hữu" chơi game trên mạng xã hội, và khi giao tiếp, cậu ta thường sử dụng Discord.</p>
     <p>"Các cậu dùng nhiều mạng xã hội nhỉ?"</p>
     <p>"Discord xài tiện lắm. Asamu cũng muốn dùng thử không?"</p>
-    <p>Anh ậm ừ bảo sẽ cân nhắc. Anh không chắc mình có thể quản lý hết nếu dùng quá nhiều ứng dụng.</p>
+    <p>Tôi ậm ừ bảo sẽ cân nhắc. Tôi không chắc mình có thể quản lý hết nếu dùng quá nhiều ứng dụng.</p>
     <p>"Tôi cũng có xài Instagram. Nó trông như thế này nè."</p>
-    <p>Kikuchi chìa màn hình điện thoại về phía anh, cho xem vài bức ảnh. Rất nhiều trong số đó chỉ là những bức ảnh chụp cảnh vật đời thường. Thỉnh thoảng, cậu ta cũng đăng vài bức ảnh selfie giấu mặt kiểu như "Mới cắt tóc nè", và có vẻ cũng chăm cập nhật những bộ quần áo mới mua. Anh đùa bảo mấy bài đăng đó trông như đang báo cáo tình hình vậy, Kikuchi đáp lại rằng đó cũng là một phần mục đích. Dù luôn miệng nói không thích "những người thích giao du", nhưng có vẻ sâu thẳm bên trong, cậu ta không thực sự muốn cô đơn dẫu bản tính có phần nhút nhát.</p>
+    <p>Kikuchi chìa màn hình điện thoại về phía tôi, cho xem vài bức ảnh. Rất nhiều trong số đó chỉ là những bức ảnh chụp cảnh vật đời thường. Thỉnh thoảng, cậu ta cũng đăng vài bức ảnh selfie giấu mặt kiểu như "Mới cắt tóc nè", và có vẻ cũng chăm cập nhật những bộ quần áo mới mua. Tôi đùa bảo mấy bài đăng đó trông như đang báo cáo tình hình vậy, Kikuchi đáp lại rằng đó cũng là một phần mục đích. Dù luôn miệng nói không thích "những người thích giao du", nhưng có vẻ sâu thẳm bên trong, cậu ta không thực sự muốn cô đơn dẫu bản tính có phần nhút nhát.</p>
     <p>Cả hai thường xuyên tương tác qua lại và trò chuyện sôi nổi với bạn bè trên mạng. Kikuchi cười ngượng nghịu thừa nhận rằng số lượng bạn bè trong thế giới ảo của cậu còn nhiều hơn bạn bè ngoài đời thực.</p>
     <p>Vừa vét sạch những thìa Bò Stroganoff cuối cùng, Nakamura vừa nói: "Lưu lại hình ảnh giúp ta có thể xem lại bất cứ lúc nào và tự nhủ rằng 'chà, hồi đó vui thật đấy'."</p>
-    <p>"Dù cũng có khả năng đó là một kỷ niệm tồi tệ," anh chêm vào.</p>
+    <p>"Dù cũng có khả năng đó là một kỷ niệm tồi tệ," tôi chêm vào.</p>
     <p>"Thì lúc đó xóa đi là xong."</p>
-    <p>Nakamura nói nhẹ bẫng, một thái độ sống mà anh có lẽ sẽ không bao giờ có được.</p>
+    <p>Nakamura nói nhẹ bẫng, một thái độ sống mà tôi có lẽ sẽ không bao giờ có được.</p>
     <p>"Thà làm rồi hối hận còn hơn là không làm để rồi phải tiếc nuối."</p>
     <p>"Đó là lý do tại sao những người tự tin thường rất khó đối phó. Bản thân tôi ngay từ đầu đã không muốn phải hối hận về bất cứ điều gì. Hơn nữa, có những việc một khi đã làm thì không thể vãn hồi được."</p>
     <p>"À, cái đó thì đúng. Hành động mà không sẵn sàng chịu trách nhiệm là tồi tệ nhất. Tuyệt đối không được làm thế."</p>
     <p>Hình như câu chuyện bắt đầu đi hơi xa rồi thì phải?</p>
-    <p>Dù chủ đề có hơi lạc quẻ đôi chút, nhưng chúng anh cũng đã hoàn thành bữa trưa. Để không bị trễ giờ học buổi chiều, cả nhóm vội vã quay lại theo con đường cũ.</p>
+    <p>Dù chủ đề có hơi lạc quẻ đôi chút, nhưng chúng tôi cũng đã hoàn thành bữa trưa. Để không bị trễ giờ học buổi chiều, cả nhóm vội vã quay lại theo con đường cũ.</p>
 
     <hr>
 
-    <p>Kết thúc buổi học trên trường, anh uể oải bước lên chuyến tàu điện ngầm hướng về Shinjuku.</p>
-    <p>Dõi mắt nhìn khung cảnh bên ngoài cửa sổ đang dần chìm vào bóng tối, anh bâng khuâng nhớ lại cuộc trò chuyện ban trưa.</p>
-    <p>Anh nhớ đến Maru. Cậu bạn từng kể rằng mình thường xuyên thảo luận về anime với những người bạn trên mạng, và cậu ấy cũng quen biết cô bạn gái Narasaka-san thông qua mạng xã hội (dù lúc đó cậu ta không hề biết đó là Narasaka-san).</p>
-    <p>Điều này một lần nữa nhắc nhở anh rằng bấy lâu nay anh luôn giữ thái độ 'không níu kéo người đi, không từ chối kẻ đến', nên hiếm khi chủ động duy trì các mối quan hệ bạn bè. Ngay cả với Maru và Narasaka-san, nếu anh vẫn là anh của quá khứ—như hồi mới bước chân vào cấp ba—có lẽ mối quan hệ của chúng anh đã đứt đoạn sau khi anh lên đại học. Họ có lẽ là những người bạn đầu tiên mà anh không muốn mất liên lạc sau khi tốt nghiệp.</p>
-    <p>Anh nhận ra rằng mối quan hệ giữa người với người có thể kết thúc chóng vánh nếu ta không nỗ lực vun đắp. Giống như lúc Saki, người vẫn luôn dùng kính ngữ gọi anh là "Asamura-kun", bỗng nhiên chuyển sang gọi anh là "Anh hai" (Nii-san).</p>
-    <p>Khi đó, anh đã cảm thấy rất kỳ lạ. Đáng lẽ ra, tiếng gọi 'Anh hai' sẽ khiến hai đứa thân thiết hơn với tư cách người nhà, nhưng ngược lại, nó lại khiến anh cảm thấy khoảng cách giữa mình và Saki ngày càng xa. Anh bối rối trước khoảng cách ấy và cảm thấy cô đơn khôn tả. Kể từ đó, một loạt các sự kiện đã đẩy anh vào một vị trí kỳ lạ: vừa là anh trai, vừa là bạn trai, và sau đó anh luôn nỗ lực để cả hai không chỉ dừng lại ở tình cảm anh em, mà là tình yêu của một cặp đôi thực sự. Anh không muốn đánh mất khoảng cách đã được rút ngắn này.</p>
-    <p>Bây giờ anh mới lờ mờ nhận ra rằng thói quen không níu kéo những thứ đã xa rời mình chính là hệ quả sau khi mẹ ruột anh bỏ nhà ra đi. Đó là cách anh tạo ra một vùng an toàn để không phải kỳ vọng quá nhiều vào các mối quan hệ. Không kỳ vọng, sẽ không có thất vọng.</p>
-    <p>Trong quá khứ, từng có người buông lời chỉ trích gay gắt về thái độ này của anh.</p>
-    <p>── Nếu em thực sự thờ ơ, làm sao em lại tự nhủ trong thâm tâm rằng "Mình không đặt kỳ vọng vào phụ nữ". Cố tình nhấn mạnh điều đó chứng tỏ ngay tại thời điểm ấy, em đã không còn thờ ơ nữa rồi. Đó chính là sự phản ánh của ý thức và sự bất an. … Fujinami-san đã nói với anh như vậy đấy.</p>
+    <p>Kết thúc buổi học trên trường, tôi uể oải bước lên chuyến tàu điện ngầm hướng về Shinjuku.</p>
+    <p>Dõi mắt nhìn khung cảnh bên ngoài cửa sổ đang dần chìm vào bóng tối, tôi bâng khuâng nhớ lại cuộc trò chuyện ban trưa.</p>
+    <p>Tôi nhớ đến Maru. Cậu bạn từng kể rằng mình thường xuyên thảo luận về anime với những người bạn trên mạng, và cậu ấy cũng quen biết cô bạn gái Narasaka-san thông qua mạng xã hội (dù lúc đó cậu ta không hề biết đó là Narasaka-san).</p>
+    <p>Điều này một lần nữa nhắc nhở tôi rằng bấy lâu nay tôi luôn giữ thái độ 'không níu kéo người đi, không từ chối kẻ đến', nên hiếm khi chủ động duy trì các mối quan hệ bạn bè. Ngay cả với Maru và Narasaka-san, nếu tôi vẫn là tôi của quá khứ—như hồi mới bước chân vào cấp ba—có lẽ mối quan hệ của chúng tôi đã đứt đoạn sau khi tôi lên đại học. Họ có lẽ là những người bạn đầu tiên mà tôi không muốn mất liên lạc sau khi tốt nghiệp.</p>
+    <p>Tôi nhận ra rằng mối quan hệ giữa người với người có thể kết thúc chóng vánh nếu ta không nỗ lực vun đắp. Giống như lúc Saki, người vẫn luôn dùng kính ngữ gọi tôi là "Asamura-kun", bỗng nhiên chuyển sang gọi tôi là "Anh hai" (Nii-san).</p>
+    <p>Khi đó, tôi đã cảm thấy rất kỳ lạ. Đáng lẽ ra, tiếng gọi 'Tôi hai' sẽ khiến hai đứa thân thiết hơn với tư cách người nhà, nhưng ngược lại, nó lại khiến anh cảm thấy khoảng cách giữa mình và Saki ngày càng xa. Tôi bối rối trước khoảng cách ấy và cảm thấy cô đơn khôn tả. Kể từ đó, một loạt các sự kiện đã đẩy tôi vào một vị trí kỳ lạ: vừa là anh trai, vừa là bạn trai, và sau đó tôi luôn nỗ lực để cả hai không chỉ dừng lại ở tình cảm anh em, mà là tình yêu của một cặp đôi thực sự. Tôi không muốn đánh mất khoảng cách đã được rút ngắn này.</p>
+    <p>Bây giờ tôi mới lờ mờ nhận ra rằng thói quen không níu kéo những thứ đã xa rời mình chính là hệ quả sau khi mẹ ruột tôi bỏ nhà ra đi. Đó là cách tôi tạo ra một vùng an toàn để không phải kỳ vọng quá nhiều vào các mối quan hệ. Không kỳ vọng, sẽ không có thất vọng.</p>
+    <p>Trong quá khứ, từng có người buông lời chỉ trích gay gắt về thái độ này của tôi.</p>
+    <p>── Nếu em thực sự thờ ơ, làm sao em lại tự nhủ trong thâm tâm rằng "Mình không đặt kỳ vọng vào phụ nữ". Cố tình nhấn mạnh điều đó chứng tỏ ngay tại thời điểm ấy, em đã không còn thờ ơ nữa rồi. Đó chính là sự phản ánh của ý thức và sự bất an. … Fujinami-san đã nói với tôi như vậy đấy.</p>
     <p>Bây giờ, anh cảm thấy mình đang đặt kỳ vọng vào Saki.</p>
-    <p>Anh nghĩ Saki cũng kỳ vọng vào anh. Và anh muốn đáp lại sự kỳ vọng đó.</p>
-    <p>Anh muốn trân trọng những mối quan hệ của mình. Không phải một cách vô thức, mà là một sự chủ động có ý thức, người đầu tiên khiến anh nảy sinh cảm giác này chính là Saki. Suốt những năm tháng cấp ba, anh đã dần dần nuôi dưỡng cảm xúc đó. Giờ đây, anh cảm thấy mình đã biết trân trọng các mối quan hệ với mọi người hơn.</p>
+    <p>Tôi nghĩ Saki cũng kỳ vọng vào tôi. Và tôi muốn đáp lại sự kỳ vọng đó.</p>
+    <p>Tôi muốn trân trọng những mối quan hệ của mình. Không phải một cách vô thức, mà là một sự chủ động có ý thức, người đầu tiên khiến tôi nảy sinh cảm giác này chính là Saki. Suốt những năm tháng cấp ba, tôi đã dần dần nuôi dưỡng cảm xúc đó. Giờ đây, anh cảm thấy mình đã biết trân trọng các mối quan hệ với mọi người hơn.</p>
     <p>Khung cảnh nhuốm màu đỏ ối của buổi hoàng hôn vụt qua ngoài cửa sổ toa tàu.</p>
     <p>Đoàn tàu không ngừng lao về phía trước, ném lại những hình ảnh thành phố qua khung cửa sổ vào bầu trời u ám phía sau, vào quá khứ. Cảnh vật vụt qua nhanh chóng tựa như những mảnh ký ức thường nhật. Chỉ một vài hình ảnh đọng lại, còn phần lớn đều tan biến vào màn đêm vô tận.</p>
     <p>Nếu không muốn những ký ức ấy phai nhòa, ta cần phải nỗ lực để lưu giữ chúng. Giống như cách Nakamura đăng những bức ảnh đồ ăn lên Instagram.</p>
     <p>"Cũng chẳng mất mát gì, tốn chút thời gian thôi. Thói quen của tôi ấy mà."</p>
     <p>Đúng vậy, điều quan trọng không phải là những nỗ lực lớn lao hay tốn nhiều thời gian, mà là những hành động nhỏ bé có thể duy trì thành thói quen.</p>
-    <p>Việc Kikuchi đăng ảnh selfie sau khi tậu được bộ đồ ưng ý cũng vậy. Cậu ấy đang thiết lập những thói quen nho nhỏ để không đánh mất đi những thứ quan trọng với bản thân. Anh cảm thấy có chút giật mình khi nhận ra điều đó.</p>
-    <p>Anh từng nghĩ rằng khi môi trường và cuộc sống thay đổi, chắc chắn sẽ có một điều gì đó mới mẻ bắt đầu.</p>
-    <p>Không lẽ anh từng nghĩ rằng những điều mới mẻ sẽ tự động tìm đến mình sao?</p>
+    <p>Việc Kikuchi đăng ảnh selfie sau khi tậu được bộ đồ ưng ý cũng vậy. Cậu ấy đang thiết lập những thói quen nho nhỏ để không đánh mất đi những thứ quan trọng với bản thân. Tôi cảm thấy có chút giật mình khi nhận ra điều đó.</p>
+    <p>Tôi từng nghĩ rằng khi môi trường và cuộc sống thay đổi, chắc chắn sẽ có một điều gì đó mới mẻ bắt đầu.</p>
+    <p>Không lẽ tôi từng nghĩ rằng những điều mới mẻ sẽ tự động tìm đến mình sao?</p>
     <p>"Mình đã làm được điều gì mới mẻ chưa nhỉ?"</p>
-    <p>Dựa lưng vào vách tường gần cửa ra vào, anh lẩm bẩm một mình. Trong chuyến tàu điện vắng vẻ hướng về trung tâm thành phố, tiếng thì thầm của anh nhanh chóng bị tiếng bánh sắt nghiến trên đường ray và sự rung lắc nuốt chửng.</p>
-    <p>Anh không tham gia câu lạc bộ nào, công việc làm thêm vẫn là ở hiệu sách quen thuộc. Dù mối quan hệ với Saki đã tiến thêm một bước ngay trước thềm cuộc sống mới, nhưng khi nhìn lại một tháng qua, chẳng phải anh vẫn chỉ đang lặp đi lặp lại những thói quen thường nhật đó sao?</p>
-    <p>Cảm giác như chỉ có mỗi mình anh là dậm chân tại chỗ, không chịu mở rộng thế giới của mình.</p>
+    <p>Dựa lưng vào vách tường gần cửa ra vào, tôi lẩm bẩm một mình. Trong chuyến tàu điện vắng vẻ hướng về trung tâm thành phố, tiếng thì thầm của tôi nhanh chóng bị tiếng bánh sắt nghiến trên đường ray và sự rung lắc nuốt chửng.</p>
+    <p>Tôi không tham gia câu lạc bộ nào, công việc làm thêm vẫn là ở hiệu sách quen thuộc. Dù mối quan hệ với Saki đã tiến thêm một bước ngay trước thềm cuộc sống mới, nhưng khi nhìn lại một tháng qua, chẳng phải tôi vẫn chỉ đang lặp đi lặp lại những thói quen thường nhật đó sao?</p>
+    <p>Cảm giác như chỉ có mỗi mình tôi là dậm chân tại chỗ, không chịu mở rộng thế giới của mình.</p>
     <p>Trong khi đó Saki đã bắt đầu công việc mới.</p>
     <p>Nhắc mới nhớ...</p>
-    <p>Anh lôi điện thoại ra khỏi túi và tìm ứng dụng Instagram. Vì không quen dùng, anh thậm chí chẳng nhớ nổi biểu tượng của nó, mãi một lúc sau anh mới tìm thấy và mở lên. Anh chưa từng cập nhật bài đăng nào trên tài khoản của mình, nhưng Saki thì... anh nhấn vào tài khoản của em. Màn hình chuyển cảnh, hàng loạt ảnh thu nhỏ hiện ra xếp thành ba cột dài dằng dặc, vượt xa kích thước màn hình.</p>
+    <p>Tôi lôi điện thoại ra khỏi túi và tìm ứng dụng Instagram. Vì không quen dùng, tôi thậm chí chẳng nhớ nổi biểu tượng của nó, mãi một lúc sau tôi mới tìm thấy và mở lên. Tôi chưa từng cập nhật bài đăng nào trên tài khoản của mình, nhưng Saki thì... tôi nhấn vào tài khoản của em. Màn hình chuyển cảnh, hàng loạt ảnh thu nhỏ hiện ra xếp thành ba cột dài dằng dặc, vượt xa kích thước màn hình.</p>
     <p>"Nhiều thế... Những cái này có từ lúc nào vậy?"</p>
-    <p>Anh vuốt màn hình kéo lên, nhưng danh sách ảnh thu nhỏ dường như không có điểm dừng. Saki bắt đầu dùng Instagram từ mùa thu năm ngoái. Kể từ đó, em thỉnh thoảng đăng vài bài, nhưng tần suất có vẻ tăng vọt kể từ khi em vào đại học.</p>
-    <p>Không, không phải là có vẻ nữa. Anh nhận ra điều đó khi thấy bức ảnh hoa anh đào. Đó là những bức ảnh chụp vào mùa xuân năm nay.</p>
-    <p>Anh vuốt ngược lại... và choáng ngợp trước số lượng ảnh khổng lồ. Từ những khung cảnh dường như được chụp trong khuôn viên trường đại học, cho đến ảnh selfie cùng hai cô gái có vẻ là bạn của em (một cô nàng cá tính với mái tóc màu cam xám và một cô nàng trông khá điềm đạm). Cũng có rất nhiều ảnh chụp những món phụ kiện thời trang sành điệu mà em mới tậu.</p>
-    <p>Những bức ảnh check-in đồ ăn hiển nhiên cũng không thể thiếu. Những bữa ăn ngoài hàng quán đan xen với những món ăn em tự tay chuẩn bị, khắc họa rõ nét lối sống của Saki. Các món ăn tự làm thường là những món khai vị kiểu Âu được trình bày vô cùng bắt mắt. Mặc dù gọi là món khai vị nghe có vẻ sang trọng, nhưng thực chất đó chỉ là những món nhắm nhẹ nhàng làm cho bố anh. Những chiếc bánh quy kẹp phô mai, điểm xuyết thêm vài miếng ớt chuông thái hạt lựu đủ màu và trái cây, trông thật rực rỡ và hấp dẫn. Trông như thể mấy món này có thể được mang lên phục vụ tại quán bar nơi mẹ kế Akiko-san đang làm việc vậy. Có khi nào đây là công thức truyền trực tiếp từ mẹ không chừng.</p>
-    <p>Và cả loạt ảnh các món tráng miệng nữa. Bức ảnh mới nhất chụp vài chiếc bánh scone có vẻ mới ra lò cùng một tách trà. Cạnh hũ đường là mứt việt quất và kem tươi trắng muốt. A, chắc chắn đây là quán cà phê nổi tiếng nằm trong khu trung tâm thương mại Ginza nức tiếng với món bánh scone. Bánh scone bự chảng ăn kèm lớp kem đặc sánh thơm lừng, em đã từng vừa cho anh xem bức ảnh này vừa miêu tả một cách đầy hào hứng. Hôm đó, em còn nói muốn một lần trải nghiệm tiệc trà chiều kiểu Anh thực thụ.</p>
-    <p>Đó có lẽ là chuyện của hai tuần trước. Lý do anh vẫn nhớ rõ là vì anh đã từng lên mạng tìm hiểu, định bụng sẽ rủ em đi hẹn hò ở đó. Tuy nhiên, sau khi tìm hiểu kỹ, thực đơn trà chiều rẻ nhất ở đó cũng có giá khởi điểm từ 4000 yên. Ở những nhà hàng cao cấp hơn, giá có thể lên tới 8000 yên, một con số mà sinh viên tụi anh khó lòng mà kham nổi.</p>
-    <p>Dù vậy, những bức ảnh mới nhất đập vào mắt anh toàn là những thứ anh chưa từng nhìn thấy bao giờ. Anh thầm thở dài. Màn hình điện thoại tràn ngập cuộc sống thường nhật của Saki mà anh không hề hay biết. Hồi cấp ba, cuộc sống của hai đứa còn xoay quanh nhau, nên anh chẳng thể ngờ lại có sự khác biệt lớn đến vậy giữa thế giới của em và thế giới của anh.</p>
-    <p>Mặc dù chúng anh gặp gỡ và trò chuyện gần như mỗi ngày, nhưng cảm giác những điều anh không biết về em lại ngày một nhiều hơn. Ngay cả trong những bữa tối cùng nhau, đôi lúc em trông có vẻ mệt mỏi và chỉ trả lời chiếu lệ. Có vẻ như em không thực sự để tâm vào cuộc trò chuyện.</p>
-    <p>Cuộc sống thường nhật của Saki mà anh không hề hay biết—đó là những gì anh đang cảm nhận lúc này.</p>
+    <p>Tôi vuốt màn hình kéo lên, nhưng danh sách ảnh thu nhỏ dường như không có điểm dừng. Saki bắt đầu dùng Instagram từ mùa thu năm ngoái. Kể từ đó, em thỉnh thoảng đăng vài bài, nhưng tần suất có vẻ tăng vọt kể từ khi em vào đại học.</p>
+    <p>Không, không phải là có vẻ nữa. Tôi nhận ra điều đó khi thấy bức ảnh hoa tôi đào. Đó là những bức ảnh chụp vào mùa xuân năm nay.</p>
+    <p>Tôi vuốt ngược lại... và choáng ngợp trước số lượng ảnh khổng lồ. Từ những khung cảnh dường như được chụp trong khuôn viên trường đại học, cho đến ảnh selfie cùng hai cô gái có vẻ là bạn của em (một cô nàng cá tính với mái tóc màu cam xám và một cô nàng trông khá điềm đạm). Cũng có rất nhiều ảnh chụp những món phụ kiện thời trang sành điệu mà em mới tậu.</p>
+    <p>Những bức ảnh check-in đồ ăn hiển nhiên cũng không thể thiếu. Những bữa ăn ngoài hàng quán đan xen với những món ăn em tự tay chuẩn bị, khắc họa rõ nét lối sống của Saki. Các món ăn tự làm thường là những món khai vị kiểu Âu được trình bày vô cùng bắt mắt. Mặc dù gọi là món khai vị nghe có vẻ sang trọng, nhưng thực chất đó chỉ là những món nhắm nhẹ nhàng làm cho bố tôi. Những chiếc bánh quy kẹp phô mai, điểm xuyết thêm vài miếng ớt chuông thái hạt lựu đủ màu và trái cây, trông thật rực rỡ và hấp dẫn. Trông như thể mấy món này có thể được mang lên phục vụ tại quán bar nơi mẹ kế Akiko-san đang làm việc vậy. Có khi nào đây là công thức truyền trực tiếp từ mẹ không chừng.</p>
+    <p>Và cả loạt ảnh các món tráng miệng nữa. Bức ảnh mới nhất chụp vài chiếc bánh scone có vẻ mới ra lò cùng một tách trà. Cạnh hũ đường là mứt việt quất và kem tươi trắng muốt. A, chắc chắn đây là quán cà phê nổi tiếng nằm trong khu trung tâm thương mại Ginza nức tiếng với món bánh scone. Bánh scone bự chảng ăn kèm lớp kem đặc sánh thơm lừng, em đã từng vừa cho tôi xem bức ảnh này vừa miêu tả một cách đầy hào hứng. Hôm đó, em còn nói muốn một lần trải nghiệm tiệc trà chiều kiểu Tôi thực thụ.</p>
+    <p>Đó có lẽ là chuyện của hai tuần trước. Lý do tôi vẫn nhớ rõ là vì tôi đã từng lên mạng tìm hiểu, định bụng sẽ rủ em đi hẹn hò ở đó. Tuy nhiên, sau khi tìm hiểu kỹ, thực đơn trà chiều rẻ nhất ở đó cũng có giá khởi điểm từ 4000 yên. Ở những nhà hàng cao cấp hơn, giá có thể lên tới 8000 yên, một con số mà sinh viên tụi tôi khó lòng mà kham nổi.</p>
+    <p>Dù vậy, những bức ảnh mới nhất đập vào mắt tôi toàn là những thứ tôi chưa từng nhìn thấy bao giờ. Tôi thầm thở dài. Màn hình điện thoại tràn ngập cuộc sống thường nhật của Saki mà tôi không hề hay biết. Hồi cấp ba, cuộc sống của hai đứa còn xoay quanh nhau, nên tôi chẳng thể ngờ lại có sự khác biệt lớn đến vậy giữa thế giới của em và thế giới của tôi.</p>
+    <p>Mặc dù chúng tôi gặp gỡ và trò chuyện gần như mỗi ngày, nhưng cảm giác những điều tôi không biết về em lại ngày một nhiều hơn. Ngay cả trong những bữa tối cùng nhau, đôi lúc em trông có vẻ mệt mỏi và chỉ trả lời chiếu lệ. Có vẻ như em không thực sự để tâm vào cuộc trò chuyện.</p>
+    <p>Cuộc sống thường nhật của Saki mà tôi không hề hay biết—đó là những gì tôi đang cảm nhận lúc này.</p>
     <p>Đoàn tàu bắt đầu giảm tốc.</p>
-    <p>Tiếng loa thông báo sắp đến ga Shinjuku. Đến đây, anh phải chuyển tàu. Bước khỏi toa tàu vừa dừng hẳn, anh ngoái lại nhìn bầu trời phía Đông đã tối mịt. Cảm giác như ngày hôm nay đã bị bóng đêm nuốt chửng không lưu lại một dấu vết.</p>
+    <p>Tiếng loa thông báo sắp đến ga Shinjuku. Đến đây, tôi phải chuyển tàu. Bước khỏi toa tàu vừa dừng hẳn, tôi ngoái lại nhìn bầu trời phía Đông đã tối mịt. Cảm giác như ngày hôm nay đã bị bóng đêm nuốt chửng không lưu lại một dấu vết.</p>
 
     <hr>
 
     <p>Có một thứ gọi là gia vị trộn sẵn cho cơm trộn. Ta thường thấy chúng được bày bán dưới dạng gói ăn liền, nhưng nếu vào siêu thị hay tiệm thuốc, ta cũng có thể tìm thấy những túi nhựa đựng rau củ theo mùa (như măng hay các loại rau rừng) đã được ngâm sẵn trong nước dùng.</p>
     <p>Thứ này cực kỳ tiện lợi. Chỉ cần trút vào nồi cơm điện nấu cùng gạo, mâm cơm trông sẽ sang trọng hơn hẳn so với việc chỉ ăn cơm trắng.</p>
-    <p>Đó là lý do vì sao, vì hôm nay đến lượt anh phụ trách bữa tối, gói gia vị cơm trộn măng phát huy tác dụng cực tốt. Mùa măng thường bắt đầu từ tháng Ba đến tháng Năm, nên anh phải tranh thủ thưởng thức trước khi hết mùa.</p>
-    <p>Tiếng bíp bíp nhân tạo từ nồi cơm điện báo hiệu cơm đã chín, sau khi ước chừng thời gian ủ, anh mở nắp nồi. Hơi nước bốc lên mang theo mùi hương của măng quyện cùng nước hầm xộc thẳng vào mặt. Dạ dày anh vốn đã lưng lửng nay bỗng sôi réo rắt.</p>
+    <p>Đó là lý do vì sao, vì hôm nay đến lượt tôi phụ trách bữa tối, gói gia vị cơm trộn măng phát huy tác dụng cực tốt. Mùa măng thường bắt đầu từ tháng Ba đến tháng Năm, nên tôi phải tranh thủ thưởng thức trước khi hết mùa.</p>
+    <p>Tiếng bíp bíp nhân tạo từ nồi cơm điện báo hiệu cơm đã chín, sau khi ước chừng thời gian ủ, tôi mở nắp nồi. Hơi nước bốc lên mang theo mùi hương của măng quyện cùng nước hầm xộc thẳng vào mặt. Dạ dày tôi vốn đã lưng lửng nay bỗng sôi réo rắt.</p>
     <p>"Xong. Cơm chín đều rồi. Anh dọn ra nhé?"</p>
-    <p>Anh ngẩng mặt lên và gọi Saki đang cắm cúi làm việc ngoài phòng khách. Saki đang chăm chú lật mở giáo trình đại học và ghi chép cẩn thận vào vở. Có lẽ em đang học bài hoặc ôn lại kiến thức trong lúc chờ cơm.</p>
+    <p>Tôi ngẩng mặt lên và gọi Saki đang cắm cúi làm việc ngoài phòng khách. Saki đang chăm chú lật mở giáo trình đại học và ghi chép cẩn thận vào vở. Có lẽ em đang học bài hoặc ôn lại kiến thức trong lúc chờ cơm.</p>
     <p>"Dạ. Em ăn liền. Em giúp anh dọn bàn nhé."</p>
     <p>"Cảm ơn em."</p>
-    <p>Anh bày biện các món ăn đã nấu xong lên bàn ăn. Thực đơn gồm có cơm trộn măng, súp miso (dạo này anh toàn tự tay nấu chứ không dùng loại sấy khô hay đóng ly nữa. Tất nhiên, hôm nào vội quá thì vẫn phải dùng tạm), salad với đậu phụ xắt hạt lựu, và một món nữa là natto.</p>
+    <p>Tôi bày biện các món ăn đã nấu xong lên bàn ăn. Thực đơn gồm có cơm trộn măng, súp miso (dạo này tôi toàn tự tay nấu chứ không dùng loại sấy khô hay đóng ly nữa. Tất nhiên, hôm nào vội quá thì vẫn phải dùng tạm), salad với đậu phụ xắt hạt lựu, và một món nữa là natto.</p>
     <p>"Natto đóng gói từng phần thế này tiện thật. ... Vị mận sao?"</p>
     <p>"Thấy hay hay nên anh mua thử."</p>
     <p>"Hê, ra là vậy."</p>
-    <p>Bình thường nhà anh chỉ ăn natto loại cơ bản, nhưng lần này anh là người đi chợ, nên anh đã nán lại xem qua vô số các lựa chọn khác trong siêu thị mà bình thường gia đình không mấy khi ăn. Bắt đầu từ những việc nhỏ nhặt này, anh đang cố gắng thoát khỏi lối mòn "như thường lệ". Dù sự cố gắng này có vẻ vô cùng nhỏ bé.</p>
-    <p>Anh chắp tay lại và nói "Itadakimasu" (Mời mọi người dùng bữa).</p>
-    <p>Bữa tối hôm nay sớm hơn mọi ngày, vì bình thường anh phải đợi bố đi làm về. Tuy nhiên, tối nay bố đã báo trước rằng ông sẽ đi ăn cùng mẹ kế Akiko-san rồi mới về (Có vẻ hôm nay mẹ Akiko-san mới có một ngày nghỉ sau một thời gian dài). Vậy nên, anh quyết định ăn trước. Vì ăn quá muộn không tốt cho sức khỏe.</p>
-    <p>Chủ đề trò chuyện trên bàn ăn chủ yếu xoay quanh những mẩu chuyện thường ngày của hai đứa và vài lời bình phẩm về các tin tức thời sự nổi bật. Những chuyện cỏn con đó là điều hiển nhiên, vì cuộc sống của người bình thường làm gì có nhiều kịch tính như phim ảnh. Nhưng nếu bảo những mẩu chuyện phiếm ấy nhàm chán thì, ít nhất đối với anh, hoàn toàn không phải vậy. Nếu muốn tìm kiếm sự kịch tính, cứ việc đọc sách là xong. Nhưng dù anh có đọc bao nhiêu cuốn tiểu thuyết đi chăng nữa, sẽ chẳng có cuốn nào viết về Saki, người con gái đang ngồi trước mặt anh. Và tính cách của một người có thể kỳ lạ và hấp dẫn chẳng kém gì một kiệt tác văn học vĩ đại.</p>
-    <p>Nếu có một bộ phim chỉ để quay lại cuộc sống thường nhật của Saki, chắc chắn anh sẽ xem mà không thấy chán. Nếu đó là một người anh không quan tâm thì chẳng sao, nhưng với người anh thích, mỗi cử chỉ nhỏ nhất cũng đủ làm xao xuyến cõi lòng. Ừm, nhưng có vẻ suy nghĩ này hơi giống một kẻ bám đuôi, nghe cũng hơi rùng rợn.</p>
+    <p>Bình thường nhà tôi chỉ ăn natto loại cơ bản, nhưng lần này tôi là người đi chợ, nên tôi đã nán lại xem qua vô số các lựa chọn khác trong siêu thị mà bình thường gia đình không mấy khi ăn. Bắt đầu từ những việc nhỏ nhặt này, tôi đang cố gắng thoát khỏi lối mòn "như thường lệ". Dù sự cố gắng này có vẻ vô cùng nhỏ bé.</p>
+    <p>Tôi chắp tay lại và nói "Itadakimasu" (Mời mọi người dùng bữa).</p>
+    <p>Bữa tối hôm nay sớm hơn mọi ngày, vì bình thường tôi phải đợi bố đi làm về. Tuy nhiên, tối nay bố đã báo trước rằng ông sẽ đi ăn cùng mẹ kế Akiko-san rồi mới về (Có vẻ hôm nay mẹ Akiko-san mới có một ngày nghỉ sau một thời gian dài). Vậy nên, tôi quyết định ăn trước. Vì ăn quá muộn không tốt cho sức khỏe.</p>
+    <p>Chủ đề trò chuyện trên bàn ăn chủ yếu xoay quanh những mẩu chuyện thường ngày của hai đứa và vài lời bình phẩm về các tin tức thời sự nổi bật. Những chuyện cỏn con đó là điều hiển nhiên, vì cuộc sống của người bình thường làm gì có nhiều kịch tính như phim ảnh. Nhưng nếu bảo những mẩu chuyện phiếm ấy nhàm chán thì, ít nhất đối với tôi, hoàn toàn không phải vậy. Nếu muốn tìm kiếm sự kịch tính, cứ việc đọc sách là xong. Nhưng dù tôi có đọc bao nhiêu cuốn tiểu thuyết đi chăng nữa, sẽ chẳng có cuốn nào viết về Saki, người con gái đang ngồi trước mặt tôi. Và tính cách của một người có thể kỳ lạ và hấp dẫn chẳng kém gì một kiệt tác văn học vĩ đại.</p>
+    <p>Nếu có một bộ phim chỉ để quay lại cuộc sống thường nhật của Saki, chắc chắn tôi sẽ xem mà không thấy chán. Nếu đó là một người tôi không quan tâm thì chẳng sao, nhưng với người tôi thích, mỗi cử chỉ nhỏ nhất cũng đủ làm xao xuyến cõi lòng. Ừm, nhưng có vẻ suy nghĩ này hơi giống một kẻ bám đuôi, nghe cũng hơi rùng rợn.</p>
     <p>"Anh có đang nghe em nói không đấy?"</p>
     <p>"Hả, ồ, tất nhiên là có chứ."</p>
     <p>"Anh cứ lơ đãng sao ấy. Không lẽ anh mệt à?"</p>
     <p>"Anh ổn mà. Chỉ là anh đang nhớ lại một chuyện thôi."</p>
-    <p>Vừa xin lỗi vì đã lơ đễnh, anh vừa bắt đầu kể chuyện đi ăn trưa bên ngoài như một cách chuộc lỗi. Anh kể về việc đi ăn cùng những người bạn mới ở một nhà hàng đồ Tây gần ga tàu của trường. Anh kể món Bò Stroganoff ở đó ngon đến mức nào.</p>
-    <p>Vừa kể, anh vừa lôi điện thoại ra.</p>
+    <p>Vừa xin lỗi vì đã lơ đễnh, tôi vừa bắt đầu kể chuyện đi ăn trưa bên ngoài như một cách chuộc lỗi. Tôi kể về việc đi ăn cùng những người bạn mới ở một nhà hàng đồ Tây gần ga tàu của trường. Tôi kể món Bò Stroganoff ở đó ngon đến mức nào.</p>
+    <p>Vừa kể, tôi vừa lôi điện thoại ra.</p>
     <p>"Nhân tiện thì, anh có chụp lại hình của món đó."</p>
     <p>"Hả?"</p>
-    <p>Không hiểu sao Saki lại tỏ ra vô cùng ngạc nhiên. Anh mở ứng dụng Instagram và vào tài khoản của Nakamura. Bức ảnh Nakamura chụp hiện lên trên màn hình.</p>
+    <p>Không hiểu sao Saki lại tỏ ra vô cùng ngạc nhiên. Tôi mở ứng dụng Instagram và vào tài khoản của Nakamura. Bức ảnh Nakamura chụp hiện lên trên màn hình.</p>
     <p>"Em nhìn này."</p>
     <p>"Hả? ... Người này là ai vậy?"</p>
-    <p>Có vẻ em đã nhận ra đó không phải là tài khoản của anh nên mới hỏi thế.</p>
+    <p>Có vẻ em đã nhận ra đó không phải là tài khoản của tôi nên mới hỏi thế.</p>
     <p>"Cậu ta là Nakamura. Một trong những người bạn mới mà anh kể ban nãy đấy. Hình như cậu ta có thói quen chụp ảnh đồ ăn. Nhìn này, Bò Stroganoff đây."</p>
     <p>"Em biết đây là Bò Stroganoff, nhưng, ơ, vậy là anh Yuuta không tự chụp à?"</p>
     <p>"Anh cũng tính chụp, nhưng lúc nhớ ra thì đã ăn mất một nửa rồi. Với lại, anh cũng không có thói quen chụp ảnh đồ ăn nữa."</p>
     <p>"Chắc chắn rồi. Em đã hơi bất ngờ đấy."</p>
-    <p>Thì ra là vậy, thảo nào em lại ngạc nhiên khi nghĩ anh đăng ảnh đồ ăn lên Instagram.</p>
-    <p>...Đừng nói là em nghĩ anh không phải tuýp người làm mấy chuyện đó nên mới ngạc nhiên nhé?</p>
+    <p>Thì ra là vậy, thảo nào em lại ngạc nhiên khi nghĩ tôi đăng ảnh đồ ăn lên Instagram.</p>
+    <p>...Đừng nói là em nghĩ tôi không phải tuýp người làm mấy chuyện đó nên mới ngạc nhiên nhé?</p>
     <p>"Nhắc mới nhớ, Saki, dạo này em cũng hay đăng mấy bức ảnh kiểu này lên Instagram lắm đúng không?"</p>
     <p>"Vâng. Chút xíu. Em đang cố gắng hết sức."</p>
     <p>Cố gắng hết sức là sao?</p>
-    <p>Anh thầm thắc mắc trong lòng, nhưng tạm thời, anh sẽ tiếp tục câu chuyện và chỉ vào bức ảnh của Nakamura một lần nữa.</p>
+    <p>Tôi thầm thắc mắc trong lòng, nhưng tạm thời, tôi sẽ tiếp tục câu chuyện và chỉ vào bức ảnh của Nakamura một lần nữa.</p>
     <p>"Khẩu phần to lắm đấy. Nội việc ăn hết đĩa này thôi là đủ no căng rốn rồi."</p>
     <p>Saki nãy giờ vẫn im lặng nhìn bức ảnh, bỗng nhiên lên tiếng.</p>
     <p>"... Tiếc là, em không thể tưởng tượng được nó to cỡ nào nếu chỉ nhìn qua ảnh."</p>
     <p>"Hả, thật á?"</p>
-    <p>Anh xoay màn hình lại để kiểm chứng lời Saki nói. ...Vậy ra em không đoán được kích thước à?</p>
+    <p>Tôi xoay màn hình lại để kiểm chứng lời Saki nói. ...Vậy ra em không đoán được kích thước à?</p>
     <p>"Kích thước của nó cỡ bằng chừng này nè."</p>
-    <p>Vừa nói, anh vừa dùng tay vòng lại mô phỏng kích thước của chiếc đĩa.</p>
+    <p>Vừa nói, tôi vừa dùng tay vòng lại mô phỏng kích thước của chiếc đĩa.</p>
     <p>"Cái đó."</p>
     <p>"Cái nào cơ?"</p>
     <p>"Cái kích thước anh vừa mô phỏng bằng tay trông lớn hơn điện thoại nhiều đúng không? Đó là lý do em không thể đoán được kích thước thật nếu chỉ nhìn qua ảnh."</p>
     <p>A...</p>
-    <p>Anh nhìn lại màn hình điện thoại một lần nữa để xác nhận.</p>
+    <p>Tôi nhìn lại màn hình điện thoại một lần nữa để xác nhận.</p>
     <p>"Nhưng chiếc đĩa này đúng là rất to. Ồ, anh nghĩ vậy là vì anh đã nhìn thấy tận mắt và biết kích thước thực của chiếc đĩa... Có lẽ là vậy."</p>
     <p>Saki gật đầu.</p>
     <p>"Em có thể giải thích rõ hơn được không?"</p>
@@ -565,22 +819,22 @@
     <p>"A, xin lỗi anh. Em không có ý chỉ trích đâu. Tại gần đây em hơi để ý đến mấy thứ như vậy khi chụp ảnh, nên không kiềm chế được mà bình luận hơi nhiều...."</p>
     <p>Saki tỏ ra bối rối như thể cảm thấy mình vừa lỡ lời.</p>
     <p>"Hả. Vậy, mấy bức ảnh Saki đăng là...?"</p>
-    <p>Anh nhanh chóng chuyển từ tài khoản của Nakamura sang tài khoản Instagram của Saki. Vừa nhẩm lại những gì em vừa nói, anh vừa lướt xem lại những bức ảnh của em.</p>
+    <p>Tôi nhanh chóng chuyển từ tài khoản của Nakamura sang tài khoản Instagram của Saki. Vừa nhẩm lại những gì em vừa nói, tôi vừa lướt xem lại những bức ảnh của em.</p>
     <p>"Ơ chờ đã! Ngại lắm!"</p>
     <p>"Ừm. Ví dụ như bức ảnh chụp bánh này, em có suy nghĩ đến những điều đó khi chụp không?"</p>
-    <p>Anh đặt điện thoại xuống bàn và chỉ vào bức ảnh chụp chiếc bánh cheesecake của Saki.</p>
+    <p>Tôi đặt điện thoại xuống bàn và chỉ vào bức ảnh chụp chiếc bánh cheesecake của Saki.</p>
     <p>"Ảnh này á? Ừm, bánh cheesecake màu trắng mà, đúng không?"</p>
     <p>"Ừ, đúng rồi."</p>
     <p>Tuy không trắng tinh tươm, nhưng ừ, vẫn là màu trắng.</p>
     <p>"Vì vậy, em cố gắng để bóng không đổ lên bánh. Nếu bị tối, ảnh trông sẽ kém hấp dẫn. Thêm nữa, phần đế của bánh cheesecake làm bằng bánh quy mà, đúng không?"</p>
     <p>"A..."</p>
-    <p>Anh chưa cần giải thích đã hiểu ngay. Nếu chụp từ trên xuống, phần đế bánh quy sẽ không thể thấy được. Đó là lý do em chụp từ một góc hơi nghiêng.</p>
+    <p>Tôi chưa cần giải thích đã hiểu ngay. Nếu chụp từ trên xuống, phần đế bánh quy sẽ không thể thấy được. Đó là lý do em chụp từ một góc hơi nghiêng.</p>
     <p>"Ngoài ra còn vẻ đẹp của lớp cắt ngang, và như em đã nói lúc nãy, là tỷ lệ kích thước. Em đã đặt một chiếc dĩa cạnh đĩa bánh trước khi chụp. Em cũng cố tình đặt cốc nước làm nền mờ ảo ở phía sau. Tất nhiên, nếu điểm nhấn của chiếc bánh nằm ở chỗ khác, em sẽ dùng cách khác để làm nổi bật nó."</p>
     <p>"Ồ..."</p>
-    <p>Anh cứ tưởng em chỉ tiện tay chụp rồi đăng thôi cơ đấy....</p>
-    <p>Saki trông hơi ngượng ngùng rồi nói tiếp: "Em đang làm thêm ở văn phòng của chị Akihiro mà, đúng không?". Sau đó em kể cho anh nghe lý do em bắt đầu tích cực sử dụng Instagram vì có vẻ như tất cả các nhà thiết kế đều tận dụng Instagram rất hiệu quả.</p>
+    <p>Tôi cứ tưởng em chỉ tiện tay chụp rồi đăng thôi cơ đấy....</p>
+    <p>Saki trông hơi ngượng ngùng rồi nói tiếp: "Em đang làm thêm ở văn phòng của chị Akihiro mà, đúng không?". Sau đó em kể cho tôi nghe lý do em bắt đầu tích cực sử dụng Instagram vì có vẻ như tất cả các nhà thiết kế đều tận dụng Instagram rất hiệu quả.</p>
     <p>Không chỉ vậy, em nói rằng các tiền bối đã cho em rất nhiều lời khuyên, nên dạo này em bắt đầu học cách căn chỉnh mỗi khi chụp ảnh, chứ trước đây em chỉ bấm máy đại thôi.</p>
-    <p>Anh cảm thấy có chút bất ngờ.</p>
+    <p>Tôi cảm thấy có chút bất ngờ.</p>
     <p>Nơi Saki thực tập là một văn phòng thiết kế. Quả thực, những người làm trong ngành đó chắc chắn sẽ có sự tính toán khi chụp ảnh, dù cho đó chỉ là một bức ảnh đơn giản. Tuy nhiên, nhận thức của con người có thể thay đổi nhanh đến vậy sao...?</p>
     <p>"Mọi người luôn nhắc em phải suy nghĩ xem người khác sẽ nhìn nhận bức ảnh như thế nào," em nói.</p>
     <p>"Ra là vậy."</p>
@@ -593,16 +847,16 @@
     <p>Dù ta có thấy thứ gì đó đẹp đẽ thì chưa chắc người khác cũng lập tức nhận ra. Mỗi người đều có định kiến riêng, và định kiến đó lại khác nhau tùy từng người, nên dù cùng nhìn vào một vật, cách tiếp nhận lại hoàn toàn khác biệt.</p>
     <p>"Đúng vậy mà, anh thấy đó? Nên em nghĩ mình cần rèn luyện thói quen làm sao để truyền tải được trọn vẹn những điểm nhấn mà em muốn chia sẻ."</p>
     <p>Vẻ mặt của Saki khi nói ra những lời đó có thoáng nét háo hức hệt như một đứa trẻ đang say sưa vui đùa với món đồ chơi mới.</p>
-    <p>Đây thực sự là một điều đáng mừng, bởi suốt những năm cấp ba, em luôn mang dáng vẻ và thái độ lạnh lùng, chỉ có thể diễn tả bằng hai chữ "võ trang"—một cô gái luôn trong tâm thế sẵn sàng chiến đấu dù có phải chống lại cả thế giới. Với tư cách là anh trai, cũng là bạn trai, anh muốn ủng hộ em. Nhìn thấy biểu cảm rạng rỡ ấy khiến trái tim anh cảm thấy ấm áp vô cùng.</p>
+    <p>Đây thực sự là một điều đáng mừng, bởi suốt những năm cấp ba, em luôn mang dáng vẻ và thái độ lạnh lùng, chỉ có thể diễn tả bằng hai chữ "võ trang"—một cô gái luôn trong tâm thế sẵn sàng chiến đấu dù có phải chống lại cả thế giới. Với tư cách là anh trai, cũng là bạn trai, tôi muốn ủng hộ em. Nhìn thấy biểu cảm rạng rỡ ấy khiến trái tim anh cảm thấy ấm áp vô cùng.</p>
     <p>Tuy nhiên.</p>
     <p>Sâu thẳm trong lòng, một chút ghen tị với Saki chợt lóe lên.</p>
     <p>"A, nhưng mà nhìn ảnh là thấy Bò Stroganoff ngon rồi đấy. Cái không truyền tải được chỉ là kích thước thôi. Nếu mục đích chỉ là muốn khen món này 'ngon', thì nhiêu đây là đủ rồi..."</p>
-    <p>Có lẽ em sực nhớ ra đó là bức ảnh do người bạn đại học mới quen của anh chụp. Saki vội vàng gỡ gạc khen ngợi bức ảnh, nhưng anh cảm thấy em không cần phải bận tâm nhiều đến thế. Saki không hề có ý bới móc, chỉ là vì em đã quen với cách tư duy đó nên mới buột miệng nhận xét thôi. Không sao cả, anh hiểu rất rõ điều đó.</p>
+    <p>Có lẽ em sực nhớ ra đó là bức ảnh do người bạn đại học mới quen của tôi chụp. Saki vội vàng gỡ gạc khen ngợi bức ảnh, nhưng anh cảm thấy em không cần phải bận tâm nhiều đến thế. Saki không hề có ý bới móc, chỉ là vì em đã quen với cách tư duy đó nên mới buột miệng nhận xét thôi. Không sao cả, tôi hiểu rất rõ điều đó.</p>
     <p>"Ừ, ngon thật mà."</p>
-    <p>Nói xong, anh chợt nảy ra một suy nghĩ.</p>
+    <p>Nói xong, tôi chợt nảy ra một suy nghĩ.</p>
     <p>"Nhắc mới nhớ, bò hầm và Bò Stroganoff có vẻ khá giống nhau nhỉ? Em nghĩ chúng khác nhau ở điểm nào?"</p>
-    <p>Anh nghĩ Saki, người nấu ăn rất ngon và đặc biệt thích món bò hầm, chắc chắn sẽ biết sự khác biệt.</p>
-    <p>"Em nghĩ sự khác biệt nằm ở cách thái thịt và gia vị nêm nếm," em nhanh chóng đáp lại câu hỏi của anh.</p>
+    <p>Tôi nghĩ Saki, người nấu ăn rất ngon và đặc biệt thích món bò hầm, chắc chắn sẽ biết sự khác biệt.</p>
+    <p>"Em nghĩ sự khác biệt nằm ở cách thái thịt và gia vị nêm nếm," em nhanh chóng đáp lại câu hỏi của tôi.</p>
     <p>Nói xong, em bắt đầu giải thích chi tiết hơn.</p>
     <p>"Bò hầm là một món ăn Pháp, thịt được nấu nguyên khối cho đến khi mềm nhừ. Còn Bò Stroganoff là món ăn của Nga, thịt được thái lát mỏng. Nếu thái nhỏ và xào sơ trước thì thời gian nấu sẽ được rút ngắn đáng kể."</p>
     <p>"À, ra là khác biệt từ khâu đó luôn."</p>
@@ -621,41 +875,41 @@
     <p>"Đúng vậy nhỉ?"</p>
     <p>"À thì, dù sao thì việc tái tạo lại chính xác hương vị nhà hàng ở nhà cũng khó lắm," Saki nói thêm, như thể em đã từng nghe ai đó nói câu này ở đâu đó rồi.</p>
     <p>"Có khi nấu cả hai món lên ăn thử thì mới phân biệt được."</p>
-    <p>Khi đã trở thành ký ức, hương vị đột nhiên trở nên thật mơ hồ. Anh cảm giác mình sẽ chẳng bao giờ trở thành đầu bếp hay nhà phê bình ẩm thực được.</p>
+    <p>Khi đã trở thành ký ức, hương vị đột nhiên trở nên thật mơ hồ. Tôi cảm giác mình sẽ chẳng bao giờ trở thành đầu bếp hay nhà phê bình ẩm thực được.</p>
     <p>"Có khi nào anh cũng chưa thực sự nếm thử món Bò Stroganoff chuẩn vị đâu."</p>
     <p>"Nếu vậy, em có thể thử làm món đó."</p>
     <p>"Ừ, anh nghĩ rất đáng để thử đấy. Dù sao nó cũng là một món ăn gia đình mà. Chắc sẽ không quá phức tạp đâu. Nếu có cơ hội, anh cũng muốn thử nấu."</p>
-    <p>Quả nhiên, nếu có thắc mắc thì tốt nhất là nên bắt tay vào thực hành. Bản thân anh không quá mặn mà với việc nấu nướng, cũng không thuộc tuýp người bắt buộc phải tự nấu ăn, nhưng học thêm một kỹ năng nấu nướng cũng chẳng hại gì.</p>
-    <p>Khi chúng anh đang dùng bữa tối và trò chuyện tán gẫu như vậy, Saki bỗng lên tiếng lúc tách trà của cả hai gần cạn.</p>
+    <p>Quả nhiên, nếu có thắc mắc thì tốt nhất là nên bắt tay vào thực hành. Bản thân tôi không quá mặn mà với việc nấu nướng, cũng không thuộc tuýp người bắt buộc phải tự nấu ăn, nhưng học thêm một kỹ năng nấu nướng cũng chẳng hại gì.</p>
+    <p>Khi chúng tôi đang dùng bữa tối và trò chuyện tán gẫu như vậy, Saki bỗng lên tiếng lúc tách trà của cả hai gần cạn.</p>
     <p>"Nhân tiện, anh Yuuta—"</p>
-    <p>Hửm? Anh bất giác ngẩng mặt lên.</p>
+    <p>Hửm? Tôi bất giác ngẩng mặt lên.</p>
     <p>"Anh nghĩ sao về việc 'papa katsu'?"</p>
-    <p>Trong thoáng chốc, anh chưa kịp tiêu hóa nổi lời em nói. Và khi não bộ bắt đầu nhận thức được ý nghĩa của câu nói ấy, anh thầm tự khen ngợi bản thân vì đã không phun ngụm súp miso đang húp dở ra ngoài.</p>
-    <p>Hả, ý em là sao? Không biết Saki có nhận ra sự bàng hoàng của anh hay không, em vẫn tiếp tục với vẻ mặt vô cùng đăm chiêu.</p>
+    <p>Trong thoáng chốc, tôi chưa kịp tiêu hóa nổi lời em nói. Và khi não bộ bắt đầu nhận thức được ý nghĩa của câu nói ấy, tôi thầm tự khen ngợi bản thân vì đã không phun ngụm súp miso đang húp dở ra ngoài.</p>
+    <p>Hả, ý em là sao? Không biết Saki có nhận ra sự bàng hoàng của tôi hay không, em vẫn tiếp tục với vẻ mặt vô cùng đăm chiêu.</p>
     <p>"Liệu có thật là có người sẵn sàng trả tới 10.000 yên hay 20.000 yên chỉ để trò chuyện với một cô gái không?"</p>
-    <p>Anh cẩn thận dò xét biểu cảm của em.</p>
-    <p>Anh đã từng thấy vẻ mặt này trước đây. Đó là lúc em vò đầu bứt tai không hiểu nổi tâm lý nhân vật trong một bài tập đọc hiểu môn Ngữ văn. Biểu cảm lúc này giống hệt lúc đó. Nghĩa là, Saki đang nghiêm túc. Vậy thì anh cũng phải trả lời một cách đàng hoàng.</p>
-    <p>Nhưng, ừm... 'papa katsu' á? Bản thân anh cũng mù tịt về thế giới đó.</p>
+    <p>Tôi cẩn thận dò xét biểu cảm của em.</p>
+    <p>Tôi đã từng thấy vẻ mặt này trước đây. Đó là lúc em vò đầu bứt tai không hiểu nổi tâm lý nhân vật trong một bài tập đọc hiểu môn Ngữ văn. Biểu cảm lúc này giống hệt lúc đó. Nghĩa là, Saki đang nghiêm túc. Vậy thì tôi cũng phải trả lời một cách đàng hoàng.</p>
+    <p>Nhưng, ừm... 'papa katsu' á? Bản thân tôi cũng mù tịt về thế giới đó.</p>
     <p>"Anh muốn xác nhận lại một chút."</p>
     <p>Để tránh hiểu lầm, điều quan trọng là phải có cùng chung một hệ quy chiếu. Nếu định nghĩa về từ ngữ khác nhau, cuộc trò chuyện sẽ chẳng đi đến đâu.</p>
     <p>"Xác nhận chuyện gì ạ?"</p>
     <p>"Cái 'papa katsu' mà em đang nhắc tới có phải là 'papa katsu' kiểu đó không?"</p>
     <p>"Ủa, bộ 'papa katsu' có nhiều loại lắm hả?"</p>
     <p>"Không, ý anh là, kiểu như các hoạt động săn ảnh của paparazzi, hay đại loại vậy. Hoặc có lẽ là hoạt động xem phim có tên là papa-katsu, đúng không?"</p>
-    <p>Em nhìn anh bằng một ánh mắt khó hiểu. Khoan đã. Tại sao anh lại phải nhận cái nhìn kiểu 'anh đang lảm nhảm cái gì thế' vậy?</p>
+    <p>Em nhìn tôi bằng một ánh mắt khó hiểu. Khoan đã. Tại sao tôi lại phải nhận cái nhìn kiểu 'tôi đang lảm nhảm cái gì thế' vậy?</p>
     <p>"Em không nghĩ đó là ý nghĩa của nó đâu."</p>
     <p>"Anh biết ngay mà."</p>
-    <p>Vậy ra ý em là kiểu đó à. Một hình thức bao nuôi dựa trên thỏa thuận giữa những cô gái trẻ muốn được hỗ trợ tài chính và những người đàn ông muốn chu cấp cho họ. ... Nếu chỉ xét dựa trên cách giải thích này, nó nghe khá giống với cuốn tiểu thuyết nổi tiếng của Jean Webster, 'Ông bố chân dài' (Daddy-Long-Legs). Anh từng đọc cuốn này hồi bé tí nên ký ức cũng lờ mờ lắm rồi.</p>
+    <p>Vậy ra ý em là kiểu đó à. Một hình thức bao nuôi dựa trên thỏa thuận giữa những cô gái trẻ muốn được hỗ trợ tài chính và những người đàn ông muốn chu cấp cho họ. ... Nếu chỉ xét dựa trên cách giải thích này, nó nghe khá giống với cuốn tiểu thuyết nổi tiếng của Jean Webster, 'Ông bố chân dài' (Daddy-Long-Legs). Tôi từng đọc cuốn này hồi bé tí nên ký ức cũng lờ mờ lắm rồi.</p>
     <p>Nhưng đó chắc chắn không phải chủ đề đang được bàn tới lúc này.</p>
     <p>"Anh nghĩ mọi chuyện tùy thuộc vào lý do chi tiền."</p>
     <p>"Lý do chi tiền á?"</p>
     <p>"Theo anh thì nó phụ thuộc vào mức độ sẵn lòng chi trả của người đó và mục đích là gì..."</p>
     <p>"Ừm, có lẽ chỉ là để trò chuyện với một cô gái thôi?"</p>
     <p>Nghe có vẻ là một hoạt động 'papa katsu' khá trong sáng và lành mạnh.</p>
-    <p>Được rồi, tạm thời anh có thể cho rằng em không đang nhắc đến mảng tối của papa katsu. Nếu đó thực sự là phiên bản nhẹ nhàng hơn, mọi chuyện sẽ dễ lý giải hơn. Cốt lõi vấn đề là liệu có ai sẵn sàng trả một số tiền lớn chỉ để nói chuyện với phụ nữ hay không.</p>
+    <p>Được rồi, tạm thời tôi có thể cho rằng em không đang nhắc đến mảng tối của papa katsu. Nếu đó thực sự là phiên bản nhẹ nhàng hơn, mọi chuyện sẽ dễ lý giải hơn. Cốt lõi vấn đề là liệu có ai sẵn sàng trả một số tiền lớn chỉ để nói chuyện với phụ nữ hay không.</p>
     <p>"Nếu chỉ đơn giản là vậy... anh nghĩ nó phụ thuộc vào nội dung cuộc trò chuyện."</p>
     <p>"Nội dung cuộc trò chuyện..."</p>
-    <p>Thấy Saki đang chìm trong suy tư, anh rót thêm nước nóng vào ấm trà. Anh hỏi xem em có muốn uống thêm không trước khi rót vào tách của em. Tách của Saki nhỏ nhắn có họa tiết hoa anh đào, trong khi tách của anh hôm nay là loại hay dùng ở tiệm sushi mà bố xin được từ chỗ làm. Trên đó có in tên các loại cá viết bằng thư pháp như một loại họa tiết trang trí. Tách của anh to quá nên chẳng thể nào rót đầy được. Tuy nhiên, vì chỉ uống để nhâm nhi giết thời gian, một chút thôi cũng đủ rồi.</p>
+    <p>Thấy Saki đang chìm trong suy tư, tôi rót thêm nước nóng vào ấm trà. Tôi hỏi xem em có muốn uống thêm không trước khi rót vào tách của em. Tách của Saki nhỏ nhắn có họa tiết hoa tôi đào, trong khi tách của tôi hôm nay là loại hay dùng ở tiệm sushi mà bố xin được từ chỗ làm. Trên đó có in tên các loại cá viết bằng thư pháp như một loại họa tiết trang trí. Tách của tôi to quá nên chẳng thể nào rót đầy được. Tuy nhiên, vì chỉ uống để nhâm nhi giết thời gian, một chút thôi cũng đủ rồi.</p>
     <p>"Ừm, thế này nhé. Nếu một người muốn trả tiền chỉ để trò chuyện, điều đó đồng nghĩa với việc nội dung cuộc trò chuyện đó phải có giá trị, hoặc bản thân cuộc trò chuyện đó có giá trị đối với họ, đúng không?"</p>
     <p>Saki hơi ngước lên nhìn trần nhà, ra chiều ngẫm nghĩ.</p>
     <p>"Nội dung cuộc trò chuyện... ý anh là, họ sẽ sẵn sàng móc hầu bao nếu lượng thông tin nhận lại tương xứng với số tiền bỏ ra sao?"</p>
@@ -665,69 +919,69 @@
     <p>"Em không nghĩ họ sẽ hào phóng tới mức trả hẳn 20.000 yên cho việc đó đâu..."</p>
     <p>"Giá trị là một khái niệm tương đối. Nếu ai đó cảm thấy số tiền đó là rẻ bèo, có thể họ sẽ sẵn sàng chi. Như mấy đại gia dầu mỏ chẳng hạn."</p>
     <p>Đó quả là một ví dụ hơi cực đoan. Hơn nữa, làm gì có đại gia dầu mỏ nào lượn lờ quanh đây cơ chứ.</p>
-    <p>Chắc cũng có. Mà không, chắc là không đâu. Nhưng nếu thật sự có một tỷ phú nào đó đang dạo phố tán tỉnh các cô gái ở Shibuya, anh xin rút lại lời mình.</p>
+    <p>Chắc cũng có. Mà không, chắc là không đâu. Nhưng nếu thật sự có một tỷ phú nào đó đang dạo phố tán tỉnh các cô gái ở Shibuya, tôi xin rút lại lời mình.</p>
     <p>"Vậy ý anh là, người ta có thể sẽ trả 20.000 yên nếu nội dung cuộc trò chuyện thực sự đáng giá ngần ấy tiền, đúng không? Ra là vậy. Nếu đó là thông tin hữu ích, em có thể hiểu lý do họ chịu chi. Vậy còn trường hợp bản thân cuộc trò chuyện đó mang lại giá trị thì sao?"</p>
     <p>"Trong trường hợp đó, vấn đề không nằm ở nội dung câu chuyện, mà là việc họ cảm thấy được sự giao tiếp đó mang lại giá trị."</p>
     <p>"Việc nói chuyện thôi cũng thú vị đến vậy sao?"</p>
     <p>Đúng là Saki không phải tuýp người coi trọng những chuyện như vậy. Tuy nhiên—</p>
     <p>"Anh cảm thấy rất vui khi được nói chuyện với Saki như thế này."</p>
     <p>"Vậy anh có muốn trả em 20.000 yên không?"</p>
-    <p>Bị hỏi vặn lại, anh sững người một thoáng và không biết phải trả lời sao. Anh không biết đó là điều tốt, hay điều tồi tệ đối với tư cách một người bạn trai.</p>
+    <p>Bị hỏi vặn lại, tôi sững người một thoáng và không biết phải trả lời sao. Tôi không biết đó là điều tốt, hay điều tồi tệ đối với tư cách một người bạn trai.</p>
     <p>"Nhưng nhỡ đâu Saki đi nước ngoài hay gì đó và chúng ta không thể gặp nhau trong suốt nhiều tháng trời thì sao? Lúc đó thì, chà..."</p>
     <p>"Em sẽ không đi đâu hết, được chưa?"</p>
     <p>"Đây chỉ là giả dụ thôi mà. Nếu anh có thể trò chuyện và nghe giọng em lần đầu tiên sau sáu tháng xa cách, anh nghĩ mình sẽ rất sẵn lòng trả tiền dù cước phí gọi quốc tế có lên tới 20.000 yên đi chăng nữa..."</p>
     <p>"Nếu vậy... có lẽ em cũng sẽ làm thế."</p>
-    <p>Dù chính miệng anh nói ra câu này, nhưng có lẽ đó không phải là thứ được gọi là papa-katsu.</p>
+    <p>Dù chính miệng tôi nói ra câu này, nhưng có lẽ đó không phải là thứ được gọi là papa-katsu.</p>
     <p>"Quay lại chủ đề chính, nếu một người cảm thấy bản thân cuộc trò chuyện có giá trị và số tiền phải trả không quá đắt đỏ, họ chắc chắn sẽ chi tiền."</p>
     <p>"Việc nói chuyện với một cô gái trẻ thực sự thú vị và đáng giá đối với một người đàn ông đến vậy sao?"</p>
     <p>"Sẽ rất phiền phức nếu cứ phải liên tục cẩn trọng lựa lời khi nói chuyện."</p>
     <p>"Vậy có nghĩa là việc đó không hề thú vị?"</p>
-    <p>Em tỏ ra ngạc nhiên, nhưng có lẽ đó mới là cảm nhận thực sự của anh.</p>
-    <p>Sự khác biệt với đối phương càng lớn, người ta càng phải dè dặt khi giao tiếp. Nếu anh là một người đàn ông trưởng thành lớn tuổi và đối phương là một cô nữ sinh đại học trẻ tuổi, anh chắc chắn sẽ cảm thấy vô cùng mệt mỏi khi nói chuyện. Bởi vì có quá nhiều sự khác biệt. Trong những câu chuyện viễn tưởng về lần đầu tiên tiếp xúc với sinh vật ngoài hành tinh hay người ngoài hành tinh, luôn có rất nhiều sự cẩn trọng được đặt lên hàng đầu. Nếu ta phải thay đổi bản thân đến mức gần như đánh mất đi nhân tính chỉ để thấu hiểu đối phương, và không thể giao tiếp nếu không làm vậy, ta sẽ không thể không cảm thấy cái giá phải trả là quá đắt. Không, có lẽ đó không phải là phân đoạn thích hợp để cảm động rơi nước mắt trong chuyện đó... Tuy nhiên, về cơ bản, sự quan tâm lẫn nhau và cùng tận hưởng cuộc trò chuyện mới là cốt lõi của giao tiếp, và nếu chỉ có một bên cảm thấy thoải mái, thì đó không thể gọi là một cuộc trò chuyện đúng nghĩa.</p>
+    <p>Em tỏ ra ngạc nhiên, nhưng có lẽ đó mới là cảm nhận thực sự của tôi.</p>
+    <p>Sự khác biệt với đối phương càng lớn, người ta càng phải dè dặt khi giao tiếp. Nếu tôi là một người đàn ông trưởng thành lớn tuổi và đối phương là một cô nữ sinh đại học trẻ tuổi, tôi chắc chắn sẽ cảm thấy vô cùng mệt mỏi khi nói chuyện. Bởi vì có quá nhiều sự khác biệt. Trong những câu chuyện viễn tưởng về lần đầu tiên tiếp xúc với sinh vật ngoài hành tinh hay người ngoài hành tinh, luôn có rất nhiều sự cẩn trọng được đặt lên hàng đầu. Nếu ta phải thay đổi bản thân đến mức gần như đánh mất đi nhân tính chỉ để thấu hiểu đối phương, và không thể giao tiếp nếu không làm vậy, ta sẽ không thể không cảm thấy cái giá phải trả là quá đắt. Không, có lẽ đó không phải là phân đoạn thích hợp để cảm động rơi nước mắt trong chuyện đó... Tuy nhiên, về cơ bản, sự quan tâm lẫn nhau và cùng tận hưởng cuộc trò chuyện mới là cốt lõi của giao tiếp, và nếu chỉ có một bên cảm thấy thoải mái, thì đó không thể gọi là một cuộc trò chuyện đúng nghĩa.</p>
     <p>Tuy nhiên, nếu chúng ta cứ muốn ép buộc nó phải giống như một cuộc trò chuyện—</p>
     <p>"Có lẽ anh sẽ phải trả tiền với tâm thế là mình sẽ cứ nói mà không cần bận tâm đến cảm xúc của đối phương và hy vọng họ sẽ không nổi giận."</p>
     <p>"'Lời tôi nói có hơi thô lỗ, mong cô bỏ qua nhé'... tự bản thân câu nói đó nghe đã thấy bất lịch sự rồi. Ý em là, dù có được trả tiền thì em cũng chẳng muốn giao tiếp với loại người như vậy."</p>
-    <p>Chắc chắn Saki cũng đồng ý với anh. Vì em vốn ghét những chuyện như vậy, nên em mới khoác lên mình lớp 'võ trang' để bảo vệ bản thân.</p>
-    <p>Nghĩ đến đó, anh cuối cùng cũng hiểu được câu trả lời lúc trước. Tiền bạc không nên dính dáng đến những cuộc trò chuyện vui vẻ với gia đình và bạn bè. Thứ cần được trao đi là sự quan tâm, chứ không phải lời biện minh "xin hãy tha thứ cho sự bất lịch sự của tôi vì tôi đã chu cấp cho cô". Những thứ như vậy không có chỗ trong một gia đình, đặc biệt là ở thời đại này. Hành động đó thậm chí có thể phá nát một gia đình. Anh hiểu rất rõ điều đó. Chuyện xảy ra giữa mẹ ruột và bố anh chính là minh chứng sống cho điều đó. Và bây giờ, khi mẹ kế Akiko-san cuối cùng cũng có một ngày nghỉ sau thời gian dài cày cuốc, bố anh quyết định tan làm sớm và đang cố gắng đưa bà đi ăn tối.</p>
-    <p>Đã gần hai năm kể từ khi họ tái hôn. Dưới góc nhìn của một người con, họ là một cặp đôi hòa thuận, nhưng đó là bởi vì họ đã nỗ lực thấu hiểu nhau dựa trên những vấp ngã trong quá khứ. Tất nhiên, thân làm con cái, anh không ngại giúp đỡ họ một tay. Có lẽ mọi chuyện sẽ khác nếu anh vẫn còn là học sinh tiểu học, nhưng hiện tại cả anh và Saki đều đã là sinh viên đại học. Anh sẽ không cảm thấy tủi thân chỉ vì bố mẹ vắng nhà để đi hẹn hò.</p>
+    <p>Chắc chắn Saki cũng đồng ý với tôi. Vì em vốn ghét những chuyện như vậy, nên em mới khoác lên mình lớp 'võ trang' để bảo vệ bản thân.</p>
+    <p>Nghĩ đến đó, tôi cuối cùng cũng hiểu được câu trả lời lúc trước. Tiền bạc không nên dính dáng đến những cuộc trò chuyện vui vẻ với gia đình và bạn bè. Thứ cần được trao đi là sự quan tâm, chứ không phải lời biện minh "xin hãy tha thứ cho sự bất lịch sự của tôi vì tôi đã chu cấp cho cô". Những thứ như vậy không có chỗ trong một gia đình, đặc biệt là ở thời đại này. Hành động đó thậm chí có thể phá nát một gia đình. Tôi hiểu rất rõ điều đó. Chuyện xảy ra giữa mẹ ruột và bố tôi chính là minh chứng sống cho điều đó. Và bây giờ, khi mẹ kế Akiko-san cuối cùng cũng có một ngày nghỉ sau thời gian dài cày cuốc, bố tôi quyết định tan làm sớm và đang cố gắng đưa bà đi ăn tối.</p>
+    <p>Đã gần hai năm kể từ khi họ tái hôn. Dưới góc nhìn của một người con, họ là một cặp đôi hòa thuận, nhưng đó là bởi vì họ đã nỗ lực thấu hiểu nhau dựa trên những vấp ngã trong quá khứ. Tất nhiên, thân làm con cái, tôi không ngại giúp đỡ họ một tay. Có lẽ mọi chuyện sẽ khác nếu tôi vẫn còn là học sinh tiểu học, nhưng hiện tại cả tôi và Saki đều đã là sinh viên đại học. Tôi sẽ không cảm thấy tủi thân chỉ vì bố mẹ vắng nhà để đi hẹn hò.</p>
     <p>"Dù sao thì, em cũng không thể hiểu nổi cái cảm giác 'nói chuyện với một cô gái trẻ rất thú vị' đâu. Có lẽ sự chênh lệch tuổi tác khiến em không thể hình dung ra, nhưng trong trường hợp của em, khả năng chịu đựng sự cô đơn của em cũng khá cao."</p>
     <p>"Ý em là em thấy ổn với việc ở một mình sao?"</p>
-    <p>Anh gật đầu.</p>
+    <p>Tôi gật đầu.</p>
     <p>"Anh có thể dành toàn bộ thời gian rảnh rỗi để cắm mặt vào những cuốn sách, và anh chưa từng cảm thấy cần ai đó để lấp đầy nỗi cô đơn. Nếu anh thực sự muốn có người trò chuyện, anh đã cố gắng tìm bạn gái từ hồi cấp ba rồi. Dù cho sự chủ động không phải lúc nào cũng đảm bảo sẽ thành công. Giờ nghĩ lại, tình bạn giữa anh và Maru cũng là kết quả của một chuỗi những sự tình cờ."</p>
-    <p>Nói tóm lại, đối với một người như anh—kẻ cảm thấy hoàn toàn ổn khi chỉ có một người bạn thân duy nhất như Maru cho đến tận mùa hè năm lớp 11—thật khó để thấu hiểu cảm giác của những người luôn khao khát có một người để trò chuyện chỉ vì cảm thấy cô đơn.</p>
+    <p>Nói tóm lại, đối với một người như tôi—kẻ cảm thấy hoàn toàn ổn khi chỉ có một người bạn thân duy nhất như Maru cho đến tận mùa hè năm lớp 11—thật khó để thấu hiểu cảm giác của những người luôn khao khát có một người để trò chuyện chỉ vì cảm thấy cô đơn.</p>
     <p>"Ít nhất đối với anh, cuộc trò chuyện trở nên thú vị là bởi vì đối phương là Saki, chứ không phải vì em là một cô gái trẻ."</p>
     <p>"... Cảm ơn anh."</p>
     <p>"À, không có gì... ừ."</p>
-    <p>Chết tiệt. Anh cảm thấy mình vừa nói ra một câu sến súa đến đáng xấu hổ.</p>
+    <p>Chết tiệt. Tôi cảm thấy mình vừa nói ra một câu sến súa đến đáng xấu hổ.</p>
     <p>"Nhưng, ra là vậy. Vâng, em hiểu rồi. Suy cho cùng, việc ai đó có thích điều đó hay không còn tùy thuộc vào bản thân họ..."</p>
     <p>"Ừm, anh đoán là vậy. Ừ."</p>
     <p>"Anh thấy nói chuyện với em vui chứ?"</p>
     <p>"Tất nhiên rồi."</p>
     <p>"Nếu vậy thì, chuyện này hoàn toàn miễn phí. Nên anh cứ coi em là bạn tâm giao bất cứ lúc nào anh muốn nhé."</p>
-    <p>Em nói với một nụ cười tinh nghịch trên môi. Dù giọng điệu nghe cứ như câu chào 'rất hân hạnh được phục vụ quý khách lần sau'. Ừ thì, điều đó có nghĩa là sự quan tâm vẫn rất cần thiết. Tất nhiên, anh không hề phiền hà chút nào.</p>
+    <p>Em nói với một nụ cười tinh nghịch trên môi. Dù giọng điệu nghe cứ như câu chào 'rất hân hạnh được phục vụ quý khách lần sau'. Ừ thì, điều đó có nghĩa là sự quan tâm vẫn rất cần thiết. Tất nhiên, tôi không hề phiền hà chút nào.</p>
     <p>"Ngược lại, anh còn lo không biết Saki có thấy vui khi trò chuyện cùng anh không nữa."</p>
     <p>"Tất nhiên là em nói chuyện với anh vì em thấy vui rồi. Anh không cần phải lo đâu."</p>
     <p>"Va-vậy sao. Cảm ơn em."</p>
-    <p>Ngồi đối diện nhau trên bàn ăn, nhâm nhi tách trà, anh tự hỏi không biết trong mắt người ngoài, hai đứa chúng anh đang đỏ mặt ngượng ngùng trông sẽ như thế nào nhỉ. Mặc dù vậy, khoảng thời gian nhỏ nhoi, giản dị khi chúng anh chia sẻ những mẩu chuyện đời thường này lại vô cùng quý giá đối với anh lúc này, và anh không muốn đánh đổi Saki với bất kỳ ai khác. Nếu có thể, anh hy vọng có thể lưu giữ mãi khoảnh khắc này.</p>
-    <p>Anh nhớ lại những bữa tối thời cấp hai. Vài năm sau khi chuyển đến căn hộ này, mẹ anh bỏ đi. Vì chỉ sống cùng bố, anh thường xuyên trải qua những buổi tối hiu quạnh chờ bố tăng ca về muộn. Anh cũng luôn phải ăn tối một mình.</p>
-    <p>Nhưng điều đó không có nghĩa là anh cảm thấy cô đơn. Thật may mắn, khi đó anh đã học được cách đắm chìm vào thế giới của những câu chuyện. Bữa tối có thể là cơm hộp, mì gói hay đồ ăn giao tận nơi, nhiêu đó là quá đủ. Anh thậm chí còn quên bẵng việc ăn uống để mở một cuốn sách và du hành vào không gian vũ trụ, thế giới dị giới, hay quay về quá khứ. Cảm giác đó thực sự rất tuyệt vời. Cho đến khi đọc xong trang cuối cùng và ngẩng mặt lên, nhìn thấy ánh đèn LED trắng nhợt nhạt chiếu rọi căn phòng đơn điệu, anh mới chợt nhận ra tàu vũ trụ, những con rồng, ác quỷ hay Tengu trong trí tưởng tượng của mình đã hoàn toàn tan biến, để lại anh chơi vơi trong sự hụt hẫng.</p>
-    <p>Có lẽ, bản tính của anh vẫn không hề thay đổi kể từ ngày đó.</p>
+    <p>Ngồi đối diện nhau trên bàn ăn, nhâm nhi tách trà, tôi tự hỏi không biết trong mắt người ngoài, hai đứa chúng tôi đang đỏ mặt ngượng ngùng trông sẽ như thế nào nhỉ. Mặc dù vậy, khoảng thời gian nhỏ nhoi, giản dị khi chúng tôi chia sẻ những mẩu chuyện đời thường này lại vô cùng quý giá đối với tôi lúc này, và tôi không muốn đánh đổi Saki với bất kỳ ai khác. Nếu có thể, tôi hy vọng có thể lưu giữ mãi khoảnh khắc này.</p>
+    <p>Tôi nhớ lại những bữa tối thời cấp hai. Vài năm sau khi chuyển đến căn hộ này, mẹ tôi bỏ đi. Vì chỉ sống cùng bố, tôi thường xuyên trải qua những buổi tối hiu quạnh chờ bố tăng ca về muộn. Tôi cũng luôn phải ăn tối một mình.</p>
+    <p>Nhưng điều đó không có nghĩa là anh cảm thấy cô đơn. Thật may mắn, khi đó tôi đã học được cách đắm chìm vào thế giới của những câu chuyện. Bữa tối có thể là cơm hộp, mì gói hay đồ ăn giao tận nơi, nhiêu đó là quá đủ. Tôi thậm chí còn quên bẵng việc ăn uống để mở một cuốn sách và du hành vào không gian vũ trụ, thế giới dị giới, hay quay về quá khứ. Cảm giác đó thực sự rất tuyệt vời. Cho đến khi đọc xong trang cuối cùng và ngẩng mặt lên, nhìn thấy ánh đèn LED trắng nhợt nhạt chiếu rọi căn phòng đơn điệu, tôi mới chợt nhận ra tàu vũ trụ, những con rồng, ác quỷ hay Tengu trong trí tưởng tượng của mình đã hoàn toàn tan biến, để lại tôi chơi vơi trong sự hụt hẫng.</p>
+    <p>Có lẽ, bản tính của tôi vẫn không hề thay đổi kể từ ngày đó.</p>
     <p>Dù vậy—.</p>
-    <p>Nhờ có sự xuất hiện của cô em gái kế tóc vàng sau khi bố tái hôn, anh mới nhận ra cuộc sống hiện thực khi rời mắt khỏi những trang sách cũng có rất nhiều điều thú vị. Điều đó có thể coi là sự trưởng thành của anh trong suốt hai năm qua.</p>
-    <p>Anh hy vọng mình có thể tiếp tục tiến bước. Năm sau, và cả những năm sau nữa. Mười năm, hay thậm chí hai mươi năm sau.</p>
-    <p>Anh mong người ngồi đối diện lắng nghe những câu chuyện của anh vẫn sẽ luôn là Saki. Giờ đây, sau khi cùng nhau bước qua đêm đầu tiên đánh dấu bước ngoặt của cuộc đời, anh bắt đầu phác họa một bản đồ tương lai như thế.</p>
-    <p>Khung cảnh anh từng thấy trong mơ chợt hiện về trong tâm trí.</p>
-    <p>Anh đang ngồi trong một chiếc ô tô hướng ra biển. Anh là người cầm lái, Saki ngồi ở ghế phụ, và hai đứa con của chúng anh ngồi ở băng ghế sau. Ký ức về giấc mơ ấy khiến anh đỏ mặt ngượng ngùng mỗi khi nhớ lại. Chuyện đó... tiến triển quá nhanh rồi.</p>
-    <p>Dù vậy, khung cảnh trong ký ức giấc mơ đó lại là điều anh khao khát được biến thành hiện thực vào một ngày nào đó—.</p>
+    <p>Nhờ có sự xuất hiện của cô em gái kế tóc vàng sau khi bố tái hôn, tôi mới nhận ra cuộc sống hiện thực khi rời mắt khỏi những trang sách cũng có rất nhiều điều thú vị. Điều đó có thể coi là sự trưởng thành của tôi trong suốt hai năm qua.</p>
+    <p>Tôi hy vọng mình có thể tiếp tục tiến bước. Năm sau, và cả những năm sau nữa. Mười năm, hay thậm chí hai mươi năm sau.</p>
+    <p>Tôi mong người ngồi đối diện lắng nghe những câu chuyện của tôi vẫn sẽ luôn là Saki. Giờ đây, sau khi cùng nhau bước qua đêm đầu tiên đánh dấu bước ngoặt của cuộc đời, tôi bắt đầu phác họa một bản đồ tương lai như thế.</p>
+    <p>Khung cảnh tôi từng thấy trong mơ chợt hiện về trong tâm trí.</p>
+    <p>Tôi đang ngồi trong một chiếc ô tô hướng ra biển. Tôi là người cầm lái, Saki ngồi ở ghế phụ, và hai đứa con của chúng tôi ngồi ở băng ghế sau. Ký ức về giấc mơ ấy khiến tôi đỏ mặt ngượng ngùng mỗi khi nhớ lại. Chuyện đó... tiến triển quá nhanh rồi.</p>
+    <p>Dù vậy, khung cảnh trong ký ức giấc mơ đó lại là điều tôi khao khát được biến thành hiện thực vào một ngày nào đó—.</p>
     <p>"Anh đang tính đi thi bằng lái."</p>
-    <p>Anh đột nhiên thốt lên câu nói đó.</p>
+    <p>Tôi đột nhiên thốt lên câu nói đó.</p>
     <p>"Bằng lái... xe ô tô á?"</p>
     <p>"Ừ. Anh đang tính vậy. Anh muốn thi lấy bằng. Nếu không có bằng thì làm sao lái xe được."</p>
     <p>"Cái đó thì rõ ràng rồi."</p>
-    <p>Saki nhìn anh như thể muốn hỏi sao anh lại nói một điều hiển nhiên đến thế. Nhưng, anh lại cảm thấy một ngọn lửa nhiệt huyết đang bùng cháy trong tâm trí.</p>
-    <p>Đúng vậy. Anh sẽ lấy bằng lái. Và rồi anh sẽ cùng Saki lái xe ra biển.</p>
-    <p>Mặc dù đó không phải là một bước tiến vĩ đại để mở rộng thế giới của anh, nhưng...</p>
-    <p>Ít nhất anh cũng muốn khám phá thêm một điều mới mẻ.</p>
+    <p>Saki nhìn tôi như thể muốn hỏi sao tôi lại nói một điều hiển nhiên đến thế. Nhưng, tôi lại cảm thấy một ngọn lửa nhiệt huyết đang bùng cháy trong tâm trí.</p>
+    <p>Đúng vậy. Tôi sẽ lấy bằng lái. Và rồi tôi sẽ cùng Saki lái xe ra biển.</p>
+    <p>Mặc dù đó không phải là một bước tiến vĩ đại để mở rộng thế giới của tôi, nhưng...</p>
+    <p>Ít nhất tôi cũng muốn khám phá thêm một điều mới mẻ.</p>
 
     <div class="chapter-nav">
         <a href="../Vol14/Gimai14_Epi.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -737,7 +991,12 @@
 
     <script>
         (function() {
-            // Word count
+            // ── Scroll Progress Bar ──
+            var progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            // ── Word Count ──
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -746,16 +1005,16 @@
                     total += t.split(/\s+/).length;
                 }
             }
-
             var h1 = document.querySelector('h1');
             if (h1) {
                 var wc = document.createElement('div');
                 wc.className = 'word-count';
                 wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
-                h1.parentNode.insertBefore(wc, h1.nextSibling);
+                var nextEl = h1.nextElementSibling;
+                h1.parentNode.insertBefore(wc, nextEl && nextEl.tagName === 'H2' ? nextEl.nextSibling : h1.nextSibling);
             }
 
-            // Floating nav
+            // ── Floating Nav ──
             var navs = document.querySelectorAll('.chapter-nav');
             if (navs.length > 0) {
                 var src = navs[0];
@@ -779,7 +1038,7 @@
                 }
                 document.body.appendChild(floatNav);
 
-                // Toggle tab (PC)
+                // Toggle tab
                 var toggle = document.createElement('div');
                 toggle.className = 'nav-toggle';
                 toggle.id = 'navToggle';
@@ -787,7 +1046,6 @@
                 document.body.appendChild(toggle);
 
                 var isOpen = false;
-
                 function toggleNav() {
                     isOpen = !isOpen;
                     floatNav.classList.toggle('visible', isOpen);
@@ -800,7 +1058,6 @@
                     toggleNav();
                 });
 
-                // Mobile: tap anywhere to toggle
                 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (isMobile) {
                     document.addEventListener('click', function(e) {
@@ -810,7 +1067,83 @@
                     });
                 }
             }
+
+            // ── Scroll to Top Button ──
+            var scrollBtn = document.createElement('div');
+            scrollBtn.className = 'scroll-top';
+            scrollBtn.innerHTML = '\u2191';
+            scrollBtn.title = 'V\u1ec1 \u0111\u1ea7u trang';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ── Scroll Events ──
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                scrollBtn.classList.toggle('visible', scrollTop > 400);
+            }, { passive: true });
         })();
+    </script>
+
+    <script>
+    (function() {
+        var themes = [
+            { id: 'default', label: 'M\u1eb7c \u0111\u1ecbnh', color: 'linear-gradient(135deg, #7c5cbf, #a78bfa)' },
+            { id: 'gray', label: 'X\u00e1m', color: '#555' },
+            { id: 'black', label: '\u0110en', color: '#111' },
+            { id: 'white', label: 'Tr\u1eafng', color: '#eee' }
+        ];
+
+        var saved = localStorage.getItem('gimai-theme') || 'default';
+
+        var picker = document.createElement('div');
+        picker.className = 'theme-picker';
+
+        var btn = document.createElement('div');
+        btn.className = 'theme-picker-btn';
+        btn.innerHTML = '\uD83C\uDFA8';
+        btn.title = '\u0110\u1ed5i giao di\u1ec7n';
+
+        var opts = document.createElement('div');
+        opts.className = 'theme-options';
+
+        themes.forEach(function(t) {
+            var o = document.createElement('div');
+            o.className = 'theme-option' + (t.id === saved ? ' active' : '');
+            o.style.background = t.color;
+            o.title = t.label;
+            if (t.id === 'white') o.style.border = '2px solid #ccc';
+            o.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themes.forEach(function(th) { document.body.classList.remove('theme-' + th.id); });
+                if (t.id !== 'default') document.body.classList.add('theme-' + t.id);
+                localStorage.setItem('gimai-theme', t.id);
+                opts.querySelectorAll('.theme-option').forEach(function(el) { el.classList.remove('active'); });
+                o.classList.add('active');
+            });
+            opts.appendChild(o);
+        });
+
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            opts.classList.toggle('visible', open);
+        });
+
+        document.addEventListener('click', function() {
+            if (open) { open = false; opts.classList.remove('visible'); }
+        });
+
+        picker.appendChild(opts);
+        picker.appendChild(btn);
+        document.body.appendChild(picker);
+    })();
     </script>
 </body>
 </html>

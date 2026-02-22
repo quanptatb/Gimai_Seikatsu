@@ -3,102 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Gimai Seikatsu Volume 15 Chapter 4</title>
-    <style>
-        body {
-            background-color: #333333;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
+        <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.9;
+            padding: 0 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(167, 139, 250, 0.35);
+            color: #fff;
+        }
+
+        /* ── Scroll Progress Bar ── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa, #c4b5fd);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Headers ── */
         h1, h2 {
             text-align: center;
+            font-family: 'Noto Serif', Georgia, serif;
         }
 
         h1 {
-            border-bottom: 1px solid #777;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 50px 0 14px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: fadeIn 0.8s ease;
         }
 
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            color: #b8a9d4;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease 0.15s both;
+        }
+
+        /* ── Content ── */
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
+            color: #d5d0e0;
+            animation: fadeIn 0.6s ease both;
         }
 
         hr {
-            border-color: #555;
-            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 35px 0;
         }
 
+        /* ── Dialogue & Thought (Vol13) ── */
+        .dialogue {
+            font-weight: 500;
+            color: #e8e0f0;
+        }
+
+        .thought {
+            font-style: italic;
+            color: #a89cc0;
+        }
+
+        /* ── Nav Link ── */
         .nav-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #aaa;
+            color: #9b8fb8;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #c4b5fd;
         }
 
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-top: 1px solid #555;
-            border-bottom: 1px solid #555;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .chapter-nav a {
-            color: #aaa;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .chapter-nav a:hover {
-            color: #fff;
-            background-color: #444;
-        }
-
-        .chapter-nav .disabled {
-            color: #555;
-            padding: 8px 16px;
-        }
-    
+        /* ── Inline Chapter Nav (hidden — replaced by floating) ── */
         .chapter-nav {
             display: none !important;
         }
 
+        /* ── Word Count ── */
         .word-count {
             text-align: center;
-            color: #777;
+            color: #8b7aab;
             font-size: 13px;
-            margin: 0 0 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+            margin: 0 0 35px;
+            padding: 10px 18px;
+            background: rgba(167, 139, 250, 0.06);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 10px;
             letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.8s ease 0.3s both;
         }
 
+        /* ── Floating Nav ── */
         .floating-nav {
             position: fixed;
-            right: -240px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -112,64 +165,117 @@
         .floating-nav .nav-disabled {
             display: block;
             padding: 12px 22px;
-            background: rgba(35, 35, 35, 0.96);
-            color: #bbb;
+            background: rgba(26, 26, 46, 0.92);
+            color: #b8a9d4;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            transition: all 0.25s ease;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 155px;
         }
 
         .floating-nav a:hover {
             color: #fff;
-            background: rgba(55, 55, 55, 0.96);
-            border-color: rgba(255,255,255,0.18);
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.15);
         }
 
         .floating-nav .nav-disabled {
-            color: #555;
+            color: #5a5073;
             cursor: default;
         }
 
+        /* ── Toggle Tab ── */
         .nav-toggle {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
-            width: 26px;
-            height: 54px;
-            background: rgba(55, 55, 55, 0.75);
-            border-radius: 8px 0 0 8px;
+            width: 28px;
+            height: 56px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px 0 0 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #a78bfa;
             font-size: 11px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(167, 139, 250, 0.15);
             border-right: none;
             user-select: none;
         }
 
         .nav-toggle:hover {
-            background: rgba(75, 75, 75, 0.9);
-            color: #fff;
-            width: 30px;
+            background: rgba(40, 35, 65, 0.95);
+            color: #c4b5fd;
+            width: 32px;
         }
 
         .nav-toggle.shifted {
-            right: 210px;
+            right: 215px;
         }
 
+        /* ── Scroll to Top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #c4b5fd;
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 16px 50px;
+            }
+
             .nav-toggle {
                 display: none;
             }
@@ -178,16 +284,164 @@
                 top: auto;
                 bottom: 20px;
                 transform: none;
-                right: -240px;
+                right: -250px;
             }
 
             .floating-nav.visible {
                 right: 12px;
             }
+
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    
+
+        /* ── Theme Picker ── */
+        .theme-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .theme-picker-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .theme-picker-btn:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 52px;
+            left: 0;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(26, 26, 46, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .theme-options.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover { transform: scale(1.2); }
+
+        .theme-option.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* ── Theme: Gray ── */
+        body.theme-gray { background: #333 !important; background-image: none !important; color: #fff; }
+        body.theme-gray h1 { background: none !important; -webkit-text-fill-color: #fff; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-gray h1::after { background: linear-gradient(90deg, transparent, #666, transparent); }
+        body.theme-gray h2 { color: #ccc; }
+        body.theme-gray p { color: #e0e0e0; }
+        body.theme-gray .dialogue { color: #eee; }
+        body.theme-gray .thought { color: #bbb; }
+        body.theme-gray hr { background: linear-gradient(90deg, transparent, #555, transparent); }
+        body.theme-gray .word-count { color: #999; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray ::selection { background: rgba(180,180,180,0.3); }
+        body.theme-gray .floating-nav a { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); color: #ccc; }
+        body.theme-gray .floating-nav a:hover { background: rgba(65,65,65,0.95); color: #fff; border-color: rgba(255,255,255,0.2); }
+        body.theme-gray .floating-nav .nav-disabled { color: #666; }
+        body.theme-gray .nav-toggle { background: rgba(60,60,60,0.85); color: #aaa; border-color: rgba(255,255,255,0.08); }
+        body.theme-gray .scroll-top { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); color: #aaa; }
+        body.theme-gray .theme-picker-btn { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); }
+        body.theme-gray .theme-options { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray .theme-option.active { border-color: #aaa; box-shadow: 0 0 0 2px rgba(180,180,180,0.4), 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* ── Theme: Black ── */
+        body.theme-black { background: #080808 !important; background-image: none !important; color: #b0b0b0; }
+        body.theme-black h1 { background: none !important; -webkit-text-fill-color: #ddd; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-black h1::after { background: linear-gradient(90deg, transparent, #333, transparent); }
+        body.theme-black h2 { color: #888; }
+        body.theme-black p { color: #b0b0b0; }
+        body.theme-black .dialogue { color: #c0c0c0; }
+        body.theme-black .thought { color: #777; }
+        body.theme-black hr { background: linear-gradient(90deg, transparent, #2a2a2a, transparent); }
+        body.theme-black .word-count { color: #555; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); }
+        body.theme-black ::selection { background: rgba(150,150,150,0.25); }
+        body.theme-black .floating-nav a { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); color: #888; }
+        body.theme-black .floating-nav a:hover { background: rgba(28,28,28,0.96); color: #ccc; }
+        body.theme-black .floating-nav .nav-disabled { color: #444; }
+        body.theme-black .nav-toggle { background: rgba(18,18,18,0.9); color: #555; border-color: rgba(255,255,255,0.04); }
+        body.theme-black .scroll-top { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); color: #555; }
+        body.theme-black .theme-picker-btn { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-options { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-option.active { border-color: #666; box-shadow: 0 0 0 2px rgba(100,100,100,0.4), 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* ── Theme: White ── */
+        body.theme-white { background: #f5f3ef !important; background-image: none !important; color: #2a2a2a; }
+        body.theme-white h1 { background: none !important; -webkit-text-fill-color: #1a1a1a; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-white h1::after { background: linear-gradient(90deg, transparent, #ccc, transparent); }
+        body.theme-white h2 { color: #555; }
+        body.theme-white p { color: #333; }
+        body.theme-white .dialogue { color: #222; }
+        body.theme-white .thought { color: #666; }
+        body.theme-white hr { background: linear-gradient(90deg, transparent, #ddd, transparent); }
+        body.theme-white .word-count { color: #888; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.theme-white ::selection { background: rgba(124,92,191,0.2); color: #111; }
+        body.theme-white .scroll-progress { background: linear-gradient(90deg, #9575cd, #7c5cbf); }
+        body.theme-white .floating-nav a { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); color: #555; }
+        body.theme-white .floating-nav a:hover { background: rgba(248,248,248,0.98); color: #111; border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body.theme-white .floating-nav .nav-disabled { color: #bbb; }
+        body.theme-white .nav-toggle { background: rgba(255,255,255,0.92); color: #888; border-color: rgba(0,0,0,0.08); }
+        body.theme-white .nav-toggle:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .scroll-top { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); color: #888; }
+        body.theme-white .scroll-top:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .theme-picker-btn { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-options { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-option.active { border-color: #7c5cbf; box-shadow: 0 0 0 2px rgba(124,92,191,0.3), 0 2px 6px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .theme-picker { bottom: 16px; left: 16px; }
+            .theme-picker-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
+<script>(function(){var t=localStorage.getItem('gimai-theme');if(t&&t!=='default')document.body.classList.add('theme-'+t);})()</script>
 
     <div class="chapter-nav">
         <a href="Gimai15_C3.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -197,70 +451,70 @@
 
     <h1>Chương 4 — Năm nhất Đại học, Tháng 6, Ayase Saki</h1>
 
-    <p>Đã một tháng trôi qua kể từ khi em bắt đầu kỳ thực tập tại văn phòng thiết kế của chị Ruka. Hầu như ngày nào em cũng đến đó, mở máy tính lên và hoàn thành công việc được giao. Xen kẽ giữa những lúc đó, em nhờ các anh chị tiền bối chỉ bảo thêm về những kiến thức thiết kế cơ bản, hỏi han xem nên dùng tài liệu nào để tham khảo, và dù chỉ là tự mày mò học hỏi, em cũng đã dần dần tiếp thu được ít nhiều. Em phải sắp xếp làm tất cả những việc này vào khoảng thời gian trống giữa các tiết học trên trường, nên dạo gần đây cuộc sống của em có chút bận rộn.</p>
-    <p>Em thực sự muốn nói như vậy đấy, nhưng...</p>
-    <p>Không, đúng là em đang rất bận rộn mà?</p>
-    <p>Bản thân em cũng cảm thấy đây là một khối lượng công việc nặng nề. Vốn dĩ nó phải nặng nề rồi. Tuy nhiên, em lại cảm thấy ngập ngừng không dám than vãn, bởi vì khối lượng công việc của sếp em, chị Ruka, mới thực sự ở mức độ khủng khiếp.</p>
-    <p>Chính vì em là người trực tiếp quản lý lịch trình của chị ấy, nên em càng thấu hiểu điều này hơn ai hết.</p>
-    <p>Cần bao nhiêu sức lực để gánh vác hết ngần ấy việc, em hoàn toàn không thể tưởng tượng nổi, bởi số lượng dự án (project)—đây là thuật ngữ dùng để chỉ một đơn vị công việc—mà chị ấy đang ôm đồm là vô cùng lớn.</p>
-    <p>Vì văn phòng của chúng em có quy mô nhỏ, nên một số dự án được nhận cũng khá nhỏ lẻ, và thường thì phần công việc thực tế sẽ được giao lại cho các nhân viên khác đảm nhận. Thế nhưng, việc quản lý và phân bổ dự án bắt buộc phải do đích thân chị Ruka, với tư cách là giám đốc công ty, đứng ra điều hành. Hơn nữa, vì trách nhiệm cuối cùng vẫn đặt lên vai chị ấy, nên chị Ruka phải liên tục kiểm tra tiến độ cũng như chất lượng của mọi sản phẩm.</p>
+    <p>Đã một tháng trôi qua kể từ khi tôi bắt đầu kỳ thực tập tại văn phòng thiết kế của chị Ruka. Hầu như ngày nào tôi cũng đến đó, mở máy tính lên và hoàn thành công việc được giao. Xen kẽ giữa những lúc đó, tôi nhờ các anh chị tiền bối chỉ bảo thêm về những kiến thức thiết kế cơ bản, hỏi han xem nên dùng tài liệu nào để tham khảo, và dù chỉ là tự mày mò học hỏi, tôi cũng đã dần dần tiếp thu được ít nhiều. Tôi phải sắp xếp làm tất cả những việc này vào khoảng thời gian trống giữa các tiết học trên trường, nên dạo gần đây cuộc sống của tôi có chút bận rộn.</p>
+    <p>Tôi thực sự muốn nói như vậy đấy, nhưng...</p>
+    <p>Không, đúng là tôi đang rất bận rộn mà?</p>
+    <p>Bản thân tôi cũng cảm thấy đây là một khối lượng công việc nặng nề. Vốn dĩ nó phải nặng nề rồi. Tuy nhiên, tôi lại cảm thấy ngập ngừng không dám than vãn, bởi vì khối lượng công việc của sếp tôi, chị Ruka, mới thực sự ở mức độ khủng khiếp.</p>
+    <p>Chính vì tôi là người trực tiếp quản lý lịch trình của chị ấy, nên tôi càng thấu hiểu điều này hơn ai hết.</p>
+    <p>Cần bao nhiêu sức lực để gánh vác hết ngần ấy việc, tôi hoàn toàn không thể tưởng tượng nổi, bởi số lượng dự án (project)—đây là thuật ngữ dùng để chỉ một đơn vị công việc—mà chị ấy đang ôm đồm là vô cùng lớn.</p>
+    <p>Vì văn phòng của chúng tôi có quy mô nhỏ, nên một số dự án được nhận cũng khá nhỏ lẻ, và thường thì phần công việc thực tế sẽ được giao lại cho các nhân viên khác đảm nhận. Thế nhưng, việc quản lý và phân bổ dự án bắt buộc phải do đích thân chị Ruka, với tư cách là giám đốc công ty, đứng ra điều hành. Hơn nữa, vì trách nhiệm cuối cùng vẫn đặt lên vai chị ấy, nên chị Ruka phải liên tục kiểm tra tiến độ cũng như chất lượng của mọi sản phẩm.</p>
     <p>Khối lượng công việc cộng dồn lại trở nên khổng lồ...</p>
     <p>Chỉ chừng đó thôi cũng đã đủ vắt kiệt sức lực rồi, thế nhưng...</p>
     <p>Hiện tại, chị ấy còn đang gánh vác thêm một siêu dự án không thể gọi là nhỏ được.</p>
     <p>Đó chính là dự án 'Roppongi Art Festa'.</p>
-    <p>Mặc dù ý tưởng lần này rất mới mẻ và là một bước đi mang tính đột phá, nhưng thực chất việc tổ chức các sự kiện nghệ thuật quy mô lớn tại Roppongi đã là một truyền thống kéo dài nhiều năm qua. Chúng em không được phép phá vỡ đi những ấn tượng tốt đẹp vốn đã được gây dựng từ trước tại khu vực này. Đồng thời, chúng em cũng phải vắt óc suy nghĩ để những người tham gia không cảm thấy nhàm chán với những trải nghiệm nhạt nhẽo lặp đi lặp lại, nghĩa là chúng em bắt buộc phải thử nghiệm những điều mới lạ.</p>
-    <p>Sự kiện càng có quy mô lớn, việc này lại càng trở nên khó nhằn. Bất cứ sự đổi mới nào cũng cần tiêu tốn rất nhiều năng lượng. Xu hướng chung của con người thường là muốn giữ lại những giá trị an toàn, bảo thủ. Chính vì vậy, việc thiết kế nên một ý tưởng chủ đạo (concept) tổng thể là vô cùng quan trọng, và bài toán đặt ra là làm thế nào để chúng em có thể tạo ra sự khác biệt từ chính cái nền tảng đó—chị Ruka đã nói như vậy.</p>
+    <p>Mặc dù ý tưởng lần này rất mới mẻ và là một bước đi mang tính đột phá, nhưng thực chất việc tổ chức các sự kiện nghệ thuật quy mô lớn tại Roppongi đã là một truyền thống kéo dài nhiều năm qua. Chúng tôi không được phép phá vỡ đi những ấn tượng tốt đẹp vốn đã được gây dựng từ trước tại khu vực này. Đồng thời, chúng tôi cũng phải vắt óc suy nghĩ để những người tham gia không cảm thấy nhàm chán với những trải nghiệm nhạt nhẽo lặp đi lặp lại, nghĩa là chúng tôi bắt buộc phải thử nghiệm những điều mới lạ.</p>
+    <p>Sự kiện càng có quy mô lớn, việc này lại càng trở nên khó nhằn. Bất cứ sự đổi mới nào cũng cần tiêu tốn rất nhiều năng lượng. Xu hướng chung của con người thường là muốn giữ lại những giá trị an toàn, bảo thủ. Chính vì vậy, việc thiết kế nên một ý tưởng chủ đạo (concept) tổng thể là vô cùng quan trọng, và bài toán đặt ra là làm thế nào để chúng tôi có thể tạo ra sự khác biệt từ chính cái nền tảng đó—chị Ruka đã nói như vậy.</p>
     <p>Vậy, ý tưởng cốt lõi (hay "mục tiêu") của 'Roppongi Art Festa' lần này là gì?</p>
     <p>『Thế giới nghệ thuật hòa quyện vào nhịp sống thường nhật.』</p>
     <p>Đó chính là ý tưởng chủ đạo.</p>
-    <p>Thành thật mà nói, nếu chỉ nghe qua câu nói đó, em hoàn toàn không hiểu ý nghĩa sâu xa của nó là gì. Em đã phải cày cuốc đọc đi đọc lại các bản ghi chép công việc (log) trên máy tính và giờ em sẽ thử diễn giải lại những gì mình hiểu bằng ngôn từ của chính mình.</p>
+    <p>Thành thật mà nói, nếu chỉ nghe qua câu nói đó, tôi hoàn toàn không hiểu ý nghĩa sâu xa của nó là gì. Tôi đã phải cày cuốc đọc đi đọc lại các bản ghi chép công việc (log) trên máy tính và giờ tôi sẽ thử diễn giải lại những gì mình hiểu bằng ngôn từ của chính mình.</p>
     <p>Buổi triển lãm nghệ thuật lần này có vẻ như đang hướng đến mục tiêu tạo ra "một thứ nghệ thuật không bị đặt lên bệ phóng của sự đặc quyền".</p>
     <p>Khi muốn thưởng thức nghệ thuật, chúng ta thường làm gì? Theo lẽ thường tình, chúng ta chắc chắn sẽ tìm đến các viện bảo tàng, nhà hát, hoặc các phòng hòa nhạc. Điều đó có nghĩa là, chúng ta phải cất công đến một địa điểm đặc thù chỉ để tìm kiếm một trải nghiệm đặc thù.</p>
     <p>Những hoạt động như vậy vốn mang ý nghĩa riêng của nó. Nếu muốn thực sự đắm chìm vào nghệ thuật, cách dễ dàng và chắc chắn nhất là hãy đi đến những không gian chuyên biệt, nơi cho phép ta rũ bỏ mọi vướng bận bên ngoài. Ở những nơi như vậy, ta cũng có thể dễ dàng quên đi những muộn phiền lặt vặt của cuộc sống mưu sinh.</p>
-    <p>Ngay cả bản thân em, nếu đi hẹn hò với anh Yuuta, em cũng sẽ chọn đến những nơi như thế. Cảm giác như hai đứa có thể cùng nhau trải qua một khoảng thời gian vô cùng đặc biệt. Tuy nhiên, chính điều này cũng vô tình dựng lên một bức tường rào cản rất lớn đối với [nghệ thuật].</p>
-    <p>Em muốn mọi người có thể cảm thấy thoải mái và tự nhiên hơn khi thưởng thức nó. Em muốn hạ thấp cái rào cản vô hình ấy xuống, đồng thời mở ra thêm nhiều cơ hội để đại chúng có thể chạm vào những giá trị mang tính nghệ thuật. Rất nhiều nghệ sĩ cũng đang ôm ấp chung một suy nghĩ như vậy.</p>
+    <p>Ngay cả bản thân tôi, nếu đi hẹn hò với anh Yuuta, tôi cũng sẽ chọn đến những nơi như thế. Cảm giác như hai đứa có thể cùng nhau trải qua một khoảng thời gian vô cùng đặc biệt. Tuy nhiên, chính điều này cũng vô tình dựng lên một bức tường rào cản rất lớn đối với [nghệ thuật].</p>
+    <p>Tôi muốn mọi người có thể cảm thấy thoải mái và tự nhiên hơn khi thưởng thức nó. Tôi muốn hạ thấp cái rào cản vô hình ấy xuống, đồng thời mở ra thêm nhiều cơ hội để đại chúng có thể chạm vào những giá trị mang tính nghệ thuật. Rất nhiều nghệ sĩ cũng đang ôm ấp chung một suy nghĩ như vậy.</p>
     <p>Được rồi, vậy thì hãy cùng nhau tạo ra một không gian nơi nghệ thuật có thể được phô diễn một cách tự nhiên và phóng khoáng nhất.</p>
-    <p>—Em không rõ liệu đây có đúng là trình tự tư duy của họ hay không, nhưng có vẻ như định hướng của sự kiện lần này đã được định hình dựa trên cách tiếp cận đó, cụ thể là: "Hãy cùng trình diễn đa dạng các loại hình nghệ thuật theo một cách dung hòa tự nhiên nhất vào cảnh quan đô thị của Roppongi."</p>
-    <p>Chúng em sẽ đặt nghệ thuật vào ngay giữa khung cảnh đời thường mà không tạo ra bất kỳ sự khiên cưỡng nào, để rồi khi những người khách bộ hành tình cờ lướt qua và nhận ra, họ có thể chạm nhẹ vào nghệ thuật và cảm thấy một sự bất ngờ đầy thú vị. Hãy cùng nhau kiến tạo nên một buổi triển lãm như thế. Đại khái ý tưởng là như vậy. Vâng, một ý tưởng vô cùng lôi cuốn.</p>
-    <p>Giờ thì em đã thấu hiểu rằng những điều bất ngờ đôi khi mang lại niềm vui sướng đến nhường nào.</p>
-    <p>Chị Ruka đã tham gia vào dự án này ngay từ những khâu lên ý tưởng đầu tiên. Mọi thứ cho đến khâu chốt hạ ý tưởng thiết kế đều đã được hoàn tất êm xuôi trước khi em bước chân vào văn phòng thực tập hồi tháng Năm vừa qua.</p>
+    <p>—Tôi không rõ liệu đây có đúng là trình tự tư duy của họ hay không, nhưng có vẻ như định hướng của sự kiện lần này đã được định hình dựa trên cách tiếp cận đó, cụ thể là: "Hãy cùng trình diễn đa dạng các loại hình nghệ thuật theo một cách dung hòa tự nhiên nhất vào cảnh quan đô thị của Roppongi."</p>
+    <p>Chúng tôi sẽ đặt nghệ thuật vào ngay giữa khung cảnh đời thường mà không tạo ra bất kỳ sự khiên cưỡng nào, để rồi khi những người khách bộ hành tình cờ lướt qua và nhận ra, họ có thể chạm nhẹ vào nghệ thuật và cảm thấy một sự bất ngờ đầy thú vị. Hãy cùng nhau kiến tạo nên một buổi triển lãm như thế. Đại khái ý tưởng là như vậy. Vâng, một ý tưởng vô cùng lôi cuốn.</p>
+    <p>Giờ thì tôi đã thấu hiểu rằng những điều bất ngờ đôi khi mang lại niềm vui sướng đến nhường nào.</p>
+    <p>Chị Ruka đã tham gia vào dự án này ngay từ những khâu lên ý tưởng đầu tiên. Mọi thứ cho đến khâu chốt hạ ý tưởng thiết kế đều đã được hoàn tất êm xuôi trước khi tôi bước chân vào văn phòng thực tập hồi tháng Năm vừa qua.</p>
     <p>Các cuộc họp bàn với ban quản lý của những địa điểm sẽ trưng bày tác phẩm nghệ thuật, bao gồm Trung tâm Nghệ thuật Quốc gia, Tokyo Midtown, Mori Building, và Hiệp hội Phát triển Thương mại Roppongi, cũng như việc cân đối, sắp xếp vị trí tại các không gian công cộng và công viên, đều đã được giải quyết gọn gàng trong tháng trước.</p>
-    <p>Điều này đồng nghĩa với việc bộ khung định hướng chung về việc sẽ làm gì và làm như thế nào đã được ấn định. Ở thời điểm hiện tại, chúng em đang đi sâu vào triển khai các chi tiết cụ thể.</p>
+    <p>Điều này đồng nghĩa với việc bộ khung định hướng chung về việc sẽ làm gì và làm như thế nào đã được ấn định. Ở thời điểm hiện tại, chúng tôi đang đi sâu vào triển khai các chi tiết cụ thể.</p>
     <p>Ví dụ như việc đàm phán và cập nhật tiến độ công việc với các nghệ sĩ sẽ góp mặt trong dự án. Trong dàn nghệ sĩ tham gia, (điều đáng ngạc nhiên là) có cả những tên tuổi đến từ nước ngoài.</p>
     <p>Có người là họa sĩ, có người là họa sĩ minh họa, lại có người là nhà điêu khắc, bao trùm lên vô vàn thể loại khác nhau.</p>
-    <p>Nghe đâu còn có cả những nghệ sĩ trẻ đang lên và nhận được nhiều sự chú ý trong giới. Riêng em cảm thấy vô cùng háo hức khi có cơ hội được tận mắt chiêm ngưỡng các tác phẩm của những nghệ sĩ mới nổi từ quốc tế—những tác phẩm vốn dĩ rất khó tiếp cận nếu chỉ loanh quanh ở Nhật Bản.</p>
-    <p>Nhiệm vụ của chị Ruka còn bao gồm cả việc lo liệu thủ tục visa và nơi lưu trú cho các nghệ sĩ (đây là cách nói hoa mỹ của việc mời các chuyên gia về nước), điều đó đồng nghĩa với việc, trên cương vị là thư ký, em phải tự tay soạn thảo và đọc hiểu các email bằng tiếng Anh để duy trì liên lạc với họ.</p>
+    <p>Nghe đâu còn có cả những nghệ sĩ trẻ đang lên và nhận được nhiều sự chú ý trong giới. Riêng tôi cảm thấy vô cùng háo hức khi có cơ hội được tận mắt chiêm ngưỡng các tác phẩm của những nghệ sĩ mới nổi từ quốc tế—những tác phẩm vốn dĩ rất khó tiếp cận nếu chỉ loanh quanh ở Nhật Bản.</p>
+    <p>Nhiệm vụ của chị Ruka còn bao gồm cả việc lo liệu thủ tục visa và nơi lưu trú cho các nghệ sĩ (đây là cách nói hoa mỹ của việc mời các chuyên gia về nước), điều đó đồng nghĩa với việc, trên cương vị là thư ký, tôi phải tự tay soạn thảo và đọc hiểu các email bằng tiếng Anh để duy trì liên lạc với họ.</p>
     <p>"Chị cảm thấy rất yên tâm vì em viết email mượt mà hơn chị tưởng đấy. Quả không hổ danh là sinh viên của trường Tsukinomiya."</p>
-    <p>Khi nghe chị Ruka khen ngợi như vậy, em cảm thấy nhẹ nhõm vô cùng vì những nỗ lực tự rèn luyện tiếng Anh một cách chủ động của mình cuối cùng cũng đơm hoa kết trái. Thế nhưng, ngay khoảnh khắc đó, chị Ruka liền chêm thêm một câu.</p>
+    <p>Khi nghe chị Ruka khen ngợi như vậy, tôi cảm thấy nhẹ nhõm vô cùng vì những nỗ lực tự rèn luyện tiếng Anh một cách chủ động của mình cuối cùng cũng đơm hoa kết trái. Thế nhưng, ngay khoảnh khắc đó, chị Ruka liền chêm thêm một câu.</p>
     <p>"À, nhưng em phải nhớ kỹ điều này, chị để em làm thư ký là bởi vì hiện tại em chưa thể đảm đương được các công việc thiết kế. Đó không phải là công việc cốt lõi của em. Chị nghĩ việc viết email bằng tiếng Anh và quản lý lịch trình sẽ là những kỹ năng hữu ích cho em sau này, nhưng nếu em không có ý định theo đuổi nghề thư ký trọn đời, thì tuyệt đối đừng quên tranh thủ học hỏi về thiết kế trong suốt quãng thời gian thực tập này nhé."</p>
     <p>"Dạ vâng. Em hiểu rồi ạ."</p>
-    <p>Nghe những lời dặn dò tâm huyết của chị Ruka, em bất giác gật đầu lia lịa. Thực ra, lý do thuở ban đầu khiến em bị thu hút bởi công việc của chị Ruka là vì em đã hoàn toàn bị chinh phục bởi tấm poster buổi hòa nhạc của Melissa do chính tay chị ấy thiết kế, chứ không phải vì những dự án vĩ mô mà chị ấy đang gánh vác. Đối với em, quy mô dự án to hay nhỏ chẳng hề quan trọng.</p>
-    <p>Nếu em mang trong mình cái bản tính hay đánh giá con người qua độ hoành tráng của công việc họ làm, có lẽ em đã chẳng thể nào dành một sự tôn trọng tuyệt đối cho mẹ mình đến vậy. Có gì sai khi chỉ làm một người pha chế (bartender) trong một quán bar nhỏ bé chứ—em luôn nghĩ như vậy.</p>
+    <p>Nghe những lời dặn dò tâm huyết của chị Ruka, tôi bất giác gật đầu lia lịa. Thực ra, lý do thuở ban đầu khiến tôi bị thu hút bởi công việc của chị Ruka là vì tôi đã hoàn toàn bị chinh phục bởi tấm poster buổi hòa nhạc của Melissa do chính tay chị ấy thiết kế, chứ không phải vì những dự án vĩ mô mà chị ấy đang gánh vác. Đối với tôi, quy mô dự án to hay nhỏ chẳng hề quan trọng.</p>
+    <p>Nếu tôi mang trong mình cái bản tính hay đánh giá con người qua độ hoành tráng của công việc họ làm, có lẽ tôi đã chẳng thể nào dành một sự tôn trọng tuyệt đối cho mẹ mình đến vậy. Có gì sai khi chỉ làm một người pha chế (bartender) trong một quán bar nhỏ bé chứ—tôi luôn nghĩ như vậy.</p>
     <p>Câu chuyện có vẻ đi hơi xa rồi. Mặc dù các tác phẩm góp mặt trong Roppongi Art Festa đều mang tầm vóc cực kỳ đồ sộ, nhưng đúng như những gì chị Ruka đã cảnh báo, dự án này không phải là môi trường lý tưởng để học hỏi về thiết kế.</p>
     <p>Bởi vì quy mô của nó quá tầm cỡ. Hệ quả là, phần lớn quỹ thời gian làm việc của chị Ruka đều bị hao tổn vào việc tìm cách điều phối, kết nối những con người liên quan trong dự án, thay vì trực tiếp bắt tay vào công đoạn thiết kế thực tế để hiện thực hóa ý tưởng.</p>
-    <p>Đó cũng chính là vai trò thường thấy của những người đứng ở vị trí lãnh đạo. Em thấu hiểu sự gian truân của công việc đó, nhưng dự án sự kiện này quả thực không mang lại nhiều giá trị thực tiễn cho một kẻ tay ngang đang muốn chập chững bước vào con đường thiết kế.</p>
-    <p>Chính vì vậy, cho đến tận lúc này, nguồn kiến thức dồi dào nhất mà em gặt hái được lại đến từ việc quan sát những công việc thực tế mà các anh chị nhân viên khác vẫn cặm cụi làm mỗi ngày.</p>
-    <p>Lấy ví dụ như chị Higashide Yume, người ngồi ngay chiếc ghế đối diện bàn làm việc của em. Mọi người trong văn phòng đều gọi chị ấy một cách thân thương là "Yume-chan". Chị ấy có vóc dáng nhỏ nhắn, tính tình cực kỳ thân thiện và lúc nào cũng thường trực nụ cười trên môi. Xét về tuổi tác, có lẽ chị ấy lớn hơn em tầm sáu tuổi.</p>
+    <p>Đó cũng chính là vai trò thường thấy của những người đứng ở vị trí lãnh đạo. Tôi thấu hiểu sự gian truân của công việc đó, nhưng dự án sự kiện này quả thực không mang lại nhiều giá trị thực tiễn cho một kẻ tay ngang đang muốn chập chững bước vào con đường thiết kế.</p>
+    <p>Chính vì vậy, cho đến tận lúc này, nguồn kiến thức dồi dào nhất mà tôi gặt hái được lại đến từ việc quan sát những công việc thực tế mà các anh chị nhân viên khác vẫn cặm cụi làm mỗi ngày.</p>
+    <p>Lấy ví dụ như chị Higashide Yume, người ngồi ngay chiếc ghế đối diện bàn làm việc của tôi. Mọi người trong văn phòng đều gọi chị ấy một cách thân thương là "Yume-chan". Chị ấy có vóc dáng nhỏ nhắn, tính tình cực kỳ thân thiện và lúc nào cũng thường trực nụ cười trên môi. Xét về tuổi tác, có lẽ chị ấy lớn hơn tôi tầm sáu tuổi.</p>
     <p>Hôm nay cũng vậy, chị ấy lại đang cặm cụi làm một món đồ gì đó, nhưng...</p>
     <p>Cái dáng vẻ của chị Higashide bé nhỏ khi cuộn mình cúi gầm xuống bàn làm việc mang lại cho người nhìn một cảm giác giống hệt như một loài động vật nhỏ bé đang lúi húi gặm nhấm thức ăn trong tổ của mình vậy.</p>
-    <p>Lén lút liếc nhìn qua vai chị ấy, em thấy chị đang lấy mặt bàn làm thớt cắt, cẩn thận dùng dao rọc giấy cắt một tấm giấy có hình thù kỳ quặc rồi dán nó lên một tấm bìa cứng làm đế. Chị ấy đang làm cái quái gì vậy nhỉ? Em kiên nhẫn chờ đến khoảnh khắc chị ấy trông có vẻ giãn cơ ra một chút rồi mới rụt rè lên tiếng bắt chuyện.</p>
+    <p>Lén lút liếc nhìn qua vai chị ấy, tôi thấy chị đang lấy mặt bàn làm thớt cắt, cẩn thận dùng dao rọc giấy cắt một tấm giấy có hình thù kỳ quặc rồi dán nó lên một tấm bìa cứng làm đế. Chị ấy đang làm cái quái gì vậy nhỉ? Tôi kiên nhẫn chờ đến khoảnh khắc chị ấy trông có vẻ giãn cơ ra một chút rồi mới rụt rè lên tiếng bắt chuyện.</p>
     <p>"Cái đó... là gì vậy chị?"</p>
-    <p>"Bìa bọc sách đó em," chị ấy đáp gọn lỏn, khiến em càng thêm phần hoang mang... Trông nó chẳng khác nào mấy món đồ thủ công cắt dán mà bọn trẻ con hay chơi.</p>
-    <p>Nhận ra vẻ mặt đầy dấu chấm hỏi của em, chị Higashide liền rủ em ra pha cà phê giải lao, rồi sau đó bắt đầu say sưa kể lể đủ thứ chuyện trên đời.</p>
+    <p>"Bìa bọc sách đó em," chị ấy đáp gọn lỏn, khiến tôi càng thêm phần hoang mang... Trông nó chẳng khác nào mấy món đồ thủ công cắt dán mà bọn trẻ con hay chơi.</p>
+    <p>Nhận ra vẻ mặt đầy dấu chấm hỏi của tôi, chị Higashide liền rủ tôi ra pha cà phê giải lao, rồi sau đó bắt đầu say sưa kể lể đủ thứ chuyện trên đời.</p>
     <p>Nói tóm tắt lại thì, dự án mà chị Higashide Yume đang ôm dạo gần đây là thiết kế một mẫu giấy bọc sách (bìa bao) dành riêng cho một tiệm sách. Dù chỉ là một tiệm sách tư nhân kinh doanh nhỏ lẻ, nhưng nghe đâu họ lại sở hữu hẳn một linh vật (maskot) mang tính biểu tượng riêng.</p>
-    <p>"Nó là cái hình này nè," chị ấy vừa nói vừa giơ lên trước mặt em một mảnh giấy cắt hình bóng (silhoutte) màu đỏ rực. Đó là một mẩu giấy được cắt gọt trông giống như một con vật được tạo hình từ ba bốn viên bi dính chặt vào nhau, thoạt nhìn khá giống một con sâu bướm.</p>
+    <p>"Nó là cái hình này nè," chị ấy vừa nói vừa giơ lên trước mặt tôi một mảnh giấy cắt hình bóng (silhoutte) màu đỏ rực. Đó là một mẩu giấy được cắt gọt trông giống như một con vật được tạo hình từ ba bốn viên bi dính chặt vào nhau, thoạt nhìn khá giống một con sâu bướm.</p>
     <p>"Con này là con gì vậy chị?"</p>
     <p>"Đây là nhân vật đang cực kỳ hút fan ở cái khu phố mua sắm đó đấy. Linh vật siêu cấp đáng yêu, bé mọt sách Shimi-chan."</p>
     <p>"Bé... Shimi-chan ạ..."</p>
     <p>"Vì đọc sách nhiều quá nên bé ấy bị cận thị, thành ra lúc nào cũng phải đeo cái kính gọng tròn to bự chảng chuẩn style hoài cổ (retro) đó."</p>
-    <p>Trong đầu em bắt đầu tuôn ra một rổ câu hỏi muốn chất vấn chị ấy.</p>
+    <p>Trong đầu tôi bắt đầu tuôn ra một rổ câu hỏi muốn chất vấn chị ấy.</p>
     <p>"Nhắc mới nhớ, cũng có một nhãn hiệu sách chọn gấu trúc làm linh vật đại diện đấy. Ngoài ra, hình như có một trang web đọc tiểu thuyết cũng dùng một chú chim tròn quay làm biểu tượng. Có lẽ sách vở và các loài động vật vốn dĩ sinh ra là để dành cho nhau chăng."</p>
     <p>"Hê~, em biết nhiều phết nhỉ~. Ra là Saki-chan cũng có đam mê với sách vở ha."</p>
     <p>"À dạ không hẳn đâu chị, chuyện là trước đây em từng có thời gian làm thêm ở một hiệu sách..."</p>
     <p>Nghe đến đây, chị Higashide đang tựa lưng thư giãn vào ghế bỗng chồm hẳn người về phía trước, ánh mắt sáng rực.</p>
     <p>"Tới luôn đi em gái, kể chị nghe thêm về vụ đó xem nào!"</p>
-    <p>Ơ kìa, ơ ơ, ủa alo? Em đâu ngờ mình lại trở thành người phải đứng ra thuyết trình bất đắc dĩ thế này. Ngay khi biết em từng có kinh nghiệm làm part-time ở hiệu sách, chị Higashide lập tức tra khảo em đủ điều về mấy cái giấy bọc sách thường được phát kèm ở cửa hàng, nào là khách hàng thường yêu cầu bọc sách khi nào, cách nhân viên gói ghém ra sao, và liệu em có bao giờ để ý đến những tiểu tiết đặc biệt nào trong quá trình sử dụng những tờ giấy bọc đó không. Mặc dù trong thâm tâm em thừa biết anh Yuuta mới là bách khoa toàn thư sống về cái chủ đề này, nhưng em vẫn cố gắng moi móc lại toàn bộ ký ức và những trải nghiệm mà mình có được trong suốt một năm rưỡi đi làm thêm để kể cho chị ấy nghe.</p>
-    <p>Cơ mà, những chia sẻ mang đậm chất a-ma-tơ của một đứa nghiệp dư như em liệu có thực sự mang lại chút giá trị tham khảo nào không?</p>
+    <p>Ơ kìa, ơ ơ, ủa alo? Tôi đâu ngờ mình lại trở thành người phải đứng ra thuyết trình bất đắc dĩ thế này. Ngay khi biết tôi từng có kinh nghiệm làm part-time ở hiệu sách, chị Higashide lập tức tra khảo tôi đủ điều về mấy cái giấy bọc sách thường được phát kèm ở cửa hàng, nào là khách hàng thường yêu cầu bọc sách khi nào, cách nhân viên gói ghém ra sao, và liệu tôi có bao giờ để ý đến những tiểu tiết đặc biệt nào trong quá trình sử dụng những tờ giấy bọc đó không. Mặc dù trong thâm tâm tôi thừa biết anh Yuuta mới là bách khoa toàn thư sống về cái chủ đề này, nhưng tôi vẫn cố gắng moi móc lại toàn bộ ký ức và những trải nghiệm mà mình có được trong suốt một năm rưỡi đi làm thêm để kể cho chị ấy nghe.</p>
+    <p>Cơ mà, những chia sẻ mang đậm chất a-ma-tơ của một đứa nghiệp dư như tôi liệu có thực sự mang lại chút giá trị tham khảo nào không?</p>
     <p>"Dĩ nhiên là có rồi. Tiếng nói từ những người trực tiếp trải nghiệm thực tế là một kho tàng vô giá đấy. Nói thật nhé, trên đời này làm gì có cái gọi là ý kiến vô dụng. Ngay cả phản hồi từ những người chẳng mấy bận tâm đến thiết kế cũng mang trong mình những đặc tính rất riêng của sự thờ ơ đó. Chẳng phải có khối người vừa nhận được sách bọc là về nhà lột phăng tờ giấy gói ra ném thẳng vào thùng rác sao?"</p>
     <p>A, chuyện đó thì đúng là có thật.</p>
     <p>"Giấy bọc sách vốn dĩ không phải là thứ để người ta trân lữu giữ lại, và đối với đại đa số, nó chỉ là một vật thể vô tri xẹt qua tầm mắt trong vòng vài giây ngắn ngủi. Và như thế là quá đủ rồi. Thế nên, ngay cả những ý kiến thờ ơ nhất cũng có cái giá trị riêng của nó."</p>
@@ -271,23 +525,23 @@
     <p>Dù vậy, mọi người vẫn đảm bảo tiến độ công việc được giao không bị chậm trễ một giây nào. Quả thực, 'Lucca Design Studio' là một môi trường làm việc kỳ lạ hết sức.</p>
     <p>"Tóm lại là, cái tiệm sách này là một cái tên khá máu mặt trong khu phố mua sắm đó. Đặc biệt là linh vật Shimi-chan có vẻ rất được lòng khách hàng ở mọi lứa tuổi, thậm chí họ còn vẽ chình ình hình bé ấy lên một tấm bảng hiệu siêu to khổng lồ dựng ngay trước cửa tiệm nữa kìa."</p>
     <p>Nói vậy nghĩa là, chị ấy đã tự mình cất công đến tận cửa hàng để khảo sát thực tế.</p>
-    <p>Nghe chị Higashide kể chuyện, em bỗng nhớ lại hình ảnh chị Ruka trong buổi họp dự án 'Roppongi Art Festa' hôm nọ. Bản thân chị Ruka cũng đã nhiều lần đích thân vi hành đến tận nơi sẽ diễn ra sự kiện để khảo sát địa hình.</p>
+    <p>Nghe chị Higashide kể chuyện, tôi bỗng nhớ lại hình ảnh chị Ruka trong buổi họp dự án 'Roppongi Art Festa' hôm nọ. Bản thân chị Ruka cũng đã nhiều lần đích thân vi hành đến tận nơi sẽ diễn ra sự kiện để khảo sát địa hình.</p>
     <p>Hay nói đúng hơn, vì vị sếp sòng là chị Ruka lúc nào cũng giữ tác phong làm việc lăn xả như thế, nên những nhân viên dưới trướng chị ấy đương nhiên cũng coi đó là một chuẩn mực phải tuân theo.</p>
     <p>"Nghĩa là, chị Yume đang ấp ủ ý tưởng nhét hình ảnh linh vật đó vào thiết kế bìa bọc sách lần này ạ."</p>
-    <p>Khi em vừa tóm lược lại vấn đề, chị Higashide liền gật đầu cái rụp và dặn dò: "Em cứ gọi chị là Yume là được rồi, không sao đâu nha."</p>
+    <p>Khi tôi vừa tóm lược lại vấn đề, chị Higashide liền gật đầu cái rụp và dặn dò: "Em cứ gọi chị là Yume là được rồi, không sao đâu nha."</p>
     <p>"Lúc nào cũng gọi trống không tên của tiền bối thì em thấy hơi ngại..."</p>
     <p>"Nếu vậy, ít nhất lúc viết thì em hãy dùng chữ cứng (Katakana) nhé. Lúc nãy em dùng Hán tự (Kanji) để gọi chị đúng không?"</p>
-    <p>Trời đất, sao chị ấy có thể đi guốc trong bụng em thế nhỉ?</p>
+    <p>Trời đất, sao chị ấy có thể đi guốc trong bụng tôi thế nhỉ?</p>
     <p>"Dạ, em nhớ rồi ạ. Chị Yume."</p>
     <p>"Quá chuẩn luôn."</p>
-    <p>Chị Yume dùng ngón tay tạo thành vòng tròn biểu tượng OK và vui vẻ đáp lời. Em khẽ thở phào nhẹ nhõm. Em luôn tâm niệm sự cởi mở, không phân biệt thứ bậc là một trong những nét văn hóa tuyệt vời nhất của công ty chúng em, nhưng đối với một "tấm chiếu mới" như em, cái lý tưởng đó đôi khi vẫn còn hơi quá sức để có thể áp dụng một cách tự nhiên.</p>
+    <p>Chị Yume dùng ngón tay tạo thành vòng tròn biểu tượng OK và vui vẻ đáp lời. Tôi khẽ thở phào nhẹ nhõm. Tôi luôn tâm niệm sự cởi mở, không phân biệt thứ bậc là một trong những nét văn hóa tuyệt vời nhất của công ty chúng tôi, nhưng đối với một "tấm chiếu mới" như tôi, cái lý tưởng đó đôi khi vẫn còn hơi quá sức để có thể áp dụng một cách tự nhiên.</p>
     <p>"Rồi, quay lại vấn đề chính nhé, sẽ là một sự lãng phí quá lớn nếu chúng ta bỏ qua một nhân vật có độ nhận diện thương hiệu cao ngất ngưởng, chỉ cần nhìn bóng là đoán ra tên như thế này. Giấy bọc sách có thể chỉ là thứ xài một lần rồi vứt, nhưng làm sao cho mấy đứa nhỏ nhìn vào cũng thấy khoái chí chẳng phải là tuyệt vời lắm sao?"</p>
     <p>Chị ấy nhoẻn miệng cười rạng rỡ. Có vẻ như chị Yume rất yêu quý trẻ con.</p>
     <p>"Thêm một điểm cộng nữa là, vì hình ảnh gốc vẽ bé ấy đang ôm quyển sách bằng hai tay, nên nhìn vào là biết ngay có sự xuất hiện của sách vở trong đó, đúng không?"</p>
     <p>"Chị nói đúng nhỉ?"</p>
     <p>Đôi tay gầy nhẳng của Shimi-chan đang dang rộng nâng niu một quyển sách to đùng vẫn hiện lên sắc nét ngay cả khi chỉ còn lại hình dáng cái bóng.</p>
     <p>"Chị nghĩ, nếu mình xáo trộn kích thước của các hình bóng này rồi rải đều chúng lên mặt giấy để tạo thành một họa tiết rằn ri (camouflage) như thế này thì giao diện chắc sẽ hút mắt lắm đây. Mọi người thấy sao?"</p>
-    <p>Vừa nói, chị ấy vừa nhấc tấm giấy mới hoàn thiện được một nửa lên và giơ ra cho mọi người trong phòng cùng chiêm ngưỡng. Đám nhân viên chỉ lia mắt liếc vội qua một cái. "Trông cũng ổn áp phết đấy chứ?" anh chàng thanh niên với mái tóc hồng chóe ngồi cạnh chị Yume—nếu em nhớ không lầm thì anh ấy tên là Tatsumi Shou—lên tiếng, như thể đang phát ngôn thay cho toàn bộ 500 anh em trong phòng.</p>
+    <p>Vừa nói, chị ấy vừa nhấc tấm giấy mới hoàn thiện được một nửa lên và giơ ra cho mọi người trong phòng cùng chiêm ngưỡng. Đám nhân viên chỉ lia mắt liếc vội qua một cái. "Trông cũng ổn áp phết đấy chứ?" anh chàng thanh niên với mái tóc hồng chóe ngồi cạnh chị Yume—nếu tôi nhớ không lầm thì anh ấy tên là Tatsumi Shou—lên tiếng, như thể đang phát ngôn thay cho toàn bộ 500 anh tôi trong phòng.</p>
     <p>Mọi người xung quanh cũng thi nhau gật gù tán thành.</p>
     <p>"Cảm ơn mọi người nha."</p>
     <p>Chị Yume nói lời cảm ơn rồi cẩn thận đặt tấm bìa cứng xuống mặt bàn.</p>
@@ -298,16 +552,16 @@
     <p>Chị ấy bắt đầu đưa tay lên xoa bóp liên tục vùng quanh hốc mắt trong lúc than vãn.</p>
     <p>"Chị làm việc vất vả rồi..."</p>
     <p>"Cảm ơn em đã thông cảm. Nào, quay xe lại chuyện công việc. Kích thước của tấm bìa này được cắt bằng đúng size thật của tờ giấy bọc. Mà size sách thì vô vàn cỡ, nên chị đoán tấm giấy này sẽ bị xén bớt hoặc gập mép lại cho vừa vặn khi dùng. Chị đoán thế đúng không?"</p>
-    <p>Em khẽ gật đầu. Ở cái hiệu sách mà em từng làm thêm, đúng là tụi em thường dùng những tờ giấy bọc khổ to thế này rồi bọc gấp các mép lại cho vừa với cuốn sách.</p>
+    <p>Tôi khẽ gật đầu. Ở cái hiệu sách mà tôi từng làm thêm, đúng là tụi tôi thường dùng những tờ giấy bọc khổ to thế này rồi bọc gấp các mép lại cho vừa với cuốn sách.</p>
     <p>"Theo như em nhớ thì giấy bọc dành cho sách khổ bỏ túi (bunkobon) và sách khổ mới (shinsho) thường có size nhỏ hơn một chút ạ."</p>
     <p>"Đúng rồi. Phía đối tác cũng yêu cầu làm hai size khác nhau. Chị có nghe phổ biến là sẽ có loại to và loại nhỏ."</p>
     <p>"Nếu vậy thì, cái size to đùng này chắc là dành cho sách đơn bản (tankobon)... có khi là chuyên dùng để bọc mấy cuốn bìa cứng cũng nên. Em đoán vậy."</p>
     <p>Dĩ nhiên, không phải cuốn sách nào xuất xưởng cũng ngoan ngoãn tuân theo một quy chuẩn kích thước nhất định, thỉnh thoảng vẫn lòi ra mấy cuốn có size "trời ơi đất hỡi". Sự tồn tại của mấy cuốn sách dị biệt đó đôi khi lại biến thành cơn ác mộng đối với các nhà sách. Khi xếp chúng lên kệ, chiều cao cứ lởm chởm thụt ra thụt vào trông rất chướng mắt, khiến công cuộc bày trí gian hàng trở nên vô cùng gian nan. Ngay cả giấy bọc sách cũng chẳng thể nào làm sẵn nếp gấp cho vừa với chúng được, mà nhân viên phải tự tay ướm và gấp thủ công ngay tại quầy. Thế nhưng, hẳn là những người làm sách phải có lý do sâu xa nào đó mới quyết định chốt hạ những kích thước phá cách như vậy.</p>
     <p>"Chị nghĩ phong cách làm việc trực quan bằng chính đôi tay của mình thế này vẫn là chân ái đối với chị. Đợi sau khi hoàn thiện xong bản phác thảo thô, chị sẽ đưa nó lên máy tính để trau chuốt lại công đoạn cuối. Chị muốn tinh chỉnh nó một cách thật tỉ mỉ."</p>
-    <p>Khi liếc mắt nhìn xuống mặt bàn làm việc của chị Yume, em thấy vô số những mảnh cắt hình bóng của Shimi-chan nằm la liệt, đủ mọi size và màu sắc. Nếu chỉ nhắm mắt nhắm mũi dán mấy cái hình bóng cùng size cùng màu lên, nó sẽ biến thành một cái hoa văn lặp đi lặp lại nhàm chán chứ chẳng ra dáng họa tiết rằn ri chút nào.</p>
+    <p>Khi liếc mắt nhìn xuống mặt bàn làm việc của chị Yume, tôi thấy vô số những mảnh cắt hình bóng của Shimi-chan nằm la liệt, đủ mọi size và màu sắc. Nếu chỉ nhắm mắt nhắm mũi dán mấy cái hình bóng cùng size cùng màu lên, nó sẽ biến thành một cái hoa văn lặp đi lặp lại nhàm chán chứ chẳng ra dáng họa tiết rằn ri chút nào.</p>
     <p>Mặc dù chỉ là một hình vẽ đơn giản, nhưng phần rìa của nó lại uốn lượn lồi lõm khá phức tạp, nội cái việc hì hục ngồi tỉa tót theo đường viền thôi cũng đủ toát mồ hôi hột rồi.</p>
     <p>Nhưng mà khoan đã. Bằng cách thần kỳ nào mà họ có thể tạo ra vô vàn những hình bóng với đủ loại kích cỡ khác nhau? Và họ làm cách nào để thiên biến vạn hóa độ đậm nhạt của màu sắc? Thêm một điểm nữa, rõ ràng là họ chỉ dùng độc một màu đỏ, bộ chỉ dùng một màu là đủ xài rồi sao?</p>
-    <p>Vì trí tò mò trỗi dậy mãnh liệt, em quyết định sẽ hỏi cho ra nhẽ.</p>
+    <p>Vì trí tò mò trỗi dậy mãnh liệt, tôi quyết định sẽ hỏi cho ra nhẽ.</p>
     <p>"Đối với giấy bọc hàng thì số lượng màu sắc cho phép in ấn tối đa chỉ là một đến hai màu thôi em ạ. Em đã bao giờ nhìn thấy giấy gói quà của khu bách hóa Mitsukoshi chưa? Cái loại có hoa văn màu đỏ in trên nền giấy trắng ấy. Rất tối giản, nhưng nó đã trở thành huyền thoại từ tận năm 1950 tới giờ rồi đấy. Em không thấy nó quá đẳng cấp sao? Hay như họa tiết hoa hồng kinh điển của bách hóa Takashimaya cũng chỉ xài độc hai màu đỏ và xanh lá. Họ đã giữ rịt lấy cái họa tiết đó từ năm 1952 rồi. Mặc dù thiết kế đã được tút tát lại đôi chút, nhưng combo đỏ - xanh lá thì vẫn bất di bất dịch. Ủa? Nhớ mang máng là hình như chỉ có họa tiết màu đỏ thôi thì phải? Chà, đại loại là vậy đó."</p>
     <p>Chị Yume say sưa giảng giải. Việc chị ấy có thể thao thao bất tuyệt một tràng dài thông tin như vậy chứng tỏ chị ấy đã phải bỏ công sức ra nghiên cứu và nhồi nhét nó vào đầu rất nhiều.</p>
     <p>"Càng nhồi nhét nhiều màu thì chi phí in ấn sẽ càng đội lên tận nóc. Vì vậy, bài toán đặt ra là phải kiểm soát chặt chẽ số lượng màu sắc. Đặc biệt là đối với một tiệm sách tư nhân quy mô nhỏ, việc tối ưu hóa chi phí in ấn là yếu tố mang tính sống còn. Cơ mà, dù chỉ bị giới hạn trong một dải màu duy nhất, chúng ta vẫn có thể chơi trò ảo thuật bằng cách tùy chỉnh độ đậm nhạt của nó. Thế nên, với hình ảnh Shimi-chan này, chị cũng đã lên máy tính quậy ra mấy phiên bản đậm nhạt khác nhau rồi mới cho xuất xưởng đem đi in. Về phần size, sau khi in ra vài bản phóng to thu nhỏ đủ kiểu, nếu muốn điều chỉnh nhích thêm tí ti nữa, thì em cứ việc quẳng nó vào cái máy photocopy đằng kia là xong."</p>
@@ -315,83 +569,83 @@
     <p>"Mình có thể vi chỉnh kích thước phóng to thu nhỏ từng li từng tí một nhờ sự trợ giúp của máy photocopy. Mặc dù, giống như chị đã giải thích từ trước, chúng ta hoàn toàn có thể sử dụng sức mạnh công nghệ của máy tính để can thiệp sâu hơn vào những tiểu tiết này, nhưng chả hiểu sao, cái não của chị nó cứ từ chối tiếp thu mấy món đồ công nghệ đó."</p>
     <p>"Thế nên chị mới chọn cách hì hục ngồi tỉa tót rồi dán thủ công như thế này ạ?"</p>
     <p>"Là như vậy đó."</p>
-    <p>Và dẫu cho nó chỉ là một hình vẽ tối giản, nhưng cái hình bóng Shimi-chan với những đường nét lồi lõm ngoằn ngoèo này lại được cắt, dán, gỡ ra, rồi lại căn chỉnh dán lại bằng cả sự tỉ mỉ và cẩn trọng tột độ. Chưa kể, đó không phải là một tấm duy nhất. Ngay trên bàn của chị Yume, đang chất thành đống những bản phác thảo thử nghiệm. Chị ấy cứ kiên nhẫn lặp đi lặp lại công việc đòi hỏi sự tỉ mỉ đến rợn người này. Việc đó chắc chắn sẽ khiến đôi mắt chị ấy mờ đi và bờ vai trở nên cứng đơ. Từ 'nghệ nhân' bất chợt lóe lên trong tâm trí em. Nghe có vẻ hơi sai sai khi dùng từ đó để phong cho một nhà thiết kế, nhưng khi được tận mắt chứng kiến quá trình thai nghén sản phẩm của chị Yume, em mới thấy cái danh xưng đó sao mà vừa vặn đến thế. Ngẫm lại thì, bản thân một nghệ nhân chân chính cũng hội tụ đủ tố chất để trở thành một nhà thiết kế hay một nghệ sĩ thực thụ.</p>
+    <p>Và dẫu cho nó chỉ là một hình vẽ tối giản, nhưng cái hình bóng Shimi-chan với những đường nét lồi lõm ngoằn ngoèo này lại được cắt, dán, gỡ ra, rồi lại căn chỉnh dán lại bằng cả sự tỉ mỉ và cẩn trọng tột độ. Chưa kể, đó không phải là một tấm duy nhất. Ngay trên bàn của chị Yume, đang chất thành đống những bản phác thảo thử nghiệm. Chị ấy cứ kiên nhẫn lặp đi lặp lại công việc đòi hỏi sự tỉ mỉ đến rợn người này. Việc đó chắc chắn sẽ khiến đôi mắt chị ấy mờ đi và bờ vai trở nên cứng đơ. Từ 'nghệ nhân' bất chợt lóe lên trong tâm trí tôi. Nghe có vẻ hơi sai sai khi dùng từ đó để phong cho một nhà thiết kế, nhưng khi được tận mắt chứng kiến quá trình thai nghén sản phẩm của chị Yume, tôi mới thấy cái danh xưng đó sao mà vừa vặn đến thế. Ngẫm lại thì, bản thân một nghệ nhân chân chính cũng hội tụ đủ tố chất để trở thành một nhà thiết kế hay một nghệ sĩ thực thụ.</p>
     <p>Và việc phải xắn tay áo lên thực chiến những công đoạn gai góc thế này là điều bắt buộc nếu ai đó muốn dấn thân vào con đường thiết kế.</p>
     <p>"Tiện thể, cảm tạ em vì rổ thông tin quý báu từ một cựu nhân viên hiệu sách nha."</p>
     <p>"Chỉ cần giúp ích được cho chị là em vui rồi."</p>
-    <p>Sau khi đáp lời, em lại cắm mặt vào mớ bòng bong công việc của mình, trong khi chị Yume cũng quay trở lại với cuộc chiến thiết kế bìa sách họa tiết rằn ri Shimi-chan.</p>
+    <p>Sau khi đáp lời, tôi lại cắm mặt vào mớ bòng bong công việc của mình, trong khi chị Yume cũng quay trở lại với cuộc chiến thiết kế bìa sách họa tiết rằn ri Shimi-chan.</p>
     <p>Nghe phong phanh thì chị ấy phải ngốn mất ba ngày trời ròng rã mới nặn ra được ba bản nháp ý tưởng cốt lõi. Và khi mang ba "đứa con tinh thần" đó đi đệ trình với các bên liên quan, có vẻ như phía hiệu sách đã feedback lại bằng những lời có cánh.</p>
     <p>Hiện tại, thiết kế giấy bọc sách của chị Yume đã bước vào giai đoạn dặm vá những tiểu tiết cuối cùng và test màu in thử.</p>
-    <p>Nhờ đặc ân được các anh chị tiền bối trong công ty khai sáng về những nguyên lý nền tảng của thiết kế, lăng kính nhìn nhận thế giới xung quanh của em cũng đang trải qua một cuộc lột xác ngoạn mục. Cảm giác như em vừa được trang bị một cặp kính râm phiên bản nâng cấp để soi thấu vạn vật. Ngay cả cái khung cảnh quen thuộc đến phát chán trên đường đi làm về giờ đây cũng hiện lên dưới một lăng kính hoàn toàn khác.</p>
-    <p>Mới chỉ chừng hai tháng trước thôi, em vẫn còn là một con nhóc vô cảm lướt qua những con phố đã quá nhẵn mặt, và thứ duy nhất đủ sức níu giữ ánh nhìn của em chỉ là mấy bộ sưu tập thời trang thay đổi xoành xoạch theo mùa được khoác lên mình mấy cô ma-nơ-canh đang tạo dáng kiêu kỳ sau lớp kính tủ trưng bày.</p>
-    <p>Khi hơi thở mùa hè bắt đầu ùa về, dàn ma-nơ-canh đó được lột xác bằng những bộ cánh sặc sỡ, mỏng manh thiếu vải, đứng ưỡn ngực, uốn éo khoe trọn đường cong mời gọi những ánh nhìn lướt qua. Trở về quá khứ, nhãn quan của em chỉ dừng lại ở việc mổ xẻ những bộ quần áo đắp lên người đám búp bê vô hồn đó. Em chẳng mảy may dành một tia hứng thú nào cho cái không gian tủ kính đóng vai trò như chiếc lồng giam giữ chúng.</p>
-    <p>Nhưng giờ mọi thứ đã rẽ sang một hướng khác. Em không thể nào ngăn bộ não mình ngừng mổ xẻ và phân tích hàng đống chi tiết được nhồi nhét bên trong cái lồng kính trong suốt ấy.</p>
+    <p>Nhờ đặc ân được các anh chị tiền bối trong công ty khai sáng về những nguyên lý nền tảng của thiết kế, lăng kính nhìn nhận thế giới xung quanh của tôi cũng đang trải qua một cuộc lột xác ngoạn mục. Cảm giác như tôi vừa được trang bị một cặp kính râm phiên bản nâng cấp để soi thấu vạn vật. Ngay cả cái khung cảnh quen thuộc đến phát chán trên đường đi làm về giờ đây cũng hiện lên dưới một lăng kính hoàn toàn khác.</p>
+    <p>Mới chỉ chừng hai tháng trước thôi, tôi vẫn còn là một con nhóc vô cảm lướt qua những con phố đã quá nhẵn mặt, và thứ duy nhất đủ sức níu giữ ánh nhìn của tôi chỉ là mấy bộ sưu tập thời trang thay đổi xoành xoạch theo mùa được khoác lên mình mấy cô ma-nơ-canh đang tạo dáng kiêu kỳ sau lớp kính tủ trưng bày.</p>
+    <p>Khi hơi thở mùa hè bắt đầu ùa về, dàn ma-nơ-canh đó được lột xác bằng những bộ cánh sặc sỡ, mỏng manh thiếu vải, đứng ưỡn ngực, uốn éo khoe trọn đường cong mời gọi những ánh nhìn lướt qua. Trở về quá khứ, nhãn quan của tôi chỉ dừng lại ở việc mổ xẻ những bộ quần áo đắp lên người đám búp bê vô hồn đó. Tôi chẳng mảy may dành một tia hứng thú nào cho cái không gian tủ kính đóng vai trò như chiếc lồng giam giữ chúng.</p>
+    <p>Nhưng giờ mọi thứ đã rẽ sang một hướng khác. Tôi không thể nào ngăn bộ não mình ngừng mổ xẻ và phân tích hàng đống chi tiết được nhồi nhét bên trong cái lồng kính trong suốt ấy.</p>
     <p>Sự phối hợp màu sắc của ánh đèn. Những món đồ trang sức nhỏ xinh được điểm xuyết khéo léo dưới chân ma-nơ-canh. Khoảng cách địa lý giữa các ma-nơ-canh với nhau, và cả tấm poster in hình cây cọ nhiệt đới được dán chình ình làm phông nền phía sau. Bất kỳ một đồ vật nào tồn tại bên trong cái tủ kính trong veo đó đều gánh vác một sứ mệnh và mang trong mình một lý do chính đáng để hiện diện ở đó.</p>
     <p>Thiết kế luôn ẩn chứa một ý đồ.</p>
     <p>Lấy ví dụ, không phải ngẫu nhiên mà cô ma-nơ-canh diện bộ bikini bốc lửa ở góc tủ kính bên phải lại được uốn nắn theo cái tư thế đó. Bộ bikini sở hữu một tông màu cực kỳ bắt trend và bó sát lấy vòng một của ma-nơ-canh, nhưng chính cái đường xẻ sâu hun hút ở phần cổ áo mới là vũ khí tối thượng thu hút mọi ánh nhìn. Rãnh ngực sâu hoắm, quyến rũ hiện lên mồn một trước mắt người xem.</p>
-    <p>Nếu là em của ngày xưa, mạch suy nghĩ của em chắc chắn sẽ bị đóng băng ngay tại điểm này.</p>
-    <p>Nhưng giờ em đã được khai sáng. Em không dám nhận mình là chân dài, nhưng chí ít em cũng là một đứa con gái. Điều đó có nghĩa là, đường ngắm của em luôn nằm ở tọa độ thấp hơn so với cánh mày râu. Lôi thông số ra làm phép so sánh, chiều cao trung bình của đàn ông trưởng thành Nhật Bản rơi vào khoảng 1m71, trong khi phái đẹp chỉ quanh quẩn ở mức 1m58, suy ra em lùn hơn họ chừng 10cm.</p>
-    <p>Thế nhưng, khe ngực của cô ma-nơ-canh lại phơi bày lồ lộ trước tầm mắt của em. Nghĩa là, nếu nhìn từ lăng kính của một người phụ nữ, bộ bikini đó đã được căn chỉnh và phô bày sao cho góc nhìn của khách hàng nữ khớp hoàn hảo với góc nhìn của một gã đàn ông trung bình khi tia vòng một của một người phụ nữ trung bình.</p>
+    <p>Nếu là tôi của ngày xưa, mạch suy nghĩ của tôi chắc chắn sẽ bị đóng băng ngay tại điểm này.</p>
+    <p>Nhưng giờ tôi đã được khai sáng. Tôi không dám nhận mình là chân dài, nhưng chí ít tôi cũng là một đứa con gái. Điều đó có nghĩa là, đường ngắm của tôi luôn nằm ở tọa độ thấp hơn so với cánh mày râu. Lôi thông số ra làm phép so sánh, chiều cao trung bình của đàn ông trưởng thành Nhật Bản rơi vào khoảng 1m71, trong khi phái đẹp chỉ quanh quẩn ở mức 1m58, suy ra tôi lùn hơn họ chừng 10cm.</p>
+    <p>Thế nhưng, khe ngực của cô ma-nơ-canh lại phơi bày lồ lộ trước tầm mắt của tôi. Nghĩa là, nếu nhìn từ lăng kính của một người phụ nữ, bộ bikini đó đã được căn chỉnh và phô bày sao cho góc nhìn của khách hàng nữ khớp hoàn hảo với góc nhìn của một gã đàn ông trung bình khi tia vòng một của một người phụ nữ trung bình.</p>
     <p>Mục đích chẳng phải là để vẽ ra một ảo ảnh hoàn mỹ nhất có thể sao?</p>
     <p>Mọi tiểu tiết từ việc tinh chỉnh chiều cao của ma-nơ-canh cho đến việc nắn nót từng dáng đứng hay góc độ phô diễn đều được tính toán chi li nhằm thao túng tâm lý người nhìn đưa ra những đánh giá kiểu đó. Nếu chỉ nhắm mắt nhắm mũi dựng một con búp bê có chiều cao sàn sàn rồi đắp bừa một bộ đồ lên người, nó sẽ trở nên vô hình và nhạt nhòa trong mắt những gã đàn ông sải bước trên phố, và sự thật phũ phàng là, phái đẹp sẽ mù tịt không biết giao diện của mình sẽ được chấm mấy điểm trong mắt đàn ông.</p>
-    <p>Tuy nhiên, những người vung tiền ra mua bộ bikini đó lại chính là chị em phụ nữ.</p>
+    <p>Tuy nhiên, những người vung tiền ra mua bộ bikini đó lại chính là chị tôi phụ nữ.</p>
     <p>Tất nhiên, nếu mục đích mua bikini là để khè bạn bè hoặc đơn giản chỉ là để tự sướng ngắm mình trong gương, thì chiến thuật bày trí không gian cũng sẽ phải thiên biến vạn hóa theo. Chưa kể, những bộ trang phục được gài cắm thông điệp là quà tặng dành cho phái đẹp thì khách hàng chốt đơn thường lại là mấy ông nam giới, nên nghệ thuật trưng bày cũng phải rẽ sang một nhánh hoàn toàn khác...</p>
-    <p>Nhưng bỏ qua những râu ria tiểu tiết đó, khi em phóng tầm mắt quan sát nhịp sống đô thị bằng cái lăng kính mới này, em chợt giác ngộ ra một chân lý rằng, mỗi một tấm biển hiệu chễm chệ trên phố, mỗi một tấm áp phích dán tường, mỗi một bảng đèn neon nhấp nháy, và thậm chí là cả chiều cao lẫn độ rực rỡ của những ngọn đèn đường, tất cả đều đang âm thầm dung dưỡng một "ý đồ" đằng sau nó. Hay gọi một cách hoa mỹ hơn là "mục đích".</p>
+    <p>Nhưng bỏ qua những râu ria tiểu tiết đó, khi tôi phóng tầm mắt quan sát nhịp sống đô thị bằng cái lăng kính mới này, tôi chợt giác ngộ ra một chân lý rằng, mỗi một tấm biển hiệu chễm chệ trên phố, mỗi một tấm áp phích dán tường, mỗi một bảng đèn neon nhấp nháy, và thậm chí là cả chiều cao lẫn độ rực rỡ của những ngọn đèn đường, tất cả đều đang âm thầm dung dưỡng một "ý đồ" đằng sau nó. Hay gọi một cách hoa mỹ hơn là "mục đích".</p>
     <p>Việc thiết kế của mỗi cửa hàng và mỗi tấm biển hiệu đều mang trên mình một sứ mệnh riêng biệt.</p>
-    <p>Đến tận bây giờ em mới thấu hiểu được chân lý đó.</p>
-    <p>Mỗi ngày trôi qua, em đều mang trong mình một ngọn lửa hừng hực nhiệt huyết để dung nạp những kho tàng kiến thức mới và hăng hái vọc vạch đủ loại công cụ mới lạ. Đó chính là bức tranh miêu tả chân thực nhất về con người em sau hai tháng mài đũng quần thực tập tại 'Lucca Design. Studio'.</p>
-    <p>Thế nhưng, hiện thực phũ phàng đã dội một gáo nước lạnh buốt giá vào cái phiên bản đầy hoài bão đó của em.</p>
-    <p>Em đã gây ra một sai lầm tày đình sau khi xách cặp đi dự cuộc họp thứ hai của dự án 'Roppongi Art Festa' dưới trướng chị Ruka.</p>
+    <p>Đến tận bây giờ tôi mới thấu hiểu được chân lý đó.</p>
+    <p>Mỗi ngày trôi qua, tôi đều mang trong mình một ngọn lửa hừng hực nhiệt huyết để dung nạp những kho tàng kiến thức mới và hăng hái vọc vạch đủ loại công cụ mới lạ. Đó chính là bức tranh miêu tả chân thực nhất về con người tôi sau hai tháng mài đũng quần thực tập tại 'Lucca Design. Studio'.</p>
+    <p>Thế nhưng, hiện thực phũ phàng đã dội một gáo nước lạnh buốt giá vào cái phiên bản đầy hoài bão đó của tôi.</p>
+    <p>Tôi đã gây ra một sai lầm tày đình sau khi xách cặp đi dự cuộc họp thứ hai của dự án 'Roppongi Art Festa' dưới trướng chị Ruka.</p>
 
     <hr>
 
-    <p>Tuần cuối cùng của tháng Sáu. Có một cuộc họp định kỳ để kiểm tra tiến độ dự án 'Roppongi Art Festa'. Vì chị Ruka đã đánh tiếng trước với em rằng sau khi họp xong sẽ có kèo đi ăn tối cùng đối tác, nên em được dặn dò là cứ để bụng đói mà đến, và xác định luôn là hôm nay sẽ về trễ. Khách mời sẽ đồng hành cùng chúng em trong bữa tối hôm nay nghe đâu là những gương mặt đại diện đến từ công ty quảng cáo nắm thóp cái lễ hội nghệ thuật này.</p>
-    <p>Cuộc họp chính thức đóng máy vào lúc 21:00. Lúc này trời cũng đã khá khuya. Dạ dày em bắt đầu đánh trống biểu tình dữ dội. Em cùng chị Ruka thẳng tiến về hướng Azabu, lách mình qua một con hẻm nhỏ hẹp len lỏi giữa rừng cao ốc ken đặc các nhà hàng, cuối cùng cũng đáp xuống địa điểm đã định.</p>
+    <p>Tuần cuối cùng của tháng Sáu. Có một cuộc họp định kỳ để kiểm tra tiến độ dự án 'Roppongi Art Festa'. Vì chị Ruka đã đánh tiếng trước với tôi rằng sau khi họp xong sẽ có kèo đi ăn tối cùng đối tác, nên tôi được dặn dò là cứ để bụng đói mà đến, và xác định luôn là hôm nay sẽ về trễ. Khách mời sẽ đồng hành cùng chúng tôi trong bữa tối hôm nay nghe đâu là những gương mặt đại diện đến từ công ty quảng cáo nắm thóp cái lễ hội nghệ thuật này.</p>
+    <p>Cuộc họp chính thức đóng máy vào lúc 21:00. Lúc này trời cũng đã khá khuya. Dạ dày tôi bắt đầu đánh trống biểu tình dữ dội. Tôi cùng chị Ruka thẳng tiến về hướng Azabu, lách mình qua một con hẻm nhỏ hẹp len lỏi giữa rừng cao ốc ken đặc các nhà hàng, cuối cùng cũng đáp xuống địa điểm đã định.</p>
     <p>"Ồ, chính là chỗ này đây."</p>
     <p>Chị Ruka đang cắm mặt vào bản đồ trên điện thoại, vừa tia thấy tấm biển hiệu bé xíu xiu của nhà hàng liền thở phào nhẹ nhõm.</p>
     <p>"Nhà hàng nằm dưới tầng hầm ạ... mà chỉ treo mỗi cái tên tiệm thôi sao?"</p>
     <p>"Ừ, đúng vậy. À, không sao đâu. Chỗ này là nhà hàng chuyên phục vụ thịt ngựa xịn sò lắm đấy. Chỉ là họ không thích phơi cái menu ra ngoài đường thôi."</p>
     <p>Nói tóm lại, cái chốn này đích thị là một nhà hàng đắt xắt ra miếng rồi, phải không?</p>
-    <p>Em cũng từng nghe phong phanh về cái thể loại nhà hàng kiểu này rồi. Cái giống nhà hàng này có cái quy tắc cấm cửa khách vãng lai tự nhiên xông vào. "Chúng tôi chỉ phục vụ khách hàng có người quen giới thiệu". Đó chính là lý do giải thích cho việc tại sao họ không thèm đập tiền làm mấy cái biển hiệu lấp lánh chói mù mắt ở bên ngoài, và cũng chẳng buồn trưng cái menu ra cho bàn dân thiên hạ xem.</p>
+    <p>Tôi cũng từng nghe phong phanh về cái thể loại nhà hàng kiểu này rồi. Cái giống nhà hàng này có cái quy tắc cấm cửa khách vãng lai tự nhiên xông vào. "Chúng tôi chỉ phục vụ khách hàng có người quen giới thiệu". Đó chính là lý do giải thích cho việc tại sao họ không thèm đập tiền làm mấy cái biển hiệu lấp lánh chói mù mắt ở bên ngoài, và cũng chẳng buồn trưng cái menu ra cho bàn dân thiên hạ xem.</p>
     <p>Đây không phải là cái chốn mà ai muốn ra vào thì ra vào; đây là một nhà hàng chỉ mở cửa đón tiếp những vị khách sành sỏi đã nắm rõ tọa độ của nó trong lòng bàn tay.</p>
-    <p>Sau khi mò mẫm bước xuống những bậc thang chật hẹp, một cánh cửa mang đậm hơi thở truyền thống Nhật Bản hiện ra chình ình trước mắt em.</p>
-    <p>Vừa kéo cánh cửa trượt sang một bên và rụt rè bước vào, một nữ phục vụ khoác trên mình bộ kimono thướt tha, trang nhã—nhìn khí chất này chắc hẳn là bà chủ nhà hàng (okami)—lập tức xuất hiện và cất giọng chào đón: "Irasshaimase (Kính chào quý khách)". Uầy, cách cô ấy diện kimono toát lên một vẻ quyến rũ chết người. Phần cổ áo và viền cổ được vuốt nắn phẳng phiu không một nếp nhăn, dải thắt lưng (obi) được buộc ở một độ cao chuẩn không cần chỉnh, từng cử chỉ, điệu bộ của cô ấy đều tỏa ra sự uyển chuyển, thanh tao đến mức khiến cơ thể em tự động bật chế độ đứng nghiêm trang. Đỉnh của chóp là đây chứ đâu. Cô ấy nở một nụ cười nồng hậu, nhưng bản năng mách bảo em rằng cô ấy đang âm thầm quét radar từ đầu đến chân để thẩm định xem em có đủ tư cách bước chân vào nhà hàng của cô ấy hay không.</p>
-    <p>Chúng em cởi giày và bước vào trong. Sau khi lầm lũi đi qua một dãy hành lang được bao trùm bởi gam màu tối huyền bí, chúng em được dẫn dắt đến một phòng VIP kín cổng cao tường nằm tít phía trong cùng.</p>
-    <p>Vừa kéo cánh cửa trượt ra, đập vào mắt em là một người đàn ông trạc tuổi tứ tuần và một người phụ nữ độ tuổi đôi mươi đang ngồi chễm chệ đợi sẵn.</p>
+    <p>Sau khi mò mẫm bước xuống những bậc thang chật hẹp, một cánh cửa mang đậm hơi thở truyền thống Nhật Bản hiện ra chình ình trước mắt tôi.</p>
+    <p>Vừa kéo cánh cửa trượt sang một bên và rụt rè bước vào, một nữ phục vụ khoác trên mình bộ kimono thướt tha, trang nhã—nhìn khí chất này chắc hẳn là bà chủ nhà hàng (okami)—lập tức xuất hiện và cất giọng chào đón: "Irasshaimase (Kính chào quý khách)". Uầy, cách cô ấy diện kimono toát lên một vẻ quyến rũ chết người. Phần cổ áo và viền cổ được vuốt nắn phẳng phiu không một nếp nhăn, dải thắt lưng (obi) được buộc ở một độ cao chuẩn không cần chỉnh, từng cử chỉ, điệu bộ của cô ấy đều tỏa ra sự uyển chuyển, thanh tao đến mức khiến cơ thể tôi tự động bật chế độ đứng nghiêm trang. Đỉnh của chóp là đây chứ đâu. Cô ấy nở một nụ cười nồng hậu, nhưng bản năng mách bảo tôi rằng cô ấy đang âm thầm quét radar từ đầu đến chân để thẩm định xem tôi có đủ tư cách bước chân vào nhà hàng của cô ấy hay không.</p>
+    <p>Chúng tôi cởi giày và bước vào trong. Sau khi lầm lũi đi qua một dãy hành lang được bao trùm bởi gam màu tối huyền bí, chúng tôi được dẫn dắt đến một phòng VIP kín cổng cao tường nằm tít phía trong cùng.</p>
+    <p>Vừa kéo cánh cửa trượt ra, đập vào mắt tôi là một người đàn ông trạc tuổi tứ tuần và một người phụ nữ độ tuổi đôi mươi đang ngồi chễm chệ đợi sẵn.</p>
     <p>"Chào buổi tối mọi người. Thành thật xin lỗi vì đã bắt mọi người phải đợi."</p>
     <p>Chị Ruka cúi gập người tạ lỗi. Rõ ràng là chị ấy đã có mặt sớm hơn giờ hẹn, nhưng vì phe đối tác đã lót tót đến trước, nên việc mở lời bằng một câu tạ lỗi đã trở thành một quy tắc bất thành văn trong nghệ thuật giao tiếp.</p>
     <p>"Không sao đâu cô. Là do chúng tôi đến quá sớm thôi."</p>
     <p>Chà, một lời đáp trả mang đậm chất kịch bản đã được bung ra. Đây chỉ là một màn múa mép ngoại giao đã được hai bên ngầm lập trình sẵn.</p>
-    <p>Em cởi áo khoác ngoài ra và treo cẩn thận lên móc. Vì đây là phòng ăn mang phong cách Washitsu (phòng kiểu Nhật) truyền thống, nên dĩ nhiên em phải ngoan ngoãn ngồi gập gối (seiza) rồi. Trong những tình huống như thế này, cánh đàn ông có đặc quyền ngồi khoanh chân nên sẽ dễ thở hơn nhiều. Dù hôm nay em diện quần dài, nhưng là thân gái nên em không thể ngang nhiên ngồi khoanh chân được. Lâu lắm rồi em mới lại phải hành xác bằng cái tư thế seiza này. Không biết lát nữa chân em có biểu tình vì tê rần không đây? Cầu trời khấn Phật cho mọi chuyện êm xuôi. Thôi thì chẳng còn cách nào khác ngoài việc cắn răng mà chịu đựng.</p>
+    <p>Tôi cởi áo khoác ngoài ra và treo cẩn thận lên móc. Vì đây là phòng ăn mang phong cách Washitsu (phòng kiểu Nhật) truyền thống, nên dĩ nhiên tôi phải ngoan ngoãn ngồi gập gối (seiza) rồi. Trong những tình huống như thế này, cánh đàn ông có đặc quyền ngồi khoanh chân nên sẽ dễ thở hơn nhiều. Dù hôm nay tôi diện quần dài, nhưng là thân gái nên tôi không thể ngang nhiên ngồi khoanh chân được. Lâu lắm rồi tôi mới lại phải hành xác bằng cái tư thế seiza này. Không biết lát nữa chân tôi có biểu tình vì tê rần không đây? Cầu trời khấn Phật cho mọi chuyện êm xuôi. Thôi thì chẳng còn cách nào khác ngoài việc cắn răng mà chịu đựng.</p>
     <p>Cả hai phe lại tiếp tục màn dạo đầu bằng những câu chào hỏi sặc mùi ngoại giao.</p>
-    <p>Vì đây là lần đầu tiên hai bên giáp mặt nhau, nên thủ tục trao đổi danh thiếp lập tức được triển khai. Vừa rụt rè chìa ra tấm danh thiếp còn thơm mùi mực in, em cũng vinh dự nhận lại danh thiếp từ phía đối tác. Tra lý lịch thì biết được, người đàn ông tên là Takahashi, còn người phụ nữ tên là Maeda.</p>
-    <p>Chú Takahashi và chị Maeda, được rồi, em đã ghim chặt hai cái tên này vào não. Sau khi nạp thông tin vào bộ nhớ tạm trong đầu, em cẩn thận cất hai tấm danh thiếp vào hộp đựng. Nhớ lời chị Ruka từng dặn dò, nếu sợ não cá vàng quên mất tên người ta, tốt nhất là cứ rải danh thiếp ra trước mặt trên bàn cho chắc cú. Gọi sai tên đối tác còn mang tiếng thất lễ hơn gấp vạn lần.</p>
+    <p>Vì đây là lần đầu tiên hai bên giáp mặt nhau, nên thủ tục trao đổi danh thiếp lập tức được triển khai. Vừa rụt rè chìa ra tấm danh thiếp còn thơm mùi mực in, tôi cũng vinh dự nhận lại danh thiếp từ phía đối tác. Tra lý lịch thì biết được, người đàn ông tên là Takahashi, còn người phụ nữ tên là Maeda.</p>
+    <p>Chú Takahashi và chị Maeda, được rồi, tôi đã ghim chặt hai cái tên này vào não. Sau khi nạp thông tin vào bộ nhớ tạm trong đầu, tôi cẩn thận cất hai tấm danh thiếp vào hộp đựng. Nhớ lời chị Ruka từng dặn dò, nếu sợ não cá vàng quên mất tên người ta, tốt nhất là cứ rải danh thiếp ra trước mặt trên bàn cho chắc cú. Gọi sai tên đối tác còn mang tiếng thất lễ hơn gấp vạn lần.</p>
     <p>"Ngoài ra, lát nữa sẽ có thêm một người nữa gia nhập hội. Ông ấy bận chút việc nên sẽ tới muộn. Chuyện là, lúc tôi cáo lỗi từ chối một chầu nhậu vì vướng lịch tối nay, ông ấy liền gạt phắt đi: 'Đi nhậu ở đâu thì cũng là nhậu, cho tôi bám càng với.' Mặc dù ông ấy không hề có cổ phần trong dự án lần này, nhưng tôi vẫn muốn dẫn ông ấy đến giới thiệu với mọi người vì đây quả là một cơ hội ngàn năm có một."</p>
     <p>"Dạ vâng."</p>
-    <p>Hóa ra, đội hình của công ty quảng cáo tham gia bữa tiệc hôm nay có tới ba thành viên. Ồ, lại phải nhớ thêm một cái tên nữa rồi. Nhưng mà yên tâm, não em dư sức chứa được năm cái tên. Chuyện nhỏ như con thỏ.</p>
-    <p>Sẵn tiện nói thêm, màn nhậu nhẹt giao lưu tối nay là do bên công ty quảng cáo đứng ra làm chủ xị. Đây là dự án khủng đầu tiên mà công ty em thực chiến tại địa bàn Roppongi, nên việc o bế và tạo dựng mối quan hệ hữu hảo với công ty quảng cáo vốn đã nhẵn mặt với việc thầu các sự kiện ở khu vực này là một nước cờ cực kỳ quan trọng. Chính vì lý do đó mà em mới bị lôi cổ đi theo, và chị Ruka cũng đã nhanh chóng gật đầu cái rụp đồng ý tham gia bữa tiệc tối nay. Chị ấy đã vắn tắt tình hình cho em nghe trước khi chúng em đặt chân đến nhà hàng.</p>
+    <p>Hóa ra, đội hình của công ty quảng cáo tham gia bữa tiệc hôm nay có tới ba thành viên. Ồ, lại phải nhớ thêm một cái tên nữa rồi. Nhưng mà yên tâm, não tôi dư sức chứa được năm cái tên. Chuyện nhỏ như con thỏ.</p>
+    <p>Sẵn tiện nói thêm, màn nhậu nhẹt giao lưu tối nay là do bên công ty quảng cáo đứng ra làm chủ xị. Đây là dự án khủng đầu tiên mà công ty tôi thực chiến tại địa bàn Roppongi, nên việc o bế và tạo dựng mối quan hệ hữu hảo với công ty quảng cáo vốn đã nhẵn mặt với việc thầu các sự kiện ở khu vực này là một nước cờ cực kỳ quan trọng. Chính vì lý do đó mà tôi mới bị lôi cổ đi theo, và chị Ruka cũng đã nhanh chóng gật đầu cái rụp đồng ý tham gia bữa tiệc tối nay. Chị ấy đã vắn tắt tình hình cho tôi nghe trước khi chúng tôi đặt chân đến nhà hàng.</p>
     <p>Bữa tiệc tối được kích hoạt mà không cần chờ đợi nhân vật bí ẩn đi trễ kia. Chơi kiểu này có ổn không ta?</p>
-    <p>Có vẻ như phía đối tác đã bao trọn gói một set menu (course) từ trước, nên họ chỉ lật menu ra để order đồ uống. Vì em vẫn đang mài đũng quần trên ghế nhà trường và chưa đủ tuổi uống rượu, dĩ nhiên em chỉ được phép đụng tới mấy loại đồ uống không cồn, nhưng ngó sơ qua thì list nước ép trái cây ở đây cũng đa dạng phết. Để bảo toàn tính mạng, em cứ nhắm mắt gọi đại một ly nước cam cho lành. Các bô lão còn lại thì hô hào gọi bia và rượu sake. Em mù tịt về thế giới rượu sake nên cũng chả biết họ gọi loại gì. Chỉ loáng thoáng nghe thấy chị gái kia gọi một loại rượu có tên nghe na ná như 'Dassai', nhưng em tò mò không biết người ta viết cái tên đó như thế nào nhỉ? Liệu em có nên bổ túc thêm kiến thức về các thương hiệu rượu dù mình không phải là bợm nhậu không? Mẹ em chắc chắn là một cuốn bách khoa toàn thư sống về mảng này rồi.</p>
-    <p>Đồ uống được bưng lên, và chúng em khai mạc bữa tiệc bằng màn chạm ly (kampai) quen thuộc. Mọi người chỉ khẽ nâng ly lên một cách đầy từ tốn và tao nhã. Vì em là sinh vật non nớt nhất trong phòng, nên vị trí cái ly của em cũng tự động bị dìm xuống thấp nhất. Trong khi đó, các bậc tiền bối thì tự do nâng ly cao hơn. Nói về dăm ba cái quy tắc ứng xử trên bàn nhậu ở Nhật Bản, thì nguyên lý cốt lõi của sự lịch thiệp là phải biết nâng tầm đối phương lên cao hơn mình. Thú thực em cực kỳ dị ứng với mấy cái thủ tục rườm rà, câu nệ này, nhưng em vẫn phải cắn răng nhét mấy cái quy tắc cơ bản đó vào đầu.</p>
+    <p>Có vẻ như phía đối tác đã bao trọn gói một set menu (course) từ trước, nên họ chỉ lật menu ra để order đồ uống. Vì tôi vẫn đang mài đũng quần trên ghế nhà trường và chưa đủ tuổi uống rượu, dĩ nhiên tôi chỉ được phép đụng tới mấy loại đồ uống không cồn, nhưng ngó sơ qua thì list nước ép trái cây ở đây cũng đa dạng phết. Để bảo toàn tính mạng, tôi cứ nhắm mắt gọi đại một ly nước cam cho lành. Các bô lão còn lại thì hô hào gọi bia và rượu sake. Tôi mù tịt về thế giới rượu sake nên cũng chả biết họ gọi loại gì. Chỉ loáng thoáng nghe thấy chị gái kia gọi một loại rượu có tên nghe na ná như 'Dassai', nhưng tôi tò mò không biết người ta viết cái tên đó như thế nào nhỉ? Liệu tôi có nên bổ túc thêm kiến thức về các thương hiệu rượu dù mình không phải là bợm nhậu không? Mẹ tôi chắc chắn là một cuốn bách khoa toàn thư sống về mảng này rồi.</p>
+    <p>Đồ uống được bưng lên, và chúng tôi khai mạc bữa tiệc bằng màn chạm ly (kampai) quen thuộc. Mọi người chỉ khẽ nâng ly lên một cách đầy từ tốn và tao nhã. Vì tôi là sinh vật non nớt nhất trong phòng, nên vị trí cái ly của tôi cũng tự động bị dìm xuống thấp nhất. Trong khi đó, các bậc tiền bối thì tự do nâng ly cao hơn. Nói về dăm ba cái quy tắc ứng xử trên bàn nhậu ở Nhật Bản, thì nguyên lý cốt lõi của sự lịch thiệp là phải biết nâng tầm đối phương lên cao hơn mình. Thú thực tôi cực kỳ dị ứng với mấy cái thủ tục rườm rà, câu nệ này, nhưng tôi vẫn phải cắn răng nhét mấy cái quy tắc cơ bản đó vào đầu.</p>
     <p>Bởi vì việc phơi bày sự non nớt và ngây ngô của mình trước bàn dân thiên hạ chưa bao giờ là một chiến lược sống còn khôn ngoan.</p>
-    <p>Em cắm ống hút vào ly và nhẹ nhàng hút từng ngụm nước cam, cố gắng nín thở để không tạo ra tiếng rột rột vô duyên. Em đang bị áp lực đè nặng đến mức cứ ngỡ mình sẽ bị mất vị giác tạm thời, nhưng mà ôi mẹ ơi, cái thứ nước tiên gì đây? Ngọt lịm! Đậm đặc! Trước giờ khái niệm nước ép trong từ điển của em chỉ gói gọn trong cụm từ 'thứ nước có vị ngọt', nhưng cái thứ nước này thực sự mang lại cảm giác như đang nhai trọn một quả cam tươi rói trong miệng vậy! Ồ, hóa ra đây mới là chân lý của thứ đồ uống được gọi là nước ép.</p>
-    <p>Cõi lòng em dâng lên một sự xúc động lạ kỳ. Tò mò không biết cái ly nước cam thần thánh này sẽ ngốn mất bao nhiêu tiền nhỉ? Điều rùng rợn nhất là em lật mỏi tay mà chẳng thấy cái menu nào có in giá tiền cả...</p>
-    <p>Vì đây là set menu đã chốt sẵn, nên món khai vị được ưu tiên xuất kích đầu tiên. Một món ăn phụ mang đậm hương vị của mùa được trang trí điểm xuyết bằng rau rừng và một món chua khai vị. Cả hai đều được đựng trong những chiếc bát bé xíu xiu, và khẩu phần cũng chỉ nhỉnh hơn cái hột mít một tẹo, nhưng em tự nhủ chắc các nhà hàng 5 sao đều chơi cái phong cách phục vụ theo kiểu "quý hồ tinh bất quý hồ đa" như vậy.</p>
+    <p>Tôi cắm ống hút vào ly và nhẹ nhàng hút từng ngụm nước cam, cố gắng nín thở để không tạo ra tiếng rột rột vô duyên. Tôi đang bị áp lực đè nặng đến mức cứ ngỡ mình sẽ bị mất vị giác tạm thời, nhưng mà ôi mẹ ơi, cái thứ nước tiên gì đây? Ngọt lịm! Đậm đặc! Trước giờ khái niệm nước ép trong từ điển của tôi chỉ gói gọn trong cụm từ 'thứ nước có vị ngọt', nhưng cái thứ nước này thực sự mang lại cảm giác như đang nhai trọn một quả cam tươi rói trong miệng vậy! Ồ, hóa ra đây mới là chân lý của thứ đồ uống được gọi là nước ép.</p>
+    <p>Cõi lòng tôi dâng lên một sự xúc động lạ kỳ. Tò mò không biết cái ly nước cam thần thánh này sẽ ngốn mất bao nhiêu tiền nhỉ? Điều rùng rợn nhất là tôi lật mỏi tay mà chẳng thấy cái menu nào có in giá tiền cả...</p>
+    <p>Vì đây là set menu đã chốt sẵn, nên món khai vị được ưu tiên xuất kích đầu tiên. Một món ăn phụ mang đậm hương vị của mùa được trang trí điểm xuyết bằng rau rừng và một món chua khai vị. Cả hai đều được đựng trong những chiếc bát bé xíu xiu, và khẩu phần cũng chỉ nhỉnh hơn cái hột mít một tẹo, nhưng tôi tự nhủ chắc các nhà hàng 5 sao đều chơi cái phong cách phục vụ theo kiểu "quý hồ tinh bất quý hồ đa" như vậy.</p>
     <p>Món đinh tiếp theo được trình làng là sashimi thịt ngựa (Basashi). Nói toẹt ra thì đây là món thịt ngựa sống thái lát.</p>
-    <p>Em sốc toàn tập. Nhắc đến thịt, não em tự động nảy số đến những thớ thịt dai nhách, và mỗi khi răng hàm nghiến xuống, phần mỡ béo ngậy sẽ tứa ra ngập tràn khoang miệng... Cơ mà miếng sashimi thịt ngựa này lại tan chảy ngay trên đầu lưỡi! Ngay khoảnh khắc em lùa nó vào miệng và khẽ nhai một hai nhát, thớ thịt thái mỏng tang đã vỡ vụn và tan chảy như kem. Dù đường đường chính chính là thịt, nhưng nó lại mang một vị ngọt thanh tao và tuyệt nhiên không hề có mùi hôi đặc trưng của thịt sống. Em chả biết tìm từ ngữ nào để diễn tả ngoài việc nói rằng nó để lại một dư vị của thịt đỏ tươi rói vấn vương nơi đầu lưỡi.</p>
+    <p>Tôi sốc toàn tập. Nhắc đến thịt, não tôi tự động nảy số đến những thớ thịt dai nhách, và mỗi khi răng hàm nghiến xuống, phần mỡ béo ngậy sẽ tứa ra ngập tràn khoang miệng... Cơ mà miếng sashimi thịt ngựa này lại tan chảy ngay trên đầu lưỡi! Ngay khoảnh khắc tôi lùa nó vào miệng và khẽ nhai một hai nhát, thớ thịt thái mỏng tang đã vỡ vụn và tan chảy như kem. Dù đường đường chính chính là thịt, nhưng nó lại mang một vị ngọt thanh tao và tuyệt nhiên không hề có mùi hôi đặc trưng của thịt sống. Tôi chả biết tìm từ ngữ nào để diễn tả ngoài việc nói rằng nó để lại một dư vị của thịt đỏ tươi rói vấn vương nơi đầu lưỡi.</p>
     <p>Và cái việc họ chỉ hào phóng phát cho mỗi thực khách đúng hai lát thịt mỏng dính quả thực là một sự xa xỉ tột bậc.</p>
     <p>"Món sashimi thịt ngựa này đúng là đỉnh của chóp luôn á!"</p>
-    <p>Vừa buột miệng thốt ra câu đó mà chưa kịp uốn lưỡi bảy lần, em mới giật mình nhận ra biết đâu chị Ruka và những người khác đã bào mòn cái món này đến mức nhẵn mặt rồi cũng nên. Nếu đúng là vậy, chắc trong mắt họ em trông giống hệt một con bé nhà quê mới lên tỉnh.</p>
-    <p>"Ngon thật sự. Mới tí tuổi đầu mà em đã có gu ẩm thực tinh tế thế này rồi. Sau này cái lưỡi của em chắc sẽ kén ăn và đắt tiền lắm đây," chị Ruka tung hứng thêm vào để giải vây cho em. Chú Takahashi và chị Maeda cũng mỉm cười gật gù phụ họa. Ừm, xem ra họ là những con người vô cùng thân thiện và tốt bụng.</p>
-    <p>Bầu không khí vẫn giữ được độ ấm cúng vốn có, và chúng em tiếp tục buôn chuyện rôm rả trong khi các món ăn thi nhau đổ bộ lên bàn. Chắc cũng phải cỡ 15 phút trôi qua kể từ lúc nhập tiệc. Đột nhiên, cánh cửa trượt bị kéo toang ra, và một người đàn ông tầm tuổi chú Takahashi bước vào, miệng lầm bầm: "Xin lỗi nha, xin lỗi nha."</p>
+    <p>Vừa buột miệng thốt ra câu đó mà chưa kịp uốn lưỡi bảy lần, tôi mới giật mình nhận ra biết đâu chị Ruka và những người khác đã bào mòn cái món này đến mức nhẵn mặt rồi cũng nên. Nếu đúng là vậy, chắc trong mắt họ tôi trông giống hệt một con bé nhà quê mới lên tỉnh.</p>
+    <p>"Ngon thật sự. Mới tí tuổi đầu mà em đã có gu ẩm thực tinh tế thế này rồi. Sau này cái lưỡi của em chắc sẽ kén ăn và đắt tiền lắm đây," chị Ruka tung hứng thêm vào để giải vây cho tôi. Chú Takahashi và chị Maeda cũng mỉm cười gật gù phụ họa. Ừm, xem ra họ là những con người vô cùng thân thiện và tốt bụng.</p>
+    <p>Bầu không khí vẫn giữ được độ ấm cúng vốn có, và chúng tôi tiếp tục buôn chuyện rôm rả trong khi các món ăn thi nhau đổ bộ lên bàn. Chắc cũng phải cỡ 15 phút trôi qua kể từ lúc nhập tiệc. Đột nhiên, cánh cửa trượt bị kéo toang ra, và một người đàn ông tầm tuổi chú Takahashi bước vào, miệng lầm bầm: "Xin lỗi nha, xin lỗi nha."</p>
     <p>"Ồ, nhân vật chính cuối cùng cũng chịu xuất đầu lộ diện."</p>
     <p>"Thành thật cáo lỗi vì sự chậm trễ này. Cuộc họp bị câu giờ lố hơn tôi dự tính."</p>
     <p>"À, không có gì to tát đâu. Bọn tôi cũng mới khởi động thôi. Ông vất vả rồi. À giới thiệu với mọi người, ông bạn này tên là Iwamoto."</p>
-    <p>Ông Iwamoto, một gã đàn ông có thân hình vạm vỡ với bộ râu quai nón lún phún quanh mép, kéo ghế ngồi phịch xuống ngay cạnh chị Maeda ở phía đối diện, tiện tay giật mạnh chiếc cà vạt để tự giải phóng cho bản thân. Cuối cùng, ông ta cũng chịu ngẩng mặt lên và lia mắt quan sát chúng em. Ngay giây phút ông ta tia thấy chúng em, cơ mặt ông ta lập tức thay đổi 180 độ.</p>
+    <p>Ông Iwamoto, một gã đàn ông có thân hình vạm vỡ với bộ râu quai nón lún phún quanh mép, kéo ghế ngồi phịch xuống ngay cạnh chị Maeda ở phía đối diện, tiện tay giật mạnh chiếc cà vạt để tự giải phóng cho bản thân. Cuối cùng, ông ta cũng chịu ngẩng mặt lên và lia mắt quan sát chúng tôi. Ngay giây phút ông ta tia thấy chúng tôi, cơ mặt ông ta lập tức thay đổi 180 độ.</p>
     <p>"Ô kìa, hóa ra là Ruka-chan đấy à?"</p>
     <p>Hửm... Ông ta vừa mới gọi thẳng thừng chị Ruka là 'Ruka-chan' thay vì 'Ruka-san' đàng hoàng đấy à?</p>
-    <p>Ra là thế. Em đã bắt được sóng rồi. Tệ hại hơn, cái ngữ điệu mà ông ta ném ra lúc đó nồng nặc mùi 'bề trên phán xét và cố tỏ ra thân thiết'. Dịch thô ra là "Thấy sang bắt quàng làm họ".</p>
-    <p>Em đã kịp soi trọn khoảnh khắc khóe môi chị Ruka khẽ giật giật khi phải hứng trọn cái cách chào hỏi chướng tai gai mắt đó.</p>
+    <p>Ra là thế. Tôi đã bắt được sóng rồi. Tệ hại hơn, cái ngữ điệu mà ông ta ném ra lúc đó nồng nặc mùi 'bề trên phán xét và cố tỏ ra thân thiết'. Dịch thô ra là "Thấy sang bắt quàng làm họ".</p>
+    <p>Tôi đã kịp soi trọn khoảnh khắc khóe môi chị Ruka khẽ giật giật khi phải hứng trọn cái cách chào hỏi chướng tai gai mắt đó.</p>
     <p>"Rất vui được hội ngộ, thấy anh vẫn phong độ thế này tôi mừng lắm."</p>
     <p>"Ừ, lâu lắm không gặp. À, nghe giang hồ đồn thổi có một tài năng trẻ đầy triển vọng được cất nhắc lên ghế giám đốc sáng tạo cho Roppongi Art Festa, ai dè cái người đó lại là cô, Ruka-chan."</p>
     <p>"Cảm ơn anh quá khen," chị ấy đáp lại bằng một nụ cười thường trực. Ồ, hóa ra đó là một nụ cười công nghiệp không hề có chút chân thành nào.</p>
@@ -400,7 +654,7 @@
     <p>"Anh ấy đã dìu dắt và hỗ trợ tôi rất nhiều hồi tôi còn làm ở công ty cũ trước khi tách ra làm riêng."</p>
     <p>"Chuẩn cmnr~, quá chuẩn luôn. Tôi đã cưu mang cô ấy hơi bị nhiều đấy. Kể từ cái ngày cô ấy chân ướt chân ráo bước vào công ty tôi, tôi đã đích thân cầm tay chỉ việc, rèn giũa cô ấy bằng tất cả tâm huyết. À mà khoan, tôi không có dạy cô ấy nhảy múa đâu nha, được chưa? Haha. Khổ nỗi Ruka-chan nhà ta lại là cực phẩm nhan sắc, nên vệ tinh vây quanh trong công ty muốn tình nguyện làm 'thầy giáo' cho cô ấy xếp hàng dài dằng dặc. Nhưng vì cô ấy là đệ tử chân truyền của tôi, nên tôi đã đánh bật hết lũ ruồi muỗi đó để bảo vệ cô ấy!"</p>
     <p>...Lão ta đang sủa cái quái gì vậy? Lão có lắp não trước khi nói không, cái kiểu phát ngôn đó nghe sặc mùi chiếm hữu, cứ như thể lão ta đang dằn mặt thiên hạ rằng 'cô ấy là hoa đã có chủ, cấm đụng vào' vậy?</p>
-    <p>Đầu óc em quay cuồng chóng mặt, em không thể ngờ mình lại phải chứng kiến một cái phát ngôn sặc mùi phong kiến, rẻ tiền và vô văn hóa đến vậy, nhất là khi nó thốt ra từ miệng một người đàn ông còn nhỏ tuổi hơn cả chú Wada—người lớn tuổi nhất văn phòng em và lúc nào cũng nghiêm túc, chuẩn mực. Trong đầu em tự động ghép cái khuôn mặt điềm đạm của chú Wada, hình mẫu lý tưởng của sự chín chắn, vào cái tình huống này. Cùng lúc đó, câu nói mang đậm tính triết lý của anh chàng tóc hồng Tatsumi Shou lại vang vọng trong tâm trí em: "Đổ lỗi cho khoảng cách thế hệ là một hành động hèn nhát".</p>
+    <p>Đầu óc tôi quay cuồng chóng mặt, tôi không thể ngờ mình lại phải chứng kiến một cái phát ngôn sặc mùi phong kiến, rẻ tiền và vô văn hóa đến vậy, nhất là khi nó thốt ra từ miệng một người đàn ông còn nhỏ tuổi hơn cả chú Wada—người lớn tuổi nhất văn phòng tôi và lúc nào cũng nghiêm túc, chuẩn mực. Trong đầu tôi tự động ghép cái khuôn mặt điềm đạm của chú Wada, hình mẫu lý tưởng của sự chín chắn, vào cái tình huống này. Cùng lúc đó, câu nói mang đậm tính triết lý của anh chàng tóc hồng Tatsumi Shou lại vang vọng trong tâm trí tôi: "Đổ lỗi cho khoảng cách thế hệ là một hành động hèn nhát".</p>
     <p>Chú Wada cũng từng tự trào phúng bản thân bằng cách lôi cái mác thế hệ Showa ra làm bia đỡ đạn, nhưng đó là do chú ấy sợ những lời mình nói ra sẽ trở nên giáo điều và cổ hủ trong mắt thế hệ trẻ.</p>
     <p>Nhưng còn cái lão này...</p>
     <p>"Tôi thực sự biết ơn những sự nâng đỡ của anh trước khi tôi ra riêng," chị Ruka nói, đồng thời khẽ cúi gập đầu một cách đầy khách sáo.</p>
@@ -414,30 +668,30 @@
     <p>"Nghe đồn Ruka-chan là người tự tay chắp bút lên concept cho cái Art Festa lần này hả? Khá khen cho cô đấy."</p>
     <p>Hừm. Cái giọng điệu 'Khá khen cho cô' đó là có ý gì?</p>
     <p>Dù trên lý thuyết đó là thành quả xứng đáng cho năng lực của chị ấy, nhưng cái cách lão ta dùng từ lại đầy tính khịa—giống như đang ám chỉ rằng chị ấy leo lên được vị trí đó không hoàn toàn nhờ vào thực lực vậy.</p>
-    <p>Chả hiểu sao từ nãy đến giờ, cái lão Iwamoto này cứ liên tục nhả ra mấy câu nói đầy gai góc khiến người nghe phải chướng tai gai mắt. Lão ta, kẻ đang gieo rắc sự bức bối cho em, ung dung gắp đôi đũa gỗ trông có vẻ đắt tiền lên, rồi dùng một tốc độ bàn thờ lùa hai lát sashimi thịt ngựa vào mồm. Cảm giác như lão ta nuốt chửng luôn chứ chẳng thèm nhai. Ăn uống kiểu đó đúng là phí phạm của giời. Dù biết ăn uống kiểu gì là quyền tự do cá nhân, nhưng lão ta lại tiếp tục nốc bia ừng ực.</p>
+    <p>Chả hiểu sao từ nãy đến giờ, cái lão Iwamoto này cứ liên tục nhả ra mấy câu nói đầy gai góc khiến người nghe phải chướng tai gai mắt. Lão ta, kẻ đang gieo rắc sự bức bối cho tôi, ung dung gắp đôi đũa gỗ trông có vẻ đắt tiền lên, rồi dùng một tốc độ bàn thờ lùa hai lát sashimi thịt ngựa vào mồm. Cảm giác như lão ta nuốt chửng luôn chứ chẳng thèm nhai. Ăn uống kiểu đó đúng là phí phạm của giời. Dù biết ăn uống kiểu gì là quyền tự do cá nhân, nhưng lão ta lại tiếp tục nốc bia ừng ực.</p>
     <p>"Tiền bối vẫn giữ vững phong độ ngàn ly không say như ngày nào nhỉ," chị Ruka lên tiếng.</p>
     <p>"Cũng may là cái lá gan của tôi vẫn còn hoạt động ngon nghẻ," ông Iwamoto đáp trả.</p>
     <p>"Bộ người nhà anh không lo sốt vó khi thấy anh nốc rượu như nước lã thế sao?"</p>
     <p>Chị ấy vừa nói vừa dốc ngược chai bia rót tiếp. Đây là chai thứ hai rồi đấy.</p>
     <p>"Lần khám sức khỏe định kỳ vừa rồi, mấy cái chỉ số của tôi nó nhảy loạn cào cào cả lên. Chắc tại tôi cày cuốc thiếu ngủ, nhưng bác sĩ cũng đã đánh tiếng cảnh báo tôi nên bóp mồm bóp miệng lại bớt."</p>
-    <p>"Iwamoto-san đúng là số hưởng, được mọi người quan tâm quá ha," chị Ruka nói mát trong khi tay vẫn không ngừng rót bia. Ông Iwamoto lại tiếp tục nốc ừng ực. Nhìn cái cảnh tượng đó mà em thấy rợn hết cả da gà.</p>
+    <p>"Iwamoto-san đúng là số hưởng, được mọi người quan tâm quá ha," chị Ruka nói mát trong khi tay vẫn không ngừng rót bia. Ông Iwamoto lại tiếp tục nốc ừng ực. Nhìn cái cảnh tượng đó mà tôi thấy rợn hết cả da gà.</p>
     <p>"À thì, nhưng mà..."</p>
     <p>Lão ta đặt mạnh cái ly xuống bàn, cuối cùng cũng chịu buông tha cho nó.</p>
     <p>"Ruka-chan vẫn còn trẻ người non dạ quá. 'Roppongi Art Festa' là một sự kiện mang tầm vóc quốc tế, quy tụ hàng loạt nghệ sĩ sừng sỏ từ nước ngoài. Việc cô ẵm được cái dự án khủng này đúng là một kỳ tích, nhưng với cái tuổi đời non choẹt của cô, việc lèo lái một dự án khổng lồ như thế này chắc chắn sẽ trầy da tróc vảy. Đời nào thiên hạ lại chịu lép vế để một con ranh vắt mũi chưa sạch người Nhật lên mặt chỉ đạo cơ chứ."</p>
     <p>Nói đoạn, lão ta lại vồ lấy cái ly và tu sạch chút bia còn sót lại dưới đáy.</p>
     <p>"Nếu thấy ngộp quá, cứ mạnh dạn hú ông chú này một tiếng. Hahaha. Tôi nhẵn mặt với mấy cái dự án xương xẩu kiểu này rồi, và tôi lúc nào cũng sẵn sàng chống lưng cho Ruka-chan."</p>
     <p>Chị Ruka buông thõng chai bia đang cầm trên tay và đáp lại bằng một chất giọng cố kìm nén sự uất ức: "Dạ vâng."</p>
-    <p>Đúng khoảnh khắc đó, em chợt nhận ra sợi dây lý trí cuối cùng của mình đã chính thức đứt phựt.</p>
-    <p>Thế nên, khi những lời nói đó vừa thoát ra khỏi miệng, phải mất vài giây em mới định thần lại được là mình vừa hành động trong vô thức.</p>
+    <p>Đúng khoảnh khắc đó, tôi chợt nhận ra sợi dây lý trí cuối cùng của mình đã chính thức đứt phựt.</p>
+    <p>Thế nên, khi những lời nói đó vừa thoát ra khỏi miệng, phải mất vài giây tôi mới định thần lại được là mình vừa hành động trong vô thức.</p>
     <p>"Chị Akihiro hiện tại đâu còn là cấp dưới của chú nữa, đúng không ạ?"</p>
     <p>Chỉ trong tích tắc, cả căn phòng chìm vào một khoảng không im lặng đến đáng sợ.</p>
-    <p>Chú Takahashi và chị Maeda ban nãy còn đang rầm rì to nhỏ bên cạnh ông Iwamoto, giờ đây cũng chết trân tại chỗ, mặt mày tái mét. Em thậm chí còn nghe rõ mồn một tiếng chị Ruka nín thở.</p>
+    <p>Chú Takahashi và chị Maeda ban nãy còn đang rầm rì to nhỏ bên cạnh ông Iwamoto, giờ đây cũng chết trân tại chỗ, mặt mày tái mét. Tôi thậm chí còn nghe rõ mồn một tiếng chị Ruka nín thở.</p>
     <p>Khuôn mặt ông Iwamoto bỗng chốc đanh lại, hầm hầm sát khí.</p>
     <p>"Mày..."</p>
     <p>"Cháu xin lỗi vì chưa kịp giới thiệu bản thân đàng hoàng. Cháu tên là Ayase Saki."</p>
     <p>"Mày là lính mới bên chỗ Ruka-chan à? Thảo nào mày bị mù thông tin. Tao là sư phụ của Ruka-chan. Tao là sếp sòng của cô ta ở công ty cũ."</p>
     <p>"Nhưng bây giờ chị ấy đã tự đứng trên đôi chân của mình rồi, nên xét về mặt chuyên môn, hai người hoàn toàn bình đẳng với tư cách là những nhà thiết kế độc lập."</p>
-    <p>Ngay khi em vừa nã trọn cú chốt hạ đó, ông Iwamoto như bị giáng một cú tát trời giáng, lão ta khẽ hít một hơi thật sâu.</p>
+    <p>Ngay khi tôi vừa nã trọn cú chốt hạ đó, ông Iwamoto như bị giáng một cú tát trời giáng, lão ta khẽ hít một hơi thật sâu.</p>
     <p>"…………"</p>
     <p>Lão ta xì một luồng hơi bực dọc qua hai lỗ mũi và mím chặt môi lại thành một đường thẳng tắp. Tuy không thốt ra nửa lời, nhưng cái thái độ lồi lõm của lão ta đã tố cáo rõ ràng rằng lão đang tụt mood cực độ.</p>
     <p>Ngay khi ông Iwamoto chuẩn bị mở miệng phản pháo, chú Takahashi lập tức bật dậy như lò xo. Chú ấy đặt tay lên vai ông Iwamoto một cách dứt khoát và nói: "Iwamoto-san, anh em mình ra ngoài hóng gió một lát đi."</p>
@@ -445,27 +699,27 @@
     <p>Khoảnh khắc cánh cửa trượt đóng sầm lại, cái bầu không khí ngột ngạt, đặc quánh sát khí trong phòng cũng tan biến theo.</p>
     <p>...Thôi xong.</p>
     <p>Mình vừa gây ra một cái nghiệp chướng tày trời rồi──…</p>
-    <p>Cơ mặt em co rúm lại, cứng đơ như một tảng đá, chắc giao diện của em lúc này chả khác gì cái mặt nạ tuồng kịch Noh. Vâng, ngay tại thời điểm đó, em đã hoàn toàn nhận thức được mức độ nghiêm trọng của cái thảm họa mà mình vừa gây ra.</p>
-    <p>Căn phòng giờ chỉ còn lại ba người phụ nữ: em, chị Ruka và chị Maeda.</p>
-    <p>Em nghe thấy một tiếng thở dài thườn thượt vang lên, và cuối cùng cảm giác như được tháo gông xiềng. Em từ từ quay sang nhìn chị Ruka với ánh mắt đầy hối lỗi.</p>
+    <p>Cơ mặt tôi co rúm lại, cứng đơ như một tảng đá, chắc giao diện của tôi lúc này chả khác gì cái mặt nạ tuồng kịch Noh. Vâng, ngay tại thời điểm đó, tôi đã hoàn toàn nhận thức được mức độ nghiêm trọng của cái thảm họa mà mình vừa gây ra.</p>
+    <p>Căn phòng giờ chỉ còn lại ba người phụ nữ: tôi, chị Ruka và chị Maeda.</p>
+    <p>Tôi nghe thấy một tiếng thở dài thườn thượt vang lên, và cuối cùng cảm giác như được tháo gông xiềng. Tôi từ từ quay sang nhìn chị Ruka với ánh mắt đầy hối lỗi.</p>
     <p>"Em thực sự vô cùng xin lỗi, em đã phá nát bữa tiệc rồi."</p>
     <p>Chị Ruka thở dài cái thượt.</p>
-    <p>Chị ấy đưa tay lên vò đầu bứt tai, rồi chống cằm bằng một tay và đăm đăm nhìn em.</p>
+    <p>Chị ấy đưa tay lên vò đầu bứt tai, rồi chống cằm bằng một tay và đăm đăm nhìn tôi.</p>
     <p>"Em chơi quả này hơi bị chí mạng đấy nhé?"</p>
     <p>"……Dạ."</p>
 
-    <p>Chị Ruka dời ánh mắt khỏi em và lơ đãng nhìn lên bức tường trống.</p>
+    <p>Chị Ruka dời ánh mắt khỏi tôi và lơ đãng nhìn lên bức tường trống.</p>
     <p>Chị Maeda khẽ cười khúc khích.</p>
     <p>"Không có gì phải xoắn đâu Ruka-san. Cả Ayase-san nữa. Lúc nãy rõ mười mươi là lỗi do ông Iwamoto mà."</p>
     <p>"Để cô phải đứng ra nói đỡ cho tôi thế này. Hy vọng Maeda-chan không bị vạ lây."</p>
     <p>"Không sao, không sao đâu. Dạo này tôi cũng ngán ngẩm ba cái trò luồn cúi, thảo mai chốn công sở lắm rồi. Lâu lắm mới được chứng kiến một người dám sống thật với bản thân như vậy, tự nhiên thấy sảng khoái ghê."</p>
-    <p>Em thầm thán phục sự tinh tế của chị ấy, người có thể dùng nụ cười và cử chỉ nhẹ nhàng để hóa giải bầu không khí căng thẳng và xoa dịu sự lo lắng của người khác.</p>
-    <p>Tuy nhiên, em không được phép ngây thơ tin sái cổ vào những lời an ủi đó.</p>
+    <p>Tôi thầm thán phục sự tinh tế của chị ấy, người có thể dùng nụ cười và cử chỉ nhẹ nhàng để hóa giải bầu không khí căng thẳng và xoa dịu sự lo lắng của người khác.</p>
+    <p>Tuy nhiên, tôi không được phép ngây thơ tin sái cổ vào những lời an ủi đó.</p>
     <p>...Ơ? Khoan đã, Maeda-chan...? Chị Ruka, bộ chị vừa gọi chị Maeda bằng kính ngữ 'chan' đó hả?</p>
     <p>"À, tôi phải ra ngoài giải quyết nỗi buồn một chút. Hình như rượu sake bắt đầu ngấm rồi."</p>
     <p>Vừa buông một câu đùa tếu táo, chị Maeda vừa ôm bụng và chuồn lẹ ra khỏi phòng.</p>
-    <p>Cánh cửa trượt vừa đóng lại, trong phòng chỉ còn trơ trọi lại em và chị Ruka.</p>
-    <p>Khi mọi tiếng ồn ào ngoài hành lang đã chìm vào tĩnh lặng, em không thể tiếp tục giả câm giả điếc được nữa, đành phải mở miệng tạ tội.</p>
+    <p>Cánh cửa trượt vừa đóng lại, trong phòng chỉ còn trơ trọi lại tôi và chị Ruka.</p>
+    <p>Khi mọi tiếng ồn ào ngoài hành lang đã chìm vào tĩnh lặng, tôi không thể tiếp tục giả câm giả điếc được nữa, đành phải mở miệng tạ tội.</p>
     <p>"Ừm... em ngàn lần xin lỗi chị. Em thực sự..."</p>
     <p>"Em thấy hối hận rồi chứ?"</p>
     <p>"……Vâng ạ."</p>
@@ -474,12 +728,12 @@
     <p>Chị Ruka khẽ thở dài.</p>
     <p>"À thì, nếu là cái thời xa lắc xa lơ nào đó, chắc chắn chị sẽ ca bài ca: 'Việc em làm là tối kỵ. Từ nay về sau cấm tiệt không được tái phạm.'"</p>
     <p>"Chị sẽ không sạc em một trận như vậy sao?"</p>
-    <p>Nói thật là, em đã chuẩn bị sẵn tinh thần để hứng trọn cơn thịnh nộ đó rồi.</p>
+    <p>Nói thật là, tôi đã chuẩn bị sẵn tinh thần để hứng trọn cơn thịnh nộ đó rồi.</p>
     <p>"Ở cái thời đại Reiwa văn minh này mà mở miệng ra răn đe kiểu đó, kiểu gì cũng bị phong sát cho cái mác sếp tồi rồi ăn đủ gạch đá. Chị là người rước Saki vào cái chốn này. Thế nên, chị phải có trách nhiệm dọn dẹp bãi chiến trường do em bày ra. Quản trị rủi ro vốn dĩ là chuyên môn của chị mà."</p>
     <p>"Cái đó..."</p>
     <p>"Cách hành xử của em là hoàn toàn bản năng, và nếu nó không vi phạm các chuẩn mực đạo đức hay luân lý, thì chẳng có lý do gì để lên án nó nếu chưa có ai nhắc nhở em từ trước. Đáng lẽ ra chị phải đánh hơi được mùi nguy hiểm và cảnh báo Saki sớm hơn. Trong những tình huống nhạy cảm thế này, nghệ thuật kiềm chế cảm xúc và đeo mặt nạ giả tạo là một kỹ năng sinh tồn bắt buộc."</p>
     <p>"Chị đã đánh hơi được... À thì, nếu có siêu năng lực đó thì chắc chị nói đúng. Đừng bảo là chị có khả năng tiên tri được việc em sẽ nổi trận lôi đình nhé?"</p>
-    <p>Vì em đinh ninh rằng việc đọc tâm trí người khác là điều hoang đường, nên em mới đánh liều hỏi như vậy, ai ngờ chị Ruka lại gật đầu cái rụp vô cùng tự tin.</p>
+    <p>Vì tôi đinh ninh rằng việc đọc tâm trí người khác là điều hoang đường, nên tôi mới đánh liều hỏi như vậy, ai ngờ chị Ruka lại gật đầu cái rụp vô cùng tự tin.</p>
     <p>"Chị đọc được chứ. Hay nói chính xác hơn là, chị thừa sức đọc được. Saki, ngay từ lúc lão ta bước chân vào phòng, em đã soi trọn biểu cảm của chị rồi đúng không?"</p>
     <p>"Hức."</p>
     <p>Chị Ruka gục hẳn đầu xuống bàn.</p>
@@ -488,60 +742,60 @@
     <p>Cũng không loại trừ khả năng đó.</p>
     <p>"Chắc tại chị đánh giá hơi thấp cái nhãn quan sắc bén của em, Saki ạ."</p>
     <p>"Dạ không, là do em bốc đồng thiếu suy nghĩ thôi. Em thành thật xin lỗi chị. Em sẽ kiểm điểm sâu sắc để không dẫm lên vết xe đổ này một lần nào nữa."</p>
-    <p>Nói xong, em cúi gầm mặt xuống. Chị Ruka liếc xéo em một cái rồi lại tiếp tục chống cằm.</p>
+    <p>Nói xong, tôi cúi gầm mặt xuống. Chị Ruka liếc xéo tôi một cái rồi lại tiếp tục chống cằm.</p>
     <p>"Ừ. Được rồi, nếu em thực sự làm được như vậy thì chị xin ngả mũ bái phục. Cơ mà, e là chuyện đó còn khó hơn hái sao trên trời."</p>
-    <p>Nghe chị ấy phán một câu xanh rờn, em có cảm giác như trái tim mình vừa bị ai đó bóp nghẹt.</p>
+    <p>Nghe chị ấy phán một câu xanh rờn, tôi có cảm giác như trái tim mình vừa bị ai đó bóp nghẹt.</p>
     <p>"Khó hơn hái sao ạ?"</p>
     <p>"Thì cái nết của em, chắc chắn đây không phải lần đầu em chơi trội thế này đúng không? Kiểu gì trong quá khứ chả có vài vụ tương tự, cái trò vuốt râu hùm, dám bật lại cả những người bề trên ấy."</p>
-    <p>Em cứng họng.</p>
-    <p>Chiến tích của em nhiều không đếm xuể. Từ Giáo sư Kudo, đến ông bố ruột vô trách nhiệm Ito Fumiya, và khéo khi vụ của Kozono-san cũng bị liệt vào danh sách này nốt. Kozono-san đã nhanh chân thả thính anh Yuuta trước em. Xét về thâm niên trên tình trường, em ấy rõ ràng là kèo trên. Trong lúc đang bị chính những cảm xúc hỗn độn của mình làm cho điên đảo, em vẫn tự nể bản thân khi có thể phản dame bằng một câu chí mạng: "Dù em có tự tin đến mấy thì tất cả cũng chỉ nằm ở mức 'có thể' thôi." Giờ ngẫm lại, em mới thấy cái bản tính nóng như Trương Phi của mình thật đáng sợ.</p>
+    <p>Tôi cứng họng.</p>
+    <p>Chiến tích của tôi nhiều không đếm xuể. Từ Giáo sư Kudo, đến ông bố ruột vô trách nhiệm Ito Fumiya, và khéo khi vụ của Kozono-san cũng bị liệt vào danh sách này nốt. Kozono-san đã nhanh chân thả thính anh Yuuta trước tôi. Xét về thâm niên trên tình trường, tôi ấy rõ ràng là kèo trên. Trong lúc đang bị chính những cảm xúc hỗn độn của mình làm cho điên đảo, tôi vẫn tự nể bản thân khi có thể phản dame bằng một câu chí mạng: "Dù em có tự tin đến mấy thì tất cả cũng chỉ nằm ở mức 'có thể' thôi." Giờ ngẫm lại, tôi mới thấy cái bản tính nóng như Trương Phi của mình thật đáng sợ.</p>
     <p>"Em sẽ cố gắng tu tâm dưỡng tính ạ."</p>
     <p>"Vô phương cứu chữa thôi em ơi. Giang sơn dễ đổi bản tính khó dời. Theo như hồ sơ bệnh án chị chẩn đoán, em thuộc tuýp người cực kỳ hiếu thắng và ghét sự thất bại. Những thành phần như em không sinh ra để vướng vào ba cái trò đấu trí đấu dũng cân não trong các cuộc đàm phán kiểu này đâu. Mặc dù dắt túi dăm ba cái kỹ năng thư ký cũng tốt cho tương lai, nhưng chị cá là cái đích đến cuối cùng của em không nằm ở đây."</p>
-    <p>Nhát dao chí mạng đó đâm thẳng vào tim đen của em. Thà chị ấy cứ xối xả mắng chửi em một trận còn dễ thở hơn, đằng này chị Ruka không phải loại sếp dễ dàng buông tha cho lính tráng trốn tránh sự thật.</p>
+    <p>Nhát dao chí mạng đó đâm thẳng vào tim đen của tôi. Thà chị ấy cứ xối xả mắng chửi tôi một trận còn dễ thở hơn, đằng này chị Ruka không phải loại sếp dễ dàng buông tha cho lính tráng trốn tránh sự thật.</p>
     <p>"Ừ thì, nhưng vụ drama hôm nay, cho chị xin lỗi nhé. Lỗi lầm chí tử nhất của chị là sự non nớt trong cách xử lý tình huống. Vì có sự hiện diện của Maeda-chan, đáng lẽ ra chị phải lên kịch bản kỹ càng hơn. Chị không nên để Saki có cơ hội bận tâm lo lắng cho chị mới phải."</p>
     <p>"Vì có chị Maeda... ủa?"</p>
     <p>"Sau này rồi em sẽ hiểu. Cái thứ khiến em phải rén không phải là cái mác chức danh hay địa vị xã hội đâu..."</p>
     <p>Khi chị ấy vừa buông lời sấm truyền đầy ẩn ý đó, cánh cửa trượt lại một lần nữa được mở ra. Người đầu tiên hạ cánh là chú Takahashi.</p>
-    <p>Theo sau đó là sự trở lại của cặp đôi chị Maeda và ông Iwamoto. Rõ ràng là chị Maeda đi giải quyết nỗi buồn cơ mà, cớ sao lại đi chung với ông Iwamoto? Khả năng cao cái cớ đi toilet chỉ là một màn kịch vụng về, và mục đích thực sự của chị ấy là ra ngoài để làm công tác tư tưởng với ông Iwamoto. Dĩ nhiên, em không rảnh hơi đi làm thám tử điều tra mấy vụ này, vì em không muốn ứng nghiệm câu châm ngôn 'họa từ miệng mà ra'.</p>
+    <p>Theo sau đó là sự trở lại của cặp đôi chị Maeda và ông Iwamoto. Rõ ràng là chị Maeda đi giải quyết nỗi buồn cơ mà, cớ sao lại đi chung với ông Iwamoto? Khả năng cao cái cớ đi toilet chỉ là một màn kịch vụng về, và mục đích thực sự của chị ấy là ra ngoài để làm công tác tư tưởng với ông Iwamoto. Dĩ nhiên, tôi không rảnh hơi đi làm thám tử điều tra mấy vụ này, vì tôi không muốn ứng nghiệm câu châm ngôn 'họa từ miệng mà ra'.</p>
     <p>Ông Iwamoto ngồi phịch xuống ghế với vẻ mặt hầm hầm như đỉa ngâm vôi, câm như hến. Bữa tiệc tối tiếp tục diễn ra như thể chưa từng có cuộc cãi vã nào, nhưng kể từ giây phút đó cho đến khi tàn tiệc, ông Iwamoto tuyệt nhiên không dám hé răng sủa thêm một câu ngông cuồng nào nữa. Trông lão ta rúm ró thảm hại, và chú Takahashi thì liên tục ném cho lão ta những cái nhìn ái ngại.</p>
     <p>Chỉ duy nhất chị Maeda là vẫn giữ được nụ cười rạng rỡ và bắt chuyện rôm rả với chị Ruka.</p>
-    <p>Cảm giác như em đang bị đày đọa trên đống lửa, thế nên đĩa sashimi thịt ngựa mỹ vị chắc giờ cũng trở nên vô vị nhạt nhẽo rồi.</p>
-    <p>Trong lúc đang mải mê tự dằn vặt và đắm chìm trong mớ suy nghĩ tự kiểm điểm, em bỗng giác ngộ ra một chân lý.</p>
-    <p>Chị Ruka đã tặng em một tràng pháo tay cho cái khả năng bắt sóng cảm xúc tinh nhạy của em, nhưng có vẻ như cái nhãn quan được ca tụng là sắc lẹm đó lại bị vô hiệu hóa hoàn toàn trước một nhân vật trong căn phòng này, người mà em tuyệt đối không bao giờ muốn đắc tội...</p>
+    <p>Cảm giác như tôi đang bị đày đọa trên đống lửa, thế nên đĩa sashimi thịt ngựa mỹ vị chắc giờ cũng trở nên vô vị nhạt nhẽo rồi.</p>
+    <p>Trong lúc đang mải mê tự dằn vặt và đắm chìm trong mớ suy nghĩ tự kiểm điểm, tôi bỗng giác ngộ ra một chân lý.</p>
+    <p>Chị Ruka đã tặng tôi một tràng pháo tay cho cái khả năng bắt sóng cảm xúc tinh nhạy của tôi, nhưng có vẻ như cái nhãn quan được ca tụng là sắc lẹm đó lại bị vô hiệu hóa hoàn toàn trước một nhân vật trong căn phòng này, người mà tôi tuyệt đối không bao giờ muốn đắc tội...</p>
     <p>Chẳng phải đang có một cao thủ ẩn danh sở hữu khả năng ngụy trang cảm xúc đạt đến trình độ thượng thừa đằng sau nụ cười không hề biến sắc đó sao?</p>
-    <p>Khi bữa tiệc hạ màn, màn đêm đã buông xuống từ lâu, và sau khi chia tay phe đối tác, chị Ruka đã hào phóng book taxi đưa em về tận Shibuya.</p>
-    <p>Trên chuyến taxi đang xé gió trên đường cao tốc, chị Ruka thầm thì vào tai em.</p>
+    <p>Khi bữa tiệc hạ màn, màn đêm đã buông xuống từ lâu, và sau khi chia tay phe đối tác, chị Ruka đã hào phóng book taxi đưa tôi về tận Shibuya.</p>
+    <p>Trên chuyến taxi đang xé gió trên đường cao tốc, chị Ruka thầm thì vào tai tôi.</p>
     <p>"Em phải nhớ kỹ điều này, người ta chỉ được phép rút gươm ra khỏi vỏ khi nắm chắc 100% phần thắng trong tay."</p>
     <p>Hành động rút gươm đồng nghĩa với việc phát động chiến tranh và chính thức coi kẻ thù là cái gai trong mắt.</p>
-    <p>Ngay cả một đứa hay bị chê là mù mờ về ẩn dụ như em cũng thừa sức lĩnh hội được chân lý sâu xa đó, và em chỉ biết cắn răng gật đầu một cách nặng nề.</p>
+    <p>Ngay cả một đứa hay bị chê là mù mờ về ẩn dụ như tôi cũng thừa sức lĩnh hội được chân lý sâu xa đó, và tôi chỉ biết cắn răng gật đầu một cách nặng nề.</p>
     <p>"Em chỉ cảm thấy bất bình thay cho chị thôi. Vì cái thái độ coi thường chị Ruka ra mặt của ông ta."</p>
     <p>"Ừ."</p>
     <p>"Nhưng em hứa từ nay về sau em sẽ kiểm soát bản thân."</p>
-    <p>Dù đã bị sếp phán một câu xanh rờn là vô phương cứu chữa, nhưng đó không phải là cái cớ để em buông xuôi. Em không biết cái kiếp thực tập sinh này sẽ kéo dài đến bao giờ, nhưng chừng nào công ty còn dung túng cho em ở lại, em bắt buộc phải cống hiến hết 200% công lực.</p>
-    <p>Bởi lẽ, chính em là người đã tự nguyện đâm đầu vào cái chốn này vì niềm đam mê mãnh liệt cơ mà.</p>
+    <p>Dù đã bị sếp phán một câu xanh rờn là vô phương cứu chữa, nhưng đó không phải là cái cớ để tôi buông xuôi. Tôi không biết cái kiếp thực tập sinh này sẽ kéo dài đến bao giờ, nhưng chừng nào công ty còn dung túng cho tôi ở lại, tôi bắt buộc phải cống hiến hết 200% công lực.</p>
+    <p>Bởi lẽ, chính tôi là người đã tự nguyện đâm đầu vào cái chốn này vì niềm đam mê mãnh liệt cơ mà.</p>
     <p>"Mục tiêu tối thượng của chúng ta không phải là để giành chiến thắng trong những cuộc cãi vã vô bổ."</p>
     <p>"Mà ngược lại, đôi khi nghệ thuật 'thua trong sự kiêu hãnh' lại mang tính chiến lược hơn nhiều. Tuyệt đối không được phép đánh mất đi cái đích đến thực sự của mình."</p>
-    <p>Những lời răn dạy thấm thía của chị Ruka khiến em phải gật gù tâm đắc trong buổi tối hôm đó.</p>
-    <p>Những ánh đèn hậu đỏ rực của những chiếc xe đang phóng bạt mạng trên làn đường cao tốc thi nhau nhấp nháy, lướt qua những trụ đèn đường đứng sừng sững như những người lính gác. Chiếc taxi chở chúng em, có lẽ do được cầm lái bởi một bác tài già dặn kinh nghiệm, nên cứ thong dong lăn bánh với một tốc độ an toàn đến phát bực, trong khi em chỉ biết trân trân nhìn theo đuôi những chiếc xe khác đang thi nhau vượt mặt.</p>
-    <p>Bỗng nhiên, em tia thấy ở làn đường bên cạnh, một chiếc xe có hình dáng quen thuộc mà đáng lý ra đã vút qua mặt tụi em từ tám kiếp trước, giờ đang nằm chết dí trong biển kẹt xe.</p>
-    <p>Sau khi trao nhau câu chúc ngủ ngon, chiếc taxi lại tiếp tục lăn bánh bỏ lại em và chị Ruka cùng với nụ cười thân thiện của bác tài, lao vào màn đêm để tiếp tục hành trình săn khách.</p>
-    <p>Sau khi đường ai nấy đi với chị Ruka, em phóng tầm mắt ngắm nhìn cảnh đêm hoa lệ của Shibuya và khẽ buông một tiếng thở dài.</p>
-    <p>Thứ ánh sáng le lói hắt ra từ ô cửa sổ căn hộ của em, nơi le lói đằng sau bức màn đêm tĩnh mịch kia, bỗng mang lại cho em một cảm giác nhớ nhung đến cồn cào.</p>
+    <p>Những lời răn dạy thấm thía của chị Ruka khiến tôi phải gật gù tâm đắc trong buổi tối hôm đó.</p>
+    <p>Những ánh đèn hậu đỏ rực của những chiếc xe đang phóng bạt mạng trên làn đường cao tốc thi nhau nhấp nháy, lướt qua những trụ đèn đường đứng sừng sững như những người lính gác. Chiếc taxi chở chúng tôi, có lẽ do được cầm lái bởi một bác tài già dặn kinh nghiệm, nên cứ thong dong lăn bánh với một tốc độ an toàn đến phát bực, trong khi tôi chỉ biết trân trân nhìn theo đuôi những chiếc xe khác đang thi nhau vượt mặt.</p>
+    <p>Bỗng nhiên, tôi tia thấy ở làn đường bên cạnh, một chiếc xe có hình dáng quen thuộc mà đáng lý ra đã vút qua mặt tụi tôi từ tám kiếp trước, giờ đang nằm chết dí trong biển kẹt xe.</p>
+    <p>Sau khi trao nhau câu chúc ngủ ngon, chiếc taxi lại tiếp tục lăn bánh bỏ lại tôi và chị Ruka cùng với nụ cười thân thiện của bác tài, lao vào màn đêm để tiếp tục hành trình săn khách.</p>
+    <p>Sau khi đường ai nấy đi với chị Ruka, tôi phóng tầm mắt ngắm nhìn cảnh đêm hoa lệ của Shibuya và khẽ buông một tiếng thở dài.</p>
+    <p>Thứ ánh sáng le lói hắt ra từ ô cửa sổ căn hộ của tôi, nơi le lói đằng sau bức màn đêm tĩnh mịch kia, bỗng mang lại cho tôi một cảm giác nhớ nhung đến cồn cào.</p>
 
     <hr>
 
-    <p>Đêm hôm đó, sau một khoảng thời gian dài bị cuốn vào guồng quay công việc, em mới lại được dịp sà vào lòng anh Yuuta làm nũng.</p>
-    <p>Dạo gần đây, cả hai đứa đều ngập ngụa trong deadline và bài vở nên quỹ thời gian để bồi đắp tình cảm cứ thế vơi dần. Nhờ có cái nền tảng vững chắc của mối quan hệ đã được xác lập rõ ràng, em không còn bị những suy nghĩ bất an ám ảnh đến mức phải gồng mình chứng minh tình cảm nữa. Thế nhưng, riêng đêm nay, em thèm khát được ngắm nhìn khuôn mặt anh Yuuta và cuộn tròn trong vòng tay ấm áp của anh ấy.</p>
-    <p>Em muốn anh ấy dùng hơi ấm của mình để lấp đầy cái hố sâu hoắm trong tim do chuỗi thất bại ê chề gây ra, muốn anh ấy sưởi ấm cõi lòng đang lạnh lẽo và xoa dịu những giông bão trong em.</p>
-    <p>Em thật sự quá mong manh... hoặc ít nhất là em tự thấy mình như vậy.</p>
-    <p>Em tự cười nhạo cái sự ngu ngốc của chính mình trong quá khứ, khi từng ảo tưởng rằng mình đủ lông đủ cánh để có thể một mình chống lại những con sóng dữ dội của trường đời.</p>
-    <p>Chính vì thế, thú thật là, em đã phải đấu tranh tư tưởng rất nhiều mới dám thốt lên câu "em muốn được anh ôm".</p>
-    <p>Em nơm nớp lo sợ không biết liệu việc phơi bày sự yếu đuối và vô dụng của mình có khiến anh ấy đánh giá thấp em hay không, sợ anh ấy sẽ nghĩ em chỉ biết bám váy anh lúc sa cơ lỡ vận. Chỉ cần anh ấy thoáng bộc lộ một chút cảm xúc tiêu cực thôi, chắc trái tim em sẽ vụn vỡ thành trăm mảnh mất.</p>
-    <p>Nhưng may mắn thay, người em yêu──anh Yuuta──đã dang rộng vòng tay ôm trọn em vào lòng với tất cả sự dịu dàng.</p>
-    <p>Cơ thể anh lúc siết chặt lấy em tỏa ra một luồng khí lạnh nhè nhẹ, có lẽ bản thân anh ấy cũng đang phải vật lộn với những bế tắc hay muộn phiền nào đó. Nghe có vẻ hơi ích kỷ, nhưng em lại thầm mong điều đó là sự thật. Dĩ nhiên, em không bao giờ muốn anh ấy phải gánh chịu những điều tồi tệ.</p>
-    <p>Em chỉ mong mỏi một điều rằng, trong cái mối quan hệ này, không chỉ em là người được chở che, mà em cũng có thể trở thành bến đỗ bình yên cho anh ấy dựa vào.</p>
-    <p>Dù là em hay anh ấy.</p>
-    <p>Tụi mình thật yếu đuối... và cũng thật hạnh phúc, em đã nghĩ như vậy.</p>
+    <p>Đêm hôm đó, sau một khoảng thời gian dài bị cuốn vào guồng quay công việc, tôi mới lại được dịp sà vào lòng anh Yuuta làm nũng.</p>
+    <p>Dạo gần đây, cả hai đứa đều ngập ngụa trong deadline và bài vở nên quỹ thời gian để bồi đắp tình cảm cứ thế vơi dần. Nhờ có cái nền tảng vững chắc của mối quan hệ đã được xác lập rõ ràng, tôi không còn bị những suy nghĩ bất an ám ảnh đến mức phải gồng mình chứng minh tình cảm nữa. Thế nhưng, riêng đêm nay, tôi thèm khát được ngắm nhìn khuôn mặt anh Yuuta và cuộn tròn trong vòng tay ấm áp của anh ấy.</p>
+    <p>Tôi muốn anh ấy dùng hơi ấm của mình để lấp đầy cái hố sâu hoắm trong tim do chuỗi thất bại ê chề gây ra, muốn anh ấy sưởi ấm cõi lòng đang lạnh lẽo và xoa dịu những giông bão trong tôi.</p>
+    <p>Tôi thật sự quá mong manh... hoặc ít nhất là tôi tự thấy mình như vậy.</p>
+    <p>Tôi tự cười nhạo cái sự ngu ngốc của chính mình trong quá khứ, khi từng ảo tưởng rằng mình đủ lông đủ cánh để có thể một mình chống lại những con sóng dữ dội của trường đời.</p>
+    <p>Chính vì thế, thú thật là, tôi đã phải đấu tranh tư tưởng rất nhiều mới dám thốt lên câu "em muốn được anh ôm".</p>
+    <p>Tôi nơm nớp lo sợ không biết liệu việc phơi bày sự yếu đuối và vô dụng của mình có khiến anh ấy đánh giá thấp tôi hay không, sợ anh ấy sẽ nghĩ tôi chỉ biết bám váy anh lúc sa cơ lỡ vận. Chỉ cần anh ấy thoáng bộc lộ một chút cảm xúc tiêu cực thôi, chắc trái tim tôi sẽ vụn vỡ thành trăm mảnh mất.</p>
+    <p>Nhưng may mắn thay, người tôi yêu──anh Yuuta──đã dang rộng vòng tay ôm trọn tôi vào lòng với tất cả sự dịu dàng.</p>
+    <p>Cơ thể anh lúc siết chặt lấy tôi tỏa ra một luồng khí lạnh nhè nhẹ, có lẽ bản thân anh ấy cũng đang phải vật lộn với những bế tắc hay muộn phiền nào đó. Nghe có vẻ hơi ích kỷ, nhưng tôi lại thầm mong điều đó là sự thật. Dĩ nhiên, tôi không bao giờ muốn anh ấy phải gánh chịu những điều tồi tệ.</p>
+    <p>Tôi chỉ mong mỏi một điều rằng, trong cái mối quan hệ này, không chỉ tôi là người được chở che, mà tôi cũng có thể trở thành bến đỗ bình yên cho anh ấy dựa vào.</p>
+    <p>Dù là tôi hay anh ấy.</p>
+    <p>Tụi mình thật yếu đuối... và cũng thật hạnh phúc, tôi đã nghĩ như vậy.</p>
     <div class="chapter-nav">
         <a href="Gimai15_C3.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
         <a href="../index.html">Trang ch&#237;nh</a>
@@ -550,7 +804,12 @@
 
     <script>
         (function() {
-            // Word count
+            // ── Scroll Progress Bar ──
+            var progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            // ── Word Count ──
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -559,16 +818,16 @@
                     total += t.split(/\s+/).length;
                 }
             }
-
             var h1 = document.querySelector('h1');
             if (h1) {
                 var wc = document.createElement('div');
                 wc.className = 'word-count';
                 wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
-                h1.parentNode.insertBefore(wc, h1.nextSibling);
+                var nextEl = h1.nextElementSibling;
+                h1.parentNode.insertBefore(wc, nextEl && nextEl.tagName === 'H2' ? nextEl.nextSibling : h1.nextSibling);
             }
 
-            // Floating nav
+            // ── Floating Nav ──
             var navs = document.querySelectorAll('.chapter-nav');
             if (navs.length > 0) {
                 var src = navs[0];
@@ -592,7 +851,7 @@
                 }
                 document.body.appendChild(floatNav);
 
-                // Toggle tab (PC)
+                // Toggle tab
                 var toggle = document.createElement('div');
                 toggle.className = 'nav-toggle';
                 toggle.id = 'navToggle';
@@ -600,7 +859,6 @@
                 document.body.appendChild(toggle);
 
                 var isOpen = false;
-
                 function toggleNav() {
                     isOpen = !isOpen;
                     floatNav.classList.toggle('visible', isOpen);
@@ -613,7 +871,6 @@
                     toggleNav();
                 });
 
-                // Mobile: tap anywhere to toggle
                 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (isMobile) {
                     document.addEventListener('click', function(e) {
@@ -623,7 +880,83 @@
                     });
                 }
             }
+
+            // ── Scroll to Top Button ──
+            var scrollBtn = document.createElement('div');
+            scrollBtn.className = 'scroll-top';
+            scrollBtn.innerHTML = '\u2191';
+            scrollBtn.title = 'V\u1ec1 \u0111\u1ea7u trang';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ── Scroll Events ──
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                scrollBtn.classList.toggle('visible', scrollTop > 400);
+            }, { passive: true });
         })();
+    </script>
+
+    <script>
+    (function() {
+        var themes = [
+            { id: 'default', label: 'M\u1eb7c \u0111\u1ecbnh', color: 'linear-gradient(135deg, #7c5cbf, #a78bfa)' },
+            { id: 'gray', label: 'X\u00e1m', color: '#555' },
+            { id: 'black', label: '\u0110en', color: '#111' },
+            { id: 'white', label: 'Tr\u1eafng', color: '#eee' }
+        ];
+
+        var saved = localStorage.getItem('gimai-theme') || 'default';
+
+        var picker = document.createElement('div');
+        picker.className = 'theme-picker';
+
+        var btn = document.createElement('div');
+        btn.className = 'theme-picker-btn';
+        btn.innerHTML = '\uD83C\uDFA8';
+        btn.title = '\u0110\u1ed5i giao di\u1ec7n';
+
+        var opts = document.createElement('div');
+        opts.className = 'theme-options';
+
+        themes.forEach(function(t) {
+            var o = document.createElement('div');
+            o.className = 'theme-option' + (t.id === saved ? ' active' : '');
+            o.style.background = t.color;
+            o.title = t.label;
+            if (t.id === 'white') o.style.border = '2px solid #ccc';
+            o.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themes.forEach(function(th) { document.body.classList.remove('theme-' + th.id); });
+                if (t.id !== 'default') document.body.classList.add('theme-' + t.id);
+                localStorage.setItem('gimai-theme', t.id);
+                opts.querySelectorAll('.theme-option').forEach(function(el) { el.classList.remove('active'); });
+                o.classList.add('active');
+            });
+            opts.appendChild(o);
+        });
+
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            opts.classList.toggle('visible', open);
+        });
+
+        document.addEventListener('click', function() {
+            if (open) { open = false; opts.classList.remove('visible'); }
+        });
+
+        picker.appendChild(opts);
+        picker.appendChild(btn);
+        document.body.appendChild(picker);
+    })();
     </script>
 </body>
 </html>

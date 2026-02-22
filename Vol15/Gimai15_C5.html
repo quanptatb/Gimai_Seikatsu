@@ -3,102 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Gimai Seikatsu Volume 15 Chapter 5</title>
-    <style>
-        body {
-            background-color: #333333;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
+        <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.9;
+            padding: 0 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(167, 139, 250, 0.35);
+            color: #fff;
+        }
+
+        /* ── Scroll Progress Bar ── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa, #c4b5fd);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Headers ── */
         h1, h2 {
             text-align: center;
+            font-family: 'Noto Serif', Georgia, serif;
         }
 
         h1 {
-            border-bottom: 1px solid #777;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 50px 0 14px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: fadeIn 0.8s ease;
         }
 
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            color: #b8a9d4;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease 0.15s both;
+        }
+
+        /* ── Content ── */
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
+            color: #d5d0e0;
+            animation: fadeIn 0.6s ease both;
         }
 
         hr {
-            border-color: #555;
-            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 35px 0;
         }
 
+        /* ── Dialogue & Thought (Vol13) ── */
+        .dialogue {
+            font-weight: 500;
+            color: #e8e0f0;
+        }
+
+        .thought {
+            font-style: italic;
+            color: #a89cc0;
+        }
+
+        /* ── Nav Link ── */
         .nav-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #aaa;
+            color: #9b8fb8;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #c4b5fd;
         }
 
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-top: 1px solid #555;
-            border-bottom: 1px solid #555;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .chapter-nav a {
-            color: #aaa;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .chapter-nav a:hover {
-            color: #fff;
-            background-color: #444;
-        }
-
-        .chapter-nav .disabled {
-            color: #555;
-            padding: 8px 16px;
-        }
-    
+        /* ── Inline Chapter Nav (hidden — replaced by floating) ── */
         .chapter-nav {
             display: none !important;
         }
 
+        /* ── Word Count ── */
         .word-count {
             text-align: center;
-            color: #777;
+            color: #8b7aab;
             font-size: 13px;
-            margin: 0 0 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+            margin: 0 0 35px;
+            padding: 10px 18px;
+            background: rgba(167, 139, 250, 0.06);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 10px;
             letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.8s ease 0.3s both;
         }
 
+        /* ── Floating Nav ── */
         .floating-nav {
             position: fixed;
-            right: -240px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -112,64 +165,117 @@
         .floating-nav .nav-disabled {
             display: block;
             padding: 12px 22px;
-            background: rgba(35, 35, 35, 0.96);
-            color: #bbb;
+            background: rgba(26, 26, 46, 0.92);
+            color: #b8a9d4;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            transition: all 0.25s ease;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 155px;
         }
 
         .floating-nav a:hover {
             color: #fff;
-            background: rgba(55, 55, 55, 0.96);
-            border-color: rgba(255,255,255,0.18);
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.15);
         }
 
         .floating-nav .nav-disabled {
-            color: #555;
+            color: #5a5073;
             cursor: default;
         }
 
+        /* ── Toggle Tab ── */
         .nav-toggle {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
-            width: 26px;
-            height: 54px;
-            background: rgba(55, 55, 55, 0.75);
-            border-radius: 8px 0 0 8px;
+            width: 28px;
+            height: 56px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px 0 0 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #a78bfa;
             font-size: 11px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(167, 139, 250, 0.15);
             border-right: none;
             user-select: none;
         }
 
         .nav-toggle:hover {
-            background: rgba(75, 75, 75, 0.9);
-            color: #fff;
-            width: 30px;
+            background: rgba(40, 35, 65, 0.95);
+            color: #c4b5fd;
+            width: 32px;
         }
 
         .nav-toggle.shifted {
-            right: 210px;
+            right: 215px;
         }
 
+        /* ── Scroll to Top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #c4b5fd;
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 16px 50px;
+            }
+
             .nav-toggle {
                 display: none;
             }
@@ -178,16 +284,164 @@
                 top: auto;
                 bottom: 20px;
                 transform: none;
-                right: -240px;
+                right: -250px;
             }
 
             .floating-nav.visible {
                 right: 12px;
             }
+
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    
+
+        /* ── Theme Picker ── */
+        .theme-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .theme-picker-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .theme-picker-btn:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 52px;
+            left: 0;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(26, 26, 46, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .theme-options.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover { transform: scale(1.2); }
+
+        .theme-option.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* ── Theme: Gray ── */
+        body.theme-gray { background: #333 !important; background-image: none !important; color: #fff; }
+        body.theme-gray h1 { background: none !important; -webkit-text-fill-color: #fff; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-gray h1::after { background: linear-gradient(90deg, transparent, #666, transparent); }
+        body.theme-gray h2 { color: #ccc; }
+        body.theme-gray p { color: #e0e0e0; }
+        body.theme-gray .dialogue { color: #eee; }
+        body.theme-gray .thought { color: #bbb; }
+        body.theme-gray hr { background: linear-gradient(90deg, transparent, #555, transparent); }
+        body.theme-gray .word-count { color: #999; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray ::selection { background: rgba(180,180,180,0.3); }
+        body.theme-gray .floating-nav a { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); color: #ccc; }
+        body.theme-gray .floating-nav a:hover { background: rgba(65,65,65,0.95); color: #fff; border-color: rgba(255,255,255,0.2); }
+        body.theme-gray .floating-nav .nav-disabled { color: #666; }
+        body.theme-gray .nav-toggle { background: rgba(60,60,60,0.85); color: #aaa; border-color: rgba(255,255,255,0.08); }
+        body.theme-gray .scroll-top { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); color: #aaa; }
+        body.theme-gray .theme-picker-btn { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); }
+        body.theme-gray .theme-options { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray .theme-option.active { border-color: #aaa; box-shadow: 0 0 0 2px rgba(180,180,180,0.4), 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* ── Theme: Black ── */
+        body.theme-black { background: #080808 !important; background-image: none !important; color: #b0b0b0; }
+        body.theme-black h1 { background: none !important; -webkit-text-fill-color: #ddd; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-black h1::after { background: linear-gradient(90deg, transparent, #333, transparent); }
+        body.theme-black h2 { color: #888; }
+        body.theme-black p { color: #b0b0b0; }
+        body.theme-black .dialogue { color: #c0c0c0; }
+        body.theme-black .thought { color: #777; }
+        body.theme-black hr { background: linear-gradient(90deg, transparent, #2a2a2a, transparent); }
+        body.theme-black .word-count { color: #555; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); }
+        body.theme-black ::selection { background: rgba(150,150,150,0.25); }
+        body.theme-black .floating-nav a { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); color: #888; }
+        body.theme-black .floating-nav a:hover { background: rgba(28,28,28,0.96); color: #ccc; }
+        body.theme-black .floating-nav .nav-disabled { color: #444; }
+        body.theme-black .nav-toggle { background: rgba(18,18,18,0.9); color: #555; border-color: rgba(255,255,255,0.04); }
+        body.theme-black .scroll-top { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); color: #555; }
+        body.theme-black .theme-picker-btn { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-options { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-option.active { border-color: #666; box-shadow: 0 0 0 2px rgba(100,100,100,0.4), 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* ── Theme: White ── */
+        body.theme-white { background: #f5f3ef !important; background-image: none !important; color: #2a2a2a; }
+        body.theme-white h1 { background: none !important; -webkit-text-fill-color: #1a1a1a; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-white h1::after { background: linear-gradient(90deg, transparent, #ccc, transparent); }
+        body.theme-white h2 { color: #555; }
+        body.theme-white p { color: #333; }
+        body.theme-white .dialogue { color: #222; }
+        body.theme-white .thought { color: #666; }
+        body.theme-white hr { background: linear-gradient(90deg, transparent, #ddd, transparent); }
+        body.theme-white .word-count { color: #888; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.theme-white ::selection { background: rgba(124,92,191,0.2); color: #111; }
+        body.theme-white .scroll-progress { background: linear-gradient(90deg, #9575cd, #7c5cbf); }
+        body.theme-white .floating-nav a { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); color: #555; }
+        body.theme-white .floating-nav a:hover { background: rgba(248,248,248,0.98); color: #111; border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body.theme-white .floating-nav .nav-disabled { color: #bbb; }
+        body.theme-white .nav-toggle { background: rgba(255,255,255,0.92); color: #888; border-color: rgba(0,0,0,0.08); }
+        body.theme-white .nav-toggle:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .scroll-top { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); color: #888; }
+        body.theme-white .scroll-top:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .theme-picker-btn { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-options { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-option.active { border-color: #7c5cbf; box-shadow: 0 0 0 2px rgba(124,92,191,0.3), 0 2px 6px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .theme-picker { bottom: 16px; left: 16px; }
+            .theme-picker-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
+<script>(function(){var t=localStorage.getItem('gimai-theme');if(t&&t!=='default')document.body.classList.add('theme-'+t);})()</script>
 
     <div class="chapter-nav">
         <a href="Gimai15_C4.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -198,26 +452,26 @@
     <h1>Chương 5 — Năm nhất Đại học, Tháng 7, Asamura Yuuta</h1>
 
     <p>Bước sang tháng Bảy, nhiệt độ bắt đầu phá vỡ những kỷ lục nắng nóng mỗi ngày. Không có ngày nào nhiệt độ không vượt ngưỡng 30 độ C, không có đêm nào thoát khỏi cảnh oi bức của đêm nhiệt đới, và chẳng có buổi trưa nào vắng bóng những cảnh báo về nguy cơ sốc nhiệt.</p>
-    <p>Xen kẽ giữa những lúc chạy tới chạy lui giữa giảng đường đại học và chỗ làm thêm ở hiệu sách, anh còn phải cắp sách đến trường dạy lái xe. Nếu mọi việc suôn sẻ đúng tiến độ, đáng lẽ anh sẽ cầm được tấm bằng lái trên tay vào giữa tháng này. Saki từng nói muốn được anh chở đi dạo bằng ô tô vào kỳ nghỉ hè, nhưng anh thừa biết rủi ro tai nạn khi ngồi ở ghế phụ là rất cao... Anh cảm thấy mình vẫn cần phải mài giũa thêm kỹ năng và củng cố tinh thần thật vững vàng thì mới dám tự tin để em ấy ngồi cạnh mình.</p>
-    <p>Dù vậy, dẫu cho quá trình học có gian nan đến mấy, niềm vui sướng khi chinh phục một thử thách mới vẫn luôn là cảm xúc lấn át tất cả, bởi anh luôn tự nhủ rằng: "Đây chính là điều mình muốn làm". Cảm giác giống hệt như thời cấp ba, khi anh liên tục đối mặt với hết sự kiện này đến sự kiện khác kéo đến không ngừng nghỉ. Cái bầu không khí tích cực này có lẽ giống với những gì cậu bạn thân Maru của anh từng cảm nhận được mỗi khi cuồng nhiệt vung gậy trên sân bóng chày. Thế nhưng, cũng có những lúc anh cảm thấy bản thân dậm chân tại chỗ không chút tiến bộ, và khi ấy, tâm trạng anh có thể tuột dốc không phanh.</p>
-    <p>Trên đường cuốc bộ về nhà sau bài kiểm tra thực hành lái xe, anh ngước nhìn những đám mây vũ tích bồng bềnh trôi trên nền trời xanh thẳm. Hình thù của chúng trông khá kỳ dị, y hệt như một chiếc kẹo bông gòn khổng lồ màu trắng bị ai đó cắn mất một miếng bên phải. Vừa xuýt xoa trước vẻ đẹp hiếm có của khung cảnh này, anh vừa rảo bước trên con đường rải nhựa đường tiến về phía trạm xe buýt thì tiếng chuông điện thoại trong túi bỗng réo vang. Nhạc chuông vang lên nghe như giọng nói điện tử của một con robot, nên anh biết ngay đó là cuộc gọi từ Maru. Thật ra điều này cũng chẳng quan trọng lắm, nhưng cái điệu nhạc chuông này hoàn toàn không phải gu của anh. Chuyện là thế này. Maru đã khăng khăng ép anh phải cài cái nhạc chuông quái gở này dành riêng cho những cuộc gọi từ cậu ta.</p>
-    <p>Đáng lý ra người gọi đến đâu có nghe được nhạc chuông của người nhận, đúng không? Vậy mà cậu ta lại phán một câu xanh rờn: "Cứ tưởng tượng đến lúc mài nghe cái nhạc chuông đó là tao lại thấy máu lửa sục sôi". Anh thực sự cạn lời, chả hiểu cậu ta đang nghĩ cái quái gì trong đầu. Nhưng thôi thì anh cũng chẳng có lý do gì để từ chối, nên đành tặc lưỡi cài đặt theo ý cậu ta cho xong chuyện.</p>
-    <p>"Biết rồi, biết rồi. Bắt máy ngay đây, đợi xíu," anh lầm bầm một mình rồi dùng ngón tay vuốt biểu tượng nhận cuộc gọi.</p>
+    <p>Xen kẽ giữa những lúc chạy tới chạy lui giữa giảng đường đại học và chỗ làm thêm ở hiệu sách, tôi còn phải cắp sách đến trường dạy lái xe. Nếu mọi việc suôn sẻ đúng tiến độ, đáng lẽ tôi sẽ cầm được tấm bằng lái trên tay vào giữa tháng này. Saki từng nói muốn được tôi chở đi dạo bằng ô tô vào kỳ nghỉ hè, nhưng tôi thừa biết rủi ro tai nạn khi ngồi ở ghế phụ là rất cao... Tôi cảm thấy mình vẫn cần phải mài giũa thêm kỹ năng và củng cố tinh thần thật vững vàng thì mới dám tự tin để em ấy ngồi cạnh mình.</p>
+    <p>Dù vậy, dẫu cho quá trình học có gian nan đến mấy, niềm vui sướng khi chinh phục một thử thách mới vẫn luôn là cảm xúc lấn át tất cả, bởi tôi luôn tự nhủ rằng: "Đây chính là điều mình muốn làm". Cảm giác giống hệt như thời cấp ba, khi tôi liên tục đối mặt với hết sự kiện này đến sự kiện khác kéo đến không ngừng nghỉ. Cái bầu không khí tích cực này có lẽ giống với những gì cậu bạn thân Maru của tôi từng cảm nhận được mỗi khi cuồng nhiệt vung gậy trên sân bóng chày. Thế nhưng, cũng có những lúc anh cảm thấy bản thân dậm chân tại chỗ không chút tiến bộ, và khi ấy, tâm trạng tôi có thể tuột dốc không phanh.</p>
+    <p>Trên đường cuốc bộ về nhà sau bài kiểm tra thực hành lái xe, tôi ngước nhìn những đám mây vũ tích bồng bềnh trôi trên nền trời xanh thẳm. Hình thù của chúng trông khá kỳ dị, y hệt như một chiếc kẹo bông gòn khổng lồ màu trắng bị ai đó cắn mất một miếng bên phải. Vừa xuýt xoa trước vẻ đẹp hiếm có của khung cảnh này, tôi vừa rảo bước trên con đường rải nhựa đường tiến về phía trạm xe buýt thì tiếng chuông điện thoại trong túi bỗng réo vang. Nhạc chuông vang lên nghe như giọng nói điện tử của một con robot, nên tôi biết ngay đó là cuộc gọi từ Maru. Thật ra điều này cũng chẳng quan trọng lắm, nhưng cái điệu nhạc chuông này hoàn toàn không phải gu của tôi. Chuyện là thế này. Maru đã khăng khăng ép tôi phải cài cái nhạc chuông quái gở này dành riêng cho những cuộc gọi từ cậu ta.</p>
+    <p>Đáng lý ra người gọi đến đâu có nghe được nhạc chuông của người nhận, đúng không? Vậy mà cậu ta lại phán một câu xanh rờn: "Cứ tưởng tượng đến lúc mài nghe cái nhạc chuông đó là tao lại thấy máu lửa sục sôi". Tôi thực sự cạn lời, chả hiểu cậu ta đang nghĩ cái quái gì trong đầu. Nhưng thôi thì tôi cũng chẳng có lý do gì để từ chối, nên đành tặc lưỡi cài đặt theo ý cậu ta cho xong chuyện.</p>
+    <p>"Biết rồi, biết rồi. Bắt máy ngay đây, đợi xíu," tôi lầm bầm một mình rồi dùng ngón tay vuốt biểu tượng nhận cuộc gọi.</p>
     <p>"Đi đánh bóng chày thôi!"</p>
     <p>"......"</p>
     <p>"Hửm? Sao thế Asamura? Alo? Mài có nghe tao nói không đấy?"</p>
     <p>"Nghe rõ mồn một. Tao chỉ đang thắc mắc không biết từ khi nào thằng bạn mình lại bị thoái hóa thành một thằng nhóc tiểu học hay xuất hiện trong mấy bộ anime gia đình chiếu vào sáng Chủ Nhật vậy."</p>
     <p>"Mài đang sủa cái quái gì thế?"</p>
     <p>Đáng lẽ tao mới là người phải hỏi câu đó mới đúng.</p>
-    <p>Dù thừa biết Maru là một thằng con trai cuồng thể thao, nhưng anh vẫn muốn cậu ta tự nếm thử cái cảm giác cạn lời khi tự nhiên bị một thằng bạn đã lên đại học rủ rê kiểu "Đi đánh bóng chày thôi!".</p>
+    <p>Dù thừa biết Maru là một thằng con trai cuồng thể thao, nhưng tôi vẫn muốn cậu ta tự nếm thử cái cảm giác cạn lời khi tự nhiên bị một thằng bạn đã lên đại học rủ rê kiểu "Đi đánh bóng chày thôi!".</p>
     <p>"Nếu được, tao sẽ rất đội ơn nếu mài chịu khó tường thuật lại đầu đuôi câu chuyện theo một trình tự logic nhất định."</p>
     <p>"Hừm. Kể từ thuở hồng hoang thì câu chuyện này có hơi dài dòng một tí..."</p>
     <p>"Chỉ cần mài đừng bắt đầu từ lúc vũ trụ hình thành sau vụ nổ Big Bang thì tao sẵn sàng kiên nhẫn ngồi nghe."</p>
     <p>"Tao được một ông anh khóa trên trong câu lạc bộ rủ rê."</p>
     <p>Ồ, vô thẳng vấn đề, dễ hiểu đấy. Và cũng cực kỳ súc tích.</p>
     <p>Hồi còn học cấp ba, Maru từng là thành viên cốt cán của câu lạc bộ bóng chày.</p>
-    <p>Cậu ta từng theo đuổi giấc mơ tiến vào Koshien (Giải vô địch bóng chày trung học toàn quốc Nhật Bản) một cách vô cùng nghiêm túc. Thế nhưng, hiện thực luôn tàn khốc, và không phải giấc mơ nào cũng có cơ hội đơm hoa kết trái. Giấc mơ Koshien của cậu ta tan thành mây khói, và trong suốt quãng thời gian lên đại học, cậu ta cũng chẳng nhận được bất kỳ lời mời chào nào từ các đội bóng chuyên nghiệp hay bán chuyên. Dạo gần đây, cậu ta thậm chí còn vỗ ngực tự hào tuyên bố: "Từ giờ tao có thể toàn tâm toàn ý cống hiến cho sự nghiệp làm một otaku chân chính". Và tại trường đại học, cậu ta đã hạ cánh tại một câu lạc bộ dành cho giới otaku—anh đã nghe kể đến đoạn đó...</p>
-    <p>Chẳng lẽ trên đời này còn tồn tại một hệ phái otaku mới chuyên hoạt động về lĩnh vực thể thao sao? Theo anh thấy thì mấy tuyển thủ e-sports cũng dư sức được coi là vận động viên thể thao rồi.</p>
+    <p>Cậu ta từng theo đuổi giấc mơ tiến vào Koshien (Giải vô địch bóng chày trung học toàn quốc Nhật Bản) một cách vô cùng nghiêm túc. Thế nhưng, hiện thực luôn tàn khốc, và không phải giấc mơ nào cũng có cơ hội đơm hoa kết trái. Giấc mơ Koshien của cậu ta tan thành mây khói, và trong suốt quãng thời gian lên đại học, cậu ta cũng chẳng nhận được bất kỳ lời mời chào nào từ các đội bóng chuyên nghiệp hay bán chuyên. Dạo gần đây, cậu ta thậm chí còn vỗ ngực tự hào tuyên bố: "Từ giờ tao có thể toàn tâm toàn ý cống hiến cho sự nghiệp làm một otaku chân chính". Và tại trường đại học, cậu ta đã hạ cánh tại một câu lạc bộ dành cho giới otaku—tôi đã nghe kể đến đoạn đó...</p>
+    <p>Chẳng lẽ trên đời này còn tồn tại một hệ phái otaku mới chuyên hoạt động về lĩnh vực thể thao sao? Theo tôi thấy thì mấy tuyển thủ e-sports cũng dư sức được coi là vận động viên thể thao rồi.</p>
     <p>"Một ông anh cựu thành viên câu lạc bộ của tao hiện đang đầu quân cho một đội bóng chày nghiệp dư."</p>
     <p>"Ồ, ra là thế."</p>
     <p>"Tao được ổng rủ đi đánh giải vào Chủ Nhật tuần sau. Thế là tao bảo ổng tao chỉ đi nếu được phép dắt theo bạn."</p>
@@ -225,13 +479,13 @@
     <p>"Tao đã PR rầm rộ với ổng mài là một nhân tài xuất chúng mang tên Asamura Yuuta rồi."</p>
     <p>"Ai mướn mài PR cái kiểu đó!"</p>
     <p>"Sao lại không!?"</p>
-    <p>Dù nghe giọng cậu ta có vẻ ngạc nhiên, nhưng anh thừa sức mường tượng ra cái bản mặt của cậu ta lúc này.</p>
+    <p>Dù nghe giọng cậu ta có vẻ ngạc nhiên, nhưng tôi thừa sức mường tượng ra cái bản mặt của cậu ta lúc này.</p>
     <p>"Bắt một thằng mọt sách đến việc ném bóng bắt bóng còn lóng ngóng phải xách gậy ra sân thi đấu thực chiến thì có khác gì đẩy nó vào chỗ chết không."</p>
     <p>"Nói đi cũng phải nói lại, đã mang tiếng là thi đấu thì dĩ nhiên mục tiêu tối thượng phải là giành chiến thắng. Xét đến cái viễn cảnh Asamura mài bắt hụt bóng và dâng hiến cơ hội ghi điểm cho đối phương, có lẽ việc tao kéo mài vào đội đúng là một nước đi đâm bang nếu thực sự muốn thắng."</p>
-    <p>Thú thật, anh chả muốn mường tượng đến cái kịch bản thảm họa đó chút nào.</p>
+    <p>Thú thật, tôi chả muốn mường tượng đến cái kịch bản thảm họa đó chút nào.</p>
     <p>"Nhưng kể từ cái đợt đại hội thể thao trường hồi đó, tao lúc nào cũng nung nấu ý định được sát cánh thi đấu cùng mài trong một môn thể thao."</p>
     <p>"Cho tao hỏi ngu một câu, lý do gì mài lại chọn tao?"</p>
-    <p>Nghe anh hỏi vậy, Maru đáp lại bằng một chất giọng có chút ngạc nhiên.</p>
+    <p>Nghe tôi hỏi vậy, Maru đáp lại bằng một chất giọng có chút ngạc nhiên.</p>
     <p>"Bởi vì tao thấy việc đó vui mà. Hồi tụi mình lên kế hoạch cho chuyến du lịch tốt nghiệp, người đó từng nói rồi mà nhớ không? Quan trọng không phải là đi đâu, mà là đi với ai."</p>
     <p>Người đó—ý cậu ta là Narasaka-san?</p>
     <p>Nhắc mới nhớ, hình như đúng là cô nàng đã từng thốt ra câu triết lý đó thật.</p>
@@ -244,16 +498,16 @@
     <p>"Tao chỉ muốn nhấn mạnh là cái đó nó không thú vị."</p>
     <p>"Không thú vị...?"</p>
     <p>"Mày nghe tao nói này Asamura, bản chất của thi đấu thể thao là một chuỗi những sự kiện lặp đi lặp lại. Một trận đấu chỉ diễn ra đúng một lần duy nhất trong đời thì đách phải là thi đấu. Nếu đó là một trận đấu sinh tử một mất một còn, thì việc giành chiến thắng là chân lý duy nhất. Suy cho cùng, luật lệ cũng chỉ là những dòng chữ chết có thể bị luồn lách hoặc phớt lờ tùy vào hoàn cảnh, và tinh thần fair-play đôi khi chỉ là một thứ rào cản vướng víu."</p>
-    <p>Anh trầm ngâm suy ngẫm về những lời cậu ta vừa thốt ra.</p>
+    <p>Tôi trầm ngâm suy ngẫm về những lời cậu ta vừa thốt ra.</p>
     <p>Quả thực, nếu hai người chỉ đối đầu nhau đúng một lần duy nhất trong suốt phần đời còn lại, thì cái logic "kẻ chiến thắng là kẻ viết nên lịch sử" hoàn toàn có đất dụng võ. Tuy nhiên, cái giá phải trả là đối thủ của bạn sẽ cạch mặt bạn đến già và thề không bao giờ chơi chung với bạn thêm một lần nào nữa.</p>
     <p>"Cái thể loại đó người ta gọi là tử chiến. Đã bước vào tử chiến, kết cục chỉ có thể là một mất một còn. Thế nhưng, nếu tụi mình cứ rủ nhau đi tử chiến hết lần này đến lần khác, thì cái trò chơi này sớm muộn gì cũng sập tiệm."</p>
     <p>"N-Nói nghe cũng có lý."</p>
-    <p>Dù nhận thức rõ đó là một lập luận mang tính cực đoan, nhưng anh vẫn cảm thấy cái logic đó khá chặt chẽ và dễ hiểu.</p>
+    <p>Dù nhận thức rõ đó là một lập luận mang tính cực đoan, nhưng tôi vẫn cảm thấy cái logic đó khá chặt chẽ và dễ hiểu.</p>
     <p>"Thế nên, mặc dù mục tiêu hướng đến là giành chiến thắng, nhưng chúng ta tuyệt đối không được biến nó thành động cơ duy nhất để ra sân. Một cái động cơ đầy mùi tư lợi như vậy hoàn toàn không xứng đáng với tinh thần thể thao. Chà, đó chỉ là mớ triết lý cá nhân của tao thôi."</p>
-    <p>Anh cảm giác như cậu bạn mình vừa tuôn ra một rổ đạo lý vô cùng thâm thúy.</p>
-    <p>Tuy nhiên, anh cũng lờ mờ đánh hơi thấy mùi mình đang bị dắt mũi.</p>
+    <p>Tôi cảm giác như cậu bạn mình vừa tuôn ra một rổ đạo lý vô cùng thâm thúy.</p>
+    <p>Tuy nhiên, tôi cũng lờ mờ đánh hơi thấy mùi mình đang bị dắt mũi.</p>
     <p>"Với lại,"</p>
-    <p>Dù bị cách trở bởi chiếc điện thoại, anh vẫn có thể mường tượng ra điệu cười toe toét của Maru ở đầu dây bên kia. Giọng điệu của cậu ta bỗng chốc đổi hẳn sang tông tinh quái.</p>
+    <p>Dù bị cách trở bởi chiếc điện thoại, tôi vẫn có thể mường tượng ra điệu cười toe toét của Maru ở đầu dây bên kia. Giọng điệu của cậu ta bỗng chốc đổi hẳn sang tông tinh quái.</p>
     <p>"Cái nguyên nhân sâu xa nhất khiến tao phải lôi cổ mài vào đội là vì nguy cơ cao Chủ Nhật tuần này đội tao sẽ không gom đủ đội hình chín người."</p>
     <p>"Từ từ đã."</p>
     <p>"Có một thành viên sắp tới ngày sinh nở."</p>
@@ -266,57 +520,57 @@
     <p>"Nghe đồn cả nhà cưng nựng bé ấy lắm. Thời buổi này, thú cưng cũng được nâng tầm lên làm thành viên trong gia đình rồi. Sao người ta có thể bỏ mặc nó lúc vượt cạn được chứ. Ngoài ra còn có ông anh Yama-san dạo này đang bị gai cột sống hành hạ, đau quá là nghỉ khỏe luôn, hay như chị Kurumi-san thì vướng lịch đi họp phụ huynh cho con nên cũng xin cáo lui."</p>
     <p>"Xem ra cái đội bóng chày nghiệp dư này cũng đang lâm vào tình cảnh ngàn cân treo sợi tóc nhỉ."</p>
     <p>"Chính vì thế nên họ mới phải bới lông tìm vết để vá víu đội hình đấy."</p>
-    <p>Và, trong vai trò một lốp dự phòng bất đắc dĩ, anh đã vinh dự được xướng tên.</p>
+    <p>Và, trong vai trò một lốp dự phòng bất đắc dĩ, tôi đã vinh dự được xướng tên.</p>
     <p>"Kiểu này thì tao dư sức bảo kê cho mài một suất đá chính rồi."</p>
     <p>"Gánh nặng này quá lớn đối với tao!"</p>
     <p>Dù ngoài miệng thì nói thế—.</p>
-    <p>Mặc dù anh đã rào trước đón sau rằng: "Đừng có đặt quá nhiều kỳ vọng vào cái trình độ cùi bắp của tao", nhưng cuối cùng anh vẫn tặc lưỡi chốt hạ "ừ, tao chơi luôn", một phần có lẽ vì dạo này anh đang muốn bản thân mình năng nổ và chủ động hơn một chút..</p>
-    <p>Đối với một kẻ theo chủ nghĩa độc hành, thích tự chơi một mình như anh, việc tự nguyện xách mông đi tham gia một hoạt động tập thể quả là chuyện hiếm có khó tìm. Anh luôn tâm niệm rằng bản tính con người là thứ đã ăn sâu vào máu, rất khó để dời đổi. Thế nhưng, anh cũng dần giác ngộ ra một điều, nếu anh không chủ động chìa tay ra níu giữ những con người mà anh không muốn đánh mất, thì những sợi dây liên kết đó sớm muộn gì cũng sẽ đứt đoạn.</p>
-    <p>Chất giọng hớn hở của Maru ở đầu dây bên kia thốt lên "Cảm ơn mài nha" vẫn còn văng vẳng bên tai anh.</p>
+    <p>Mặc dù tôi đã rào trước đón sau rằng: "Đừng có đặt quá nhiều kỳ vọng vào cái trình độ cùi bắp của tao", nhưng cuối cùng tôi vẫn tặc lưỡi chốt hạ "ừ, tao chơi luôn", một phần có lẽ vì dạo này tôi đang muốn bản thân mình năng nổ và chủ động hơn một chút..</p>
+    <p>Đối với một kẻ theo chủ nghĩa độc hành, thích tự chơi một mình như tôi, việc tự nguyện xách mông đi tham gia một hoạt động tập thể quả là chuyện hiếm có khó tìm. Tôi luôn tâm niệm rằng bản tính con người là thứ đã ăn sâu vào máu, rất khó để dời đổi. Thế nhưng, tôi cũng dần giác ngộ ra một điều, nếu tôi không chủ động chìa tay ra níu giữ những con người mà tôi không muốn đánh mất, thì những sợi dây liên kết đó sớm muộn gì cũng sẽ đứt đoạn.</p>
+    <p>Chất giọng hớn hở của Maru ở đầu dây bên kia thốt lên "Cảm ơn mài nha" vẫn còn văng vẳng bên tai tôi.</p>
     <p>Không hiểu sao, điều đó lại khiến cái cảm giác oi bức, nhớp nháp của ngày hè dường như dịu đi phần nào.</p>
 
     <hr>
 
-    <p>Ba ngày sau, trong giờ thực hành lái xe trên đường thực tế. Làn đường anh đang chạy có vẻ như sẽ kết thúc ở khoảng một trăm mét phía trước.</p>
-    <p>Có một làn đường tăng tốc khá dài được quy định theo luật để nhập làn vào đường cao tốc, và chiều dài của nó được quyết định dựa trên tốc độ thiết kế của làn đường chính mà anh sắp hòa vào.</p>
+    <p>Ba ngày sau, trong giờ thực hành lái xe trên đường thực tế. Làn đường tôi đang chạy có vẻ như sẽ kết thúc ở khoảng một trăm mét phía trước.</p>
+    <p>Có một làn đường tăng tốc khá dài được quy định theo luật để nhập làn vào đường cao tốc, và chiều dài của nó được quyết định dựa trên tốc độ thiết kế của làn đường chính mà tôi sắp hòa vào.</p>
     <p></p>
-    <p>Ví dụ, giới hạn tốc độ của con đường anh sắp tiến vào là 80 km/h. Trong trường hợp này, chiều dài của làn tăng tốc sẽ dao động từ 150 đến 200 mét. Làm một bài toán đơn giản, nếu xe đang lao đi với vận tốc 80 km/h, quãng đường này sẽ bị nuốt chửng trong vòng chưa đầy 10 giây.</p>
-    <p>Phía trước mặt anh là điểm giao nhau nơi hai làn đường nhập làm một. Ở làn đường chính, các phương tiện đang nối đuôi nhau vun vút lao đi với vận tốc 80 km/h. Nhìn từ làn tăng tốc nơi anh đang chạy, dòng xe cộ trôi qua nhanh đến chóng mặt, khiến anh cảm thấy run tay không dám đánh lái nhập làn.</p>
+    <p>Ví dụ, giới hạn tốc độ của con đường tôi sắp tiến vào là 80 km/h. Trong trường hợp này, chiều dài của làn tăng tốc sẽ dao động từ 150 đến 200 mét. Làm một bài toán đơn giản, nếu xe đang lao đi với vận tốc 80 km/h, quãng đường này sẽ bị nuốt chửng trong vòng chưa đầy 10 giây.</p>
+    <p>Phía trước mặt tôi là điểm giao nhau nơi hai làn đường nhập làm một. Ở làn đường chính, các phương tiện đang nối đuôi nhau vun vút lao đi với vận tốc 80 km/h. Nhìn từ làn tăng tốc nơi tôi đang chạy, dòng xe cộ trôi qua nhanh đến chóng mặt, khiến anh cảm thấy run tay không dám đánh lái nhập làn.</p>
     <p>Thầy giáo ngồi ghế phụ lớn tiếng giục: "Đạp thêm tí ga đi cậu!"</p>
-    <p>Anh nghe lệnh, nhấn sâu bàn đạp ga bằng chân phải. Chiếc xe lập tức phản hồi, vọt lên mạnh mẽ.</p>
+    <p>Tôi nghe lệnh, nhấn sâu bàn đạp ga bằng chân phải. Chiếc xe lập tức phản hồi, vọt lên mạnh mẽ.</p>
     <p>Điểm giao cắt đang ngày một thu hẹp khoảng cách.</p>
     <p>"Nhanh hơn nữa. Đạp ga mạnh vào!"</p>
-    <p>Anh tiếp tục bồi thêm lực vào chân ga theo lời thầy. Sự rung lắc truyền từ những vòng quay bánh xe tốc độ cao truyền thẳng vào cơ thể anh một cách rõ rệt hơn.</p>
+    <p>Tôi tiếp tục bồi thêm lực vào chân ga theo lời thầy. Sự rung lắc truyền từ những vòng quay bánh xe tốc độ cao truyền thẳng vào cơ thể tôi một cách rõ rệt hơn.</p>
     <p>"Bật xi nhan phải lên, rồi liếc nhìn gương chiếu hậu đi."</p>
-    <p>Anh gạt cần gạt nhô ra bên phải vô lăng. Đèn xi nhan bắt đầu nhấp nháy liên hồi.</p>
+    <p>Tôi gạt cần gạt nhô ra bên phải vô lăng. Đèn xi nhan bắt đầu nhấp nháy liên hồi.</p>
     <p>"Mình sẽ đuôi theo chiếc xe màu đỏ đang tiến lên từ phía sau kia để nhập làn."</p>
-    <p>Chiếc xe đỏ mà thầy giáo vừa chỉ điểm xé gió lướt qua sát sạt xe anh. Khẩu lệnh của thầy giáo phát ra nghe cứ như thể đang xúi giục anh húc thẳng vào đuôi chiếc xe đó vậy.</p>
+    <p>Chiếc xe đỏ mà thầy giáo vừa chỉ điểm xé gió lướt qua sát sạt xe tôi. Khẩu lệnh của thầy giáo phát ra nghe cứ như thể đang xúi giục tôi húc thẳng vào đuôi chiếc xe đó vậy.</p>
     <p>"Ngay lúc này! Đạp lút ga đi!"</p>
     <p>"D-Dạ rõ!"</p>
-    <p>Răm rắp tuân theo chỉ thị, anh đạp thốc ga, chiếc xe tập lái ngoan ngoãn lao vút từ làn tăng tốc vọt vào làn đường chính, mũi xe mớm sát sạt vào đuôi chiếc xe đỏ vừa lướt qua. Trái tim anh đập thình thịch liên hồi vì sợ một cú va chạm nảy lửa sẽ xảy ra, nhưng vận tốc của xe anh vẫn chưa đủ tuổi để bắt kịp tốc độ của dòng xe trên làn chính, và khoảng cách với chiếc xe đỏ ngày một doãng ra. Đến lúc này, anh mới dám thở phào nhẹ nhõm.</p>
+    <p>Răm rắp tuân theo chỉ thị, tôi đạp thốc ga, chiếc xe tập lái ngoan ngoãn lao vút từ làn tăng tốc vọt vào làn đường chính, mũi xe mớm sát sạt vào đuôi chiếc xe đỏ vừa lướt qua. Trái tim tôi đập thình thịch liên hồi vì sợ một cú va chạm nảy lửa sẽ xảy ra, nhưng vận tốc của xe tôi vẫn chưa đủ tuổi để bắt kịp tốc độ của dòng xe trên làn chính, và khoảng cách với chiếc xe đỏ ngày một doãng ra. Đến lúc này, tôi mới dám thở phào nhẹ nhõm.</p>
     <p>"Đừng có lơ là. Nào, tiếp tục tăng tốc đi!"</p>
     <p>Chiếc xe chạy phía sau đang lù lù tiến sát lại gần.</p>
-    <p>Nhưng nhờ anh vẫn ngoan ngoãn đạp ga tăng tốc theo lệnh thầy, chiếc xe tập lái của anh dần dần bắt nhịp được với vận tốc của làn đường chính. Khi tốc độ đã đồng điệu với các phương tiện xung quanh, khoảng cách an toàn giữa các xe cũng được thiết lập và duy trì ổn định.</p>
+    <p>Nhưng nhờ tôi vẫn ngoan ngoãn đạp ga tăng tốc theo lệnh thầy, chiếc xe tập lái của tôi dần dần bắt nhịp được với vận tốc của làn đường chính. Khi tốc độ đã đồng điệu với các phương tiện xung quanh, khoảng cách an toàn giữa các xe cũng được thiết lập và duy trì ổn định.</p>
     <p>"Tốt lắm! Cứ giữ nguyên vận tốc này nhé."</p>
     <p>"Dạ."</p>
-    <p>Hai bàn tay anh siết chặt vô lăng ướt đẫm mồ hôi hột. Trống ngực vẫn đánh liên hồi, đan xen với cảm giác ngỡ ngàng tự phục bản thân vì đã sống sót sau pha nhập làn cao tốc sinh tử. Tuy nhiên—.</p>
+    <p>Hai bàn tay tôi siết chặt vô lăng ướt đẫm mồ hôi hột. Trống ngực vẫn đánh liên hồi, đan xen với cảm giác ngỡ ngàng tự phục bản thân vì đã sống sót sau pha nhập làn cao tốc sinh tử. Tuy nhiên—.</p>
     <p>"E-Em xin lỗi thầy. Lúc nãy em rụt rè quá."</p>
-    <p>Khi nghe anh cất lời tạ lỗi, thầy giáo rũ bỏ cái tông giọng nghiêm nghị lúc nãy, chuyển sang chất giọng dịu dàng để động viên anh.</p>
+    <p>Khi nghe tôi cất lời tạ lỗi, thầy giáo rũ bỏ cái tông giọng nghiêm nghị lúc nãy, chuyển sang chất giọng dịu dàng để động viên tôi.</p>
     <p>"Có sao đâu, có sao đâu. Lần đầu tiên phải dậm ga xé gió để hòa vào đường cao tốc thì ai chả rén. Chuyện bình thường ở huyện thôi mà."</p>
     <p>"Dạ vâng."</p>
-    <p>Anh thầm cảm tạ trời đất vì vớ được một người thầy tâm lý, tinh thần cũng nhờ thế mà phấn chấn trở lại.</p>
-    <p>Lúc chưa đăng ký học, cái mác "thầy dạy lái xe" trong đầu anh luôn gắn liền với hình ảnh một ông kẹ mặt mày bặm trợn hay mắng chửi học viên, nhưng có vẻ như thời thế đã thay đổi, các trường dạy lái xe giờ cũng coi đây là ngành dịch vụ, và học viên chính là những thượng đế cần được cưng chiều. Nhờ cái văn hóa đó mà các thầy cực kỳ kiên nhẫn với những pha xử lý đi vào lòng đất của anh, và cách xưng hô cũng vô cùng chừng mực, lịch sự.</p>
+    <p>Tôi thầm cảm tạ trời đất vì vớ được một người thầy tâm lý, tinh thần cũng nhờ thế mà phấn chấn trở lại.</p>
+    <p>Lúc chưa đăng ký học, cái mác "thầy dạy lái xe" trong đầu tôi luôn gắn liền với hình ảnh một ông kẹ mặt mày bặm trợn hay mắng chửi học viên, nhưng có vẻ như thời thế đã thay đổi, các trường dạy lái xe giờ cũng coi đây là ngành dịch vụ, và học viên chính là những thượng đế cần được cưng chiều. Nhờ cái văn hóa đó mà các thầy cực kỳ kiên nhẫn với những pha xử lý đi vào lòng đất của tôi, và cách xưng hô cũng vô cùng chừng mực, lịch sự.</p>
     <p>"Mình cố gắng ghim kim đồng hồ ở mức 80 km/h nhé."</p>
     <p>"D-Dạ rõ!"</p>
-    <p>Anh dán mắt vào chiếc đồng hồ tốc độ (speedometer) nằm gọn trong tầm nhìn, cố gắng điều tiết chân ga để kim đồng hồ loanh quanh ở con số 80. Chỉ cần lỡ trớn đạp sâu thêm một milimet, kim tốc độ sẽ ngay lập tức vượt mốc 80, nhưng hễ thả lỏng chân ra một tẹo, cái xe đằng sau sẽ lù lù áp sát ngay lập tức.</p>
-    <p>Nói thật thì, dù anh đã tuân thủ luật lệ răm rắp, chạy đúng giới hạn tốc độ 80 km/h, nhưng chả hiểu sao khoảng cách giữa xe anh và xe sau cứ ngày một thu hẹp lại...</p>
+    <p>Tôi dán mắt vào chiếc đồng hồ tốc độ (speedometer) nằm gọn trong tầm nhìn, cố gắng điều tiết chân ga để kim đồng hồ loanh quanh ở con số 80. Chỉ cần lỡ trớn đạp sâu thêm một milimet, kim tốc độ sẽ ngay lập tức vượt mốc 80, nhưng hễ thả lỏng chân ra một tẹo, cái xe đằng sau sẽ lù lù áp sát ngay lập tức.</p>
+    <p>Nói thật thì, dù tôi đã tuân thủ luật lệ răm rắp, chạy đúng giới hạn tốc độ 80 km/h, nhưng chả hiểu sao khoảng cách giữa xe tôi và xe sau cứ ngày một thu hẹp lại...</p>
     <p>"Cậu không cần phải cuống cuồng lên thế đâu. Giới hạn tốc độ của đoạn đường này là 80 km/h. Cậu chạy thế là chuẩn bài rồi. Nhưng mà, dù cậu có đi đúng luật đi chăng nữa, thì mấy cái cảnh dồn toa thế này vẫn là chuyện cơm bữa thôi."</p>
-    <p>Anh hoàn toàn thấu hiểu triết lý đó. Nếu tất cả mọi người đều cứng nhắc đạp ga răm rắp theo đúng biển báo giới hạn tốc độ, thì cái khái niệm cảnh sát giao thông sinh ra để làm gì nữa.</p>
+    <p>Tôi hoàn toàn thấu hiểu triết lý đó. Nếu tất cả mọi người đều cứng nhắc đạp ga răm rắp theo đúng biển báo giới hạn tốc độ, thì cái khái niệm cảnh sát giao thông sinh ra để làm gì nữa.</p>
     <p>Thực tế phũ phàng là, việc áp dụng luật pháp kiểu gì cũng có những kẽ hở và sự châm chước nhất định. Chuyện đó tốt hay xấu lại là một phạm trù tranh luận khác.</p>
     <p>"Trước mắt, cậu cứ cố gắng duy trì phong độ này cho đến khi tới trạm dừng chân tiếp theo nhé. Cố lên!"</p>
     <p>"D-Dạ vâng ạ."</p>
-    <p>Anh làm gì còn tâm trí đâu mà thả hồn ngắm cảnh vật vùn vụt lướt qua cửa sổ, mọi nơ-ron thần kinh của anh đều đang căng ra để giữ đều chân ga, đồng thời mắt phải liên tục đảo như rang lạc để check gương trái phải trước sau. Trong thâm tâm anh chỉ toàn là những tiếng thở dài thườn thượt.</p>
-    <p>Sau khi bò được đến trạm dừng chân tiếp theo, anh cho xe tấp vào bãi đỗ. Cuối cùng, anh cũng được phép xả vai và quay sang trò chuyện với người thầy đang ngồi bên cạnh.</p>
+    <p>Tôi làm gì còn tâm trí đâu mà thả hồn ngắm cảnh vật vùn vụt lướt qua cửa sổ, mọi nơ-ron thần kinh của tôi đều đang căng ra để giữ đều chân ga, đồng thời mắt phải liên tục đảo như rang lạc để check gương trái phải trước sau. Trong thâm tâm tôi chỉ toàn là những tiếng thở dài thườn thượt.</p>
+    <p>Sau khi bò được đến trạm dừng chân tiếp theo, tôi cho xe tấp vào bãi đỗ. Cuối cùng, tôi cũng được phép xả vai và quay sang trò chuyện với người thầy đang ngồi bên cạnh.</p>
     <p>Thầy giáo mở lời trước.</p>
     <p>"Hừm. Xem ra cậu xử lý mấy đoạn đường trường khá mượt mà đấy. Rất tốt. Điểm yếu duy nhất của cậu tính tới thời điểm hiện tại chỉ là cái khâu nhập làn thôi. Chắc cậu cần phải cày cuốc thêm kỹ năng ở mảng này rồi."</p>
     <p>"...Dạ vâng."</p>
@@ -327,57 +581,57 @@
     <p>Thầy giáo vuốt vuốt cằm, nhíu mày ra chiều đăm chiêu suy nghĩ.</p>
     <p>Kế đó, thầy dùng một chất giọng từ tốn, ôn tồn hệt như đang giảng giải cho một đứa trẻ lên ba:</p>
     <p>"Nó là thế này. Thầy nghĩ mấu chốt của sự khác biệt nằm ở cái tần suất cậu chủ động phát tín hiệu cho thiên hạ biết ý định của mình."</p>
-    <p>Có lẽ nhận ra vẻ mặt nghệt ra như ngỗng ỉa của anh, thầy giáo liền bồi thêm một tràng giải thích cặn kẽ hơn về sự khác biệt giữa hai khái niệm đó.</p>
+    <p>Có lẽ nhận ra vẻ mặt nghệt ra như ngỗng ỉa của tôi, thầy giáo liền bồi thêm một tràng giải thích cặn kẽ hơn về sự khác biệt giữa hai khái niệm đó.</p>
     <p>"Nói toẹt ra là, nếu cậu cứ thụ động ngồi chờ sung rụng mà đách có hành động gì cụ thể, thì bố ai mà biết được cậu đang ấp ủ cái mưu đồ gì trong đầu. Con người đâu có ai sở hữu siêu năng lực đọc thấu tâm can người khác. Nếu bản thân cậu, Asamura-san, không chịu đánh tín hiệu một cách dứt khoát, thì ngay cả những tài xế có ý tốt muốn nhường đường cho cậu cũng sẽ bị đưa vào thế tiến thoái lưỡng nan. Họ hoàn toàn mù tịt về phong cách lái xe của cậu, cũng như cái thời điểm vàng mà cậu tính đánh lái nhập làn."</p>
-    <p>Những lời răn dạy của thầy giáo như những mũi kim châm thẳng vào tim đen của anh.</p>
+    <p>Những lời răn dạy của thầy giáo như những mũi kim châm thẳng vào tim đen của tôi.</p>
     <p>Nếu mình không chủ động đánh tiếng trước, thì người đời làm sao mà biết được tâm tư của mình...</p>
     <p>"Bằng cách phát tín hiệu dõng dạc về ý định nhập làn của cậu, người tiếp nhận thông điệp cuối cùng cũng có thể căn ke thời gian nhả ga nhường đường một cách nhịp nhàng."</p>
     <p>"A, em nghĩ là em đã lờ mờ giác ngộ ra được chút đỉnh rồi."</p>
-    <p>Nói tóm lại, ngụ ý sâu xa của thầy giáo là, anh thừa sức uốn nắn bản thân để hòa nhập với môi trường xung quanh, nhưng anh lại mắc hội chứng sợ hãi việc phải ép người khác "uốn nắn" theo mình. Nói một cách trần trụi thì anh là một đứa kém cỏi trong việc thể hiện cái tôi cá nhân. Bản thân anh cũng tự ý thức được cái nhược điểm chết người đó. Anh không phải là tuýp người thích áp đặt người khác.</p>
+    <p>Nói tóm lại, ngụ ý sâu xa của thầy giáo là, tôi thừa sức uốn nắn bản thân để hòa nhập với môi trường xung quanh, nhưng tôi lại mắc hội chứng sợ hãi việc phải ép người khác "uốn nắn" theo mình. Nói một cách trần trụi thì tôi là một đứa kém cỏi trong việc thể hiện cái tôi cá nhân. Bản thân tôi cũng tự ý thức được cái nhược điểm chết người đó. Tôi không phải là tuýp người thích áp đặt người khác.</p>
     <p>Tuy nhiên, chuyện đó hoàn toàn khác với việc bị câm điếc không dám bảo vệ quan điểm của mình.</p>
     <p>"Tất nhiên, đời không như là mơ, dù cậu có khao khát nhập làn đến mấy, vẫn sẽ có những tài xế ích kỷ quyết tâm bóp kẹt cậu đến cùng."</p>
     <p>"Có cả cái thể loại hắc ám đó nữa sao thầy?"</p>
     <p>"Mỗi cây mỗi hoa, mỗi nhà mỗi cảnh, ai cũng có lý do riêng của họ. Chuyện đó chẳng có gì đáng để lên án cả. Thế nhưng, dù kết quả cuối cùng là cái gật đầu đồng ý hay sự từ chối phũ phàng, thì vạn sự khởi đầu nan, tất cả đều phải bắt nguồn từ việc cậu dũng cảm bộc lộ ý định của mình trước. Không có sự bày tỏ, thì lấy đâu ra giao tiếp."</p>
-    <p>Dù đã cho ăn gậy, thầy giáo vẫn không quên xoa dịu anh bằng cách khen ngợi kỹ năng lái xe đường trường của anh khá ổn áp.</p>
+    <p>Dù đã cho ăn gậy, thầy giáo vẫn không quên xoa dịu tôi bằng cách khen ngợi kỹ năng lái xe đường trường của tôi khá ổn áp.</p>
     <p>"Chỉ cần lái nhiều cho quen tay, tôi tin chắc Asamura-san cũng sẽ thực hiện cú nhập làn mượt mà như ruồi thôi."</p>
     <p>Liệu có thật thế không?</p>
-    <p>Anh chẳng dám mơ mộng đến cái ngày mình có thể phô diễn được cái kỹ năng ảo diệu đó.</p>
+    <p>Tôi chẳng dám mơ mộng đến cái ngày mình có thể phô diễn được cái kỹ năng ảo diệu đó.</p>
     <p>"Không có gì phải xoắn, rồi mọi chuyện sẽ đâu vào đấy thôi. Được rồi, bài học hôm nay tạm dừng ở đây, quay xe về bãi thôi."</p>
-    <p>Chúng anh đánh lái rời khỏi trạm dừng chân và thoát khỏi đường cao tốc. Hành trình quay về trung tâm được thực hiện trên những con đường quốc lộ bình thường.</p>
-    <p>Cảnh vật lướt qua ô cửa sổ cứ thế vụt trôi về phía sau. Dù vẫn phải căng mắt căn ke khoảng cách với xe phía trước, nhưng cái nhịp độ lái xe rùa bò này chẳng nhằm nhò gì với anh...</p>
-    <p>Mọi thứ vẫn cứ êm đềm trôi qua cho đến khi chúng anh kết thúc những bài học lý thuyết khô khan trong phòng máy lạnh và bước vào những giờ thực hành lái xe lươn lẹo trong sa hình.</p>
-    <p>Thế nhưng, ngay khoảnh khắc anh nếm mùi thực chiến trên đường thật, mọi thứ lập tức quay ngoắt 180 độ. Khi chuẩn bị đường ai nấy đi sau buổi học, thầy giáo đột nhiên buông một câu triết lý.</p>
+    <p>Chúng tôi đánh lái rời khỏi trạm dừng chân và thoát khỏi đường cao tốc. Hành trình quay về trung tâm được thực hiện trên những con đường quốc lộ bình thường.</p>
+    <p>Cảnh vật lướt qua ô cửa sổ cứ thế vụt trôi về phía sau. Dù vẫn phải căng mắt căn ke khoảng cách với xe phía trước, nhưng cái nhịp độ lái xe rùa bò này chẳng nhằm nhò gì với tôi...</p>
+    <p>Mọi thứ vẫn cứ êm đềm trôi qua cho đến khi chúng tôi kết thúc những bài học lý thuyết khô khan trong phòng máy lạnh và bước vào những giờ thực hành lái xe lươn lẹo trong sa hình.</p>
+    <p>Thế nhưng, ngay khoảnh khắc tôi nếm mùi thực chiến trên đường thật, mọi thứ lập tức quay ngoắt 180 độ. Khi chuẩn bị đường ai nấy đi sau buổi học, thầy giáo đột nhiên buông một câu triết lý.</p>
     <p>"Asamura-san này, cậu đã bao giờ nghe qua câu thành ngữ 'Một lần hành động còn hơn ngàn lần suy nghĩ' chưa?"</p>
-    <p>Tý nữa thì anh đã gật đầu cái rụp, nhưng anh đã kịp thời hãm phanh lại.</p>
+    <p>Tý nữa thì tôi đã gật đầu cái rụp, nhưng tôi đã kịp thời hãm phanh lại.</p>
     <p>"Một lần hành động... ý thầy là câu 'Trăm nghe không bằng một thấy' phải không ạ?"</p>
     <p>"Cái câu mà cậu vừa đọc thì độ phủ sóng của nó rộng hơn. Ý nghĩa của nó là tai nghe không bằng mắt thấy, trăm lời đồn đại không bằng một lần tận mắt chứng kiến. Tuy nhiên, cái câu 'Trăm lần nghĩ không bằng một lần làm' lại răn dạy chúng ta một đạo lý sâu sắc hơn: 'Đừng có chỉ biết ru rú ngồi mơ mộng hão huyền, mà hãy mạnh dạn xắn tay áo lên và lao vào thực chiến'."</p>
     <p>Đừng có chỉ biết ru rú ngồi mơ mộng hão huyền...</p>
-    <p>Lâu lắm rồi anh mới lại trải nghiệm cái cảm giác quặn thắt nơi lồng ngực này, cứ như thể có ai đó vừa dùng dùi cui chọc đúng vào cái tử huyệt nhạy cảm nhất của anh vậy.</p>
+    <p>Lâu lắm rồi tôi mới lại trải nghiệm cái cảm giác quặn thắt nơi lồng ngực này, cứ như thể có ai đó vừa dùng dùi cui chọc đúng vào cái tử huyệt nhạy cảm nhất của tôi vậy.</p>
     <p>"Đó chính là nguyên lý của việc trăm hay không bằng tay quen. Theo như những gì tôi soi được, cái mà Asamura-san đang thiếu trầm trọng chính là kinh nghiệm thực chiến. Dân gian có câu, kinh nghiệm là thứ phải được đánh đổi bằng mồ hôi sôi nước mắt thông qua những trải nghiệm vật lý, hay nói theo ngôn ngữ Gen Z bây giờ là phải tự mình nếm mật nằm gai."</p>
     <p>"Trải nghiệm vật lý ạ? Ý thầy là cái quá trình mà hành động và tư duy được nhào nặn và đúc kết thông qua sự vận động của cơ thể?"</p>
     <p>"Đúng phóc. Dù cho thời đại này người ta đang phát cuồng vì mấy cái công nghệ thực tế ảo, nhưng tôi vẫn luôn tôn thờ một chân lý rằng, có những kiến thức cốt lõi chỉ có thể thẩm thấu và ghim chặt vào não bộ khi ta trực tiếp quăng mình vào lăn lộn thực tế."</p>
-    <p>Ngẫm lại cũng thấy đúng, khi soi lại cái sự bất lực của bản thân trong việc mang những kỹ năng ảo diệu đã cày nát bét trên cái máy mô phỏng lái xe cùi bắp ra áp dụng vào thực tế, anh mới thấm thía những lời vàng ngọc của thầy giáo. Anh đã lĩnh hội được một cách sâu sắc sự khác biệt một trời một vực giữa cái thế giới ảo mộng và cái thực tại tàn khốc.</p>
+    <p>Ngẫm lại cũng thấy đúng, khi soi lại cái sự bất lực của bản thân trong việc mang những kỹ năng ảo diệu đã cày nát bét trên cái máy mô phỏng lái xe cùi bắp ra áp dụng vào thực tế, tôi mới thấm thía những lời vàng ngọc của thầy giáo. Tôi đã lĩnh hội được một cách sâu sắc sự khác biệt một trời một vực giữa cái thế giới ảo mộng và cái thực tại tàn khốc.</p>
     <p>Thực tại vốn dĩ muôn hình vạn trạng và phức tạp hơn rất nhiều.</p>
     <p>"Có lẽ Asamura-san nên bớt ảo tưởng sức mạnh và trân trọng những trải nghiệm thực tế hơn. Chúng ta hãy cùng nhau biến những bài học trên đường phố thành những thử thách để nâng cấp bản thân nhé."</p>
-    <p>Dẫu ngoài mặt thì tỏ ra cảm kích trước những lời động viên sặc mùi đắc nhân tâm của thầy giáo, nhưng sâu thẳm trong thâm tâm, anh lại cảm thấy một cỗ xám xịt u ám bủa vây.</p>
-    <p>Theo quan điểm của anh, việc mài đũng quần đọc sách để nạp thêm kiến thức cũng chả có gì là sai trái. Dù vậy, anh cũng lờ mờ nhận thức được rằng chỉ bấy nhiêu đó thôi là chưa đủ đô. Anh có cảm giác như mình vừa bị ai đó lột mặt nạ và chỉ thẳng mặt điểm tên.</p>
-    <p>Trên chuyến tàu điện tuyến Yamanote chạy xình xịch về Shibuya, phóng tầm mắt qua khung cửa sổ, anh lặng ngắm con đường cao tốc số 4 Shinjuku đang rực sáng ánh đèn đêm.</p>
-    <p>Anh thả hồn mường tượng đến cái viễn cảnh anh được cầm vô lăng lướt gió trên con đường đó, với Saki ngồi chễm chệ ở ghế phụ.</p>
-    <p>Anh băn khoăn không biết liệu cái giấc mơ đó có cơ hội nào để trở thành hiện thực không?</p>
+    <p>Dẫu ngoài mặt thì tỏ ra cảm kích trước những lời động viên sặc mùi đắc nhân tâm của thầy giáo, nhưng sâu thẳm trong thâm tâm, tôi lại cảm thấy một cỗ xám xịt u ám bủa vây.</p>
+    <p>Theo quan điểm của tôi, việc mài đũng quần đọc sách để nạp thêm kiến thức cũng chả có gì là sai trái. Dù vậy, tôi cũng lờ mờ nhận thức được rằng chỉ bấy nhiêu đó thôi là chưa đủ đô. Tôi có cảm giác như mình vừa bị ai đó lột mặt nạ và chỉ thẳng mặt điểm tên.</p>
+    <p>Trên chuyến tàu điện tuyến Yamanote chạy xình xịch về Shibuya, phóng tầm mắt qua khung cửa sổ, tôi lặng ngắm con đường cao tốc số 4 Shinjuku đang rực sáng ánh đèn đêm.</p>
+    <p>Tôi thả hồn mường tượng đến cái viễn cảnh tôi được cầm vô lăng lướt gió trên con đường đó, với Saki ngồi chễm chệ ở ghế phụ.</p>
+    <p>Tôi băn khoăn không biết liệu cái giấc mơ đó có cơ hội nào để trở thành hiện thực không?</p>
     <p>Dù kỳ nghỉ hè đã gõ cửa đến nơi, nhưng cái lời hứa hẹn sẽ đèo Saki đi phượt bằng ô tô dường như vẫn còn là một thứ gì đó xa vời vợi.</p>
     <p>Đoạn đường cao tốc hiện ra qua lăng kính cửa sổ thoắt cái đã bị màn đêm nuốt chửng, và con tàu tiếp tục lao đi vun vút hướng về Shibuya quen thuộc, bỏ lại ga Shinjuku phía Nam lùi dần vào dĩ vãng.</p>
 
     <hr>
 
     <p>Sự đổ bộ của tháng Bảy đồng nghĩa với việc mùa mưa đã chính thức khép lại, nhường chỗ cho những đợt nắng nóng cháy da cháy thịt.</p>
-    <p>Vào một ngày thứ Bảy cuối tuần. Mới sáng bảnh mắt, anh và Saki đã yên vị trên chuyến tàu điện nhắm thẳng hướng Công viên Shakujii.</p>
-    <p>Hôm nay chính là ngày phán xét mà anh đã trót hứa hẹn. Vâng, chính là cái kèo đi làm lốp dự phòng cho trận bóng chày nghiệp dư đó đấy.</p>
-    <p>Tụi anh bị triệu tập đến công viên từ khá sớm, lúc 8 giờ sáng. Một phần là vì 9 giờ sân bóng mới mở cửa đón khách, nhưng nguyên nhân sâu xa hơn là vì, vào cái tháng Bảy đổ lửa này, việc phơi thây vận động ngoài trời vào buổi trưa vắng bóng mây là một hành động tự sát không hơn không kém vì nguy cơ đột quỵ do sốc nhiệt.</p>
+    <p>Vào một ngày thứ Bảy cuối tuần. Mới sáng bảnh mắt, tôi và Saki đã yên vị trên chuyến tàu điện nhắm thẳng hướng Công viên Shakujii.</p>
+    <p>Hôm nay chính là ngày phán xét mà tôi đã trót hứa hẹn. Vâng, chính là cái kèo đi làm lốp dự phòng cho trận bóng chày nghiệp dư đó đấy.</p>
+    <p>Tụi tôi bị triệu tập đến công viên từ khá sớm, lúc 8 giờ sáng. Một phần là vì 9 giờ sân bóng mới mở cửa đón khách, nhưng nguyên nhân sâu xa hơn là vì, vào cái tháng Bảy đổ lửa này, việc phơi thây vận động ngoài trời vào buổi trưa vắng bóng mây là một hành động tự sát không hơn không kém vì nguy cơ đột quỵ do sốc nhiệt.</p>
     <p>Saki đang cắm mặt vọc điện thoại tra cứu thông tin thời tiết liền tâu lại rằng dự báo nhiệt độ đỉnh điểm sẽ chạm ngưỡng 27°C vào lúc 2 giờ chiều.</p>
     <p>Cứ cái đà trái đất nóng lên vùn vụt mỗi năm thế này, khéo vài năm nữa nhà đài sẽ phát lệnh giới nghiêm cấm người dân ra đường vào mùa hè mất. Nếu nhiệt độ ngoài trời vượt ranh giới 35°C, mọi hoạt động thể thao ngoài trời theo nguyên tắc sẽ bị cấm tiệt.</p>
     <p>"Nóng chảy mỡ..."</p>
     <p>"Nhưng tình hình thời tiết hôm nay xem ra vẫn còn châm chước được so với ngày mai. Dự báo ngày mai nhiệt độ sẽ cán mốc 31°C lận."</p>
-    <p>Anh đu mình vào cái tay vịn trên tàu điện, mặt mày nhăn nhó. Anh còn nhớ mang máng, nếu chỉ số nhiệt bứt phá qua ranh giới 25°C, thì cấp độ cảnh báo sốc nhiệt sẽ tự động được thăng hạng từ mức "cảnh giác" lên "báo động".</p>
+    <p>Tôi đu mình vào cái tay vịn trên tàu điện, mặt mày nhăn nhó. Tôi còn nhớ mang máng, nếu chỉ số nhiệt bứt phá qua ranh giới 25°C, thì cấp độ cảnh báo sốc nhiệt sẽ tự động được thăng hạng từ mức "cảnh giác" lên "báo động".</p>
     <p>"Ở mấy cái sân bóng chày làm quái gì có chỗ nào để trốn nắng đâu nhỉ?"</p>
     <p>"Em cũng mù tịt. Nhưng mà theo cái trí nhớ cá vàng của em đợt đi cỗ vũ cho Maru năm ngoái, thì ở đó bói không ra một bóng râm nào đâu."</p>
     <p>"Chuẩn luôn."</p>
@@ -387,47 +641,47 @@
     <p>"Nước tăng lực thể thao. Với cả hộp bento ăn trưa nữa."</p>
     <p>"Tuyệt vời ông mặt trời. Nói thật là, anh nợ em một lời xin lỗi vì đã bắt em phải lặn lội theo hầu hạ anh thế này."</p>
     <p>"Có sao đâu anh. Em phụ giúp được nhiêu đây là vui rồi. Chắc anh cũng vã mồ hôi hột chuẩn bị đủ thứ đồ đạc rồi phải không? Có bỏ sót món nào ở nhà không đấy?"</p>
-    <p>Anh gật đầu xác nhận. Anh đã cất công sắm sửa cả một bộ đồ nghề chơi bóng chày xịn sò chỉ để phục vụ cho cái ngày định mệnh hôm nay. Sau khi tham khảo ý kiến chuyên gia Maru về những dụng cụ cần thiết, anh đã đích thân đi lùng sục mấy cửa tiệm bán đồ thể thao chuyên dụng.</p>
-    <p>Tuy bóng chày được tôn xưng là môn thể thao vua ở Nhật Bản, nên anh cứ đinh ninh là sẽ nhắm mắt mua bừa được đồ nghề ở bất cứ ngõ ngách nào...</p>
-    <p>Thế nhưng, lượn lờ chán chê ở Shibuya, anh chỉ vớt vát được đúng một cái tiệm bé tẹo teo với vài ba món lèo tèo. Nhưng bù lại, anh nhân viên bán hàng ở đó cực kỳ có tâm. Khi anh khai thật mục đích mua đồ là để chống cháy cho một giải bóng chày nghiệp dư, họ liền tư vấn cho anh combo thần thánh gồm găng tay bắt bóng, quả bóng mềm và một đôi giày đinh, kèm theo lời khẳng định chắc nịch là nhiêu đó đã đủ xài.</p>
-    <p>Nghe lời khuyên từ chuyên gia bao giờ cũng là thượng sách, thế là anh quẹt thẻ rinh trọn bộ combo đó về nhà.</p>
-    <p>Maru cũng từng vỗ ngực hứa hẹn sẽ cho anh mượn đồ nếu cần, nhưng vì anh đã trót vung tiền sắm đồ nghề xịn rồi, nên nếu để nó nằm xó đóng bụi trong góc phòng thì quả là một sự phí phạm trần đời.</p>
-    <p>Về phần trang phục, cậu ta bảo anh cứ mặc cái quần què gì miễn sao thoải mái và không sợ lấm bùn là được, thế nên anh cũng đỡ tốn mớ tiền sắm đồ tập xịn sò.</p>
-    <p>Anh tiện tay nhét bừa bộ đồ thể dục từ thời tiền sử cấp ba vào túi xách, đinh ninh rằng mình đã sẵn sàng lên đồ đi quẩy, nhưng sâu thẳm trong thâm tâm anh vẫn le lói một nỗi bất an không hề nhẹ. Dẫu cho lúc này có ngồi khấn vái trên chuyến tàu điện đang lăn bánh tới nơi thì cũng đã quá muộn màng.</p>
+    <p>Tôi gật đầu xác nhận. Tôi đã cất công sắm sửa cả một bộ đồ nghề chơi bóng chày xịn sò chỉ để phục vụ cho cái ngày định mệnh hôm nay. Sau khi tham khảo ý kiến chuyên gia Maru về những dụng cụ cần thiết, tôi đã đích thân đi lùng sục mấy cửa tiệm bán đồ thể thao chuyên dụng.</p>
+    <p>Tuy bóng chày được tôn xưng là môn thể thao vua ở Nhật Bản, nên tôi cứ đinh ninh là sẽ nhắm mắt mua bừa được đồ nghề ở bất cứ ngõ ngách nào...</p>
+    <p>Thế nhưng, lượn lờ chán chê ở Shibuya, tôi chỉ vớt vát được đúng một cái tiệm bé tẹo teo với vài ba món lèo tèo. Nhưng bù lại, tôi nhân viên bán hàng ở đó cực kỳ có tâm. Khi tôi khai thật mục đích mua đồ là để chống cháy cho một giải bóng chày nghiệp dư, họ liền tư vấn cho tôi combo thần thánh gồm găng tay bắt bóng, quả bóng mềm và một đôi giày đinh, kèm theo lời khẳng định chắc nịch là nhiêu đó đã đủ xài.</p>
+    <p>Nghe lời khuyên từ chuyên gia bao giờ cũng là thượng sách, thế là tôi quẹt thẻ rinh trọn bộ combo đó về nhà.</p>
+    <p>Maru cũng từng vỗ ngực hứa hẹn sẽ cho tôi mượn đồ nếu cần, nhưng vì tôi đã trót vung tiền sắm đồ nghề xịn rồi, nên nếu để nó nằm xó đóng bụi trong góc phòng thì quả là một sự phí phạm trần đời.</p>
+    <p>Về phần trang phục, cậu ta bảo tôi cứ mặc cái quần què gì miễn sao thoải mái và không sợ lấm bùn là được, thế nên tôi cũng đỡ tốn mớ tiền sắm đồ tập xịn sò.</p>
+    <p>Tôi tiện tay nhét bừa bộ đồ thể dục từ thời tiền sử cấp ba vào túi xách, đinh ninh rằng mình đã sẵn sàng lên đồ đi quẩy, nhưng sâu thẳm trong thâm tâm tôi vẫn le lói một nỗi bất an không hề nhẹ. Dẫu cho lúc này có ngồi khấn vái trên chuyến tàu điện đang lăn bánh tới nơi thì cũng đã quá muộn màng.</p>
     <p>"Biết thế anh đã rủ mài ra cái công viên gần nhà tập ném bóng qua lại vài đường cơ bản cho quen tay."</p>
     <p>"Nhưng mà, nếu muốn chơi trò đó thì anh phải kiếm được một cạ cứng để chơi cùng chứ, đúng không?"</p>
     <p>"Khổ nỗi là thế."</p>
-    <p>Vừa nói, anh vừa liếc trộm nét mặt Saki.</p>
+    <p>Vừa nói, tôi vừa liếc trộm nét mặt Saki.</p>
     <p>Em ấy lập tức lắc đầu quầy quậy như cái máy. Trông bộ dạng đó là đủ biết đéo có cửa rồi.</p>
     <p>"Bỏ qua em đi, em xin kiếu. Hơn nữa, quả bóng chày vừa cứng như đá lại còn bé xíu xiu."</p>
     <p>"Bé xíu...?"</p>
     <p>"Nếu là quả bóng mềm (softball), thì em đã từng nếm thử cảm giác cầm nắm nó rồi. Hồi còn học môn thể dục ở trường ấy."</p>
     <p>"Cũng phải."</p>
-    <p>Hóa ra em ấy đã từng chạm trán với môn bóng mềm trong mấy giờ thể dục. Quả thực, quả bóng dùng trong môn bóng mềm to xác và êm ái hơn hẳn. Còn bóng chày thứ thiệt thì lại bé tẹo và cứng như cục gạch. Buổi tối hôm rinh bộ đồ nghề về nhà, anh đã táy máy đeo găng tay vào rồi thử ném quả bóng mềm lên trần nhà, một trò vọc vạch còn dễ nhằn hơn cả việc chơi ném bóng qua lại.</p>
-    <p>Hy vọng cái trò con bò này sẽ không làm ai cười trừ, nhưng anh thực sự cảm nhận được độ cứng rợn người của quả bóng. Hơn nữa, quả bóng mà anh tậu về chỉ là loại bóng mềm, trong khi Maru và đồng bọn lại xài bóng cứng chính hiệu ở câu lạc bộ. Khi anh thắc mắc: "Tụi mài bắt bóng không thấy nát tay à?", cậu ta tỉnh bơ đáp: "Thì cũng nhức tay phết đấy." Và chốt hạ bằng một câu xanh rờn: "Nhưng chả sao đâu. Chơi riết rồi chai tay, quen hết ấy mà."</p>
-    <p>Sau khi nghe anh tường thuật lại câu chuyện đó, Saki bỗng thốt lên một câu cảm thán: "Mấy anh chàng dân thể thao đúng là sở hữu một siêu năng lực đáng gờm nhỉ."</p>
-    <p>Anh hoàn toàn đồng tình. Cái việc luyện tập điên cuồng đến mức cơ thể miễn nhiễm với đau đớn quả thực là một câu chuyện hoang đường đối với những người bình thường.</p>
+    <p>Hóa ra em ấy đã từng chạm trán với môn bóng mềm trong mấy giờ thể dục. Quả thực, quả bóng dùng trong môn bóng mềm to xác và êm ái hơn hẳn. Còn bóng chày thứ thiệt thì lại bé tẹo và cứng như cục gạch. Buổi tối hôm rinh bộ đồ nghề về nhà, tôi đã táy máy đeo găng tay vào rồi thử ném quả bóng mềm lên trần nhà, một trò vọc vạch còn dễ nhằn hơn cả việc chơi ném bóng qua lại.</p>
+    <p>Hy vọng cái trò con bò này sẽ không làm ai cười trừ, nhưng tôi thực sự cảm nhận được độ cứng rợn người của quả bóng. Hơn nữa, quả bóng mà tôi tậu về chỉ là loại bóng mềm, trong khi Maru và đồng bọn lại xài bóng cứng chính hiệu ở câu lạc bộ. Khi tôi thắc mắc: "Tụi mài bắt bóng không thấy nát tay à?", cậu ta tỉnh bơ đáp: "Thì cũng nhức tay phết đấy." Và chốt hạ bằng một câu xanh rờn: "Nhưng chả sao đâu. Chơi riết rồi chai tay, quen hết ấy mà."</p>
+    <p>Sau khi nghe tôi tường thuật lại câu chuyện đó, Saki bỗng thốt lên một câu cảm thán: "Mấy anh chàng dân thể thao đúng là sở hữu một siêu năng lực đáng gờm nhỉ."</p>
+    <p>Tôi hoàn toàn đồng tình. Cái việc luyện tập điên cuồng đến mức cơ thể miễn nhiễm với đau đớn quả thực là một câu chuyện hoang đường đối với những người bình thường.</p>
     <p>Tuy nhiên, lật ngược vấn đề lại mà suy ngẫm, nếu loại trừ yếu tố thể thao ra khỏi phương trình, thì bản chất sự việc lại mang một màu sắc khác. Đối với những kẻ dị ứng với chữ nghĩa, việc chứng kiến ai đó biến việc đọc sách thành thói quen ăn sâu vào máu cũng là một điều phi lý, tương tự như việc người ta có thể nghiện bất cứ thứ gì mà họ trót mang lòng say mê.</p>
     <p>Cái niềm đam mê mãnh liệt đến mức điên cuồng đó luôn toát lên một sức hút kỳ lạ trong mắt những người ngoại đạo vốn mù tịt về thế giới của họ.</p>
     <p>"Công nhận. Bản thân em cũng thấy cái thói quen cày sách như cơm bữa của anh Yuuta là một thứ gì đó vô cùng vi diệu," Saki vừa nói vừa gật gù ra chiều tâm đắc.</p>
     <p>"Ừ, có lẽ tại vì anh không được trang bị cái gen cuồng nhiệt với bộ môn này nên mới đâm ra xoắn xuýt thế này."</p>
-    <p>Vấn đề không chỉ nằm ở chỗ anh là một con gà mờ thiếu kinh nghiệm thực chiến, mà khốn nỗi đây lại là một bộ môn thể thao đề cao tính đồng đội với sự tham gia của một bầy người xa lạ. Tất cả những yếu tố mà anh dị ứng nhất đã hợp lực lại và dội thẳng vào mặt anh dưới hình hài của cái trận bóng chày nghiệp dư này...</p>
+    <p>Vấn đề không chỉ nằm ở chỗ tôi là một con gà mờ thiếu kinh nghiệm thực chiến, mà khốn nỗi đây lại là một bộ môn thể thao đề cao tính đồng đội với sự tham gia của một bầy người xa lạ. Tất cả những yếu tố mà tôi dị ứng nhất đã hợp lực lại và dội thẳng vào mặt tôi dưới hình hài của cái trận bóng chày nghiệp dư này...</p>
     <p>"Đã nói rồi, bị quăng vào chảo lửa thi đấu thực tế ngay tắp lự thế này khiến anh áp lực vãi chưởng."</p>
     <p>"Nhưng mà, tụi mình đã lết xác đến tận đây rồi, phóng lao thì phải theo lao thôi, đúng không?"</p>
     <p>"Em nói cũng phải."</p>
-    <p>Chúng anh nhảy khỏi tàu tại Ga Công viên Shakuji và tập kết với Maru tại điểm hẹn đã chốt.</p>
+    <p>Chúng tôi nhảy khỏi tàu tại Ga Công viên Shakuji và tập kết với Maru tại điểm hẹn đã chốt.</p>
     <p>Narasaka-san cũng rồng rắn xuất hiện ngay sau đó vài phút. Cả hai cô nàng đều cầm lăm lăm cây dù che nắng trên tay.</p>
     <p>"Rồi sao nữa, giờ tụi mình cứ đứng đực mặt ra đây chờ à?"</p>
     <p>"Ừ. Chắc ông bầu của đội sắp tới rồi, để tao giới thiệu mài với ổng."</p>
-    <p>Cái ông bầu mà cậu ta nhắc đến chính là người đứng đầu đội bóng chày nghiệp dư mà Maru đang tá túc. Cuối cùng, anh cũng được khai sáng về cái tên của đội bóng. Hóa ra, đội bóng đó mang cái tên mĩ miều là [Raimei Sisters].</p>
+    <p>Cái ông bầu mà cậu ta nhắc đến chính là người đứng đầu đội bóng chày nghiệp dư mà Maru đang tá túc. Cuối cùng, tôi cũng được khai sáng về cái tên của đội bóng. Hóa ra, đội bóng đó mang cái tên mĩ miều là [Raimei Sisters].</p>
     <p>"Raimei Sisters... Hội chị em cơ à?"</p>
     <p>Chỉ cần nghe qua cái tên thôi, người ta đã đinh ninh đội bóng này chỉ thu nạp toàn nữ nhi quần hồng. Dù thực tế rành rành là đéo phải vậy (bằng chứng sống là có thằng đực rựa Maru đang chễm chệ trong đội hình).</p>
     <p>"Ông bầu của đội là một wibu cuồng tín thể loại em gái."</p>
     <p>"Thể loại... em gái á?"</p>
-    <p>Liệu anh có được quyền suy diễn rằng cái 'thể loại em gái' mà cậu ta đề cập ở đây ám chỉ những cô nàng loli bánh bèo đóng vai em gái thường xuất hiện nhan nhản trong mấy bộ light novel không?</p>
+    <p>Liệu tôi có được quyền suy diễn rằng cái 'thể loại em gái' mà cậu ta đề cập ở đây ám chỉ những cô nàng loli bánh bèo đóng vai em gái thường xuất hiện nhan nhản trong mấy bộ light novel không?</p>
     <p>"À, hình như tao quên phổ cập cho mài thì phải? Cỡ như Asamura mài thì chắc cũng từng nghe danh bộ 'Raimei' rồi chứ nhỉ."</p>
     <p>"Raimei?"</p>
-    <p>Anh đang trong trạng thái ngơ ngác không hiểu thằng bạn mình đang sủa cái ngôn ngữ hành tinh nào, thì sự hoang mang lại càng được đẩy lên đỉnh điểm khi Narasaka-san đang đứng khép nép cạnh Maru bỗng giơ tay phát biểu: "Mình biết bộ đó!" Narasaka-san mà cũng biết cái thể loại wibu này sao? Cô nàng hất cằm chỉ vào chiếc mũ đang đội trên đầu.</p>
+    <p>Tôi đang trong trạng thái ngơ ngác không hiểu thằng bạn mình đang sủa cái ngôn ngữ hành tinh nào, thì sự hoang mang lại càng được đẩy lên đỉnh điểm khi Narasaka-san đang đứng khép nép cạnh Maru bỗng giơ tay phát biểu: "Mình biết bộ đó!" Narasaka-san mà cũng biết cái thể loại wibu này sao? Cô nàng hất cằm chỉ vào chiếc mũ đang đội trên đầu.</p>
     <p>Chính xác hơn là, cô nàng đang chỉ điểm một chiếc huy hiệu bự chảng được gài chễm chệ trên chiếc mũ bóng chày đội lệch cá tính. Trên huy hiệu in hình khuôn mặt to tướng của một cô loli tóc ngắn cực kỳ dễ thương.</p>
     <p>Nhìn quen quen ta...?</p>
     <p>"Lý do duy nhất khiến bồ biết đến sự tồn tại của nó là do mình đã nhồi sọ bồ, chuẩn chưa?"</p>
@@ -442,14 +696,14 @@
     <p>"Ờ thì... ờ thì..."</p>
     <p>"Vâng, vâng!"</p>
     <p>Nụ cười tỏa nắng của Narasaka-san như thiêu rụi Maru dưới ánh mặt trời chói chang không lối thoát.</p>
-    <p>Gác lại cái viễn cảnh thằng bạn chí cốt đang bị vắt kiệt sức lực và tàn tạ chỉ vì dám xưng hô thô lỗ với gấu yêu, anh cuối cùng cũng moi lại được danh tính của cái nhân vật anime in trên cái huy hiệu mà Narasaka-san đang đeo.</p>
+    <p>Gác lại cái viễn cảnh thằng bạn chí cốt đang bị vắt kiệt sức lực và tàn tạ chỉ vì dám xưng hô thô lỗ với gấu yêu, tôi cuối cùng cũng moi lại được danh tính của cái nhân vật anime in trên cái huy hiệu mà Narasaka-san đang đeo.</p>
     <p>"A, ra đó là cô em gái Mei của main chính trong bộ 'Raimei'."</p>
     <p>"Chuẩn không cần chỉnh! Đỉnh của chóp, Asamura-kun, bồ biết tuốt tuồn tuột luôn kìa!"</p>
     <p>"Thằng Maru đã dụ dỗ tao cày bộ này từ tám kiếp trước rồi, tao vẫn còn ấn tượng vì nó khá dị và cuốn hút mặc dù cốt truyện có hơi ngáo ngơ."</p>
     <p>Cái cô em gái loli in trên huy hiệu của Narasaka-san là một nhân vật cộm cán bước ra từ bộ manga có tựa đề 'Raimei'. Có vẻ như lão tác giả của bộ này mắc bệnh cầu toàn và ngâm giấm bản thảo hơi lâu, nên bộ truyện đã bị drop ngang hông sau khi tung ra được đúng bốn tập.</p>
     <p>Cốt truyện đại khái kể về...</p>
-    <p>Cặp anh em song sinh sở hữu dị năng bá đạo bắt nguồn từ sấm sét, trong đó thằng anh thì buff chiêu thức ánh sáng, còn con em thì spam kỹ năng âm thanh để quẩy với phản diện, mô-típ y chang mấy bộ shounen đấm nhau thông thường. Nếu kịch bản chỉ loanh quanh ở mức đó, thì chắc chắn anh đã drop từ tập đầu tiên.</p>
-    <p>Tuy nhiên, khi tụi nó bắt đầu thuyết giáo ba cái lý thuyết kiểu "vũ trụ này thực chất được kiến tạo từ âm thanh và ánh sáng," anh bắt đầu thấy "ồ, có vẻ cuốn" và khi tác giả nhồi nhét thêm mấy cái element hack não như "sét có ý thức và khát khao sở hữu một cái tên" hay "thực thể vũ trụ mang năng lực thanh trừng chiều không gian", anh thực sự bị cuốn vào cái mớ bòng bong đó. Vài thành phần wibu thích những thứ dị hợm, bao gồm cả anh, bắt đầu lọt hố bộ truyện này. Dẫu cho mạch truyện thỉnh thoảng lại bẻ lái khét lẹt, nhưng anh lại khá chuộng cái văn phong quái gở của lão tác giả.</p>
+    <p>Cặp anh em song sinh sở hữu dị năng bá đạo bắt nguồn từ sấm sét, trong đó thằng tôi thì buff chiêu thức ánh sáng, còn con em thì spam kỹ năng âm thanh để quẩy với phản diện, mô-típ y chang mấy bộ shounen đấm nhau thông thường. Nếu kịch bản chỉ loanh quanh ở mức đó, thì chắc chắn tôi đã drop từ tập đầu tiên.</p>
+    <p>Tuy nhiên, khi tụi nó bắt đầu thuyết giáo ba cái lý thuyết kiểu "vũ trụ này thực chất được kiến tạo từ âm thanh và ánh sáng," tôi bắt đầu thấy "ồ, có vẻ cuốn" và khi tác giả nhồi nhét thêm mấy cái element hack não như "sét có ý thức và khát khao sở hữu một cái tên" hay "thực thể vũ trụ mang năng lực thanh trừng chiều không gian", tôi thực sự bị cuốn vào cái mớ bòng bong đó. Vài thành phần wibu thích những thứ dị hợm, bao gồm cả tôi, bắt đầu lọt hố bộ truyện này. Dẫu cho mạch truyện thỉnh thoảng lại bẻ lái khét lẹt, nhưng tôi lại khá chuộng cái văn phong quái gở của lão tác giả.</p>
     <p>Và điều quan trọng nhất là, cô em gái của main chính sở hữu một lượng fan hùng hậu nhờ tính cách tsundere và tạo hình cưng xỉu, đến mức Maru có vẻ như đã bị bỏ bùa mê thuốc lú và trở thành simp chúa của ẻm.</p>
     <p>"Mình đồng cảm sâu sắc luôn á~. Mei-chan. Bé ẻm cute phô mai que thật sự, phải không?"</p>
     <p>Narasaka-san đưa tay sờ nắn cái huy hiệu trên mũ một cách đầy cưng nựng.</p>
@@ -458,82 +712,82 @@
     <p>"Hàng riêu đó! Sức sát thương từ sự cute của Mei-chan là không thể bàn cãi. Saki, bồ cũng phải cày ngay bộ này đi. Nếu nội dung liên quan đến em gái, bảo đảm bồ sẽ bị dính lời nguyền mê mẩn cho xem!"</p>
     <p>"R-Ra là vậy."</p>
     <p>Saki có vẻ hơi bị dội trước màn sale off bất chấp thủ đoạn của Narasaka-san.</p>
-    <p>Ờ thì, anh đoán một đứa em gái hàng real ngoài đời thực chắc chắn sẽ đéo mảy may hứng thú với mấy cái thể loại truyện sặc mùi siscon (cuồng em gái) này đâu, nhưng vì đó chẳng phải chuyện của anh, nên anh quyết định chọn cách câm nín cho yên phận.</p>
+    <p>Ờ thì, tôi đoán một đứa em gái hàng real ngoài đời thực chắc chắn sẽ đéo mảy may hứng thú với mấy cái thể loại truyện sặc mùi siscon (cuồng em gái) này đâu, nhưng vì đó chẳng phải chuyện của tôi, nên tôi quyết định chọn cách câm nín cho yên phận.</p>
     <p>"Thì, ẻm đáng yêu thật mà. Nét vẽ bản gốc cũng nuột, mà bản chibi (deformed) lại càng moe hơn. Nghe đồn ẻm đã nổi rần rần từ lúc bộ truyện mới nhá hàng cơ. Cộng thêm việc diễn tả mấy chiêu thức âm thanh lên mặt giấy manga là một thử thách khó nhằn, nhưng lão tác giả đã thể hiện nó một cách xuất thần—"</p>
     <p>Giữa lúc cả đám đang buôn chuyện rôm rả về cái chủ đề đéo liên quan mẹ gì đến bóng chày, bỗng có một giọng nói lạ hoắc cất lên từ phía sau.</p>
     <p>"Tôi rất vinh hạnh khi nghe cậu nói vậy. Cảm ơn cậu."</p>
-    <p>Anh xém chút nữa thì rớt tim ra ngoài. Anh nằm mơ cũng không ngờ mấy lời bình phẩm nhảm nhí của mình lại lọt vào tai người thứ ba ngoài thằng Maru.</p>
-    <p>Anh giật bắn mình quay ngoắt lại, đập vào mắt là một ông chú trạc tứ tuần với bộ râu quai nón đang nhoẻn miệng cười. Ông chú đang khoác trên mình một chiếc áo thun cộc tay. Ngay giữa ngực áo chễm chệ hình khuôn mặt khổng lồ của một bé loli, và thật vi diệu làm sao, đó chính là khuôn mặt của bé loli trên cái huy hiệu của Narasaka-san. Logo 'Raimei Sisters' cũng được in chình ình trên đó. What the hợi?</p>
+    <p>Tôi xém chút nữa thì rớt tim ra ngoài. Tôi nằm mơ cũng không ngờ mấy lời bình phẩm nhảm nhí của mình lại lọt vào tai người thứ ba ngoài thằng Maru.</p>
+    <p>Tôi giật bắn mình quay ngoắt lại, đập vào mắt là một ông chú trạc tứ tuần với bộ râu quai nón đang nhoẻn miệng cười. Ông chú đang khoác trên mình một chiếc áo thun cộc tay. Ngay giữa ngực áo chễm chệ hình khuôn mặt khổng lồ của một bé loli, và thật vi diệu làm sao, đó chính là khuôn mặt của bé loli trên cái huy hiệu của Narasaka-san. Logo 'Raimei Sisters' cũng được in chình ình trên đó. What the hợi?</p>
     <p>"Chào buổi sáng, anh Tori!"</p>
     <p>"Yo, Maru-kun, chào buổi sáng cậu em."</p>
     <p>Thấy thằng Maru bắn lời chào "anh Tori" một cách thân mật như bạn nhậu, chắc mẩm ông chú này chính là...</p>
     <p>"Asamura nè, đây là nhân vật chống cháy mà tao từng chém gió với mài đấy. Asamura, xin giới thiệu với mài đây là anh Tori, à nhầm, anh Torigoe."</p>
-    <p>Maru vỗ đen đét vào vai anh rồi trịnh trọng giới thiệu anh với ông chú râu ria rậm rạp đang đứng trước mặt. Anh phản xạ có điều kiện cúi gập người chào hỏi.</p>
+    <p>Maru vỗ đen đét vào vai tôi rồi trịnh trọng giới thiệu tôi với ông chú râu ria rậm rạp đang đứng trước mặt. Tôi phản xạ có điều kiện cúi gập người chào hỏi.</p>
     <p>"Em tên là Asamura. À, em là... bạn cốt của Maru."</p>
     <p>"Ừ, anh nghe danh cậu em từ lâu rồi. Hân hạnh được diện kiến. Anh là Torigoe, ông bầu của đội 'Raimei Sisters'. Thật vinh dự khi được biết cậu em cũng là fan cứng của bé Mei-chan."</p>
     <p>"À, dạ vâng."</p>
     <p>Thấy ông chú tỏ vẻ khoái chí, chẳng lẽ ổng cũng là wibu chúa đam mê bộ 'Raimei'?</p>
-    <p>Anh đã định nghĩ mọi chuyện đơn giản như vậy, nhưng cú twist tiếp theo từ thằng Maru đã vả cho anh một cái không trượt phát nào.</p>
+    <p>Tôi đã định nghĩ mọi chuyện đơn giản như vậy, nhưng cú twist tiếp theo từ thằng Maru đã vả cho tôi một cái không trượt phát nào.</p>
     <p>"Asamura, anh Torigoe đây chính là biên tập viên nắm thóp lão tác giả Beradonna-sensei, cha đẻ của bộ manga Raimei đấy."</p>
     <p>Hả? ... Biên tập viên?</p>
     <p>"Cảm ơn cậu nhé," chú Torigoe nhoẻn miệng cười.</p>
     <p>"À, vâng. Em cảm ơn anh."</p>
-    <p>Cảm ơn cái quần què gì? Mình đang lảm nhảm cái đéo gì vậy? Não anh đang trong tình trạng báo động đỏ vì quá tải thông tin.</p>
-    <p>Tuy nhiên, phớt lờ vẻ mặt ngu ra của anh, Maru bắt đầu dắt anh đi chào hỏi 500 anh em trong đội bóng chày đang lục đục kéo đến và giới thiệu anh với từng người một. Mỗi lần như thế, anh lại tự động nhai lại câu thần chú: "Hân hạnh được làm quen. Mình là Asamura. Hôm nay mong được mọi người chiếu cố", và khi phần khởi động làm nóng người trên sân bắt đầu, anh cảm thấy mình dần được anh em trong đội dung nạp, nhưng cái ẩn số to đùng lúc nãy thì vẫn còn bỏ ngỏ.</p>
+    <p>Cảm ơn cái quần què gì? Mình đang lảm nhảm cái đéo gì vậy? Não tôi đang trong tình trạng báo động đỏ vì quá tải thông tin.</p>
+    <p>Tuy nhiên, phớt lờ vẻ mặt ngu ra của tôi, Maru bắt đầu dắt tôi đi chào hỏi 500 anh em trong đội bóng chày đang lục đục kéo đến và giới thiệu tôi với từng người một. Mỗi lần như thế, tôi lại tự động nhai lại câu thần chú: "Hân hạnh được làm quen. Mình là Asamura. Hôm nay mong được mọi người chiếu cố", và khi phần khởi động làm nóng người trên sân bắt đầu, anh cảm thấy mình dần được anh em trong đội dung nạp, nhưng cái ẩn số to đùng lúc nãy thì vẫn còn bỏ ngỏ.</p>
     <p>Biên tập viên nắm thóp... nghĩa là sao ta?</p>
-    <p>Thế nhưng, thời gian đéo chừa một ai, màn khởi động trước giờ G đã chính thức khai mạc. Mỗi thành viên đều tự động tìm đối tác để luyện tập ném bắt bóng, nhưng vì anh là tân binh vớt vát phút chót nên đào đâu ra cặp để tập chung...</p>
+    <p>Thế nhưng, thời gian đéo chừa một ai, màn khởi động trước giờ G đã chính thức khai mạc. Mỗi thành viên đều tự động tìm đối tác để luyện tập ném bắt bóng, nhưng vì tôi là tân binh vớt vát phút chót nên đào đâu ra cặp để tập chung...</p>
     <p>"Tao sẽ làm cạ cứng cho mài, Asamura. Mài biết ném bắt bóng cơ bản đúng không?"</p>
     <p>Maru vừa nói vừa dùng một tay nhồi quả bóng vào găng tay bôm bốp.</p>
     <p>"Tao mù tịt khoản này, nhưng mài gánh tao một đoạn được không?"</p>
     <p>"Thả lỏng cơ đít đi mài. Trận này tao đách quan tâm thắng thua."</p>
-    <p>Maru buông lời trấn an kèm theo một nụ cười tươi rói, nhưng nội cái việc đứng đây thôi cũng đủ khiến anh căng thẳng vãi đái rồi.</p>
-    <p>Sau khi khởi động xương khớp sương sương ngoài đường biên, anh bắt đầu được bổ túc cấp tốc khóa huấn luyện ném bóng, bắt bóng và vụt gậy. Cái viễn cảnh một thằng tay ngang lần đầu được trải nghiệm ném bắt bóng cách giờ bóng lăn vỏn vẹn 30 phút, theo đánh giá của anh, là một sự sỉ nhục trắng trợn đối với bộ môn bóng chày nghiệp dư.</p>
-    <p>Và hiện thực phũ phàng đã tát cho anh một cú đau điếng.</p>
-    <p>Gần như toàn bộ 30 phút tập luyện quý giá đó, anh chỉ cắm mặt vào việc đỡ mấy trái bóng do thằng Maru ném tới.</p>
-    <p>Nhìn từ ngoài vào thì có vẻ như cậu ta chỉ ném hời hợt cho có, nhưng má ơi quả bóng bay với tốc độ bàn thờ, và anh thì đéo có cửa nào để bắt dính nó. "Cái quái quỷ gì thế này, khủng bố tinh thần à," anh thầm gào thét trong lòng. Trong suốt 30 phút tập luyện đó, thành tựu vĩ đại nhất mà anh làm được là dùng cái găng tay khua khoắng lung tung rồi để quả bóng rớt bịch xuống đất.</p>
-    <p>Còn mấy pha ném trả bóng thì đúng là thảm họa của thảm họa. Quả bóng rời tay anh cứ thế bay không quỹ đạo, chệch hướng xa cả cây số.</p>
-    <p>Âu cũng là điều dễ hiểu. Suốt 18 năm sống trên cõi đời này, anh chưa từng dính líu đến bất kỳ môn thể thao nào dùng bóng. Suốt những năm tháng mài đũng quần ở trường cấp hai và cấp ba, anh chưa bao giờ bị ép phải chơi bóng chày, và dù có lôi mấy cái kinh nghiệm ném bắt bóng mềm cùi bắp ra khè thì nó cũng đách thấm vào đâu. Thú thật thì, anh luôn coi thể thao đồng đội là một thứ dịch bệnh cần tránh xa, nên hễ lớp có tổ chức giao lưu thi đấu, anh toàn chọn cách ngồi thu lu ở góc sân, cố gắng tàng hình hết mức có thể.</p>
-    <p>Làm thế đéo nào mà một thằng ất ơ như anh có thể thành thần chỉ sau 30 phút học khóa huấn luyện cấp tốc. Nếu cái chuyện hoang đường đó mà có thật, thì anh đã đầu quân cho đội bóng chày từ thuở nảo thuở nào rồi.</p>
+    <p>Maru buông lời trấn an kèm theo một nụ cười tươi rói, nhưng nội cái việc đứng đây thôi cũng đủ khiến tôi căng thẳng vãi đái rồi.</p>
+    <p>Sau khi khởi động xương khớp sương sương ngoài đường biên, tôi bắt đầu được bổ túc cấp tốc khóa huấn luyện ném bóng, bắt bóng và vụt gậy. Cái viễn cảnh một thằng tay ngang lần đầu được trải nghiệm ném bắt bóng cách giờ bóng lăn vỏn vẹn 30 phút, theo đánh giá của tôi, là một sự sỉ nhục trắng trợn đối với bộ môn bóng chày nghiệp dư.</p>
+    <p>Và hiện thực phũ phàng đã tát cho tôi một cú đau điếng.</p>
+    <p>Gần như toàn bộ 30 phút tập luyện quý giá đó, tôi chỉ cắm mặt vào việc đỡ mấy trái bóng do thằng Maru ném tới.</p>
+    <p>Nhìn từ ngoài vào thì có vẻ như cậu ta chỉ ném hời hợt cho có, nhưng má ơi quả bóng bay với tốc độ bàn thờ, và tôi thì đéo có cửa nào để bắt dính nó. "Cái quái quỷ gì thế này, khủng bố tinh thần à," tôi thầm gào thét trong lòng. Trong suốt 30 phút tập luyện đó, thành tựu vĩ đại nhất mà tôi làm được là dùng cái găng tay khua khoắng lung tung rồi để quả bóng rớt bịch xuống đất.</p>
+    <p>Còn mấy pha ném trả bóng thì đúng là thảm họa của thảm họa. Quả bóng rời tay tôi cứ thế bay không quỹ đạo, chệch hướng xa cả cây số.</p>
+    <p>Âu cũng là điều dễ hiểu. Suốt 18 năm sống trên cõi đời này, tôi chưa từng dính líu đến bất kỳ môn thể thao nào dùng bóng. Suốt những năm tháng mài đũng quần ở trường cấp hai và cấp ba, tôi chưa bao giờ bị ép phải chơi bóng chày, và dù có lôi mấy cái kinh nghiệm ném bắt bóng mềm cùi bắp ra khè thì nó cũng đách thấm vào đâu. Thú thật thì, tôi luôn coi thể thao đồng đội là một thứ dịch bệnh cần tránh xa, nên hễ lớp có tổ chức giao lưu thi đấu, tôi toàn chọn cách ngồi thu lu ở góc sân, cố gắng tàng hình hết mức có thể.</p>
+    <p>Làm thế đéo nào mà một thằng ất ơ như tôi có thể thành thần chỉ sau 30 phút học khóa huấn luyện cấp tốc. Nếu cái chuyện hoang đường đó mà có thật, thì tôi đã đầu quân cho đội bóng chày từ thuở nảo thuở nào rồi.</p>
     <p>Tiếng còi mãn cuộc giờ tập luyện vang lên, giờ G đã điểm.</p>
-    <p>Thế nhưng, với cái màn khởi động phế vật như lúc nãy, làm sao anh có thể tự tin bước ra sân thi đấu được cơ chứ...</p>
-    <p>Dù được phân công trấn giữ vị trí chốt chặn ở cánh phải (right field), anh vẫn đéo thể nào định vị được điểm rơi của mấy quả bóng bay bổng (fly ball) (đơn giản là vì anh mù tịt về quỹ đạo rơi của chúng). Còn đối với mấy quả bóng bay thẳng tắp như kẻ chỉ, anh thậm chí còn phản xạ lóng ngóng nhảy né ra một bên. Mãi đến khi anh may mắn tóm được một quả bóng lăn lông lốc văng ra ngoài đường biên, anh dồn hết sức bình sinh ném nó về phía đồng đội, nhưng vì quỹ đạo ném cao tít tắp, nên mấy tay chạy gôn của đối phương vẫn cứ thế nhởn nhơ ghi điểm. Khi đội nhà bị đục thủng tới ba điểm ngay trong hiệp đấu đầu tiên, cảm giác tội lỗi xâm chiếm lấy anh, khiến anh chỉ muốn độn thổ cho xong.</p>
-    <p>Bóng chày nghiệp dư mẹ gì mà khó nhằn vãi linh hồn! Anh gần như tuyệt vọng hoàn toàn.</p>
-    <p>Cuối cùng, sau khi ba cầu thủ đối phương bị loại (out), anh lết xác về băng ghế dự bị với đôi chân nặng như đeo chì. Chân bước đi không nổi.</p>
-    <p>Thế nhưng, khoảnh khắc đặt mông xuống ghế, anh đã bị sốc toàn tập. Đồng đội, Narasaka-san và cả Saki không hề tỏ ra thất vọng hay trách móc, ngược lại, họ còn tươi cười rạng rỡ và liên tục bơm doping tinh thần cho anh bằng những câu kiểu như "Thua keo này ta bày keo khác!" hay "Đen thôi đỏ quên đi!". À, hóa ra đây chính là chân lý của câu nói "đéo cần bận tâm đến thắng thua".</p>
+    <p>Thế nhưng, với cái màn khởi động phế vật như lúc nãy, làm sao tôi có thể tự tin bước ra sân thi đấu được cơ chứ...</p>
+    <p>Dù được phân công trấn giữ vị trí chốt chặn ở cánh phải (right field), tôi vẫn đéo thể nào định vị được điểm rơi của mấy quả bóng bay bổng (fly ball) (đơn giản là vì tôi mù tịt về quỹ đạo rơi của chúng). Còn đối với mấy quả bóng bay thẳng tắp như kẻ chỉ, tôi thậm chí còn phản xạ lóng ngóng nhảy né ra một bên. Mãi đến khi tôi may mắn tóm được một quả bóng lăn lông lốc văng ra ngoài đường biên, tôi dồn hết sức bình sinh ném nó về phía đồng đội, nhưng vì quỹ đạo ném cao tít tắp, nên mấy tay chạy gôn của đối phương vẫn cứ thế nhởn nhơ ghi điểm. Khi đội nhà bị đục thủng tới ba điểm ngay trong hiệp đấu đầu tiên, cảm giác tội lỗi xâm chiếm lấy tôi, khiến tôi chỉ muốn độn thổ cho xong.</p>
+    <p>Bóng chày nghiệp dư mẹ gì mà khó nhằn vãi linh hồn! Tôi gần như tuyệt vọng hoàn toàn.</p>
+    <p>Cuối cùng, sau khi ba cầu thủ đối phương bị loại (out), tôi lết xác về băng ghế dự bị với đôi chân nặng như đeo chì. Chân bước đi không nổi.</p>
+    <p>Thế nhưng, khoảnh khắc đặt mông xuống ghế, tôi đã bị sốc toàn tập. Đồng đội, Narasaka-san và cả Saki không hề tỏ ra thất vọng hay trách móc, ngược lại, họ còn tươi cười rạng rỡ và liên tục bơm doping tinh thần cho tôi bằng những câu kiểu như "Thua keo này ta bày keo khác!" hay "Đen thôi đỏ quên đi!". À, hóa ra đây chính là chân lý của câu nói "đéo cần bận tâm đến thắng thua".</p>
     <p>Ở cái đội bóng này, kết quả chỉ là thứ phù du. Không biết mấy cái đội bóng chày nghiệp dư khác ngoài kia sinh hoạt kiểu gì, nhưng chí ít thì văn hóa của đội này là vậy.</p>
     <p>"Ê Asamura. Tới lượt mài múa gậy rồi kìa."</p>
-    <p>Giọng nói của Maru đánh thức anh khỏi cơn mơ màng đúng lúc anh đang nốc ừng ực chai nước tăng lực mà Saki vừa dúi vào tay.</p>
+    <p>Giọng nói của Maru đánh thức tôi khỏi cơn mơ màng đúng lúc tôi đang nốc ừng ực chai nước tăng lực mà Saki vừa dúi vào tay.</p>
     <p>"Hả? Tao đánh số 8 mà, đúng không?"</p>
-    <p>Anh hoàn toàn đéo có thời gian để theo dõi diễn biến trên sân vì còn bận hớp lấy hớp để không khí, nhưng chẳng phải lượt đánh của anh đến quá sớm so với quy định sao?</p>
+    <p>Tôi hoàn toàn đéo có thời gian để theo dõi diễn biến trên sân vì còn bận hớp lấy hớp để không khí, nhưng chẳng phải lượt đánh của tôi đến quá sớm so với quy định sao?</p>
     <p>"Ừ, mài cầm trịch vị trí số 8, nhưng mài cũng sẽ gánh luôn lượt đánh của số 2 và số 5."</p>
     <p>"Cái đéo gì cơ?"</p>
     <p>"Ông anh Yoshida hình như bị chấn thương vai hành hạ từ hôm qua rồi. Ổng ráng lết được qua chốt 1 là giỏi lắm rồi, chứ giờ bảo ổng vác gậy ra sân thì chịu chết. Chưa kể, Daitokuji-san ở vị trí số 5 cũng rén quá nên xin kiếu lượt đánh luôn."</p>
     <p>"Khoan đã. Luật chơi cho phép lách luật kiểu đó luôn hả?"</p>
     <p>"Phước đức cho mài nhé, mài sẽ được bonus thêm ba lượt vụt gậy nữa, tha hồ mà cày exp. Mà cứ yên tâm công tác, mài có strike out (đập hụt bóng 3 lần) cũng đéo ai thèm trách đâu."</p>
     <p>Đéo đéo đéo. Dù mang tiếng là giải ao làng, nhưng luật lệ cũng đéo thể nào lỏng lẻo đến mức lố bịch như vậy được?</p>
-    <p>Ý anh là, giả sử anh có ăn rùa vụt trúng quả bóng và lết được ra chốt (base), thì chẳng lẽ lượt đánh tiếp theo của anh lại đến trước khi anh lết được về gôn nhà (home plate) sao? Khi anh lôi cái logic đó ra chất vấn, Maru đáp tỉnh bơ: "Lúc đó thì đã có đứa khác đứng lù lù ở ô batter (khu vực đánh bóng) rồi, lo đéo gì."</p>
+    <p>Ý tôi là, giả sử tôi có ăn rùa vụt trúng quả bóng và lết được ra chốt (base), thì chẳng lẽ lượt đánh tiếp theo của tôi lại đến trước khi tôi lết được về gôn nhà (home plate) sao? Khi tôi lôi cái logic đó ra chất vấn, Maru đáp tỉnh bơ: "Lúc đó thì đã có đứa khác đứng lù lù ở ô batter (khu vực đánh bóng) rồi, lo đéo gì."</p>
     <p>Luật lệ như cái rổ. Dù là đánh cho vui thì cũng đâu thể nào đẻ ra cái luật tùy tiện như vậy được?</p>
     <p>"Luật lệ trong mấy trận giao hữu kiểu này nó linh động lắm. Mấy cái luật rừng tự đẻ ra cho trận này đã được hai bên bắt tay thông qua từ trước khi vào sân rồi. Thế nên, cứ mạnh dạn mà strike out, à nhầm, cứ vung gậy cho sướng tay đi!"</p>
-    <p>Cách bơm tinh thần của cậu ta nghe cứ như thể cậu ta đã mặc định sẵn là anh đéo bao giờ chạm được vào lông quả bóng. Đương nhiên, bị khích tướng đến mức đó, anh cũng sôi máu muốn quật trúng quả bóng ít nhất một lần cho bỏ ghét.</p>
+    <p>Cách bơm tinh thần của cậu ta nghe cứ như thể cậu ta đã mặc định sẵn là tôi đéo bao giờ chạm được vào lông quả bóng. Đương nhiên, bị khích tướng đến mức đó, tôi cũng sôi máu muốn quật trúng quả bóng ít nhất một lần cho bỏ ghét.</p>
     <p>"Batter, out!"</p>
-    <p>... Và thế là anh dính strike out liên hoàn ba nhát.</p>
+    <p>... Và thế là tôi dính strike out liên hoàn ba nhát.</p>
     <p>"Xui vãi đái, xui vãi đái. Không sao đâu Asamura, làm lại từ đầu."</p>
     <p>"Dạ, cây gậy của anh và quả bóng đang xích lại gần nhau hơn rồi đấy."</p>
-    <p>Lời an ủi ngọt ngào của Saki là thứ duy nhất len lỏi được vào trái tim đang rỉ máu của anh. Haizz... nếu được ban cho nhiều đặc ân đến thế, anh nguyện sẽ bung bết mọi sức lực để vụt trúng quả bóng.</p>
-    <p>Nhưng đời đâu như mơ, ảo mộng đâu dễ vỡ, và hai giờ đồng hồ sau khi tiếng còi mãn cuộc vang lên, bảng tỷ số hiển thị kết quả 12-9, một con số khá chát chúa đối với một trận bóng chày nghiệp dư, trong khi chiến tích của anh là một con số 0 tròn trĩnh vì đéo có lấy một pha chạm bóng thành công nào.</p>
+    <p>Lời an ủi ngọt ngào của Saki là thứ duy nhất len lỏi được vào trái tim đang rỉ máu của tôi. Haizz... nếu được ban cho nhiều đặc ân đến thế, tôi nguyện sẽ bung bết mọi sức lực để vụt trúng quả bóng.</p>
+    <p>Nhưng đời đâu như mơ, ảo mộng đâu dễ vỡ, và hai giờ đồng hồ sau khi tiếng còi mãn cuộc vang lên, bảng tỷ số hiển thị kết quả 12-9, một con số khá chát chúa đối với một trận bóng chày nghiệp dư, trong khi chiến tích của tôi là một con số 0 tròn trĩnh vì đéo có lấy một pha chạm bóng thành công nào.</p>
     <p>"Nhưng mà tao thấy ở cú swing cuối cùng Asamura-kun suýt nữa thì đập trúng bóng đấy."</p>
-    <p>Anh Torigoe buông lời nhận xét sau khi trận đấu hạ màn.</p>
-    <p>Tuy thành tích là con số không tròn trĩnh, nhưng nhờ được dọn cỗ cho lên dĩa nhiều lần, anh dần dà bắt được nhịp bay của trái bóng và cuối cùng cũng chạm mỏ được vào quả bóng ở cú vung gậy chốt hạ, thậm chí còn đưa nó vút ra khỏi đường biên. Đen cái là quả bóng lại bay vút ra tận cánh trái ngoài sân.</p>
+    <p>Tôi Torigoe buông lời nhận xét sau khi trận đấu hạ màn.</p>
+    <p>Tuy thành tích là con số không tròn trĩnh, nhưng nhờ được dọn cỗ cho lên dĩa nhiều lần, tôi dần dà bắt được nhịp bay của trái bóng và cuối cùng cũng chạm mỏ được vào quả bóng ở cú vung gậy chốt hạ, thậm chí còn đưa nó vút ra khỏi đường biên. Đen cái là quả bóng lại bay vút ra tận cánh trái ngoài sân.</p>
     <p>"Tao cá là lần sau mài sẽ sút tung lưới nó. Asamura-kun, mài có tố chất đấy."</p>
     <p>"Cảm ơn anh."</p>
-    <p>Dù thừa biết đó chỉ là lời an ủi sáo rỗng, nhưng được khen ngợi động viên như thế cũng mát lòng mát dạ phết. Anh Torigoe, người vừa ban phát lời khen có cánh cho anh, đã dúi vào tay anh tấm danh thiếp lúc hai người chào từ biệt. Lướt mắt qua tấm danh thiếp, anh mới vỡ lẽ ra anh Torigoe đích thị là tay biên tập viên nắm thóp lão tác giả bộ manga 'Raimei' y như lời thằng Maru đã chém gió.</p>
+    <p>Dù thừa biết đó chỉ là lời an ủi sáo rỗng, nhưng được khen ngợi động viên như thế cũng mát lòng mát dạ phết. Tôi Torigoe, người vừa ban phát lời khen có cánh cho tôi, đã dúi vào tay tôi tấm danh thiếp lúc hai người chào từ biệt. Lướt mắt qua tấm danh thiếp, tôi mới vỡ lẽ ra tôi Torigoe đích thị là tay biên tập viên nắm thóp lão tác giả bộ manga 'Raimei' y như lời thằng Maru đã chém gió.</p>
     <p>"Bữa sau tao lại rủ mài tiếp nha."</p>
     <p>Ông chú bỏ lại câu nói đó trước lúc chia tay.</p>
-    <p>Sau khi mở cuộc điều tra với thằng Maru, anh mới ngã ngửa ra rằng, tiền thân của cái đội bóng 'Raimei Sisters' này là do anh Torigoe và lão tác giả 'Beradonna'-sensei cùng nhau thai nghén ra. Bọn họ còn ấp ủ cái mưu đồ rủ rê đám mangaka lười vận động xách đít ra ngoài tập thể dục và giao lưu mở rộng quan hệ trong giới. Đó là lý do tại sao họ lại lấy tên bộ truyện đặt cho tên đội, nhưng vì lão 'Beradonna'-sensei làm ăn lề mề, đéo chịu nộp bản thảo đúng deadline, nên toàn bộ kế hoạch bóng chày bị đóng băng vô thời hạn cho đến khi có bản thảo... Nói cách khác, nếu xui xẻo, anh hoàn toàn có nguy cơ chạm trán với mấy cha nội mangaka thông qua cái giải bóng chày ao làng này. Nghĩ đến viễn cảnh đó thôi đã thấy rợn cả gai ốc.</p>
+    <p>Sau khi mở cuộc điều tra với thằng Maru, tôi mới ngã ngửa ra rằng, tiền thân của cái đội bóng 'Raimei Sisters' này là do tôi Torigoe và lão tác giả 'Beradonna'-sensei cùng nhau thai nghén ra. Bọn họ còn ấp ủ cái mưu đồ rủ rê đám mangaka lười vận động xách đít ra ngoài tập thể dục và giao lưu mở rộng quan hệ trong giới. Đó là lý do tại sao họ lại lấy tên bộ truyện đặt cho tên đội, nhưng vì lão 'Beradonna'-sensei làm ăn lề mề, đéo chịu nộp bản thảo đúng deadline, nên toàn bộ kế hoạch bóng chày bị đóng băng vô thời hạn cho đến khi có bản thảo... Nói cách khác, nếu xui xẻo, tôi hoàn toàn có nguy cơ chạm trán với mấy cha nội mangaka thông qua cái giải bóng chày ao làng này. Nghĩ đến viễn cảnh đó thôi đã thấy rợn cả gai ốc.</p>
     <p>Chuyện là vậy đó,</p>
-    <p>Cả bọn gồm bốn mạng—anh, Saki, Maru và Narasaka-san—rút quân về Ga Công viên Shakuji và tổ chức một buổi tiệc ăn mừng, hay nói đúng hơn là một buổi họp báo rút kinh nghiệm, tại một tiệm thức ăn nhanh gần đó.</p>
+    <p>Cả bọn gồm bốn mạng—tôi, Saki, Maru và Narasaka-san—rút quân về Ga Công viên Shakuji và tổ chức một buổi tiệc ăn mừng, hay nói đúng hơn là một buổi họp báo rút kinh nghiệm, tại một tiệm thức ăn nhanh gần đó.</p>
     <p>"Xem nè, xem nè. Asamura-kun!"</p>
-    <p>Narasaka-san hớn hở chĩa thẳng màn hình điện thoại vào mặt anh. Đập vào mắt anh là hình ảnh chính mình đang chễm chệ trong khu vực đánh bóng với những tư thế lóng ngóng vụng về, hiện nguyên hình là một thằng gà mờ, kèm theo đó là hình bóng lão bắt bóng và ông trọng tài bị lia góc quay ngang sườn. Đó đéo phải là ảnh tĩnh, mà là một đoạn clip quay chậm, với thanh thời gian đang chạy nhảy múa trên màn hình.</p>
+    <p>Narasaka-san hớn hở chĩa thẳng màn hình điện thoại vào mặt tôi. Đập vào mắt tôi là hình ảnh chính mình đang chễm chệ trong khu vực đánh bóng với những tư thế lóng ngóng vụng về, hiện nguyên hình là một thằng gà mờ, kèm theo đó là hình bóng lão bắt bóng và ông trọng tài bị lia góc quay ngang sườn. Đó đéo phải là ảnh tĩnh, mà là một đoạn clip quay chậm, với thanh thời gian đang chạy nhảy múa trên màn hình.</p>
     <p>"Ối vãi, bồ lén lút quay cái này từ lúc nào thế?"</p>
     <p>"Thì tao đã rào trước là tao sẽ quay rồi còn gì."</p>
     <p>"... Bồ có nói câu đó hả?"</p>
@@ -541,105 +795,110 @@
     <p>"À, ẻm có mở mồm nói câu đó thật. Mặc dù tao bênh ẻm thì hơi thiên vị, nhưng tao cũng đéo đời nào dung túng cho cái thói quay lén đâu."</p>
     <p>"... Ờ thì, nói thật là tao bị căng cứng tâm lý lúc lâm trận. Khả năng cao là tao đã bị lag và bỏ lọt vài thông tin quan trọng."</p>
     <p>"Mài thấy khó chịu hả? Có cần tao xóa đi không?"</p>
-    <p>Narasaka-san tỏ vẻ ăn năn hối lỗi nhưng vẫn cư xử cực kỳ tinh tế. Anh liền lắc đầu xua tay.</p>
+    <p>Narasaka-san tỏ vẻ ăn năn hối lỗi nhưng vẫn cư xử cực kỳ tinh tế. Tôi liền lắc đầu xua tay.</p>
     <p>"Không sao, không sao đâu. Tao chỉ hơi nhột thôi, chứ đéo đến mức ghét bỏ gì đâu. ... Việc tự soi mình dưới lăng kính khách quan lúc đang vã mồ hôi chơi thể thao nó cứ, đéo biết diễn tả sao nữa, dị dị thế nào ấy."</p>
     <p>"Hả? Tao thấy ngầu lòi mà. Đúng không, Saki?"</p>
     <p>"Mắc mớ gì bồ bắt tui làm người phán xử? ... Ờ thì, cũng được."</p>
     <p>"Sao bồ lại lảng tránh ánh mắt và trả lời tụt mood thế hả? Rõ ràng là nãy giờ Saki tia máy ảnh chụp Asamura-kun với vẻ mặt nghiêm trọng lắm mà!!"</p>
     <p>"Hức."</p>
     <p>... Saki?</p>
-    <p>Saki bối rối quay mặt đi trong thoáng chốc, nhưng vài giây sau, em ấy rụt rè và ngượng ngùng chìa màn hình điện thoại ra cho anh xem.</p>
+    <p>Saki bối rối quay mặt đi trong thoáng chốc, nhưng vài giây sau, em ấy rụt rè và ngượng ngùng chìa màn hình điện thoại ra cho tôi xem.</p>
     <p>"Em xin lỗi, em cũng có táy máy tay chân chộp vài bô ảnh. Nhưng chỉ là ảnh tĩnh thôi."</p>
 
-    <p>Trên màn hình điện thoại của em ấy hiển thị rõ nét khoảnh khắc anh đang vung gậy chém gió.</p>
-    <p>Tuy nhiên, nó đéo có góc máy bao quát cả catcher hay trọng tài như cái clip của Narasaka-san, mà ống kính đã zoom cận cảnh lấy nét vào mỗi khuôn mặt anh. Saki, dạo này luôn mồm than vãn đang đi tìm bí kíp để chộp được một bô ảnh để đời, đã chứng minh năng lực của mình bằng cách canh góc, chớp thời cơ và bắt sáng cực kỳ ảo diệu. Mặc dù chủ thể trong bức ảnh là cái bản mặt đần thúi của mình, nhưng anh vẫn cảm thấy ngượng mồm khi phải dùng từ "đẹp" để miêu tả về nó.</p>
+    <p>Trên màn hình điện thoại của em ấy hiển thị rõ nét khoảnh khắc tôi đang vung gậy chém gió.</p>
+    <p>Tuy nhiên, nó đéo có góc máy bao quát cả catcher hay trọng tài như cái clip của Narasaka-san, mà ống kính đã zoom cận cảnh lấy nét vào mỗi khuôn mặt tôi. Saki, dạo này luôn mồm than vãn đang đi tìm bí kíp để chộp được một bô ảnh để đời, đã chứng minh năng lực của mình bằng cách canh góc, chớp thời cơ và bắt sáng cực kỳ ảo diệu. Mặc dù chủ thể trong bức ảnh là cái bản mặt đần thúi của mình, nhưng tôi vẫn cảm thấy ngượng mồm khi phải dùng từ "đẹp" để miêu tả về nó.</p>
     <p>"Đừng nói với anh là em định bưng cái của nợ này lên Instagram nhé..."</p>
     <p>"Tất nhiên là không rồi. Nếu anh nghĩ em là cái đứa rảnh rỗi sinh nông nổi đi làm mấy trò ruồi bu đó thì trái tim em tổn thương lắm đấy."</p>
     <p>"Ừ, anh biết mà. Chỉ là anh muốn xác nhận lại cho chắc kèo thôi."</p>
-    <p>Anh vừa trút được gánh nặng trong lòng, nhưng đồng thời cũng nhen nhóm một chút cảm giác hụt hẫng.</p>
-    <p>Trang Instagram của anh thì trống trơn như chùa bà Đanh, trong khi tường nhà Saki thì rộn ràng hoa lá cành. Mặc dù anh mù tịt khoản chơi mạng xã hội, nhưng anh vẫn sẽ cực kỳ mãn nguyện nếu được vinh dự chiếm một slot trong thế giới ảo của Saki.</p>
-    <p>... Nhưng mà, nói đi cũng phải nói lại, việc công khai vác cái bản mặt này lên mạng xã hội cho thiên hạ chiêm ngưỡng với tư cách là bạn trai của Saki thì có vẻ hơi bị lố. Bố anh chắc kèo là đéo thèm đụng tới Instagram, nhưng mẹ anh thì rất có thể sẽ mò mẫm vô coi thử.</p>
+    <p>Tôi vừa trút được gánh nặng trong lòng, nhưng đồng thời cũng nhen nhóm một chút cảm giác hụt hẫng.</p>
+    <p>Trang Instagram của tôi thì trống trơn như chùa bà Đanh, trong khi tường nhà Saki thì rộn ràng hoa lá cành. Mặc dù tôi mù tịt khoản chơi mạng xã hội, nhưng tôi vẫn sẽ cực kỳ mãn nguyện nếu được vinh dự chiếm một slot trong thế giới ảo của Saki.</p>
+    <p>... Nhưng mà, nói đi cũng phải nói lại, việc công khai vác cái bản mặt này lên mạng xã hội cho thiên hạ chiêm ngưỡng với tư cách là bạn trai của Saki thì có vẻ hơi bị lố. Bố tôi chắc kèo là đéo thèm đụng tới Instagram, nhưng mẹ tôi thì rất có thể sẽ mò mẫm vô coi thử.</p>
     <p>Sau màn soi hình và xem clip để ôn lại những khoảnh khắc vàng ngọc của trận đấu, cả bốn đứa bắt đầu chém gió rôm rả.</p>
     <p>"Thế nào Asamura-kun. Trải nghiệm trận đấu bóng chày đầu đời thấy sao?"</p>
-    <p>Narasaka-san đột ngột quăng câu hỏi với một nụ cười rạng rỡ, và ánh mắt anh vô tình va phải Maru. Cậu bạn trông có vẻ hơi lo âu.</p>
+    <p>Narasaka-san đột ngột quăng câu hỏi với một nụ cười rạng rỡ, và ánh mắt tôi vô tình va phải Maru. Cậu bạn trông có vẻ hơi lo âu.</p>
     <p>"Thú vị phết đấy."</p>
-    <p>Ngay khi câu trả lời bật ra khỏi miệng anh, một tia nhẹ nhõm ánh lên trong mắt Maru. Đó đéo phải là một lời nói dối bọc đường để an ủi thằng bạn chí cốt. Trận đấu quả thực mang lại cho anh một cảm giác rất phấn khích. Dù cho anh đang bị vắt kiệt sức lực. Anh Torigoe đã hứa hẹn sẽ hú anh đi đánh giải tiếp, và nếu có kèo thơm, anh cũng đéo ngại ngần gì mà không xách đít đi tham gia thêm lần nữa.</p>
-    <p>Trên đường cuốc bộ về nhà sau chầu ăn nhậu, anh sóng bước bên Saki, cùng nhau hồi tưởng lại những sự kiện vừa diễn ra trong ngày.</p>
+    <p>Ngay khi câu trả lời bật ra khỏi miệng tôi, một tia nhẹ nhõm ánh lên trong mắt Maru. Đó đéo phải là một lời nói dối bọc đường để an ủi thằng bạn chí cốt. Trận đấu quả thực mang lại cho tôi một cảm giác rất phấn khích. Dù cho tôi đang bị vắt kiệt sức lực. Tôi Torigoe đã hứa hẹn sẽ hú tôi đi đánh giải tiếp, và nếu có kèo thơm, tôi cũng đéo ngại ngần gì mà không xách đít đi tham gia thêm lần nữa.</p>
+    <p>Trên đường cuốc bộ về nhà sau chầu ăn nhậu, tôi sóng bước bên Saki, cùng nhau hồi tưởng lại những sự kiện vừa diễn ra trong ngày.</p>
     <p>"Có vẻ như anh đã có một trải nghiệm khá tuyệt vời nhỉ. Lần tới, hai đứa mình cùng ra công viên ném bắt bóng cho vui đi."</p>
     <p>"Nếu vậy, chắc anh phải tậu thêm một cái găng tay cho Saki nữa rồi."</p>
     <p>"Dạ. Nhưng mà nói thiệt, cú vung gậy chốt hạ của anh suýt nữa thì đập trúng bóng rồi đấy, đúng không?"</p>
     <p>"Nói thật là lúc tao chạm mỏ được quả bóng, tao cứ ngỡ quả đó kiểu gì cũng là một pha home run (bóng bay ra ngoài sân) rồi cơ."</p>
-    <p>Anh nửa đùa nửa thật đáp lại.</p>
+    <p>Tôi nửa đùa nửa thật đáp lại.</p>
     <p>"Em cũng có chung suy nghĩ đó. Cảm giác như quả bóng bị một hố đen vũ trụ nào đó nuốt chửng lên nền trời xanh biếc vậy, bụp! Ngay khoảnh khắc đó, em đã lỡ mồm gào lên 'Ăn rồi!'"</p>
     <p>"Thế à? Chà, anh bị điếc tạm thời nên đéo nghe thấy gì."</p>
     <p>"Sao cái mặt anh trông có vẻ xị ra thế? Chuyện đó đâu có gì to tát đâu, đúng không?"</p>
     <p>Saki chu mỏ hờn dỗi vì bị quê độ.</p>
-    <p>Nhưng sự thật là, khi đứng chôn chân ở khu vực đánh bóng, mọi tạp âm từ hàng ghế khán giả như bị mute hoàn toàn. Ngay cả tiếng hò reo cổ vũ của Saki và những tiếng ồn ào hỗn tạp khác cũng tan biến vào hư không. Anh dồn toàn bộ sự tập trung cao độ vào quả bóng đang lao tới trước mặt đến mức bản thân anh cũng phải rùng mình. Vì được luân phiên lên sân liên tục, anh đéo có thời gian để tự nhai lại những lỗi lầm của mình, mà chỉ chăm chăm sửa sai để không giẫm lên vết xe đổ của cú vụt trước.</p>
+    <p>Nhưng sự thật là, khi đứng chôn chân ở khu vực đánh bóng, mọi tạp âm từ hàng ghế khán giả như bị mute hoàn toàn. Ngay cả tiếng hò reo cổ vũ của Saki và những tiếng ồn ào hỗn tạp khác cũng tan biến vào hư không. Tôi dồn toàn bộ sự tập trung cao độ vào quả bóng đang lao tới trước mặt đến mức bản thân tôi cũng phải rùng mình. Vì được luân phiên lên sân liên tục, tôi đéo có thời gian để tự nhai lại những lỗi lầm của mình, mà chỉ chăm chăm sửa sai để không giẫm lên vết xe đổ của cú vụt trước.</p>
     <p>Biết đâu như thế lại là một tín hiệu vũ trụ.</p>
     <p>"Một lần hành động còn hơn ngàn lần suy nghĩ."</p>
-    <p>Bất giác, anh lại nhớ đến câu triết lý sống mà ông thầy dạy lái xe từng giác ngộ cho mình.</p>
+    <p>Bất giác, tôi lại nhớ đến câu triết lý sống mà ông thầy dạy lái xe từng giác ngộ cho mình.</p>
 
     <hr>
 
     <p>Kỳ nghỉ hè của trường đại học đã chính thức khởi động.</p>
-    <p>Và cũng tầm thời gian đó, anh đã hoàn thành xuất sắc giáo án thực hành đường trường và lý thuyết, đồng thời pass qua kỳ thi tốt nghiệp ngon ơ. Trường dạy lái xe đã trao tận tay anh tờ "giấy chứng nhận tốt nghiệp". Chặng đường tiếp theo là anh phải xách mông đến trung tâm sát hạch lái xe để cày nốt bài thi lý thuyết và bài kiểm tra kỹ năng, và nếu ăn ở tốt, anh sẽ chính thức cầm trong tay tấm bằng lái xe.</p>
-    <p>Để hoàn tất thủ tục cấp bằng, anh đã phải lặn lội lên tận trung tâm sát hạch lái xe ở Samezu.</p>
+    <p>Và cũng tầm thời gian đó, tôi đã hoàn thành xuất sắc giáo án thực hành đường trường và lý thuyết, đồng thời pass qua kỳ thi tốt nghiệp ngon ơ. Trường dạy lái xe đã trao tận tay tôi tờ "giấy chứng nhận tốt nghiệp". Chặng đường tiếp theo là tôi phải xách mông đến trung tâm sát hạch lái xe để cày nốt bài thi lý thuyết và bài kiểm tra kỹ năng, và nếu ăn ở tốt, tôi sẽ chính thức cầm trong tay tấm bằng lái xe.</p>
+    <p>Để hoàn tất thủ tục cấp bằng, tôi đã phải lặn lội lên tận trung tâm sát hạch lái xe ở Samezu.</p>
     <p>Samezu... cái xó xỉnh nào đây?</p>
-    <p>À, sau khi mở Google Maps lên check, anh mới ngã ngửa ra là nó nằm chình ình gần Shinagawa. Mất đứt 40 phút ngồi lắc lư trên tàu điện, anh mới lết xác tới nơi. Bằng một sức mạnh tâm linh nào đó, anh đã lọt qua ải bài thi lý thuyết và kiểm tra kỹ năng, cuối cùng cũng được cầm trên tay tấm bằng lái danh giá. Cái giá phải trả là anh đã mất toi nửa ngày trời thanh xuân ở đó.</p>
-    <p>Mặc dù không canh chuẩn xác được thời điểm ngay trước thềm kỳ nghỉ hè, nhưng anh đã rinh được tấm bằng về nhà đúng như deadline ban đầu.</p>
-    <p>Khi cầm tấm bằng trên tay, anh vừa trút được gánh nặng trong lòng, nhưng lại le lói một sự hụt hẫng đến lạ.</p>
-    <p>À, có vẻ như anh đã cạn kiệt những mục tiêu để phấn đấu rồi.</p>
-    <p>Nhìn lại 18 năm cuộc đời, anh nhận ra rằng trước khi bước chân vào cánh cửa trường cấp hai, anh hiếm khi tự mình ấp ủ một ước mơ hay khát vọng nào đó. Cái quyết định thi tuyển vào trường tiểu học và trung học đều do một tay mẹ anh nhào nặn và sắp đặt. Việc chọn trường cấp ba cũng xuất phát từ một lý do lãng xẹt: vì nó nằm sát vách nhà anh. Ngay cả khi đã mài đũng quần ở trường cấp ba, anh cũng chẳng thèm ngó ngàng đến mấy cái câu lạc bộ ngoại khóa, và luôn cố gắng tàng hình trong các hoạt động phong trào của trường (viện cớ là phải dành thời gian quý báu để đọc sách), và anh cũng đéo thấy có nhu cầu phải kiếm bạn bè hay đào đâu ra một cô bồ, nên các mối quan hệ xã hội của anh chỉ thu bé lại vừa bằng một hạt tiêu.</p>
-    <p>Quyết định táo bạo nhất đời anh... có lẽ là việc dấn thân vào con đường làm part-time ở hiệu sách?</p>
-    <p>Anh chẳng thể nào truy xuất lại được cái nguyên lý nào đã xúi giục mình làm thế. Có thể vì đó là cái ổ mà anh hay cắm rễ từ hồi còn mặc quần thủng đít. Anh bị nghiện sách. Cái niềm đam mê với mấy trang giấy đã khiến cái ví tiền của anh ngày một cạn kiệt. Chỉ vì những cái lý do củ chuối như thế mà anh đã chốt đơn nộp CV xin đi làm part-time.</p>
-    <p>Thế nhưng, nhờ sự xuất hiện của bà chị tiền bối cáo già Yomiuri-senpai, anh mới giác ngộ ra một chân lý rằng, đằng sau những cuốn sách mà anh cứ đinh ninh là mình mua theo bản năng, thực chất đều là một sự sắp đặt có chủ đích. Sau một thời gian cày cuốc và bắt đầu quen tay với công việc, anh hớn hở ôm cuốn sách lọt vào mắt xanh ra quầy tính tiền lúc tan ca, và ngay lúc anh chuẩn bị quẹt thẻ, Yomiuri-senpai đang trấn phái ở quầy thu ngân liền nở một nụ cười nham hiểm với anh.</p>
+    <p>À, sau khi mở Google Maps lên check, tôi mới ngã ngửa ra là nó nằm chình ình gần Shinagawa. Mất đứt 40 phút ngồi lắc lư trên tàu điện, tôi mới lết xác tới nơi. Bằng một sức mạnh tâm linh nào đó, tôi đã lọt qua ải bài thi lý thuyết và kiểm tra kỹ năng, cuối cùng cũng được cầm trên tay tấm bằng lái danh giá. Cái giá phải trả là tôi đã mất toi nửa ngày trời thanh xuân ở đó.</p>
+    <p>Mặc dù không canh chuẩn xác được thời điểm ngay trước thềm kỳ nghỉ hè, nhưng tôi đã rinh được tấm bằng về nhà đúng như deadline ban đầu.</p>
+    <p>Khi cầm tấm bằng trên tay, tôi vừa trút được gánh nặng trong lòng, nhưng lại le lói một sự hụt hẫng đến lạ.</p>
+    <p>À, có vẻ như tôi đã cạn kiệt những mục tiêu để phấn đấu rồi.</p>
+    <p>Nhìn lại 18 năm cuộc đời, tôi nhận ra rằng trước khi bước chân vào cánh cửa trường cấp hai, tôi hiếm khi tự mình ấp ủ một ước mơ hay khát vọng nào đó. Cái quyết định thi tuyển vào trường tiểu học và trung học đều do một tay mẹ tôi nhào nặn và sắp đặt. Việc chọn trường cấp ba cũng xuất phát từ một lý do lãng xẹt: vì nó nằm sát vách nhà tôi. Ngay cả khi đã mài đũng quần ở trường cấp ba, tôi cũng chẳng thèm ngó ngàng đến mấy cái câu lạc bộ ngoại khóa, và luôn cố gắng tàng hình trong các hoạt động phong trào của trường (viện cớ là phải dành thời gian quý báu để đọc sách), và tôi cũng đéo thấy có nhu cầu phải kiếm bạn bè hay đào đâu ra một cô bồ, nên các mối quan hệ xã hội của tôi chỉ thu bé lại vừa bằng một hạt tiêu.</p>
+    <p>Quyết định táo bạo nhất đời tôi... có lẽ là việc dấn thân vào con đường làm part-time ở hiệu sách?</p>
+    <p>Tôi chẳng thể nào truy xuất lại được cái nguyên lý nào đã xúi giục mình làm thế. Có thể vì đó là cái ổ mà tôi hay cắm rễ từ hồi còn mặc quần thủng đít. Tôi bị nghiện sách. Cái niềm đam mê với mấy trang giấy đã khiến cái ví tiền của tôi ngày một cạn kiệt. Chỉ vì những cái lý do củ chuối như thế mà tôi đã chốt đơn nộp CV xin đi làm part-time.</p>
+    <p>Thế nhưng, nhờ sự xuất hiện của bà chị tiền bối cáo già Yomiuri-senpai, tôi mới giác ngộ ra một chân lý rằng, đằng sau những cuốn sách mà tôi cứ đinh ninh là mình mua theo bản năng, thực chất đều là một sự sắp đặt có chủ đích. Sau một thời gian cày cuốc và bắt đầu quen tay với công việc, tôi hớn hở ôm cuốn sách lọt vào mắt xanh ra quầy tính tiền lúc tan ca, và ngay lúc tôi chuẩn bị quẹt thẻ, Yomiuri-senpai đang trấn phái ở quầy thu ngân liền nở một nụ cười nham hiểm với tôi.</p>
     <p>Nó là cái thể loại nụ cười mà người đời hay gọi là "cười đểu".</p>
-    <p>Dù miệng thì cười toe toét nhưng ánh mắt chị ta lại bén như dao cạo, và trong cái bối cảnh đéo có mống khách nào, anh đã lỡ mồm thốt lên một câu hỏi ngu ngốc.</p>
+    <p>Dù miệng thì cười toe toét nhưng ánh mắt chị ta lại bén như dao cạo, và trong cái bối cảnh đéo có mống khách nào, tôi đã lỡ mồm thốt lên một câu hỏi ngu ngốc.</p>
     <p>"Quyển sách này... có vấn đề gì sao chị?"</p>
     <p>"Đâu có, đâu có. Nhưng mà cậu em hậu bối ơi, cưng đéo nhận ra điều gì bất thường à? Cuốn sách này đéo phải hàng mới ra lò đâu."</p>
-    <p>Lật đật giở trang thông tin xuất bản ra check, anh xém xỉu khi thấy cái ngày phát hành đã là từ ba mùa quýt trước. Do nó nằm chễm chệ ngay cạnh cuốn sách kinh tế học hành vi vừa mới bóc tem, nên anh bị dắt mũi cứ tưởng nó là hàng mới cập bến...</p>
+    <p>Lật đật giở trang thông tin xuất bản ra check, tôi xém xỉu khi thấy cái ngày phát hành đã là từ ba mùa quýt trước. Do nó nằm chễm chệ ngay cạnh cuốn sách kinh tế học hành vi vừa mới bóc tem, nên tôi bị dắt mũi cứ tưởng nó là hàng mới cập bến...</p>
     <p>"Chị cố tình set up nó nằm ở cái vị trí vàng đó vì chị thừa biết những con mồi tiềm năng như cưng kiểu gì cũng bị dính bẫy. Đó là sách tham khảo đi kèm đấy. Hehehe. Khổ nỗi, chị đéo ngờ con mồi dính bẫy lại là cưng."</p>
 
-    <p>Yomiuri-senpai bắt anh phải nhai lại cuốn sách đó. Trên bìa sách chình ình dòng chữ "Khái niệm Luồng di chuyển - Bí kíp chốt sale của các cửa hàng bán lẻ". Nhớ lại mới thấy, Yomiuri-senpai chính là vị ân nhân đầu tiên khai sáng cho anh cái thuật ngữ "Luồng di chuyển" (Jalur pergerakan) — cái lộ trình ma giáo mà khách hàng sẽ vô thức rảo bước khi bị lạc vào trong mê cung của cửa hàng.</p>
-    <p>Vậy nên, nói một cách phũ phàng thì, anh đã bị ép mua cuốn sách này nhờ vào cái tính năng 'gợi ý mua hàng' thâm hiểm mà đàn chị Yomiuri đã giăng ra.</p>
-    <p>...Đó là câu chuyện cuộc đời anh.</p>
-    <p>Kể từ cái ngày định mệnh đó, anh bắt đầu tò mò về những cái lý do giời ơi đất hỡi đã thôi thúc người ta hành động. Có lẽ, đó là sự phản chiếu cho cái sự bất lực của chính bản thân anh trong việc tìm kiếm động lực để tự mình nhấc mông lên làm một cái gì đó.</p>
-    <p>Xét về bản chất, anh là một thằng lười biếng, hiếm khi nảy sinh khát vọng muốn ôm đồm nhiều việc.</p>
-    <p>Anh luôn tự nhủ rằng mình đéo cần phải gồng mình chạy theo những thứ vốn dĩ không thuộc về mình, nhưng anh cũng đéo muốn rơi vào cái tình cảnh cứ mãi do dự, chần chừ để rồi vuột mất những cơ hội ngàn vàng không bao giờ lấy lại được.</p>
-    <p>Giống như cái duyên cớ đã đưa anh gặp gỡ Giáo sư Mori, khơi dậy trong anh niềm đam mê với bộ môn xã hội học khoa học, và dẫn lối anh bước qua cánh cổng Đại học Ichinose. Hay như cái cuộc hội ngộ định mệnh với thằng Maru đã lôi cổ anh ra sân chơi bóng chày.</p>
+    <p>Yomiuri-senpai bắt tôi phải nhai lại cuốn sách đó. Trên bìa sách chình ình dòng chữ "Khái niệm Luồng di chuyển - Bí kíp chốt sale của các cửa hàng bán lẻ". Nhớ lại mới thấy, Yomiuri-senpai chính là vị ân nhân đầu tiên khai sáng cho tôi cái thuật ngữ "Luồng di chuyển" (Jalur pergerakan) — cái lộ trình ma giáo mà khách hàng sẽ vô thức rảo bước khi bị lạc vào trong mê cung của cửa hàng.</p>
+    <p>Vậy nên, nói một cách phũ phàng thì, tôi đã bị ép mua cuốn sách này nhờ vào cái tính năng 'gợi ý mua hàng' thâm hiểm mà đàn chị Yomiuri đã giăng ra.</p>
+    <p>...Đó là câu chuyện cuộc đời tôi.</p>
+    <p>Kể từ cái ngày định mệnh đó, tôi bắt đầu tò mò về những cái lý do giời ơi đất hỡi đã thôi thúc người ta hành động. Có lẽ, đó là sự phản chiếu cho cái sự bất lực của chính bản thân tôi trong việc tìm kiếm động lực để tự mình nhấc mông lên làm một cái gì đó.</p>
+    <p>Xét về bản chất, tôi là một thằng lười biếng, hiếm khi nảy sinh khát vọng muốn ôm đồm nhiều việc.</p>
+    <p>Tôi luôn tự nhủ rằng mình đéo cần phải gồng mình chạy theo những thứ vốn dĩ không thuộc về mình, nhưng tôi cũng đéo muốn rơi vào cái tình cảnh cứ mãi do dự, chần chừ để rồi vuột mất những cơ hội ngàn vàng không bao giờ lấy lại được.</p>
+    <p>Giống như cái duyên cớ đã đưa tôi gặp gỡ Giáo sư Mori, khơi dậy trong tôi niềm đam mê với bộ môn xã hội học khoa học, và dẫn lối tôi bước qua cánh cổng Đại học Ichinose. Hay như cái cuộc hội ngộ định mệnh với thằng Maru đã lôi cổ tôi ra sân chơi bóng chày.</p>
     <p>Những mối liên kết vô hình với người đời thường xuyên ném chúng ta vào những ngã rẽ mà ta nằm mơ cũng đéo ngờ tới.</p>
-    <p>Chính vì vậy, việc có một cái cớ để va chạm với những con người mới luôn là một điều tuyệt vời. Việc vác mặt đến trường dạy lái xe đã mang đến cho anh cơ hội được thỉnh giáo người thầy tuyệt vời đó.</p>
+    <p>Chính vì vậy, việc có một cái cớ để va chạm với những con người mới luôn là một điều tuyệt vời. Việc vác mặt đến trường dạy lái xe đã mang đến cho tôi cơ hội được thỉnh giáo người thầy tuyệt vời đó.</p>
     <p>── Cậu có biết cái câu châm ngôn "Một lần hành động còn hơn ngàn lần suy nghĩ" không?</p>
     <p>── Theo như những gì tôi soi được, cái mà Asamura-san đang thiếu trầm trọng chính là kinh nghiệm thực chiến.</p>
-    <p>Anh thầm cảm tạ trời đất vì đã được nghe những lời vàng ngọc như vậy. Tuy nhiên, khóa huấn luyện lái xe đã chính thức khép lại, và cái thử thách mới mẻ này cũng đã cán đích. Anh đã tóm được tấm bằng lái trong tay, nhưng lại đéo có chút định hướng nào về những gì sẽ xảy ra tiếp theo.</p>
-    <p>Anh đã chạm tay vào vạch đích.</p>
-    <p>Nhưng mà, anh phải đối mặt với cái quái gì tiếp theo đây? Làm cách nào để anh có thể bung xõa cái thế giới nhỏ bé này ra rộng hơn nữa...</p>
-    <p>Hay nói một cách chính xác hơn, động lực sâu xa nào đã thôi thúc anh sống chết phải lấy cho bằng được cái bằng lái xe?</p>
-    <p>Anh lại mò mẫm trong ký ức, cội nguồn của mọi chuyện bắt đầu từ một giấc mơ. Một giấc mơ đang dần mờ nhạt trong tâm trí. Trong cái giấc mơ viển vông đó, anh đã vẽ ra một viễn cảnh vi vu đến một nơi xa xôi nào đó cùng với Saki và lũ nhóc.</p>
+    <p>Tôi thầm cảm tạ trời đất vì đã được nghe những lời vàng ngọc như vậy. Tuy nhiên, khóa huấn luyện lái xe đã chính thức khép lại, và cái thử thách mới mẻ này cũng đã cán đích. Tôi đã tóm được tấm bằng lái trong tay, nhưng lại đéo có chút định hướng nào về những gì sẽ xảy ra tiếp theo.</p>
+    <p>Tôi đã chạm tay vào vạch đích.</p>
+    <p>Nhưng mà, tôi phải đối mặt với cái quái gì tiếp theo đây? Làm cách nào để tôi có thể bung xõa cái thế giới nhỏ bé này ra rộng hơn nữa...</p>
+    <p>Hay nói một cách chính xác hơn, động lực sâu xa nào đã thôi thúc tôi sống chết phải lấy cho bằng được cái bằng lái xe?</p>
+    <p>Tôi lại mò mẫm trong ký ức, cội nguồn của mọi chuyện bắt đầu từ một giấc mơ. Một giấc mơ đang dần mờ nhạt trong tâm trí. Trong cái giấc mơ viển vông đó, tôi đã vẽ ra một viễn cảnh vi vu đến một nơi xa xôi nào đó cùng với Saki và lũ nhóc.</p>
     <p>À, nhớ ra rồi.</p>
     <p>Ra biển.</p>
-    <p>Anh muốn đi biển.</p>
-    <p>Nếu tự nhiên anh nảy nòi ra cái ý tưởng rủ Saki đi biển vào dịp nghỉ hè, không biết em ấy sẽ phản ứng ra sao nhỉ? Em ấy có bị dội không ta?</p>
+    <p>Tôi muốn đi biển.</p>
+    <p>Nếu tự nhiên tôi nảy nòi ra cái ý tưởng rủ Saki đi biển vào dịp nghỉ hè, không biết em ấy sẽ phản ứng ra sao nhỉ? Em ấy có bị dội không ta?</p>
     <p>Cái quái gì đã bơm năng lượng cho con người ta hành động?</p>
-    <p>Lúc đéo nào cũng vậy, nó luôn bắt nguồn từ những mầm mống nhỏ nhoi, vớ vẩn nhất. Và anh thì lại hay có cái tật bóp nghẹt những cảm xúc bé nhỏ vừa mới nảy mầm trong tim. Giờ thì anh đã ngộ ra được cái nguyên lý đó rồi.</p>
-    <p>Anh tò mò không biết, nếu anh đột ngột rủ rê Saki, em ấy sẽ làm bộ mặt gì? Em ấy có thấy anh bị hâm không?</p>
-    <p>Anh cứ bị mắc kẹt trong mớ suy nghĩ đó. Chính vì cái sự nhát cáy đó mà anh thà tự kỷ chơi một mình còn hơn. Bởi vì anh có thể tự mình gặm nhấm mớ cảm xúc hỗn độn đó. Người ngoài cuộc làm sao mà thẩm thấu được. Anh đéo thể nào đi guốc trong bụng người khác để đoán trước được họ sẽ ném cho anh cái thái độ gì trước hành động của mình. Dù ngoài mặt họ có đang nặn ra một nụ cười, thì biết đâu trong bụng họ đang chửi thầm anh phiền phức.</p>
-    <p>Cái nỗi sợ hãi vô hình đó lúc đéo nào cũng ám ảnh anh.</p>
+    <p>Lúc đéo nào cũng vậy, nó luôn bắt nguồn từ những mầm mống nhỏ nhoi, vớ vẩn nhất. Và tôi thì lại hay có cái tật bóp nghẹt những cảm xúc bé nhỏ vừa mới nảy mầm trong tim. Giờ thì tôi đã ngộ ra được cái nguyên lý đó rồi.</p>
+    <p>Tôi tò mò không biết, nếu tôi đột ngột rủ rê Saki, em ấy sẽ làm bộ mặt gì? Em ấy có thấy tôi bị hâm không?</p>
+    <p>Tôi cứ bị mắc kẹt trong mớ suy nghĩ đó. Chính vì cái sự nhát cáy đó mà tôi thà tự kỷ chơi một mình còn hơn. Bởi vì tôi có thể tự mình gặm nhấm mớ cảm xúc hỗn độn đó. Người ngoài cuộc làm sao mà thẩm thấu được. Tôi đéo thể nào đi guốc trong bụng người khác để đoán trước được họ sẽ ném cho tôi cái thái độ gì trước hành động của mình. Dù ngoài mặt họ có đang nặn ra một nụ cười, thì biết đâu trong bụng họ đang chửi thầm tôi phiền phức.</p>
+    <p>Cái nỗi sợ hãi vô hình đó lúc đéo nào cũng ám ảnh tôi.</p>
     <p>Nhưng mà──.</p>
     <p>──Dù kết quả cuối cùng là cái gật đầu đồng ý hay sự từ chối phũ phàng, thì vạn sự khởi đầu nan, tất cả đều phải bắt nguồn từ việc cậu dũng cảm bộc lộ ý định của mình trước.</p>
     <p>Chuẩn đét, y xì đúc như những gì ông thầy dạy lái đã thuyết giáo.</p>
     <p>À, cái đạo lý này nó cũng na ná như lúc nhập làn cao tốc vậy.</p>
-    <p>Anh có một siêu năng lực là dễ dàng biến đổi bản thân để hòa tan vào môi trường, nhưng lại cực kỳ bất lực trong việc ép uổng người khác phải nhào nặn theo ý mình. Bởi vì cái sự cự tuyệt từ người khác mang lại cho anh cái cảm giác như chính bản thân anh đang bị phủ nhận vậy. Giờ thì anh đã thấu hiểu sự thật là anh đang sợ bị tổn thương.</p>
-    <p>Đột nhiên, anh nhớ lại cuộc hội thoại với thằng Maru. Lúc anh thắc mắc, "Tụi mài bắt bóng không thấy nát tay à?", cậu ta đáp tỉnh bơ, "Thì cũng nhức tay phết đấy." Sau đó chốt hạ một câu xanh rờn, "Nhưng chả sao đâu. Chơi riết rồi chai tay, quen hết ấy mà."</p>
+    <p>Tôi có một siêu năng lực là dễ dàng biến đổi bản thân để hòa tan vào môi trường, nhưng lại cực kỳ bất lực trong việc ép uổng người khác phải nhào nặn theo ý mình. Bởi vì cái sự cự tuyệt từ người khác mang lại cho tôi cái cảm giác như chính bản thân tôi đang bị phủ nhận vậy. Giờ thì tôi đã thấu hiểu sự thật là tôi đang sợ bị tổn thương.</p>
+    <p>Đột nhiên, tôi nhớ lại cuộc hội thoại với thằng Maru. Lúc tôi thắc mắc, "Tụi mài bắt bóng không thấy nát tay à?", cậu ta đáp tỉnh bơ, "Thì cũng nhức tay phết đấy." Sau đó chốt hạ một câu xanh rờn, "Nhưng chả sao đâu. Chơi riết rồi chai tay, quen hết ấy mà."</p>
     <p>À, ra là vậy, trên đời này làm quái gì có ai học cách sải bước mà đéo phải sấp mặt vài lần.</p>
     <p>──Có lẽ Asamura-san nên bớt ảo tưởng sức mạnh và trân trọng những trải nghiệm thực tế hơn.</p>
-    <p>Đúng thế, nếu anh dám đạp lút ga, nếu anh mạnh dạn đánh lái nhập làn, biết đâu anh sẽ lướt đi rất xa khi hòa mình vào dòng chảy của cuộc sống.</p>
-    <p>Anh muốn cùng em đi ra biển.</p>
-    <p>Không còn sợ hãi khi bước những bước đầu tiên, anh sẽ thử ngỏ lời mời em ấy.</p>
+    <p>Đúng thế, nếu tôi dám đạp lút ga, nếu tôi mạnh dạn đánh lái nhập làn, biết đâu tôi sẽ lướt đi rất xa khi hòa mình vào dòng chảy của cuộc sống.</p>
+    <p>Tôi muốn cùng em đi ra biển.</p>
+    <p>Không còn sợ hãi khi bước những bước đầu tiên, tôi sẽ thử ngỏ lời mời em ấy.</p>
 
     <script>
         (function() {
-            // Word count
+            // ── Scroll Progress Bar ──
+            var progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            // ── Word Count ──
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -648,16 +907,16 @@
                     total += t.split(/\s+/).length;
                 }
             }
-
             var h1 = document.querySelector('h1');
             if (h1) {
                 var wc = document.createElement('div');
                 wc.className = 'word-count';
                 wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
-                h1.parentNode.insertBefore(wc, h1.nextSibling);
+                var nextEl = h1.nextElementSibling;
+                h1.parentNode.insertBefore(wc, nextEl && nextEl.tagName === 'H2' ? nextEl.nextSibling : h1.nextSibling);
             }
 
-            // Floating nav
+            // ── Floating Nav ──
             var navs = document.querySelectorAll('.chapter-nav');
             if (navs.length > 0) {
                 var src = navs[0];
@@ -681,7 +940,7 @@
                 }
                 document.body.appendChild(floatNav);
 
-                // Toggle tab (PC)
+                // Toggle tab
                 var toggle = document.createElement('div');
                 toggle.className = 'nav-toggle';
                 toggle.id = 'navToggle';
@@ -689,7 +948,6 @@
                 document.body.appendChild(toggle);
 
                 var isOpen = false;
-
                 function toggleNav() {
                     isOpen = !isOpen;
                     floatNav.classList.toggle('visible', isOpen);
@@ -702,7 +960,6 @@
                     toggleNav();
                 });
 
-                // Mobile: tap anywhere to toggle
                 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (isMobile) {
                     document.addEventListener('click', function(e) {
@@ -712,7 +969,83 @@
                     });
                 }
             }
+
+            // ── Scroll to Top Button ──
+            var scrollBtn = document.createElement('div');
+            scrollBtn.className = 'scroll-top';
+            scrollBtn.innerHTML = '\u2191';
+            scrollBtn.title = 'V\u1ec1 \u0111\u1ea7u trang';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ── Scroll Events ──
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                scrollBtn.classList.toggle('visible', scrollTop > 400);
+            }, { passive: true });
         })();
+    </script>
+
+    <script>
+    (function() {
+        var themes = [
+            { id: 'default', label: 'M\u1eb7c \u0111\u1ecbnh', color: 'linear-gradient(135deg, #7c5cbf, #a78bfa)' },
+            { id: 'gray', label: 'X\u00e1m', color: '#555' },
+            { id: 'black', label: '\u0110en', color: '#111' },
+            { id: 'white', label: 'Tr\u1eafng', color: '#eee' }
+        ];
+
+        var saved = localStorage.getItem('gimai-theme') || 'default';
+
+        var picker = document.createElement('div');
+        picker.className = 'theme-picker';
+
+        var btn = document.createElement('div');
+        btn.className = 'theme-picker-btn';
+        btn.innerHTML = '\uD83C\uDFA8';
+        btn.title = '\u0110\u1ed5i giao di\u1ec7n';
+
+        var opts = document.createElement('div');
+        opts.className = 'theme-options';
+
+        themes.forEach(function(t) {
+            var o = document.createElement('div');
+            o.className = 'theme-option' + (t.id === saved ? ' active' : '');
+            o.style.background = t.color;
+            o.title = t.label;
+            if (t.id === 'white') o.style.border = '2px solid #ccc';
+            o.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themes.forEach(function(th) { document.body.classList.remove('theme-' + th.id); });
+                if (t.id !== 'default') document.body.classList.add('theme-' + t.id);
+                localStorage.setItem('gimai-theme', t.id);
+                opts.querySelectorAll('.theme-option').forEach(function(el) { el.classList.remove('active'); });
+                o.classList.add('active');
+            });
+            opts.appendChild(o);
+        });
+
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            opts.classList.toggle('visible', open);
+        });
+
+        document.addEventListener('click', function() {
+            if (open) { open = false; opts.classList.remove('visible'); }
+        });
+
+        picker.appendChild(opts);
+        picker.appendChild(btn);
+        document.body.appendChild(picker);
+    })();
     </script>
 </body>
 </html>

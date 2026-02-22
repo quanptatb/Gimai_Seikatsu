@@ -3,102 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <title>Gimai Seikatsu Volume 15 Chapter 2</title>
-    <style>
-        body {
-            background-color: #333333;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            padding: 40px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
+        <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            background-color: #1a1a2e;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(72, 52, 120, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(30, 60, 114, 0.2) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            line-height: 1.9;
+            padding: 0 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 17px;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background: rgba(167, 139, 250, 0.35);
+            color: #fff;
+        }
+
+        /* ── Scroll Progress Bar ── */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa, #c4b5fd);
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            border-radius: 0 2px 2px 0;
+        }
+
+        /* ── Headers ── */
         h1, h2 {
             text-align: center;
+            font-family: 'Noto Serif', Georgia, serif;
         }
 
         h1 {
-            border-bottom: 1px solid #777;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #e8d5f5, #a78bfa, #7c5cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 50px 0 14px;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            position: relative;
+            animation: fadeIn 0.8s ease;
         }
 
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #7c5cbf, transparent);
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            color: #b8a9d4;
+            font-weight: 400;
+            margin-bottom: 30px;
+            letter-spacing: 0.3px;
+            animation: fadeIn 0.8s ease 0.15s both;
+        }
+
+        /* ── Content ── */
         p {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             text-align: justify;
+            color: #d5d0e0;
+            animation: fadeIn 0.6s ease both;
         }
 
         hr {
-            border-color: #555;
-            margin: 30px 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.3), transparent);
+            margin: 35px 0;
         }
 
+        /* ── Dialogue & Thought (Vol13) ── */
+        .dialogue {
+            font-weight: 500;
+            color: #e8e0f0;
+        }
+
+        .thought {
+            font-style: italic;
+            color: #a89cc0;
+        }
+
+        /* ── Nav Link ── */
         .nav-link {
             display: inline-block;
             margin-bottom: 20px;
-            color: #aaa;
+            color: #9b8fb8;
             text-decoration: none;
             font-size: 14px;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #fff;
+            color: #c4b5fd;
         }
 
-        .chapter-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-top: 1px solid #555;
-            border-bottom: 1px solid #555;
-            margin: 20px 0;
-            font-size: 14px;
-        }
-
-        .chapter-nav a {
-            color: #aaa;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-
-        .chapter-nav a:hover {
-            color: #fff;
-            background-color: #444;
-        }
-
-        .chapter-nav .disabled {
-            color: #555;
-            padding: 8px 16px;
-        }
-    
+        /* ── Inline Chapter Nav (hidden — replaced by floating) ── */
         .chapter-nav {
             display: none !important;
         }
 
+        /* ── Word Count ── */
         .word-count {
             text-align: center;
-            color: #777;
+            color: #8b7aab;
             font-size: 13px;
-            margin: 0 0 30px;
-            padding: 8px 16px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 8px;
+            margin: 0 0 35px;
+            padding: 10px 18px;
+            background: rgba(167, 139, 250, 0.06);
+            border: 1px solid rgba(167, 139, 250, 0.1);
+            border-radius: 10px;
             letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.8s ease 0.3s both;
         }
 
+        /* ── Floating Nav ── */
         .floating-nav {
             position: fixed;
-            right: -240px;
+            right: -250px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1000;
-            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
             gap: 6px;
@@ -112,64 +165,117 @@
         .floating-nav .nav-disabled {
             display: block;
             padding: 12px 22px;
-            background: rgba(35, 35, 35, 0.96);
-            color: #bbb;
+            background: rgba(26, 26, 46, 0.92);
+            color: #b8a9d4;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 13px;
+            font-family: 'Inter', sans-serif;
             text-align: center;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            transition: all 0.25s ease;
             white-space: nowrap;
-            min-width: 150px;
+            min-width: 155px;
         }
 
         .floating-nav a:hover {
             color: #fff;
-            background: rgba(55, 55, 55, 0.96);
-            border-color: rgba(255,255,255,0.18);
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.35);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.15);
         }
 
         .floating-nav .nav-disabled {
-            color: #555;
+            color: #5a5073;
             cursor: default;
         }
 
+        /* ── Toggle Tab ── */
         .nav-toggle {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1001;
-            width: 26px;
-            height: 54px;
-            background: rgba(55, 55, 55, 0.75);
-            border-radius: 8px 0 0 8px;
+            width: 28px;
+            height: 56px;
+            background: rgba(26, 26, 46, 0.85);
+            border-radius: 10px 0 0 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #a78bfa;
             font-size: 11px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(167, 139, 250, 0.15);
             border-right: none;
             user-select: none;
         }
 
         .nav-toggle:hover {
-            background: rgba(75, 75, 75, 0.9);
-            color: #fff;
-            width: 30px;
+            background: rgba(40, 35, 65, 0.95);
+            color: #c4b5fd;
+            width: 32px;
         }
 
         .nav-toggle.shifted {
-            right: 210px;
+            right: 215px;
         }
 
+        /* ── Scroll to Top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            color: #a78bfa;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.35s ease;
+            pointer-events: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .scroll-top:hover {
+            background: rgba(40, 35, 65, 0.95);
+            border-color: rgba(167, 139, 250, 0.4);
+            color: #c4b5fd;
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 0 16px 50px;
+            }
+
             .nav-toggle {
                 display: none;
             }
@@ -178,16 +284,164 @@
                 top: auto;
                 bottom: 20px;
                 transform: none;
-                right: -240px;
+                right: -250px;
             }
 
             .floating-nav.visible {
                 right: 12px;
             }
+
+            .scroll-top {
+                bottom: 16px;
+                right: 16px;
+                width: 38px;
+                height: 38px;
+            }
+        }
+    
+
+        /* ── Theme Picker ── */
+        .theme-picker {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .theme-picker-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .theme-picker-btn:hover {
+            border-color: rgba(167, 139, 250, 0.4);
+            box-shadow: 0 4px 20px rgba(124, 92, 191, 0.2);
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 52px;
+            left: 0;
+            display: flex;
+            gap: 8px;
+            padding: 8px 10px;
+            background: rgba(26, 26, 46, 0.92);
+            border-radius: 20px;
+            border: 1px solid rgba(167, 139, 250, 0.15);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .theme-options.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .theme-option {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            border: 2px solid transparent;
+        }
+
+        .theme-option:hover { transform: scale(1.2); }
+
+        .theme-option.active {
+            border-color: #a78bfa;
+            box-shadow: 0 0 0 2px rgba(167,139,250,0.4), 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* ── Theme: Gray ── */
+        body.theme-gray { background: #333 !important; background-image: none !important; color: #fff; }
+        body.theme-gray h1 { background: none !important; -webkit-text-fill-color: #fff; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-gray h1::after { background: linear-gradient(90deg, transparent, #666, transparent); }
+        body.theme-gray h2 { color: #ccc; }
+        body.theme-gray p { color: #e0e0e0; }
+        body.theme-gray .dialogue { color: #eee; }
+        body.theme-gray .thought { color: #bbb; }
+        body.theme-gray hr { background: linear-gradient(90deg, transparent, #555, transparent); }
+        body.theme-gray .word-count { color: #999; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray ::selection { background: rgba(180,180,180,0.3); }
+        body.theme-gray .floating-nav a { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); color: #ccc; }
+        body.theme-gray .floating-nav a:hover { background: rgba(65,65,65,0.95); color: #fff; border-color: rgba(255,255,255,0.2); }
+        body.theme-gray .floating-nav .nav-disabled { color: #666; }
+        body.theme-gray .nav-toggle { background: rgba(60,60,60,0.85); color: #aaa; border-color: rgba(255,255,255,0.08); }
+        body.theme-gray .scroll-top { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); color: #aaa; }
+        body.theme-gray .theme-picker-btn { background: rgba(50,50,50,0.9); border-color: rgba(255,255,255,0.15); }
+        body.theme-gray .theme-options { background: rgba(50,50,50,0.95); border-color: rgba(255,255,255,0.1); }
+        body.theme-gray .theme-option.active { border-color: #aaa; box-shadow: 0 0 0 2px rgba(180,180,180,0.4), 0 2px 6px rgba(0,0,0,0.3); }
+
+        /* ── Theme: Black ── */
+        body.theme-black { background: #080808 !important; background-image: none !important; color: #b0b0b0; }
+        body.theme-black h1 { background: none !important; -webkit-text-fill-color: #ddd; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-black h1::after { background: linear-gradient(90deg, transparent, #333, transparent); }
+        body.theme-black h2 { color: #888; }
+        body.theme-black p { color: #b0b0b0; }
+        body.theme-black .dialogue { color: #c0c0c0; }
+        body.theme-black .thought { color: #777; }
+        body.theme-black hr { background: linear-gradient(90deg, transparent, #2a2a2a, transparent); }
+        body.theme-black .word-count { color: #555; background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.05); }
+        body.theme-black ::selection { background: rgba(150,150,150,0.25); }
+        body.theme-black .floating-nav a { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); color: #888; }
+        body.theme-black .floating-nav a:hover { background: rgba(28,28,28,0.96); color: #ccc; }
+        body.theme-black .floating-nav .nav-disabled { color: #444; }
+        body.theme-black .nav-toggle { background: rgba(18,18,18,0.9); color: #555; border-color: rgba(255,255,255,0.04); }
+        body.theme-black .scroll-top { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); color: #555; }
+        body.theme-black .theme-picker-btn { background: rgba(18,18,18,0.9); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-options { background: rgba(18,18,18,0.96); border-color: rgba(255,255,255,0.06); }
+        body.theme-black .theme-option.active { border-color: #666; box-shadow: 0 0 0 2px rgba(100,100,100,0.4), 0 2px 6px rgba(0,0,0,0.5); }
+
+        /* ── Theme: White ── */
+        body.theme-white { background: #f5f3ef !important; background-image: none !important; color: #2a2a2a; }
+        body.theme-white h1 { background: none !important; -webkit-text-fill-color: #1a1a1a; -webkit-background-clip: unset; background-clip: unset; }
+        body.theme-white h1::after { background: linear-gradient(90deg, transparent, #ccc, transparent); }
+        body.theme-white h2 { color: #555; }
+        body.theme-white p { color: #333; }
+        body.theme-white .dialogue { color: #222; }
+        body.theme-white .thought { color: #666; }
+        body.theme-white hr { background: linear-gradient(90deg, transparent, #ddd, transparent); }
+        body.theme-white .word-count { color: #888; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+        body.theme-white ::selection { background: rgba(124,92,191,0.2); color: #111; }
+        body.theme-white .scroll-progress { background: linear-gradient(90deg, #9575cd, #7c5cbf); }
+        body.theme-white .floating-nav a { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); color: #555; }
+        body.theme-white .floating-nav a:hover { background: rgba(248,248,248,0.98); color: #111; border-color: rgba(0,0,0,0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        body.theme-white .floating-nav .nav-disabled { color: #bbb; }
+        body.theme-white .nav-toggle { background: rgba(255,255,255,0.92); color: #888; border-color: rgba(0,0,0,0.08); }
+        body.theme-white .nav-toggle:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .scroll-top { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); color: #888; }
+        body.theme-white .scroll-top:hover { background: rgba(245,245,245,0.95); color: #555; }
+        body.theme-white .theme-picker-btn { background: rgba(255,255,255,0.92); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-options { background: rgba(255,255,255,0.96); border-color: rgba(0,0,0,0.1); }
+        body.theme-white .theme-option.active { border-color: #7c5cbf; box-shadow: 0 0 0 2px rgba(124,92,191,0.3), 0 2px 6px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .theme-picker { bottom: 16px; left: 16px; }
+            .theme-picker-btn { width: 38px; height: 38px; }
         }
     </style>
 </head>
 <body>
+<script>(function(){var t=localStorage.getItem('gimai-theme');if(t&&t!=='default')document.body.classList.add('theme-'+t);})()</script>
 
     <div class="chapter-nav">
         <a href="Gimai15_C1.html">&larr; Ch&#432;&#417;ng tr&#432;&#7899;c</a>
@@ -197,40 +451,40 @@
 
     <h1>Chương 2 — Năm nhất Đại học, Tháng 5, Ayase Saki</h1>
 
-    <p>Buổi sáng sau đêm chúng em ở bên nhau. Em rửa mặt trước chiếc gương trong phòng tắm và khẽ chớp mắt. Em cẩn thận quan sát sắc diện và làn da của mình. Nhìn hình ảnh phản chiếu trong gương, em cảm thấy nhẹ nhõm vì không có gì thay đổi cả. Mặc dù em đã kiểm tra trước khi đi tắm, nhưng dù sao thì cũng cần xác nhận lại.</p>
-    <p>Dù vậy, em đã từng cho rằng sau khi trải qua chuyện đó, chắc chắn sẽ có một sự thay đổi ngoạn mục nào đó xuất hiện.</p>
-    <p>Hóa ra mọi thứ vẫn khá bình thường. Thế giới không hề trở nên lấp lánh hay gì đó tương tự, và em cũng không nhận thấy sự thay đổi nào trong tâm trí mình.</p>
-    <p>Chỉ là—không hiểu sao, tâm trạng em lại cảm thấy vô cùng dễ chịu.</p>
-    <p>Em chợt nhớ đến lời của một giảng viên, người đã trở thành lý do khiến em thi vào trường đại học này (mặc dù em chẳng muốn nhớ tên cô ấy chút nào vì cảm thấy hơi bực mình).</p>
-    <p>'Giả sử cảm xúc của em vẫn không thay đổi ngay cả khi đã tiếp xúc với những người đàn ông thú vị khác, thì hãy trân trọng cảm xúc chân thành đó.'</p>
+    <p>Buổi sáng sau đêm chúng tôi ở bên nhau. Tôi rửa mặt trước chiếc gương trong phòng tắm và khẽ chớp mắt. Tôi cẩn thận quan sát sắc diện và làn da của mình. Nhìn hình ảnh phản chiếu trong gương, tôi cảm thấy nhẹ nhõm vì không có gì thay đổi cả. Mặc dù tôi đã kiểm tra trước khi đi tắm, nhưng dù sao thì cũng cần xác nhận lại.</p>
+    <p>Dù vậy, tôi đã từng cho rằng sau khi trải qua chuyện đó, chắc chắn sẽ có một sự thay đổi ngoạn mục nào đó xuất hiện.</p>
+    <p>Hóa ra mọi thứ vẫn khá bình thường. Thế giới không hề trở nên lấp lánh hay gì đó tương tự, và tôi cũng không nhận thấy sự thay đổi nào trong tâm trí mình.</p>
+    <p>Chỉ là—không hiểu sao, tâm trạng tôi lại cảm thấy vô cùng dễ chịu.</p>
+    <p>Tôi chợt nhớ đến lời của một giảng viên, người đã trở thành lý do khiến tôi thi vào trường đại học này (mặc dù tôi chẳng muốn nhớ tên cô ấy chút nào vì cảm thấy hơi bực mình).</p>
+    <p>'Giả sử cảm xúc của tôi vẫn không thay đổi ngay cả khi đã tiếp xúc với những người đàn ông thú vị khác, thì hãy trân trọng cảm xúc chân thành đó.'</p>
     <p>Trân trọng cảm xúc chân thành.</p>
-    <p>Em cảm thấy mãn nguyện với kết quả mà mình đã chọn lựa dựa trên cảm xúc ấy vào sáng nay. Có lẽ, đây là một điều tốt đẹp.</p>
-    <p>À thì, mặc dù mỗi khi bước đi em lại cảm thấy một cơn đau âm ỉ ở quanh vùng đùi non, em nghĩ điều đó cũng không thể tránh khỏi. Có thể nghe hơi kỳ cục, nhưng không hiểu sao em lại thấy có chút bực dọc khi nghĩ rằng cảm giác khó chịu này có lẽ đàn ông sẽ chẳng bao giờ phải trải qua. Chẳng lẽ em nên cảm thấy vui mừng vì nỗi đau mà em từng lo sợ lại không quá dữ dội sao? Có lẽ em không nên chủ quan quá sớm.</p>
-    <p>Hơn nữa, em từng nghe nói rằng có một số người phải chịu đựng những cơn đau và tình trạng xuất huyết kéo dài, nên có vẻ như việc giữ thái độ cảnh giác vẫn là điều tốt nhất.</p>
+    <p>Tôi cảm thấy mãn nguyện với kết quả mà mình đã chọn lựa dựa trên cảm xúc ấy vào sáng nay. Có lẽ, đây là một điều tốt đẹp.</p>
+    <p>À thì, mặc dù mỗi khi bước đi tôi lại cảm thấy một cơn đau âm ỉ ở quanh vùng đùi non, tôi nghĩ điều đó cũng không thể tránh khỏi. Có thể nghe hơi kỳ cục, nhưng không hiểu sao tôi lại thấy có chút bực dọc khi nghĩ rằng cảm giác khó chịu này có lẽ đàn ông sẽ chẳng bao giờ phải trải qua. Chẳng lẽ tôi nên cảm thấy vui mừng vì nỗi đau mà tôi từng lo sợ lại không quá dữ dội sao? Có lẽ tôi không nên chủ quan quá sớm.</p>
+    <p>Hơn nữa, tôi từng nghe nói rằng có một số người phải chịu đựng những cơn đau và tình trạng xuất huyết kéo dài, nên có vẻ như việc giữ thái độ cảnh giác vẫn là điều tốt nhất.</p>
     <p>Dù sao thì cũng không phải là không đau chút nào.</p>
     <p>Nhưng cứ đứng soi gương mãi cũng chẳng giải quyết được gì.</p>
-    <p>Dù hôm nay là Chủ Nhật, nhưng có lẽ cũng sắp đến giờ bố dượng thức dậy rồi. Em không thể để anh Yuuta chuẩn bị bữa sáng một mình được. Bắt đầu từ tuần sau, em sẽ đến văn phòng của chị Ruka, nên em cũng cần phải chuẩn bị sẵn sàng.</p>
-    <p>Sau khi trang điểm nhẹ nhàng, em quay trở lại phòng ăn.</p>
-    <p>Rốt cuộc thì, trong suốt ngày Chủ Nhật hôm đó, em nhận thấy một vài thay đổi nhỏ trên cơ thể mình. Không hiểu sao bụng em cứ râm ran khó chịu, cả vùng eo và lưng cũng có cảm giác lạ. Em cũng biết sơ qua về những căn bệnh hay vấn đề thường đi kèm với những hoạt động như vậy, nên em bắt đầu nảy sinh nghi ngờ không biết liệu có ảnh hưởng xấu nào đang xuất hiện hay không.</p>
-    <p>Tuy nhiên, có vẻ như em chỉ bị đau nhức cơ một chút do đã sử dụng những nhóm cơ mà bình thường em ít khi dùng tới. Khi chiều Chủ Nhật buông xuống, em cảm thấy tình trạng cơ thể đã bắt đầu cải thiện. Hóa ra làm chuyện đó cũng có thể coi là một hình thức tập thể dục nhỉ... Và có lẽ, chính sự lo lắng thái quá cũng đã ảnh hưởng phần nào đến cơ thể em. Câu nói ‘tâm bệnh sinh thân bệnh’ quả thực không sai.</p>
-    <p>Có lẽ vì cảm nhận được sự bất an của em, thỉnh thoảng anh Yuuta lại nhìn em và hỏi: "Em không sao chứ?" Tuy nhiên, em lại không thấy có triệu chứng gì rõ ràng để có thể nói ra, và điều đó khiến tình hình trở nên khó xử. Chắc chắn là em không thể nào mở miệng nói với anh ấy rằng: "Em bị đau nhức mình mẩy vì làm chuyện đó với anh" được rồi.</p>
+    <p>Dù hôm nay là Chủ Nhật, nhưng có lẽ cũng sắp đến giờ bố dượng thức dậy rồi. Tôi không thể để anh Yuuta chuẩn bị bữa sáng một mình được. Bắt đầu từ tuần sau, tôi sẽ đến văn phòng của chị Ruka, nên tôi cũng cần phải chuẩn bị sẵn sàng.</p>
+    <p>Sau khi trang điểm nhẹ nhàng, tôi quay trở lại phòng ăn.</p>
+    <p>Rốt cuộc thì, trong suốt ngày Chủ Nhật hôm đó, tôi nhận thấy một vài thay đổi nhỏ trên cơ thể mình. Không hiểu sao bụng tôi cứ râm ran khó chịu, cả vùng eo và lưng cũng có cảm giác lạ. Tôi cũng biết sơ qua về những căn bệnh hay vấn đề thường đi kèm với những hoạt động như vậy, nên tôi bắt đầu nảy sinh nghi ngờ không biết liệu có ảnh hưởng xấu nào đang xuất hiện hay không.</p>
+    <p>Tuy nhiên, có vẻ như tôi chỉ bị đau nhức cơ một chút do đã sử dụng những nhóm cơ mà bình thường tôi ít khi dùng tới. Khi chiều Chủ Nhật buông xuống, tôi cảm thấy tình trạng cơ thể đã bắt đầu cải thiện. Hóa ra làm chuyện đó cũng có thể coi là một hình thức tập thể dục nhỉ... Và có lẽ, chính sự lo lắng thái quá cũng đã ảnh hưởng phần nào đến cơ thể tôi. Câu nói ‘tâm bệnh sinh thân bệnh’ quả thực không sai.</p>
+    <p>Có lẽ vì cảm nhận được sự bất an của tôi, thỉnh thoảng anh Yuuta lại nhìn tôi và hỏi: "Em không sao chứ?" Tuy nhiên, tôi lại không thấy có triệu chứng gì rõ ràng để có thể nói ra, và điều đó khiến tình hình trở nên khó xử. Chắc chắn là tôi không thể nào mở miệng nói với anh ấy rằng: "Em bị đau nhức mình mẩy vì làm chuyện đó với anh" được rồi.</p>
     <p>Ngày hôm sau, buổi sáng thứ Hai cũng đã đến.</p>
-    <p>Em thức dậy với một tinh thần sảng khoái hơn hẳn, và cuối cùng cũng có thể thở phào nhẹ nhõm vì không còn cảm thấy sự khó chịu nào lan tỏa khắp cơ thể nữa. Thậm chí em gần như chẳng còn cảm thấy đau.</p>
-    <p>Hôm nay, kỳ thực tập của em tại văn phòng chị Ruka cuối cùng cũng chính thức bắt đầu. Ánh nắng ban mai dịu nhẹ rọi vào bồn rửa mặt. Em mỉm cười với chính mình trong gương.</p>
-    <p>Bây giờ, cuộc sống đại học thực sự của em mới chính thức bắt đầu.</p>
+    <p>Tôi thức dậy với một tinh thần sảng khoái hơn hẳn, và cuối cùng cũng có thể thở phào nhẹ nhõm vì không còn cảm thấy sự khó chịu nào lan tỏa khắp cơ thể nữa. Thậm chí tôi gần như chẳng còn cảm thấy đau.</p>
+    <p>Hôm nay, kỳ thực tập của tôi tại văn phòng chị Ruka cuối cùng cũng chính thức bắt đầu. Ánh nắng ban mai dịu nhẹ rọi vào bồn rửa mặt. Tôi mỉm cười với chính mình trong gương.</p>
+    <p>Bây giờ, cuộc sống đại học thực sự của tôi mới chính thức bắt đầu.</p>
 
     <hr>
 
-    <p>Lịch học của em kết thúc vào buổi trưa. Vì không có lớp vào buổi chiều nên em có thể đến văn phòng của chị Ruka.</p>
-    <p>Hôm nay là ngày làm việc đầu tiên của em.</p>
-    <p>Cuộc sống đại học không chỉ xoay quanh việc làm thêm—em không có ý đó, và bản thân việc học ở chương trình giáo dục đại cương cũng rất thú vị. Em cũng đã bắt đầu đi chơi cùng những người bạn mới vào ngày nghỉ.</p>
-    <p>Tuy nhiên, vì thử thách lớn nhất của em lúc này đang nằm ở văn phòng chị Ruka, nên việc em dành nhiều thời gian để suy nghĩ về nó cũng là điều hoàn toàn tự nhiên.</p>
-    <p>Thực tập tại văn phòng của chị Akihiro Ruka. Trái tim em đang đập những nhịp vô cùng mạnh mẽ.</p>
+    <p>Lịch học của tôi kết thúc vào buổi trưa. Vì không có lớp vào buổi chiều nên tôi có thể đến văn phòng của chị Ruka.</p>
+    <p>Hôm nay là ngày làm việc đầu tiên của tôi.</p>
+    <p>Cuộc sống đại học không chỉ xoay quanh việc làm thêm—tôi không có ý đó, và bản thân việc học ở chương trình giáo dục đại cương cũng rất thú vị. Tôi cũng đã bắt đầu đi chơi cùng những người bạn mới vào ngày nghỉ.</p>
+    <p>Tuy nhiên, vì thử thách lớn nhất của tôi lúc này đang nằm ở văn phòng chị Ruka, nên việc tôi dành nhiều thời gian để suy nghĩ về nó cũng là điều hoàn toàn tự nhiên.</p>
+    <p>Thực tập tại văn phòng của chị Akihiro Ruka. Trái tim tôi đang đập những nhịp vô cùng mạnh mẽ.</p>
     <p>Những cảm giác khó chịu trên cơ thể đã tan biến, và cơn đau cũng gần như biến mất hoàn toàn.</p>
-    <p>Em đi tàu điện ngầm và xuống tại ga Nakanosakaue.</p>
-    <p>Từ đó, em đi bộ khoảng ba phút là đến một tòa nhà văn phòng cao năm tầng, bước vào trong, lên thang máy và dừng lại ở tầng ba. Hiện ra trước mắt em là logo 『Lucca Design. Studio』 được viết bằng một phông chữ trang trí tuyệt đẹp.</p>
+    <p>Tôi đi tàu điện ngầm và xuống tại ga Nakanosakaue.</p>
+    <p>Từ đó, tôi đi bộ khoảng ba phút là đến một tòa nhà văn phòng cao năm tầng, bước vào trong, lên thang máy và dừng lại ở tầng ba. Hiện ra trước mắt tôi là logo 『Lucca Design. Studio』 được viết bằng một phông chữ trang trí tuyệt đẹp.</p>
     <p>Đây chính là văn phòng thiết kế của chị Akihiro Ruka.</p>
-    <p>Em mở cửa và khẽ nói: "Xin phép ạ."</p>
+    <p>Tôi mở cửa và khẽ nói: "Xin phép ạ."</p>
     <p>"Em đến sớm thật đấy."</p>
     <p>Chính chị Ruka đã bước ra từ phía sau tấm vách ngăn.</p>
     <p>"Từ nay về sau, rất mong được chị giúp đỡ ạ."</p>
@@ -238,161 +492,161 @@
     <p>"Dạ..."</p>
     <p>"Sao thế?"</p>
     <p>"Em mặc trang phục như thế này có ổn không ạ?"</p>
-    <p>Em vừa hỏi vừa đặt tay lên ngực. Em đã được báo trước là không cần mặc vest, nên em đến với trang phục giống hệt lúc đi học, nhưng em vẫn cảm thấy băn khoăn không biết như vậy đã đủ lịch sự đối với một môi trường chuyên nghiệp hay chưa. Hồi làm thêm ở hiệu sách, em có đồng phục, nên chẳng bao giờ phải lo lắng về chuyện này...</p>
+    <p>Tôi vừa hỏi vừa đặt tay lên ngực. Tôi đã được báo trước là không cần mặc vest, nên tôi đến với trang phục giống hệt lúc đi học, nhưng tôi vẫn cảm thấy băn khoăn không biết như vậy đã đủ lịch sự đối với một môi trường chuyên nghiệp hay chưa. Hồi làm thêm ở hiệu sách, tôi có đồng phục, nên chẳng bao giờ phải lo lắng về chuyện này...</p>
     <p>"À, ừ. Ổn mà, rất ổn là đằng khác. Em không mặc váy mà chọn quần dài. Có vẻ đây là lần đầu tiên chị thấy em trong trang phục này đấy."</p>
     <p>"Bình thường em hay mặc váy hơn, nhưng em nghĩ quần dài thế này sẽ phù hợp với công việc hơn ạ."</p>
     <p>"Trông hợp với em lắm. Không có vấn đề gì đâu."</p>
-    <p>Nghe vậy, em cảm thấy nhẹ nhõm hơn hẳn. Tạm thời, em chọn một chiếc áo blouse có cổ kết hợp cùng quần dài.</p>
-    <p>Mặc dù không phải là vest, nhưng em hy vọng vẻ ngoài của mình trông sẽ trang trọng hơn so với trang phục thường ngày. Tuy không bị quở trách, nhưng em vẫn phải tự tìm hiểu xem đây có phải là một lựa chọn đúng đắn hay không.</p>
-    <p>Vừa suy nghĩ về điều đó, em vừa lặng lẽ quan sát phong cách ăn mặc của chị Ruka khi chị ấy đang dẫn đường. Chị Ruka cũng không mặc vest. Chị ấy diện một chiếc áo trắng kết hợp cùng áo khoác cardigan màu xanh lam. Sợi dây chuyền trên cổ chị ấy cũng có đính một viên đá nhỏ màu xanh. Chữ ‘Ru’ trong tên Ruka của chị ấy có nghĩa là viên đá quý màu xanh lam, nên có vẻ ‘xanh lam’ chính là màu sắc đại diện cho hình ảnh cá nhân của chị ấy.</p>
+    <p>Nghe vậy, tôi cảm thấy nhẹ nhõm hơn hẳn. Tạm thời, tôi chọn một chiếc áo blouse có cổ kết hợp cùng quần dài.</p>
+    <p>Mặc dù không phải là vest, nhưng tôi hy vọng vẻ ngoài của mình trông sẽ trang trọng hơn so với trang phục thường ngày. Tuy không bị quở trách, nhưng tôi vẫn phải tự tìm hiểu xem đây có phải là một lựa chọn đúng đắn hay không.</p>
+    <p>Vừa suy nghĩ về điều đó, tôi vừa lặng lẽ quan sát phong cách ăn mặc của chị Ruka khi chị ấy đang dẫn đường. Chị Ruka cũng không mặc vest. Chị ấy diện một chiếc áo trắng kết hợp cùng áo khoác cardigan màu xanh lam. Sợi dây chuyền trên cổ chị ấy cũng có đính một viên đá nhỏ màu xanh. Chữ ‘Ru’ trong tên Ruka của chị ấy có nghĩa là viên đá quý màu xanh lam, nên có vẻ ‘xanh lam’ chính là màu sắc đại diện cho hình ảnh cá nhân của chị ấy.</p>
     <p>Chính vì vậy, dù có thay đổi trang phục thế nào, chị ấy vẫn luôn mang trên mình một món đồ màu xanh lam.</p>
     <p>"Công việc mà chị muốn giao cho em về cơ bản là làm thư ký cho chị—mặc dù nghe thì có vẻ oai, nhưng ừm, nó thiên về các công việc hành chính tổng hợp hơn."</p>
     <p>"Vâng ạ."</p>
     <p>"Vì thế, em sẽ luôn đi cùng chị. Chị muốn em giúp chị từ việc mang vác đồ đạc cho đến quản lý lịch trình, nhưng mà, ừm... A, chú ấy kia rồi. Chú Wada."</p>
     <p>Chị ấy gọi một người đàn ông lớn tuổi đang đứng trước máy photocopy ở góc văn phòng, có vẻ như chú ấy đang in một xấp tài liệu dày. Chú ấy mặc áo sơ mi trắng và thắt cà vạt, mang dáng vẻ đặc trưng của những nhân viên văn phòng mà ta thường thấy.</p>
-    <p>Người đàn ông được gọi là chú Wada ấy mỉm cười quay mặt về phía em. Chú ấy chính là người đã chào đón em trong lần đầu tiên em đến thăm văn phòng thiết kế này. Chú trạc ngũ tuần, với một nụ cười hiền hậu mang lại cảm giác vô cùng ấm áp.</p>
+    <p>Người đàn ông được gọi là chú Wada ấy mỉm cười quay mặt về phía tôi. Chú ấy chính là người đã chào đón tôi trong lần đầu tiên tôi đến thăm văn phòng thiết kế này. Chú trạc ngũ tuần, với một nụ cười hiền hậu mang lại cảm giác vô cùng ấm áp.</p>
     <p>"Có, có tôi đây. Sắp in xong rồi."</p>
     <p>"Cảm ơn chú. Sau khi in xong, cháu muốn nhờ chú hướng dẫn cô bé này cách làm việc."</p>
     <p>"À, được thôi. Ừm... nếu tôi nhớ không lầm thì tên cháu là Asamura-san đúng không?"</p>
     <p>"Asamura?"</p>
     <p>Chị Ruka thoáng bối rối trong giây lát trước khi gật đầu: "À, đúng rồi."</p>
     <p>"Ừ, có chuyện này nữa. Em... Saki-chan."</p>
-    <p>Chị Ruka dời ánh mắt từ chú Wada sang em và hỏi:</p>
+    <p>Chị Ruka dời ánh mắt từ chú Wada sang tôi và hỏi:</p>
     <p>"Em muốn sử dụng cái tên nào?"</p>
     <p>"Ý chị là sao ạ...?"</p>
-    <p>Và rồi em lập tức nhận ra. Trong sơ yếu lý lịch xin việc, em đã điền tên mình là [Asamura Saki]. Tuy nhiên, kể từ khi gặp chị Ruka, em luôn giới thiệu mình là [Ayase Saki]. Chị Ruka chưa bao giờ gặng hỏi về điều đó.</p>
+    <p>Và rồi tôi lập tức nhận ra. Trong sơ yếu lý lịch xin việc, tôi đã điền tên mình là [Asamura Saki]. Tuy nhiên, kể từ khi gặp chị Ruka, tôi luôn giới thiệu mình là [Ayase Saki]. Chị Ruka chưa bao giờ gặng hỏi về điều đó.</p>
     <p>"Khi làm việc bằng danh tính cá nhân trong ngành này, ấn tượng mà cái tên mang lại là vô cùng quan trọng. Giống như bút danh của nhà văn hay họa sĩ truyện tranh vậy. Nếu chúng ta làm việc dưới cái tên đó, mọi người sẽ nhớ đến nó, và chúng ta sẽ nhận được các lời mời hợp tác dưới cái tên đó. Vì vậy, chúng ta không thể tùy tiện thay đổi nó được. Em có thể chọn cái tên mà em thích, nhưng tốt nhất là em nên tiếp tục sử dụng cái tên mà mình đã chọn."</p>
     <p>Ấn tượng mà cái tên mang lại là vô cùng quan trọng...</p>
     <p>"Đó là lý do tại sao chị Ruka luôn mặc quần áo hoặc đeo phụ kiện màu xanh lam phải không ạ?"</p>
-    <p>Em bất giác buột miệng hỏi, và chị Ruka hơi ngạc nhiên một chút trước khi khẽ gật đầu.</p>
+    <p>Tôi bất giác buột miệng hỏi, và chị Ruka hơi ngạc nhiên một chút trước khi khẽ gật đầu.</p>
     <p>"Ừ, đại loại là vậy. Chị sẽ làm mọi cách để mọi người nhớ đến chị, dù chỉ là những chi tiết nhỏ nhất. Danh thiếp của chị cũng màu xanh lam, và logo của văn phòng cũng là màu xanh lam, đúng không?"</p>
     <p>"Vì Ruka-san là giám đốc công ty, nên tôi nghĩ đó là một điều hoàn toàn tự nhiên. Nếu mọi người nhớ đến tên cô, tự khắc danh tiếng của văn phòng chúng ta cũng sẽ vang xa."</p>
     <p>Chú Wada lên tiếng, và đúng lúc đó, chị Ruka thoáng lộ vẻ lúng túng, như thể cảm thấy có chút ngượng ngùng. Giống hệt như vẻ mặt của một hậu bối khi bị tiền bối dày dặn kinh nghiệm chất vấn vậy.</p>
     <p>"Thôi nào, thôi nào. Chuyện của cháu không quan trọng. Quan trọng là em muốn thế nào."</p>
     <p>"Có phải em nên quyết định ngay bây giờ không ạ?"</p>
     <p>"Đúng vậy. Chị định sẽ giới thiệu em với mọi người ngay bây giờ. Đáng lẽ chị nên bàn bạc chuyện này với em từ trước. Về điểm này, chị xin lỗi em nhé."</p>
-    <p>Sau đó, em bắt đầu chìm vào suy nghĩ. Em cũng từng băn khoăn không biết phải làm sao khi gửi sơ yếu lý lịch. Theo những thông tin em tìm hiểu được, mặc dù sơ yếu lý lịch không mang tính chất như một văn bản pháp lý, nhưng nó là cơ sở để xây dựng mối quan hệ tin cậy với công ty, vì vậy tốt nhất là nên viết đúng tên như trên giấy tờ tùy thân. Chính vì thế, em không còn lựa chọn nào khác ngoài việc viết [Asamura Saki].</p>
+    <p>Sau đó, tôi bắt đầu chìm vào suy nghĩ. Tôi cũng từng băn khoăn không biết phải làm sao khi gửi sơ yếu lý lịch. Theo những thông tin tôi tìm hiểu được, mặc dù sơ yếu lý lịch không mang tính chất như một văn bản pháp lý, nhưng nó là cơ sở để xây dựng mối quan hệ tin cậy với công ty, vì vậy tốt nhất là nên viết đúng tên như trên giấy tờ tùy thân. Chính vì thế, tôi không còn lựa chọn nào khác ngoài việc viết [Asamura Saki].</p>
     <p>Nếu đó không phải là một văn bản pháp lý ràng buộc, có lẽ mọi chuyện sẽ linh hoạt hơn một chút.</p>
-    <p>Ví dụ như, trên bảng tên trước cửa nhà em, có khắc cả hai cái tên ‘Asamura’ và ‘Ayase’ cạnh nhau. Đó là bởi vì tên dùng trong công việc của mẹ em là ‘Ayase Akiko’ (do mẹ đã sử dụng cái tên đó trong công việc từ trước khi tái hôn), nên tất cả thư từ gửi từ những đồng nghiệp quen biết hay những người từng trao đổi danh thiếp đều được đề tên ‘Ayase Akiko’.</p>
-    <p>Quay lại câu chuyện, ý của chị Ruka là, nếu trước khi chính thức được giới thiệu, mọi thứ đều có thể thay đổi, nên bây giờ em phải đưa ra quyết định xem mình sẽ sử dụng tên gọi ‘Ayase’ hay ‘Asamura’.</p>
-    <p>Ơ? Nhưng, có vẻ như chú Wada đã biết tên em rồi cơ mà?</p>
-    <p>Vẻ mặt đầy thắc mắc của em chắc chắn đã lộ rõ mồn một, bởi ngay sau đó chị Ruka đã giải thích đôi chút về chú Wada.</p>
+    <p>Ví dụ như, trên bảng tên trước cửa nhà tôi, có khắc cả hai cái tên ‘Asamura’ và ‘Ayase’ cạnh nhau. Đó là bởi vì tên dùng trong công việc của mẹ tôi là ‘Ayase Akiko’ (do mẹ đã sử dụng cái tên đó trong công việc từ trước khi tái hôn), nên tất cả thư từ gửi từ những đồng nghiệp quen biết hay những người từng trao đổi danh thiếp đều được đề tên ‘Ayase Akiko’.</p>
+    <p>Quay lại câu chuyện, ý của chị Ruka là, nếu trước khi chính thức được giới thiệu, mọi thứ đều có thể thay đổi, nên bây giờ tôi phải đưa ra quyết định xem mình sẽ sử dụng tên gọi ‘Ayase’ hay ‘Asamura’.</p>
+    <p>Ơ? Nhưng, có vẻ như chú Wada đã biết tên tôi rồi cơ mà?</p>
+    <p>Vẻ mặt đầy thắc mắc của tôi chắc chắn đã lộ rõ mồn một, bởi ngay sau đó chị Ruka đã giải thích đôi chút về chú Wada.</p>
     <p>"Chú Wada là cấp trên cũ của chị. Chú ấy cũng chính là người đã giúp đỡ chị rất nhiều khi thành lập công ty này. Nói đúng ra thì, ban đầu chính chú Wada là người đã tạo dựng nên công ty này, và chị là người đã cố gắng xin vào làm việc ở đây."</p>
     <p>"Ở cái tuổi này rồi, tôi không muốn kham những công việc nặng nhọc nữa. Tôi thà giao phó lại cho những người trẻ tuổi và nghỉ ngơi thôi. Hiện giờ tôi chỉ là một nhân viên hành chính bình thường. Lùi về phía sau hỗ trợ là quá đủ đối với tôi rồi."</p>
     <p>"Cháu không nghĩ vậy đâu. Cháu vẫn luôn coi chú Wada là một nhà thiết kế đang cống hiến hết mình. Thực ra, ngay cả lúc này, chú ấy cũng giống như một cố vấn cho mọi dự án của cháu vậy."</p>
-    <p>Ồ, ra là vậy. Do đó, chú Wada cũng đã xem qua sơ yếu lý lịch của em và biết đến cái tên ‘Asamura’.</p>
-    <p>Nếu đã như vậy, thì chỉ có chị Ruka và chú Wada là những người biết được tên chính thức trên sổ hộ khẩu của em là ‘Asamura Saki’. Những nhân viên khác mà em sắp được giới thiệu vẫn chưa hề biết tên em.</p>
-    <p>Em chỉ do dự một thoáng chốc, rồi buột miệng nói gần như theo một phản xạ tự nhiên,</p>
+    <p>Ồ, ra là vậy. Do đó, chú Wada cũng đã xem qua sơ yếu lý lịch của tôi và biết đến cái tên ‘Asamura’.</p>
+    <p>Nếu đã như vậy, thì chỉ có chị Ruka và chú Wada là những người biết được tên chính thức trên sổ hộ khẩu của tôi là ‘Asamura Saki’. Những nhân viên khác mà tôi sắp được giới thiệu vẫn chưa hề biết tên tôi.</p>
+    <p>Tôi chỉ do dự một thoáng chốc, rồi buột miệng nói gần như theo một phản xạ tự nhiên,</p>
     <p>"Dạ, nếu không có vấn đề gì, mọi người có thể gọi em bằng cái tên 'Ayase Saki'."</p>
-    <p>Khi em vừa dứt lời, chị Ruka nở một nụ cười như thể chị ấy đã đoán trước được điều đó, trong khi chú Wada có vẻ hơi ngạc nhiên một chút, nhưng chú ấy vẫn nói: "Được rồi. Vậy, tôi sẽ gọi cháu là Ayase-san nhé." Cách ứng xử trưởng thành, không tọc mạch tò mò chính là lý do khiến chị Ruka vô cùng tin tưởng chú ấy.</p>
-    <p>Khi lựa chọn một cái tên để đồng hành trong công việc, kỳ lạ thay, em lại không hề muốn sử dụng tên ‘Asamura’. Có lẽ bởi vì nó gợi nhắc em nhớ đến những ngày tháng khi em đã hạ quyết tâm phải tự đứng vững trên đôi chân của chính mình.</p>
-    <p>Em đã từng đổi họ hai lần.</p>
-    <p>Lần đầu tiên, là khi mẹ em ly hôn.</p>
-    <p>Trước đó, khi em còn là một đứa trẻ, họ của em là Ito. Vì vậy, trong những năm tháng tuổi thơ, em được mọi người biết đến với cái tên Ito Saki. Mọi người xung quanh cũng gọi em bằng cái tên đó, và em có một sự gắn kết cũng như hoài niệm sâu sắc với nó. Sau biến cố đó, mẹ em ly hôn và tên em được đổi thành Ayase.</p>
-    <p>Vào thời điểm đó, em vô cùng ngưỡng mộ mẹ và hoàn toàn thất vọng về bố, nên em đã hạ quyết tâm phải rèn luyện bản lĩnh để có thể tự lo cho cuộc sống của chính mình. Lúc bấy giờ, em là ‘Ayase Saki’. Em cảm thấy mình không thể nào quay lại sử dụng cái tên Ito nữa, và em cũng chưa bao giờ mường tượng về một tương lai mà mình sẽ kết hôn, nên em đã đinh ninh rằng mình sẽ sống trọn phần đời còn lại dưới cái tên Ayase Saki.</p>
-    <p>Em không biết liệu mình có tiếp tục theo đuổi con đường trở thành một nhà thiết kế hay không, nhưng để khẳng định rằng em là một cá thể hoàn toàn độc lập, em muốn tiếp tục gắn bó với cái tên Ayase Saki. Tất nhiên, em không hề phản đối cuộc hôn nhân mới của mẹ. Hiện tại, với tư cách là một thực tập sinh tại 『Lucca Design. Studio』, cái tên ‘Ayase Saki’ mang lại cho em cảm giác phù hợp nhất khi từng bước tiến về tương lai. Đó là những gì em đang suy nghĩ trong đầu.</p>
+    <p>Khi tôi vừa dứt lời, chị Ruka nở một nụ cười như thể chị ấy đã đoán trước được điều đó, trong khi chú Wada có vẻ hơi ngạc nhiên một chút, nhưng chú ấy vẫn nói: "Được rồi. Vậy, tôi sẽ gọi cháu là Ayase-san nhé." Cách ứng xử trưởng thành, không tọc mạch tò mò chính là lý do khiến chị Ruka vô cùng tin tưởng chú ấy.</p>
+    <p>Khi lựa chọn một cái tên để đồng hành trong công việc, kỳ lạ thay, tôi lại không hề muốn sử dụng tên ‘Asamura’. Có lẽ bởi vì nó gợi nhắc tôi nhớ đến những ngày tháng khi tôi đã hạ quyết tâm phải tự đứng vững trên đôi chân của chính mình.</p>
+    <p>Tôi đã từng đổi họ hai lần.</p>
+    <p>Lần đầu tiên, là khi mẹ tôi ly hôn.</p>
+    <p>Trước đó, khi tôi còn là một đứa trẻ, họ của tôi là Ito. Vì vậy, trong những năm tháng tuổi thơ, tôi được mọi người biết đến với cái tên Ito Saki. Mọi người xung quanh cũng gọi tôi bằng cái tên đó, và tôi có một sự gắn kết cũng như hoài niệm sâu sắc với nó. Sau biến cố đó, mẹ tôi ly hôn và tên tôi được đổi thành Ayase.</p>
+    <p>Vào thời điểm đó, tôi vô cùng ngưỡng mộ mẹ và hoàn toàn thất vọng về bố, nên tôi đã hạ quyết tâm phải rèn luyện bản lĩnh để có thể tự lo cho cuộc sống của chính mình. Lúc bấy giờ, tôi là ‘Ayase Saki’. Tôi cảm thấy mình không thể nào quay lại sử dụng cái tên Ito nữa, và tôi cũng chưa bao giờ mường tượng về một tương lai mà mình sẽ kết hôn, nên tôi đã đinh ninh rằng mình sẽ sống trọn phần đời còn lại dưới cái tên Ayase Saki.</p>
+    <p>Tôi không biết liệu mình có tiếp tục theo đuổi con đường trở thành một nhà thiết kế hay không, nhưng để khẳng định rằng tôi là một cá thể hoàn toàn độc lập, tôi muốn tiếp tục gắn bó với cái tên Ayase Saki. Tất nhiên, tôi không hề phản đối cuộc hôn nhân mới của mẹ. Hiện tại, với tư cách là một thực tập sinh tại 『Lucca Design. Studio』, cái tên ‘Ayase Saki’ mang lại cho tôi cảm giác phù hợp nhất khi từng bước tiến về tương lai. Đó là những gì tôi đang suy nghĩ trong đầu.</p>
 
     <hr>
 
-    <p>Em đồng ý nán lại chào chú Wada, người mà em vừa được giới thiệu trước đó, vào lúc sau.</p>
+    <p>Tôi đồng ý nán lại chào chú Wada, người mà tôi vừa được giới thiệu trước đó, vào lúc sau.</p>
     <p>"Vậy thì, chú Wada, lát nữa gặp lại chú sau nhé."</p>
     <p>"Được rồi."</p>
-    <p>Sau đó, chị Ruka dẫn em vào phòng làm việc chung.</p>
+    <p>Sau đó, chị Ruka dẫn tôi vào phòng làm việc chung.</p>
     <p>"Được rồi, mọi người ơi, xin hãy dành một chút thời gian chú ý lắng nghe nhé!"</p>
     <p>Giọng nói của chị Ruka khiến các nhân viên đang cắm cúi làm việc tại cụm bàn được xếp thành hình một hòn đảo nhỏ đồng loạt ngẩng lên nhìn.</p>
     <p>Có tất cả sáu nhân viên trong phòng làm việc. Hai nam và bốn nữ. Nếu tính thêm cả chị Ruka và chú Wada, tổng cộng có tám người. Tỷ lệ nữ giới áp đảo có thể là do đặc thù của ngành nghề, hoặc cũng có thể vì vị CEO là chị Ruka vốn là một người phụ nữ. Tất nhiên, cũng không loại trừ khả năng đó chỉ là một sự trùng hợp ngẫu nhiên.</p>
     <p>"Đây là Ayase Saki-san, một cô sinh viên đại học sẽ bắt đầu công việc thực tập dài hạn tại đây. Tạm thời, em ấy sẽ đảm nhận vai trò như một thư ký cho tôi. Vì vậy, mọi người hãy giúp đỡ cô bé nhiệt tình nhé."</p>
-    <p>Vừa nói, chị ấy vừa khẽ vỗ vào lưng em.</p>
-    <p>Em tiến lên một bước và nhẹ nhàng cúi đầu chào.</p>
+    <p>Vừa nói, chị ấy vừa khẽ vỗ vào lưng tôi.</p>
+    <p>Tôi tiến lên một bước và nhẹ nhàng cúi đầu chào.</p>
     <p>"Xin chào mọi người, em tên là Ayase Saki. Về ý nghĩa tên em... dạ, chữ 'Sa' được viết bằng Hán tự 'sa' mang nghĩa là cát. Còn chữ 'Ki' là Hán tự của từ mùa màng. Nếu có thể, em sẽ rất vui nếu mọi người gọi em bằng tên Saki ạ."</p>
 
-    <p>Có một lý do đặc biệt khiến em nhấn mạnh vào tên của mình.</p>
-    <p>Tên của công ty này là 『Lucca Design. Studio』. Khi được nhận vào làm thực tập sinh, em đã cất công tìm hiểu và biết được rằng từ ‘Lucca’ trong tiếng Ý có nghĩa là ‘ánh sáng’. Hơn nữa, trong tiếng Iceland, nó còn mang ý nghĩa là ‘hạnh phúc’ hay ‘may mắn’. Tất nhiên, cái tên này cũng có sự liên kết mật thiết với tên của chị Ruka.</p>
-    <p>Em đoán lý do chính khiến họ lựa chọn một từ vựng bao hàm nhiều ý nghĩa tích cực đến vậy là vì, rất có thể, trong nội bộ công ty, họ trân trọng cái tên ‘Ruka’ hơn là ‘Akihiro’. Từ cuộc trò chuyện ngắn ngủi vừa rồi, có thể thấy rõ ràng rằng chị Ruka vô cùng khao khát được đánh bóng tên tuổi của mình trong giới, và thông điệp đó chắc chắn đã được truyền đạt đến toàn thể nhân viên.</p>
+    <p>Có một lý do đặc biệt khiến tôi nhấn mạnh vào tên của mình.</p>
+    <p>Tên của công ty này là 『Lucca Design. Studio』. Khi được nhận vào làm thực tập sinh, tôi đã cất công tìm hiểu và biết được rằng từ ‘Lucca’ trong tiếng Ý có nghĩa là ‘ánh sáng’. Hơn nữa, trong tiếng Iceland, nó còn mang ý nghĩa là ‘hạnh phúc’ hay ‘may mắn’. Tất nhiên, cái tên này cũng có sự liên kết mật thiết với tên của chị Ruka.</p>
+    <p>Tôi đoán lý do chính khiến họ lựa chọn một từ vựng bao hàm nhiều ý nghĩa tích cực đến vậy là vì, rất có thể, trong nội bộ công ty, họ trân trọng cái tên ‘Ruka’ hơn là ‘Akihiro’. Từ cuộc trò chuyện ngắn ngủi vừa rồi, có thể thấy rõ ràng rằng chị Ruka vô cùng khao khát được đánh bóng tên tuổi của mình trong giới, và thông điệp đó chắc chắn đã được truyền đạt đến toàn thể nhân viên.</p>
     <p>Nói một cách khác, có lẽ chị ấy muốn mọi người biết đến mình dưới cái tên ‘Ruka’ nhiều hơn là ‘Akihiro’.</p>
     <p>Dĩ nhiên, ở Nhật Bản, văn hóa gọi nhau bằng tên thật trong môi trường công sở là một điều cực kỳ hiếm hoi và không hề phổ biến.</p>
-    <p>Thực ra, trong lần đầu tiên em đặt chân đến văn phòng này, chú Wada đã nói: "Bây giờ, tôi sẽ gọi giám đốc Akihiro ra đây". Nhưng đồng thời, chị Ruka cũng bảo: "Em cứ gọi chị là Ruka cũng được. Công ty nhỏ mà, mọi người ở đây đều gọi chị như vậy cả."</p>
+    <p>Thực ra, trong lần đầu tiên tôi đặt chân đến văn phòng này, chú Wada đã nói: "Bây giờ, tôi sẽ gọi giám đốc Akihiro ra đây". Nhưng đồng thời, chị Ruka cũng bảo: "Em cứ gọi chị là Ruka cũng được. Công ty nhỏ mà, mọi người ở đây đều gọi chị như vậy cả."</p>
     <p>Và đúng như vậy, chú Wada vẫn luôn miệng gọi chị ấy là "Ruka-san" từ sáng đến giờ.</p>
     <p>Không chỉ đơn thuần là để thể hiện sự thân thiện. Chị ấy muốn sử dụng âm thanh của cái tên ‘Ruka’ càng nhiều càng tốt (ví dụ như khi nhân viên ra ngoài làm việc và vô tình nhắc đến tên sếp của họ), họ muốn phần nào đó khắc sâu và lan tỏa cái tên này đến những người xung quanh.</p>
-    <p>Em nghĩ rằng trong một môi trường làm việc cởi mở như vậy, họ sẽ chẳng cảm thấy có gì kỳ lạ nếu gọi em bằng tên thật. Đó mới là điều quan trọng. Mặc dù em muốn dùng ‘Ayase’ làm tên trong công việc, nhưng trên giấy tờ pháp lý em lại là ‘Asamura’. Do đó, rất có thể cái tên ‘Asamura’ sẽ thu hút sự chú ý của các nhân viên khác trong tương lai. Việc khiến họ bối rối với những câu hỏi kiểu như ‘Tóm lại là phải gọi bằng tên nào mới đúng?’ rõ ràng không phải là một bước đi khôn ngoan.</p>
+    <p>Tôi nghĩ rằng trong một môi trường làm việc cởi mở như vậy, họ sẽ chẳng cảm thấy có gì kỳ lạ nếu gọi tôi bằng tên thật. Đó mới là điều quan trọng. Mặc dù tôi muốn dùng ‘Ayase’ làm tên trong công việc, nhưng trên giấy tờ pháp lý tôi lại là ‘Asamura’. Do đó, rất có thể cái tên ‘Asamura’ sẽ thu hút sự chú ý của các nhân viên khác trong tương lai. Việc khiến họ bối rối với những câu hỏi kiểu như ‘Tóm lại là phải gọi bằng tên nào mới đúng?’ rõ ràng không phải là một bước đi khôn ngoan.</p>
     <p>Trong trường hợp này, cái tên ‘Ayase’ gần như chắc chắn sẽ không bao giờ thay đổi trong tương lai.</p>
-    <p>Vậy nên, dù đã quyết định chọn ‘Ayase Saki’ làm danh xưng trong công việc, nhưng em vẫn muốn mọi người chú ý nhiều hơn vào cái tên ‘Saki’. Em đắn đo một lát rồi quyết định lên tiếng: "Mọi người cứ gọi em là Saki nhé."</p>
-    <p>Phản ứng của các anh chị nhân viên trước màn giới thiệu của em nhìn chung khá tích cực. Họ mỉm cười và đáp lại "Rất vui được gặp em". Tuy nhiên, cũng có một vài người vẫn giữ nguyên nét mặt lạnh tanh, và ngay khi vừa dứt lời chào, họ lập tức cúi gầm mặt xuống và tiếp tục quay cuồng với công việc. Em lờ mờ cảm nhận được một bầu không khí khá căng thẳng. À thì, việc một lính mới tò te chưa có chút thành tựu nào được mọi người dang tay chào đón ngay lập tức quả thực không phải là chuyện dễ dàng. Em thậm chí đã lường trước được sự căng thẳng này.</p>
-    <p>Sau khi màn chào hỏi kết thúc, em lập tức quay lại chỗ chú Wada. Chú ấy đang khệ nệ ôm một chồng tài liệu in ấn và có vẻ như đã hoàn thành công đoạn in.</p>
+    <p>Vậy nên, dù đã quyết định chọn ‘Ayase Saki’ làm danh xưng trong công việc, nhưng tôi vẫn muốn mọi người chú ý nhiều hơn vào cái tên ‘Saki’. Tôi đắn đo một lát rồi quyết định lên tiếng: "Mọi người cứ gọi em là Saki nhé."</p>
+    <p>Phản ứng của các anh chị nhân viên trước màn giới thiệu của tôi nhìn chung khá tích cực. Họ mỉm cười và đáp lại "Rất vui được gặp em". Tuy nhiên, cũng có một vài người vẫn giữ nguyên nét mặt lạnh tanh, và ngay khi vừa dứt lời chào, họ lập tức cúi gầm mặt xuống và tiếp tục quay cuồng với công việc. Tôi lờ mờ cảm nhận được một bầu không khí khá căng thẳng. À thì, việc một lính mới tò te chưa có chút thành tựu nào được mọi người dang tay chào đón ngay lập tức quả thực không phải là chuyện dễ dàng. Tôi thậm chí đã lường trước được sự căng thẳng này.</p>
+    <p>Sau khi màn chào hỏi kết thúc, tôi lập tức quay lại chỗ chú Wada. Chú ấy đang khệ nệ ôm một chồng tài liệu in ấn và có vẻ như đã hoàn thành công đoạn in.</p>
     <p>Chị Ruka liền lên tiếng: "Được rồi, phần còn lại tôi giao cho em đấy," rồi quay trở lại với guồng quay công việc của mình.</p>
-    <p>Em nhanh nhảu đề nghị: "Để cháu phụ một tay ạ," và đón lấy một nửa xấp tài liệu trên tay chú.</p>
-    <p>"Cảm ơn cháu nhé," chú Wada nói. Chúng em mang chúng vào phòng họp và xếp gọn gàng trên bàn. Trông có vẻ như đây là tài liệu chuẩn bị cho một buổi thuyết trình. Lát nữa người phụ trách sẽ đến lấy, nên chú Wada dẫn em vào nhà kho.</p>
+    <p>Tôi nhanh nhảu đề nghị: "Để cháu phụ một tay ạ," và đón lấy một nửa xấp tài liệu trên tay chú.</p>
+    <p>"Cảm ơn cháu nhé," chú Wada nói. Chúng tôi mang chúng vào phòng họp và xếp gọn gàng trên bàn. Trông có vẻ như đây là tài liệu chuẩn bị cho một buổi thuyết trình. Lát nữa người phụ trách sẽ đến lấy, nên chú Wada dẫn tôi vào nhà kho.</p>
     <p>Chú mở khóa và bước vào. Căn phòng chật cứng những chiếc kệ sắt khổng lồ chứa đủ loại thiết bị điện tử không còn sử dụng (như màn hình máy tính, máy tính bảng, máy in và cả máy scan). Trên kệ còn có những cuốn sách dày cộp có vẻ như dùng để tra cứu tài liệu, cùng với những ấn phẩm cũ của các cuốn tạp chí được xếp ngay ngắn. Không gian bên trong có hơi bám bụi một chút.</p>
-    <p>"Ừm, có vẻ cái này vẫn còn dùng tốt chán. Tuy là đời cũ rồi, nhưng cháu cứ tạm dùng cái này nhé," chú ấy vừa nói vừa đưa cho em một chiếc laptop phục vụ cho công việc.</p>
+    <p>"Ừm, có vẻ cái này vẫn còn dùng tốt chán. Tuy là đời cũ rồi, nhưng cháu cứ tạm dùng cái này nhé," chú ấy vừa nói vừa đưa cho tôi một chiếc laptop phục vụ cho công việc.</p>
     <p>"Chú chắc chứ ạ?"</p>
     <p>"Dù là dòng máy đời trước, nhưng chiếc laptop này dư sức cân được các công việc hành chính văn phòng. Vì lý do bảo mật, công ty không cho phép sử dụng máy tính cá nhân. Thế nên, chú muốn cháu dùng tạm máy này một thời gian. Nếu thấy có gì bất tiện, cháu cứ báo lại với chú bất cứ lúc nào. Công ty sẽ xem xét sắm máy mới cho cháu."</p>
     <p>"Dạ vâng."</p>
-    <p>Sau đó, em được hướng dẫn tường tận mọi thứ, từ cách thiết lập tài khoản trên máy, các quy định về bảo mật, cho đến cách cài đặt những phần mềm cần thiết cho công việc. Làm sao em có thể nhồi nhét ngần ấy thứ vào đầu cùng một lúc được chứ, nên khi thấy em có vẻ lúng túng, chú Wada liền nói: "Có gì không hiểu, cháu cứ mạnh dạn hỏi chú nhé". Em quyết định sẽ bám chặt lấy câu nói cứu cánh đó.</p>
-    <p>Ôm khư khư chiếc laptop trên tay, em cùng chú Wada trở lại khu vực làm việc chung và được dẫn đến chỗ ngồi của mình. Ở phía góc phòng làm việc lúc nãy vẫn còn dư hai chiếc ghế trống, và một trong số đó đã thuộc về em.</p>
+    <p>Sau đó, tôi được hướng dẫn tường tận mọi thứ, từ cách thiết lập tài khoản trên máy, các quy định về bảo mật, cho đến cách cài đặt những phần mềm cần thiết cho công việc. Làm sao tôi có thể nhồi nhét ngần ấy thứ vào đầu cùng một lúc được chứ, nên khi thấy tôi có vẻ lúng túng, chú Wada liền nói: "Có gì không hiểu, cháu cứ mạnh dạn hỏi chú nhé". Tôi quyết định sẽ bám chặt lấy câu nói cứu cánh đó.</p>
+    <p>Ôm khư khư chiếc laptop trên tay, tôi cùng chú Wada trở lại khu vực làm việc chung và được dẫn đến chỗ ngồi của mình. Ở phía góc phòng làm việc lúc nãy vẫn còn dư hai chiếc ghế trống, và một trong số đó đã thuộc về tôi.</p>
     <p>"Đây. Cháu xem đi."</p>
-    <p>Chú Wada đưa cho em một tập giấy in được kẹp cẩn thận trong một chiếc bìa sơ mi nhựa.</p>
-    <p>Khi nhìn lướt qua trang bìa, em thấy có dán một nhãn dán ghi 'Hướng dẫn Thiết lập Môi trường Làm việc trên PC'. Mở ra xem thử, bên trong là chi tiết các bước cài đặt và cấu hình phần mềm mà chú Wada vừa giảng giải cho em lúc nãy.</p>
+    <p>Chú Wada đưa cho tôi một tập giấy in được kẹp cẩn thận trong một chiếc bìa sơ mi nhựa.</p>
+    <p>Khi nhìn lướt qua trang bìa, tôi thấy có dán một nhãn dán ghi 'Hướng dẫn Thiết lập Môi trường Làm việc trên PC'. Mở ra xem thử, bên trong là chi tiết các bước cài đặt và cấu hình phần mềm mà chú Wada vừa giảng giải cho tôi lúc nãy.</p>
     <p>"Cháu cảm ơn chú nhiều ạ."</p>
     <p>"Khi nào xong xuôi hết các bước thì báo lại cho chú một tiếng. Chú sẽ ngồi ở đằng kia."</p>
-    <p>Khi em nhìn theo hướng chú chỉ, có một chiếc ghế làm việc được đặt tách biệt gần khu vực của chị Ruka, xung quanh là những chiếc màn hình máy tính cỡ lớn và những chồng sách tham khảo dày cộp chất đống bên cạnh. Bàn làm việc của chú ấy trông bừa bộn hơn hẳn so với những nhân viên khác.</p>
-    <p>Bất giác, ánh mắt em cứ đưa đẩy qua lại giữa người đàn ông tươm tất, gọn gàng đang đứng trước mặt mình và chiếc bàn làm việc lộn xộn kia.</p>
+    <p>Khi tôi nhìn theo hướng chú chỉ, có một chiếc ghế làm việc được đặt tách biệt gần khu vực của chị Ruka, xung quanh là những chiếc màn hình máy tính cỡ lớn và những chồng sách tham khảo dày cộp chất đống bên cạnh. Bàn làm việc của chú ấy trông bừa bộn hơn hẳn so với những nhân viên khác.</p>
+    <p>Bất giác, ánh mắt tôi cứ đưa đẩy qua lại giữa người đàn ông tươm tất, gọn gàng đang đứng trước mặt mình và chiếc bàn làm việc lộn xộn kia.</p>
     <p>"Chú Wada chẳng bao giờ chịu dọn dẹp đồ đạc của mình cả..."</p>
-    <p>Có vẻ như chị gái ngồi cạnh em đã bắt được ánh nhìn của em, chị ấy thở dài thườn thượt rồi thì thầm to nhỏ.</p>
+    <p>Có vẻ như chị gái ngồi cạnh tôi đã bắt được ánh nhìn của tôi, chị ấy thở dài thườn thượt rồi thì thầm to nhỏ.</p>
     <p>"Hahaha... Chú xin lỗi. Quả thực chú rất tệ trong khoản dọn dẹp."</p>
     <p>"Ôi, cháu-cháu xin lỗi ạ."</p>
-    <p>Em lỡ miệng xin lỗi một cách vô thức.</p>
+    <p>Tôi lỡ miệng xin lỗi một cách vô thức.</p>
     <p>"Không sao, không sao. Giới trẻ thời nay ai cũng thích sự ngăn nắp, gọn gàng mà. Nên cháu thấy sốc cũng là chuyện dễ hiểu thôi. Những người thuộc thế hệ Showa như chú vốn dĩ không được khéo léo trong mấy việc đó."</p>
     <p>"Tôi nghĩ việc đổ lỗi cho khoảng cách thế hệ là không hay đâu."</p>
     <p>Một anh chàng trẻ tuổi với mái tóc nhuộm màu hồng chóe ngồi đối diện người phụ nữ ban nãy cất giọng đều đều mà chẳng buồn ngẩng mặt lên.</p>
     <p>"Ừm, ừm. Chú sẽ rút kinh nghiệm."</p>
     <p>Nghe lời nhận xét của cậu thanh niên, chú Wada vẫn giữ phong thái điềm tĩnh và nhẹ nhàng đáp: "Ừ," rồi lững thững quay trở về chỗ ngồi.</p>
-    <p>Chú ấy khẽ gật đầu chào những người xung quanh (trong im lặng, vì mọi người đều đang tập trung cao độ vào công việc) rồi ngồi phịch xuống ghế. Sau khi đặt đồ đạc xuống dưới chân—ối, em quên chưa hỏi xem có chỗ nào để cất đồ không. Ở đây có tủ đồ cá nhân không nhỉ?—và bắt đầu loay hoay tìm ổ cắm điện.</p>
-    <p>Tiếng ngón tay gõ lộc cộc trên mặt bàn khiến em ngẩng phắt đầu lên.</p>
+    <p>Chú ấy khẽ gật đầu chào những người xung quanh (trong im lặng, vì mọi người đều đang tập trung cao độ vào công việc) rồi ngồi phịch xuống ghế. Sau khi đặt đồ đạc xuống dưới chân—ối, tôi quên chưa hỏi xem có chỗ nào để cất đồ không. Ở đây có tủ đồ cá nhân không nhỉ?—và bắt đầu loay hoay tìm ổ cắm điện.</p>
+    <p>Tiếng ngón tay gõ lộc cộc trên mặt bàn khiến tôi ngẩng phắt đầu lên.</p>
     <p>Chị đồng nghiệp ngồi cạnh đang chỉ tay về phía trung tâm của "hòn đảo" bàn làm việc. Ổ cắm điện nằm ở ngay đó.</p>
     <p>"Em cảm ơn chị ạ."</p>
     <p>"Ừm. Có gì không hiểu thì cứ mạnh dạn hỏi nhé."</p>
     <p>Chị ấy trông ra dáng một người phụ nữ cực kỳ đáng tin cậy. Nụ cười của chị ấy mang nét lém lỉnh, tinh nghịch nhiều hơn là sự ngọt ngào, dịu dàng. Hừm, có vẻ như chị ấy sẽ rất được lòng mọi người đây.</p>
     <p>Được rồi, bắt tay vào việc thôi...</p>
-    <p>Sau một giờ đồng hồ vật lộn với cuốn sổ tay hướng dẫn, cuối cùng em cũng lết được đến trang cuối cùng. Công đoạn cuối cùng là cài đặt một phần mềm có tên là Slack. Slack là một công cụ chat giao tiếp được thiết kế chuyên biệt cho môi trường doanh nghiệp (ít nhất thì trong cuốn sổ tay ghi như vậy).</p>
-    <p>Sau khi quá trình cài đặt phần mềm hoàn tất, em đứng dậy khỏi ghế và tiến về phía chú Wada để báo cáo tình hình.</p>
+    <p>Sau một giờ đồng hồ vật lộn với cuốn sổ tay hướng dẫn, cuối cùng tôi cũng lết được đến trang cuối cùng. Công đoạn cuối cùng là cài đặt một phần mềm có tên là Slack. Slack là một công cụ chat giao tiếp được thiết kế chuyên biệt cho môi trường doanh nghiệp (ít nhất thì trong cuốn sổ tay ghi như vậy).</p>
+    <p>Sau khi quá trình cài đặt phần mềm hoàn tất, tôi đứng dậy khỏi ghế và tiến về phía chú Wada để báo cáo tình hình.</p>
     <p>"Cháu làm xong rồi ạ, phiền chú kiểm tra giúp cháu với."</p>
-    <p>Em cùng chú Wada quay trở lại bàn làm việc. Em xoay màn hình laptop lại để chú ấy có thể nhìn rõ và nhờ chú ấy kiểm tra.</p>
-    <p>Sau khi chắc chắn rằng em đã làm đúng theo từng bước trong sổ tay hướng dẫn, chú Wada để em tự tay thao tác trên Slack và tham gia vào một vài không gian làm việc (workspace). Trên Slack, người dùng có thể tham gia vào các không gian này tùy thuộc vào từng dự án, tức là mục tiêu công việc cụ thể. Nhờ đó, thông tin mật được bảo vệ nghiêm ngặt, và các thành viên có thể thoải mái thảo luận, chia sẻ tài liệu với nhau.</p>
+    <p>Tôi cùng chú Wada quay trở lại bàn làm việc. Tôi xoay màn hình laptop lại để chú ấy có thể nhìn rõ và nhờ chú ấy kiểm tra.</p>
+    <p>Sau khi chắc chắn rằng tôi đã làm đúng theo từng bước trong sổ tay hướng dẫn, chú Wada để tôi tự tay thao tác trên Slack và tham gia vào một vài không gian làm việc (workspace). Trên Slack, người dùng có thể tham gia vào các không gian này tùy thuộc vào từng dự án, tức là mục tiêu công việc cụ thể. Nhờ đó, thông tin mật được bảo vệ nghiêm ngặt, và các thành viên có thể thoải mái thảo luận, chia sẻ tài liệu với nhau.</p>
     <p>Nếu hình dung nó giống như các nhóm chat trên ứng dụng LINE, có lẽ mọi người sẽ dễ hình dung hơn.</p>
-    <p>Với cương vị là CEO của công ty như chị Ruka, dĩ nhiên chị ấy có đặc quyền truy cập vào tất cả các không gian làm việc. Trong khi đó, một người mới chân ướt chân ráo bước vào công ty vào ngày hôm nay như em thì không thể nào bén mảng đến những nơi quan trọng được. Tạm thời, em chỉ được cấp quyền truy cập vào ba không gian làm việc. Nghe cũng khá hợp lý với vị trí của một cô thư ký thực tập sinh.</p>
+    <p>Với cương vị là CEO của công ty như chị Ruka, dĩ nhiên chị ấy có đặc quyền truy cập vào tất cả các không gian làm việc. Trong khi đó, một người mới chân ướt chân ráo bước vào công ty vào ngày hôm nay như tôi thì không thể nào bén mảng đến những nơi quan trọng được. Tạm thời, tôi chỉ được cấp quyền truy cập vào ba không gian làm việc. Nghe cũng khá hợp lý với vị trí của một cô thư ký thực tập sinh.</p>
     <p>"Chú nghe nói đây là lần đầu tiên cháu làm công việc liên quan đến thiết kế..."</p>
     <p>"Dạ vâng ạ."</p>
     <p>"Nếu vậy, chú đoán chắc sẽ có rất nhiều thuật ngữ hay khái niệm cháu chưa nắm rõ, thế nên cháu cứ thử đọc qua phần nhật ký trò chuyện (log) trong này xem sao. Vì khối lượng tin nhắn khá đồ sộ, nên chắc cháu không thể nào cày hết được đâu, nhưng mà này, ừm, Saki-san, cháu có thể làm việc đến khoảng 5 rưỡi chiều không?"</p>
-    <p>Hồi còn làm thêm ở hiệu sách, em toàn làm ca đến tận đêm muộn, nên em mạnh miệng khẳng định mình có thể cày cuốc thêm được, nhưng lập tức bị nhắc nhở là không nên ép bản thân làm việc quá sức ngay trong ngày đầu tiên.</p>
-    <p>Sau khi ngoan ngoãn gật đầu vâng lời, em bắt đầu cắm mặt vào đọc log tin nhắn trong không gian làm việc.</p>
+    <p>Hồi còn làm thêm ở hiệu sách, tôi toàn làm ca đến tận đêm muộn, nên tôi mạnh miệng khẳng định mình có thể cày cuốc thêm được, nhưng lập tức bị nhắc nhở là không nên ép bản thân làm việc quá sức ngay trong ngày đầu tiên.</p>
+    <p>Sau khi ngoan ngoãn gật đầu vâng lời, tôi bắt đầu cắm mặt vào đọc log tin nhắn trong không gian làm việc.</p>
     <p>Chú Wada lại đủng đỉnh đi về chỗ.</p>
     <p>Tuy nhiên, chỉ một chốc sau, một tiếng *bíp* báo hiệu tin nhắn đến vang lên, và biểu tượng Slack bắt đầu nhấp nháy báo có tin nhắn mới. Mở ra xem, hóa ra đó là tin nhắn gửi từ chú Wada.</p>
     <p>【Nhiệm vụ chính của Saki-san là trả lời tin nhắn của giám đốc Akihiro trên Slack, tóm tắt lại các thông tin quan trọng và báo cáo lại cho giám đốc Akihiro.】</p>
     <p>À há, ra là vậy.</p>
     <p>【Ngoài ra, chú nghĩ cháu cũng sẽ phải hỗ trợ các công việc hành chính văn phòng chung, ví dụ như lên lịch các cuộc họp và cập nhật vào lịch làm việc chung. Chú sẽ phổ biến chi tiết thêm cho cháu sau nhé.】</p>
-    <p>Chà, hướng dẫn quả là chi tiết và tận tình. Nhớ hồi mới chập chững làm thêm ở hiệu sách, anh Yuuta là người đã cầm tay chỉ việc cho em từ những bước căn bản nhất. Lúc đó anh ấy đã giúp đỡ em rất nhiều, nhưng lần này em đã chuẩn bị sẵn tâm lý để đối mặt với những thử thách cam go khi phải tự bơi trong một môi trường hoàn toàn mới. Ấy vậy mà, có vẻ như em khá may mắn khi gặp được một người sếp tận tâm ở nơi làm việc này.</p>
+    <p>Chà, hướng dẫn quả là chi tiết và tận tình. Nhớ hồi mới chập chững làm thêm ở hiệu sách, anh Yuuta là người đã cầm tay chỉ việc cho tôi từ những bước căn bản nhất. Lúc đó anh ấy đã giúp đỡ tôi rất nhiều, nhưng lần này tôi đã chuẩn bị sẵn tâm lý để đối mặt với những thử thách cam go khi phải tự bơi trong một môi trường hoàn toàn mới. Ấy vậy mà, có vẻ như tôi khá may mắn khi gặp được một người sếp tận tâm ở nơi làm việc này.</p>
     <p>【Cháu cảm ơn chú nhiều ạ. Rất mong được chú chiếu cố thêm.】</p>
-    <p>Sau khi soạn tin nhắn phản hồi, em lại cắm cúi đọc tiếp log tin nhắn công việc.</p>
-    <p>Trước tiên, em sẽ bắt đầu với không gian làm việc có tựa đề [Roppongi Art Festa]. Đọc qua cái tên, có vẻ như đây là một dự án liên quan đến triển lãm nghệ thuật...</p>
-    <p>Bỗng nhiên, em nghe thấy một tiếng *cộc* khe khẽ vang lên khiến em phải bừng tỉnh và quay lại với thực tại.</p>
+    <p>Sau khi soạn tin nhắn phản hồi, tôi lại cắm cúi đọc tiếp log tin nhắn công việc.</p>
+    <p>Trước tiên, tôi sẽ bắt đầu với không gian làm việc có tựa đề [Roppongi Art Festa]. Đọc qua cái tên, có vẻ như đây là một dự án liên quan đến triển lãm nghệ thuật...</p>
+    <p>Bỗng nhiên, tôi nghe thấy một tiếng *cộc* khe khẽ vang lên khiến tôi phải bừng tỉnh và quay lại với thực tại.</p>
     <p>"Đừng có cố quá thành quá cố đấy."</p>
-    <p>Vừa ngoảnh mặt lại, em thấy một chiếc cốc giấy có quai cầm được đặt chễm chệ trên khoảng trống trên bàn làm việc của mình. Thứ chất lỏng màu nâu sẫm, gần như đen đặc, chiếm khoảng bảy phần mười thể tích chiếc cốc. Là cà phê. Lúc này em mới để ý thấy chị đồng nghiệp vừa mang cốc cà phê tới cũng đang cầm một chiếc cốc y chang.</p>
+    <p>Vừa ngoảnh mặt lại, tôi thấy một chiếc cốc giấy có quai cầm được đặt chễm chệ trên khoảng trống trên bàn làm việc của mình. Thứ chất lỏng màu nâu sẫm, gần như đen đặc, chiếm khoảng bảy phần mười thể tích chiếc cốc. Là cà phê. Lúc này tôi mới để ý thấy chị đồng nghiệp vừa mang cốc cà phê tới cũng đang cầm một chiếc cốc y chang.</p>
     <p>"Em uống đi."</p>
-    <p>Chị ấy vừa nói vừa kéo ghế ngồi xuống ngay cạnh em.</p>
+    <p>Chị ấy vừa nói vừa kéo ghế ngồi xuống ngay cạnh tôi.</p>
     <p>"Em cảm ơn chị ạ."</p>
     <p>"Ôi dào, có gì đâu mà phải cảm ơn. Chị lấy ở đằng kia kìa."</p>
     <p>Nhìn theo hướng tay chị ấy chỉ, có một chiếc máy pha cà phê cỡ nhỏ được đặt trên chiếc bàn kê sát tường.</p>
     <p>"Cái máy đó tiện ra phết đấy. Em cứ tự nhiên dùng bất cứ lúc nào muốn nhé."</p>
     <p>"Nó có giống mấy cái máy pha trà tự động không chị?"</p>
-    <p>Khi em vừa buột miệng hỏi một câu hết sức ngây ngô, chị ấy liền bật cười khúc khích. Bộ em vừa nói hớ gì sao?</p>
+    <p>Khi tôi vừa buột miệng hỏi một câu hết sức ngây ngô, chị ấy liền bật cười khúc khích. Bộ tôi vừa nói hớ gì sao?</p>
     <p>"Ừ thì, cũng có thể coi là vậy.... Em đang là sinh viên mà, tự nhiên liên tưởng đến mấy cái máy bán trà tự động ở căng tin trường thì cũng là lẽ bình thường thôi."</p>
     <p>"Dạ vâng. Hồi cấp ba trường em cũng có mấy cái máy đó. Nhưng mà toàn đồ uống phải trả tiền, nên em cũng ít khi mua lắm."</p>
     <p>"Ở đây thì miễn phí hoàn toàn. Mặc dù hương vị thì chắc chắn không thể sánh bằng cà phê ngoài tiệm được rồi. Khát thì em cứ ra đó tự phục vụ nhé."</p>
     <p>"Dạ, em biết rồi ạ."</p>
     <p>"Thế nào rồi? Có khúc mắc gì không?"</p>
-    <p>Chị ấy vừa hỏi vừa hất hàm về phía chiếc laptop của em.</p>
+    <p>Chị ấy vừa hỏi vừa hất hàm về phía chiếc laptop của tôi.</p>
     <p>"Chị hỏi vậy thì, thay vì nói là không hiểu gì, em lại thấy mông lung không biết nên bắt đầu tìm hiểu từ đâu mới đúng."</p>
-    <p>Nghe em thành thật thú nhận, nét mặt chị ấy thoáng chút ngỡ ngàng trước khi nở một nụ cười rạng rỡ.</p>
+    <p>Nghe tôi thành thật thú nhận, nét mặt chị ấy thoáng chút ngỡ ngàng trước khi nở một nụ cười rạng rỡ.</p>
     <p>"Ahahaha! Ăn ngay nói thật là một đức tính tốt đấy. Chà, em đúng là một tài năng hiếm có khó tìm."</p>
     <p>"Tài năng hiếm có khó tìm ạ?"</p>
     <p>Tràng cười giòn giã của chị ấy khiến mấy người xung quanh phải nhíu mày, nhưng họ cũng chẳng thèm để tâm cho lắm, chỉ tỏ vẻ kiểu như "lại nữa rồi". Có vẻ như đây là trạng thái hoạt động bình thường của chị ấy.</p>
@@ -400,29 +654,29 @@
     <p>"Dạ, em tên là Ayase Saki ạ."</p>
     <p>"Chị biết mà. Lúc nãy em có giới thiệu rồi. À, quên mất, chị tên là Satozaki Ryouko."</p>
     <p>Satozaki Ryouko, ra là vậy.</p>
-    <p>Được rồi, em đã ghim cái tên này vào đầu.</p>
+    <p>Được rồi, tôi đã ghim cái tên này vào đầu.</p>
     <p>"Chị Ryouko, ừm, lúc nãy chị nói 'tài năng hiếm có' là có ý gì vậy ạ?"</p>
     <p>"Chị có nghe loáng thoáng là tuần sau công ty sẽ nhận một thực tập sinh mới. 'Vì cô bé này là một tài năng hiếm có đã thi đỗ vào Đại học Nữ sinh Tsukinomiya', họ bảo thế đấy."</p>
     <p>"À."</p>
-    <p>...Nhưng mà, em chỉ là một kẻ tay ngang chưa từng học qua trường lớp thiết kế nào. Em tò mò không biết cái "tài năng" mà họ nhắc đến là gì?</p>
+    <p>...Nhưng mà, tôi chỉ là một kẻ tay ngang chưa từng học qua trường lớp thiết kế nào. Tôi tò mò không biết cái "tài năng" mà họ nhắc đến là gì?</p>
     <p>"Nên sếp dặn mọi người không được lấy em ra làm trò tiêu khiển."</p>
     <p>"Hức."</p>
-    <p>Tóm lại, ý sếp là cấm mọi hành vi ma cũ bắt nạt ma mới. Cũng phải thôi, một lính mới tò te chân ướt chân ráo bước vào môi trường chuyên nghiệp thì việc bị người khác xét nét, khó chịu là chuyện cơm bữa. Em đã chuẩn bị sẵn tinh thần để đón nhận điều đó rồi.</p>
+    <p>Tóm lại, ý sếp là cấm mọi hành vi ma cũ bắt nạt ma mới. Cũng phải thôi, một lính mới tò te chân ướt chân ráo bước vào môi trường chuyên nghiệp thì việc bị người khác xét nét, khó chịu là chuyện cơm bữa. Tôi đã chuẩn bị sẵn tinh thần để đón nhận điều đó rồi.</p>
     <p>"Nói thật thì, bản thân em cũng mù tịt không hiểu tại sao mình lại được nhận vào làm nữa."</p>
     <p>"Em đã từng học thiết kế bao giờ chưa?"</p>
-    <p>Em khẽ lắc đầu.</p>
+    <p>Tôi khẽ lắc đầu.</p>
     <p>"Thậm chí em còn chưa từng học vẽ cơ."</p>
     <p>"Hê~"</p>
-    <p>Chị ấy nhoẻn miệng cười, và em bắt đầu tò mò không biết đằng sau nụ cười ấy ẩn chứa hàm ý gì.</p>
+    <p>Chị ấy nhoẻn miệng cười, và tôi bắt đầu tò mò không biết đằng sau nụ cười ấy ẩn chứa hàm ý gì.</p>
     <p>"Nói chung là, chỉ cần em làm được việc là ok rồi. Chốt lại là, nãy giờ em đang băn khoăn không biết nên đặt câu hỏi từ đâu đúng không?"</p>
-    <p>Nghe vậy, em bắt đầu lục lại trí nhớ.</p>
-    <p>Em vừa mới cày xong một trong những bản ghi chép của không gian làm việc...</p>
+    <p>Nghe vậy, tôi bắt đầu lục lại trí nhớ.</p>
+    <p>Tôi vừa mới cày xong một trong những bản ghi chép của không gian làm việc...</p>
     <p>"Về cái dự án 'Roppongi Art Festa' này ạ."</p>
-    <p>Em vừa cất giọng vừa chỉ tay vào màn hình laptop.</p>
+    <p>Tôi vừa cất giọng vừa chỉ tay vào màn hình laptop.</p>
     <p>"Ừ."</p>
     <p>Đọc lướt qua thì đây có vẻ như là một dự án siêu to khổng lồ bao gồm hàng loạt các buổi triển lãm và hoạt động phát triển nghệ thuật quy mô lớn càn quét khắp khu vực Roppongi sầm uất.</p>
     <p>"Theo như những gì em đọc được trong báo cáo, có vẻ như giám đốc Akihiro—ý em là chị Ruka là người đứng mũi chịu sào cho dự án ừm..."</p>
-    <p>Em liếc nhanh vào màn hình laptop. Đúng rồi.</p>
+    <p>Tôi liếc nhanh vào màn hình laptop. Đúng rồi.</p>
     <p>"Có vẻ như chị ấy là người đảm nhận vị trí 'Giám đốc Sáng tạo' (Creative Direction) phải không ạ?"</p>
     <p>"Đúng phóc."</p>
     <p>"Nói một cách dễ hiểu, chị ấy là tổng chỉ huy giám sát toàn bộ khâu bố trí và bố cục nghệ thuật? Không chỉ đơn thuần là làm cho mọi thứ trông lộng lẫy, bắt mắt, mà còn phải cân chỉnh để mỗi tác phẩm đều toát lên đúng tinh thần của chủ đề và thu hút sự chú ý của người xem một cách hiệu quả nhất?"</p>
@@ -431,10 +685,10 @@
     <p>"Ừ, đối với một công ty có quy mô nhỏ bé như chúng ta, dự án này đúng là một miếng bánh khổng lồ. Gọi nó là dự án tầm cỡ nhất kể từ ngày công ty thành lập đến nay cũng không hề ngoa chút nào."</p>
     <p>Là như vậy đó.</p>
     <p>"Ừm, với một dự án mang tầm vóc khủng như vậy, liệu một đứa như em có thể giúp được gì không ạ?"</p>
-    <p>Khi em vừa cất lời, chị Satozaki lại nở nụ cười lém lỉnh quen thuộc.</p>
-    <p>"Chắc chắn là không rồi," câu trả lời thẳng thắn như một gáo nước lạnh tạt thẳng vào mặt em. Khi em liếc mắt nhìn quanh, mấy anh chị đồng nghiệp cũng gật gù phụ họa. Ôi trời.</p>
-    <p>“…Dạ vâng, em biết rồi ạ. Nghĩ đi nghĩ lại cũng thấy đúng.”</p>
-    <p>Dù có vắt óc suy nghĩ đến đâu, em cũng chẳng đào đâu ra được thứ năng lực nào có thể giúp ích cho dự án này. Nhưng ngay khoảnh khắc em đang ỉu xìu như cái bánh bao ngâm nước, chị Satozaki lại buông thõng một câu nhẹ tênh:</p>
+    <p>Khi tôi vừa cất lời, chị Satozaki lại nở nụ cười lém lỉnh quen thuộc.</p>
+    <p>"Chắc chắn là không rồi," câu trả lời thẳng thắn như một gáo nước lạnh tạt thẳng vào mặt tôi. Khi tôi liếc mắt nhìn quanh, mấy anh chị đồng nghiệp cũng gật gù phụ họa. Ôi trời.</p>
+    <p>“…Dạ vâng, tôi biết rồi ạ. Nghĩ đi nghĩ lại cũng thấy đúng.”</p>
+    <p>Dù có vắt óc suy nghĩ đến đâu, tôi cũng chẳng đào đâu ra được thứ năng lực nào có thể giúp ích cho dự án này. Nhưng ngay khoảnh khắc tôi đang ỉu xìu như cái bánh bao ngâm nước, chị Satozaki lại buông thõng một câu nhẹ tênh:</p>
     <p>"Thế nên em mới được tuyển vào làm thư ký, đúng không nào?"</p>
     <p>"Dạ?"</p>
     <p>Ý chị ấy là sao?</p>
@@ -447,22 +701,22 @@
     <p>"Khả năng nhai nuốt một mớ tài liệu khổng lồ và chắt lọc ra những thông tin tinh túy nhất là một kỹ năng vô cùng lợi hại. Trước mắt, em cứ tự hỏi xem mình có làm được việc đó không đã? Cố gắng lên nhé."</p>
     <p>Tặng kèm một nụ cười rạng rỡ, chị Satozaki lại tiếp tục quay về với núi công việc của mình.</p>
     <p>Hừm.</p>
-    <p>Em cúi xuống nhìn chằm chằm vào chiếc cốc giấy trên tay. Cà phê đen chỉ còn lại khoảng một phần ba nằm im lìm dưới đáy.</p>
-    <p>Dù em có khẽ lắc nhẹ, đáy cốc vẫn bị che lấp trong vòng xoáy của chất lỏng màu đen. Câu nói lúc nãy của chị Satozaki lại một lần nữa vang vọng trong tâm trí em.</p>
+    <p>Tôi cúi xuống nhìn chằm chằm vào chiếc cốc giấy trên tay. Cà phê đen chỉ còn lại khoảng một phần ba nằm im lìm dưới đáy.</p>
+    <p>Dù tôi có khẽ lắc nhẹ, đáy cốc vẫn bị che lấp trong vòng xoáy của chất lỏng màu đen. Câu nói lúc nãy của chị Satozaki lại một lần nữa vang vọng trong tâm trí tôi.</p>
     <p>──Chắc chắn là không rồi.</p>
-    <p>Khỉ thật. Dù biết thừa đó là sự thật hiển nhiên, nhưng em vẫn cảm thấy thất vọng tràn trề về bản thân vì đã lỡ phá vỡ một quy tắc đơn giản đến vậy. Em uống cạn chút cà phê còn sót lại, cố nuốt trôi cái vị đắng chát vào bụng.</p>
-    <p>Còn hai cái nữa. Bằng mọi giá em phải xử lý xong và tóm tắt lại toàn bộ đống tài liệu này trong ngày hôm nay.</p>
-    <p>Sau khi đánh vật với đống tài liệu suốt hai tiếng đồng hồ, cuối cùng em cũng cày xong số log công việc được giao và cẩn thận ghi chép lại theo cách hiểu của mình, thì đột nhiên có một bàn tay khẽ vỗ vào vai em.</p>
+    <p>Khỉ thật. Dù biết thừa đó là sự thật hiển nhiên, nhưng tôi vẫn cảm thấy thất vọng tràn trề về bản thân vì đã lỡ phá vỡ một quy tắc đơn giản đến vậy. Tôi uống cạn chút cà phê còn sót lại, cố nuốt trôi cái vị đắng chát vào bụng.</p>
+    <p>Còn hai cái nữa. Bằng mọi giá tôi phải xử lý xong và tóm tắt lại toàn bộ đống tài liệu này trong ngày hôm nay.</p>
+    <p>Sau khi đánh vật với đống tài liệu suốt hai tiếng đồng hồ, cuối cùng tôi cũng cày xong số log công việc được giao và cẩn thận ghi chép lại theo cách hiểu của mình, thì đột nhiên có một bàn tay khẽ vỗ vào vai tôi.</p>
     <p>"Tuyệt vời. Hôm nay đến đây thôi nhé."</p>
-    <p>Vừa ngoảnh mặt lại, em thấy chị Ruka đang đứng lù lù ở đó.</p>
-    <p>Ngước nhìn lên chiếc đồng hồ kim treo trên tường, kim đồng hồ đã nhích qua con số năm một chút. Khi em đảo mắt nhìn quanh, chẳng có một ai có vẻ gì là rục rịch sửa soạn đi về cả.</p>
+    <p>Vừa ngoảnh mặt lại, tôi thấy chị Ruka đang đứng lù lù ở đó.</p>
+    <p>Ngước nhìn lên chiếc đồng hồ kim treo trên tường, kim đồng hồ đã nhích qua con số năm một chút. Khi tôi đảo mắt nhìn quanh, chẳng có một ai có vẻ gì là rục rịch sửa soạn đi về cả.</p>
     <p>"Dạ, nhưng mà..."</p>
     <p>"Không nhưng nhị gì hết. Đừng có cố quá sức ngay từ ngày đầu tiên. Đi làm cũng giống như làm việc nhà vậy. Đương nhiên là thực tế sẽ có những lúc chông gai, nhưng cố đấm ăn xôi cũng chẳng giải quyết được gì đâu."</p>
     <p>"Giống như làm việc nhà... Ý chị là lý tưởng nhất là có thể duy trì công việc một cách nhẹ nhàng đều đặn mỗi ngày ạ?"</p>
     <p>"Chính xác. Vì đây mới là ngày đầu tiên của em, nên chị không muốn em kiệt sức ở đây đâu. À mà này, về lịch trình ngày mai. Ngày mai em có ca học buổi chiều đúng không?"</p>
     <p>"Dạ vâng."</p>
     <p>"Tầm mấy giờ thì em đến văn phòng được?"</p>
-    <p>Ca học của em sẽ kết thúc vào lúc 16:30, vì vậy,</p>
+    <p>Ca học của tôi sẽ kết thúc vào lúc 16:30, vì vậy,</p>
     <p>"Chắc nhanh nhất cũng phải 17:20 em mới có mặt ở đây ạ."</p>
     <p>"Nếu vậy thì chắc vẫn kịp đấy. Chị đang tính rủ em đi dự họp cùng chị bắt đầu từ ngày mai."</p>
     <p>"Đi họp ạ?"</p>
@@ -470,10 +724,10 @@
     <p>"Em cũng được đi cùng ạ?"</p>
     <p>"Em là thư ký của chị mà, nên chị muốn em nắm bắt được toàn bộ các dự án mà chị đang phụ trách. Chị cũng sẽ giao nhiệm vụ ghi chép biên bản cuộc họp cho em nữa đấy."</p>
     <p>“…Dạ vâng.”</p>
-    <p>Trống ngực em bắt đầu đánh thình thịch. Nhưng 'Roppongi Art Festa' lại chính là dự án đầu tiên mà em được tham gia. Nhờ cày cuốc tài liệu nên em đã ghi chép lại rất cẩn thận về nó. Quả là một sự may mắn không hề nhẹ.</p>
+    <p>Trống ngực tôi bắt đầu đánh thình thịch. Nhưng 'Roppongi Art Festa' lại chính là dự án đầu tiên mà tôi được tham gia. Nhờ cày cuốc tài liệu nên tôi đã ghi chép lại rất cẩn thận về nó. Quả là một sự may mắn không hề nhẹ.</p>
     <p>"Cuộc họp sẽ kéo dài khoảng hai tiếng, bắt đầu từ bảy giờ tối. Địa điểm cũng ở Roppongi, nên sau khi xong việc, em có thể bắt tàu về nhà luôn. Như vậy em sẽ không phải về nhà quá trễ."</p>
     <p>"Dạ, không sao đâu ạ."</p>
-    <p>Học sinh cấp ba bị giới hạn thời gian làm thêm tối đa là 10 giờ tối, nhưng vì em đã là sinh viên đại học rồi nên không còn bị vướng bận bởi quy định đó nữa. Tuy nhiên, em vẫn muốn né mấy công việc kéo dài đến tận nửa đêm vì kiểu gì nó cũng làm đảo lộn lịch học của ngày hôm sau. Nếu họp xong lúc 21:00 rồi giải tán luôn ở Roppongi thì cũng không đến nỗi nào.</p>
+    <p>Học sinh cấp ba bị giới hạn thời gian làm thêm tối đa là 10 giờ tối, nhưng vì tôi đã là sinh viên đại học rồi nên không còn bị vướng bận bởi quy định đó nữa. Tuy nhiên, tôi vẫn muốn né mấy công việc kéo dài đến tận nửa đêm vì kiểu gì nó cũng làm đảo lộn lịch học của ngày hôm sau. Nếu họp xong lúc 21:00 rồi giải tán luôn ở Roppongi thì cũng không đến nỗi nào.</p>
     <p>"Tiện thể, theo thống kê thì thời gian làm thêm trung bình của sinh viên đại học rơi vào khoảng 9 tiếng mỗi tuần. Ít hơn chị tưởng đấy."</p>
     <p>"A."</p>
     <p>"Chị không biết có thể vắt kiệt sức lao động của em đến mức nào, nên chị đã phải mày mò tìm hiểu thử xem sao."</p>
@@ -485,93 +739,93 @@
     <p>"Đổi lại, chị muốn em đến văn phòng càng thường xuyên càng tốt. Chị hy vọng em có thể duy trì việc đi làm mỗi ngày, nhưng sinh viên thì cũng có những lúc học đến tối mịt đúng không?"</p>
     <p>"Dạ, nếu hôm nào có ca học tiết 5, em sẽ tan học lúc 18:10. Chắc phải tầm 19:00 em mới lết xác đến văn phòng được ạ."</p>
     <p>"Những hôm như thế thì em không cần phải cố mạng đến làm gì. Đói meo mà phải vùi đầu vào công việc thì hiệu suất chỉ có nước chạm đáy, còn nếu ăn uống đàng hoàng rồi mới đến làm thì lúc về lại muộn. Nó sẽ phá hỏng thời gian ôn bài vở trên trường của em mất, đúng không?"</p>
-    <p>Em cứng họng. Vì những gì chị ấy nói đều là sự thật.</p>
-    <p>Mỗi tuần em chỉ kẹt lịch học tiết 5 đúng một ngày thôi, nhưng điều đó đồng nghĩa với việc em không thể vác mặt đến văn phòng thực tập vào ngày hôm đó được.</p>
+    <p>Tôi cứng họng. Vì những gì chị ấy nói đều là sự thật.</p>
+    <p>Mỗi tuần tôi chỉ kẹt lịch học tiết 5 đúng một ngày thôi, nhưng điều đó đồng nghĩa với việc tôi không thể vác mặt đến văn phòng thực tập vào ngày hôm đó được.</p>
     <p>"Hiện tại chị chưa đánh giá kỹ năng thiết kế của em. Chị cũng chưa được tận mắt chiêm ngưỡng các tác phẩm của em. Nếu em mà có tài năng thiên bẩm thì giờ này em đã yên vị trong các trường mỹ thuật nghệ thuật hay trường cao đẳng nghề rồi."</p>
-    <p>…Em chẳng tìm được câu nào để phản bác lại. Vì điều đó cũng chính xác nốt.</p>
+    <p>…Tôi chẳng tìm được câu nào để phản bác lại. Vì điều đó cũng chính xác nốt.</p>
     <p>"Nói thẳng ra thì, đối với chị, giá trị lớn nhất của em vào lúc này nằm ở chỗ em là sinh viên của trường đại học Tsukinomiya."</p>
     <p>Chị Ruka đang nói y xì đúc những gì chị Satozaki vừa nói lúc nãy.</p>
     <p>"Chính vì vậy, chị không muốn em chểnh mảng việc học hành trên trường. Nếu vậy thì em sẽ tự tay vứt bỏ lợi thế của mình. Tất nhiên, nếu sau này em tìm thấy đam mê trong công việc tại đây và cảm thấy chuyện học đại học không còn quan trọng nữa, thì đó lại là một câu chuyện khác. Nhưng đây là một sự lựa chọn mang tính rủi ro rất cao. Tấm bằng đại học vẫn là một tấm bùa hộ mệnh quan trọng. Vứt bỏ con đường học vấn để đuổi theo đam mê nghề nghiệp và kiếm cơm qua ngày chưa bao giờ là một quyết định dễ dàng, bất kể ở thời đại nào đi chăng nữa. Xã hội luôn có ánh nhìn khắt khe với những lựa chọn như vậy."</p>
     <p>"Dạ, em hoàn toàn đồng ý. Em cũng có cùng suy nghĩ đó ạ."</p>
-    <p>Đó cũng chính là động lực thôi thúc em thi vào một trường đại học được đánh giá là có thứ hạng cao. Việc chứng kiến những giọt mồ hôi và nước mắt của mẹ đã nuôi dưỡng suy nghĩ đó trong em. Nói một cách trần trụi, em muốn sở hữu một tấm bằng đủ giá trị để đạp đổ mọi định kiến của người đời.</p>
+    <p>Đó cũng chính là động lực thôi thúc tôi thi vào một trường đại học được đánh giá là có thứ hạng cao. Việc chứng kiến những giọt mồ hôi và nước mắt của mẹ đã nuôi dưỡng suy nghĩ đó trong tôi. Nói một cách trần trụi, tôi muốn sở hữu một tấm bằng đủ giá trị để đạp đổ mọi định kiến của người đời.</p>
     <p>"Tóm lại là vậy, nếu không bận thì hãy cố gắng đến văn phòng thường xuyên nhé. Đã đi làm thì cố gắng tập trung hết công suất trong hai tiếng và cấm tuyệt đối việc lười biếng. Em làm được chứ?"</p>
     <p>"Em sẽ cố gắng hết mình ạ."</p>
-    <p>Thay vì trả lời "Em có thể làm được", em đã chọn cách trả lời "Em sẽ cố gắng hết mình".</p>
-    <p>Nghe câu trả lời kiên định của em, chị Ruka gật gù hài lòng và nhắc lại lịch trình cho ngày mai một lần nữa. Em cẩn thận note lại những dặn dò của chị ấy vào ứng dụng ghi chú trên điện thoại để khỏi não cá vàng mà quên mất.</p>
-    <p>Sau khi cúi đầu chào tạm biệt các anh chị đồng nghiệp, em vứt chiếc cốc giấy vào sọt rác, cất laptop gọn gàng vào chỗ cũ rồi rảo bước rời khỏi văn phòng.</p>
-    <p>Ngồi trên chuyến tàu điện ngầm về nhà, em để tâm trí mình trôi dạt về một ngày làm việc bận rộn vừa qua.</p>
-    <p>Mớ tài liệu trên không gian làm việc ghi lại chằng chịt các luồng ý kiến đa chiều từ những người thuộc các bộ phận khác nhau về dự án, đi kèm với đó là một rổ thuật ngữ chuyên ngành mà em vẫn chưa thể tiêu hóa nổi, thế nên nếu bảo em đã lĩnh hội được toàn bộ mớ kiến thức đó thì quả là nói dối. Vậy nên chiến thuật của em là bám sát mọi phát ngôn của chị Ruka làm kim chỉ nam để phân tích log công việc. Vì em được giao phó trọng trách làm thư ký của chị Ruka, em cho rằng ưu tiên hàng đầu là phải đọc vị được dòng suy nghĩ cũng như ý đồ ẩn sau từng câu chữ của chị ấy. Áp dụng cách phân tích đó, em đã lờ mờ phác họa được vị thế cũng như góc nhìn của chị Ruka đối với những dự án mà chị ấy đang nhúng tay vào.</p>
-    <p>Em vẫn kiên trì đào bới đống log công việc với sự tập trung cao độ vào những tiểu tiết đó, và nếu phân tích theo góc nhìn này, mặc dù chưa thể thẩm thấu được toàn bộ tiểu tiết, nhưng cảm giác đem lại thực sự rất lôi cuốn. Đứng trước những luồng ý kiến trái chiều, em lờ mờ cảm nhận được cái đích đến mà chị Ruka đang cố tình lèo lái mọi người hướng tới.</p>
-    <p>Tuy công việc có độ khó cao, nhưng bù lại nó mang đến một sức hút khó tả. Đó chính là những cảm xúc đang len lỏi trong em lúc này.</p>
-    <p>Em ngả người vào vách cửa toa tàu, đôi mắt vô hồn dõi theo những khung cảnh đêm lướt qua khung cửa sổ. Khi con tàu tiến dần về phía Shibuya, những ánh đèn rực rỡ của chốn phồn hoa đô hội ngày một dày đặc hơn. Vừa mới khen thầm phong cảnh bên ngoài thật lung linh, tay em đã vô thức rút chiếc điện thoại ra và bật sẵn camera. Sực nhớ ra có người từng rỉ tai rằng muốn chụp ảnh đẹp qua cửa kính thì phải ốp sát ống kính vào mặt kính, em quyết định sẽ áp dụng ngay cái mẹo nhỏ này. Em chĩa thẳng ống kính về phía những tòa nhà chọc trời rực sáng ánh đèn ở Shibuya đang hiện ra mờ ảo đằng xa, ngón tay khẽ chạm vào nút chụp.</p>
-    <p>Dù chụp trong điều kiện toa tàu rung lắc liên hồi, nhưng bức ảnh thu được lại lung linh ngoài sức tưởng tượng của em.</p>
-    <p>Em chuyển sang chế độ chỉnh sửa ảnh và bắt đầu múa ngón tay. Việc đầu tiên là dọn dẹp mấy tấm biển quảng cáo vô duyên chắn mất tầm nhìn vào chủ thể chính, sau đó kéo sáng tổng thể lên một chút, tinh chỉnh lại độ bão hòa màu sắc cho rực rỡ hơn rồi mới tự tin bấm nút tải lên Instagram.</p>
-    <p>Đang mải mê vuốt lại bức ảnh vừa đăng, sự chú ý của em bỗng va phải cái tài khoản của anh Yuuta mà em đang follow.</p>
-    <p>Nhắc mới nhớ, dù lập tài khoản rồi nhưng anh ấy vẫn chưa thèm ngoi lên đăng lấy một tấm ảnh nào cả. Nhìn chằm chằm vào cái avatar mặc định nhạt nhẽo trên trang cá nhân của anh ấy, tâm trí em vô tình tua lại cái ngày đầu tiên hai đứa chạm mặt nhau.</p>
-    <p>Cái ngày đầu tiên ấy—đúng rồi, cái ngày mà tụi em ngại ngùng cất tiếng chào hỏi nhau trong cái nhà hàng gia đình.</p>
-    <p>Sau cái màn dạo đầu đó, tụi em dần tìm thấy tiếng nói chung nhờ những nét tương đồng trong tính cách, và khi đã quyết định sẽ nương theo nhau mà sống, những mảng màu tạo nên con người Asamura Yuuta dần hiện lên rõ nét hơn trong mắt em. Thú thật là hồi đầu, em mù tịt không biết trong đầu anh ấy chứa cái gì hay bản chất con người anh ấy ra sao.</p>
-    <p>Nói thẳng ra thì, lúc đó em hoàn toàn không bận tâm.</p>
-    <p>Nhưng giờ mọi chuyện đã khác. Sự quan tâm đã nảy mầm trong em, và em cũng bắt đầu hiểu anh ấy hơn một chút. Khát khao muốn khám phá thêm về con người anh ấy ngày một lớn dần. Nếu anh Yuuta cầm máy lên chụp ảnh, anh ấy sẽ bắt trọn khoảnh khắc nào và những suy nghĩ nào sẽ lướt qua trong tâm trí anh ấy lúc đó? Dám chắc rằng những bức ảnh đó sẽ là một lăng kính phản chiếu chân thực nhất tính cách của con người anh ấy.</p>
-    <p>Mải miết lạc trôi trong mớ suy tư, em giật mình nhận ra, lăng kính đó dường như cũng đang rọi thẳng vào chính bản thân em. Bất giác, em cuộn ngón tay kéo lại trang Instagram của mình.</p>
+    <p>Thay vì trả lời "Em có thể làm được", tôi đã chọn cách trả lời "Em sẽ cố gắng hết mình".</p>
+    <p>Nghe câu trả lời kiên định của tôi, chị Ruka gật gù hài lòng và nhắc lại lịch trình cho ngày mai một lần nữa. Tôi cẩn thận note lại những dặn dò của chị ấy vào ứng dụng ghi chú trên điện thoại để khỏi não cá vàng mà quên mất.</p>
+    <p>Sau khi cúi đầu chào tạm biệt các anh chị đồng nghiệp, tôi vứt chiếc cốc giấy vào sọt rác, cất laptop gọn gàng vào chỗ cũ rồi rảo bước rời khỏi văn phòng.</p>
+    <p>Ngồi trên chuyến tàu điện ngầm về nhà, tôi để tâm trí mình trôi dạt về một ngày làm việc bận rộn vừa qua.</p>
+    <p>Mớ tài liệu trên không gian làm việc ghi lại chằng chịt các luồng ý kiến đa chiều từ những người thuộc các bộ phận khác nhau về dự án, đi kèm với đó là một rổ thuật ngữ chuyên ngành mà tôi vẫn chưa thể tiêu hóa nổi, thế nên nếu bảo tôi đã lĩnh hội được toàn bộ mớ kiến thức đó thì quả là nói dối. Vậy nên chiến thuật của tôi là bám sát mọi phát ngôn của chị Ruka làm kim chỉ nam để phân tích log công việc. Vì tôi được giao phó trọng trách làm thư ký của chị Ruka, tôi cho rằng ưu tiên hàng đầu là phải đọc vị được dòng suy nghĩ cũng như ý đồ ẩn sau từng câu chữ của chị ấy. Áp dụng cách phân tích đó, tôi đã lờ mờ phác họa được vị thế cũng như góc nhìn của chị Ruka đối với những dự án mà chị ấy đang nhúng tay vào.</p>
+    <p>Tôi vẫn kiên trì đào bới đống log công việc với sự tập trung cao độ vào những tiểu tiết đó, và nếu phân tích theo góc nhìn này, mặc dù chưa thể thẩm thấu được toàn bộ tiểu tiết, nhưng cảm giác đem lại thực sự rất lôi cuốn. Đứng trước những luồng ý kiến trái chiều, tôi lờ mờ cảm nhận được cái đích đến mà chị Ruka đang cố tình lèo lái mọi người hướng tới.</p>
+    <p>Tuy công việc có độ khó cao, nhưng bù lại nó mang đến một sức hút khó tả. Đó chính là những cảm xúc đang len lỏi trong tôi lúc này.</p>
+    <p>Tôi ngả người vào vách cửa toa tàu, đôi mắt vô hồn dõi theo những khung cảnh đêm lướt qua khung cửa sổ. Khi con tàu tiến dần về phía Shibuya, những ánh đèn rực rỡ của chốn phồn hoa đô hội ngày một dày đặc hơn. Vừa mới khen thầm phong cảnh bên ngoài thật lung linh, tay tôi đã vô thức rút chiếc điện thoại ra và bật sẵn camera. Sực nhớ ra có người từng rỉ tai rằng muốn chụp ảnh đẹp qua cửa kính thì phải ốp sát ống kính vào mặt kính, tôi quyết định sẽ áp dụng ngay cái mẹo nhỏ này. Tôi chĩa thẳng ống kính về phía những tòa nhà chọc trời rực sáng ánh đèn ở Shibuya đang hiện ra mờ ảo đằng xa, ngón tay khẽ chạm vào nút chụp.</p>
+    <p>Dù chụp trong điều kiện toa tàu rung lắc liên hồi, nhưng bức ảnh thu được lại lung linh ngoài sức tưởng tượng của tôi.</p>
+    <p>Tôi chuyển sang chế độ chỉnh sửa ảnh và bắt đầu múa ngón tay. Việc đầu tiên là dọn dẹp mấy tấm biển quảng cáo vô duyên chắn mất tầm nhìn vào chủ thể chính, sau đó kéo sáng tổng thể lên một chút, tinh chỉnh lại độ bão hòa màu sắc cho rực rỡ hơn rồi mới tự tin bấm nút tải lên Instagram.</p>
+    <p>Đang mải mê vuốt lại bức ảnh vừa đăng, sự chú ý của tôi bỗng va phải cái tài khoản của anh Yuuta mà tôi đang follow.</p>
+    <p>Nhắc mới nhớ, dù lập tài khoản rồi nhưng anh ấy vẫn chưa thèm ngoi lên đăng lấy một tấm ảnh nào cả. Nhìn chằm chằm vào cái avatar mặc định nhạt nhẽo trên trang cá nhân của anh ấy, tâm trí tôi vô tình tua lại cái ngày đầu tiên hai đứa chạm mặt nhau.</p>
+    <p>Cái ngày đầu tiên ấy—đúng rồi, cái ngày mà tụi tôi ngại ngùng cất tiếng chào hỏi nhau trong cái nhà hàng gia đình.</p>
+    <p>Sau cái màn dạo đầu đó, tụi tôi dần tìm thấy tiếng nói chung nhờ những nét tương đồng trong tính cách, và khi đã quyết định sẽ nương theo nhau mà sống, những mảng màu tạo nên con người Asamura Yuuta dần hiện lên rõ nét hơn trong mắt tôi. Thú thật là hồi đầu, tôi mù tịt không biết trong đầu anh ấy chứa cái gì hay bản chất con người anh ấy ra sao.</p>
+    <p>Nói thẳng ra thì, lúc đó tôi hoàn toàn không bận tâm.</p>
+    <p>Nhưng giờ mọi chuyện đã khác. Sự quan tâm đã nảy mầm trong tôi, và tôi cũng bắt đầu hiểu anh ấy hơn một chút. Khát khao muốn khám phá thêm về con người anh ấy ngày một lớn dần. Nếu anh Yuuta cầm máy lên chụp ảnh, anh ấy sẽ bắt trọn khoảnh khắc nào và những suy nghĩ nào sẽ lướt qua trong tâm trí anh ấy lúc đó? Dám chắc rằng những bức ảnh đó sẽ là một lăng kính phản chiếu chân thực nhất tính cách của con người anh ấy.</p>
+    <p>Mải miết lạc trôi trong mớ suy tư, tôi giật mình nhận ra, lăng kính đó dường như cũng đang rọi thẳng vào chính bản thân tôi. Bất giác, tôi cuộn ngón tay kéo lại trang Instagram của mình.</p>
     <p>…Đập vào mắt toàn là hình đồ ăn thức uống.</p>
-    <p>Không, không phải em cố tình rêu rao với thiên hạ mình là một con nhóc có tâm hồn ăn uống đâu. Mọi người xem, thi thoảng em vẫn đăng mấy tấm ảnh OOTD (outfit of the day) thời trang các kiểu cơ mà. Trời ạ. …Rốt cuộc thì em đang cố thanh minh thanh nga với ai vậy chứ?</p>
-    <p>Em cảm thấy rạo rực tò mò không biết anh Yuuta sẽ thả xích cho bức ảnh nào nếu anh ấy bắt đầu dấn thân vào con đường nghiện Instagram, cơ mà… ừ thì, mỗi người một gu, không ai giống ai cả.</p>
+    <p>Không, không phải tôi cố tình rêu rao với thiên hạ mình là một con nhóc có tâm hồn ăn uống đâu. Mọi người xem, thi thoảng tôi vẫn đăng mấy tấm ảnh OOTD (outfit of the day) thời trang các kiểu cơ mà. Trời ạ. …Rốt cuộc thì tôi đang cố thanh minh thanh nga với ai vậy chứ?</p>
+    <p>Tôi cảm thấy rạo rực tò mò không biết anh Yuuta sẽ thả xích cho bức ảnh nào nếu anh ấy bắt đầu dấn thân vào con đường nghiện Instagram, cơ mà… ừ thì, mỗi người một gu, không ai giống ai cả.</p>
 
     <hr>
 
     <p>Thứ Ba, ngày hôm sau.</p>
-    <p>Vừa kết thúc tiết học cuối cùng trên trường, em phóng như bay đến văn phòng và có mặt vào lúc 17:20 chiều.</p>
-    <p>Gặp mặt chị Ruka xong xuôi, hai chị em thẳng tiến đến Roppongi, địa điểm tổ chức cuộc họp. Điều khiến em há hốc mồm là thay vì chen chúc trên những chuyến tàu điện ngầm như dự tính, tụi em lại vi vu bằng taxi.</p>
-    <p>Cái kiểu tiêu tiền cho taxi không chớp mắt thế này, đối với một đứa làm công ăn lương như em đúng là một sự xa xỉ vô tiền khoáng hậu. Đoạn đường từ Nakanosakaue đến Roppongi tính sương sương cũng ngót nghét chục cây số, và đồng hồ tính tiền trên taxi chắc chắn sẽ nhảy đến con số 5000 yên. Chưa kể, đi đường cao tốc thì lại phải gánh thêm một khoản phí cầu đường nữa. Kinh khủng hơn, chị Ruka book xe qua ứng dụng, và dường như tiền cước cũng được thanh toán tự động qua đó luôn, nên chị ấy cứ thế ung dung mở cửa bước xuống mà chẳng cần móc ví ra.</p>
-    <p>Chỉ bấy nhiêu thôi cũng đủ khiến ruột gan em rối bời. Nếu cứ sống với cái tư tưởng ném tiền qua cửa sổ cho mấy cuốc taxi dễ như ăn kẹo thế này, e là cuộc sống sinh viên bần hàn của em sẽ sớm bị đào thải mất.</p>
+    <p>Vừa kết thúc tiết học cuối cùng trên trường, tôi phóng như bay đến văn phòng và có mặt vào lúc 17:20 chiều.</p>
+    <p>Gặp mặt chị Ruka xong xuôi, hai chị tôi thẳng tiến đến Roppongi, địa điểm tổ chức cuộc họp. Điều khiến tôi há hốc mồm là thay vì chen chúc trên những chuyến tàu điện ngầm như dự tính, tụi tôi lại vi vu bằng taxi.</p>
+    <p>Cái kiểu tiêu tiền cho taxi không chớp mắt thế này, đối với một đứa làm công ăn lương như tôi đúng là một sự xa xỉ vô tiền khoáng hậu. Đoạn đường từ Nakanosakaue đến Roppongi tính sương sương cũng ngót nghét chục cây số, và đồng hồ tính tiền trên taxi chắc chắn sẽ nhảy đến con số 5000 yên. Chưa kể, đi đường cao tốc thì lại phải gánh thêm một khoản phí cầu đường nữa. Kinh khủng hơn, chị Ruka book xe qua ứng dụng, và dường như tiền cước cũng được thanh toán tự động qua đó luôn, nên chị ấy cứ thế ung dung mở cửa bước xuống mà chẳng cần móc ví ra.</p>
+    <p>Chỉ bấy nhiêu thôi cũng đủ khiến ruột gan tôi rối bời. Nếu cứ sống với cái tư tưởng ném tiền qua cửa sổ cho mấy cuốc taxi dễ như ăn kẹo thế này, e là cuộc sống sinh viên bần hàn của tôi sẽ sớm bị đào thải mất.</p>
     <p>Taxi đáp xuống Roppongi trước sáu giờ tối khoảng mười phút. Điểm đến là Roppongi Hills. Vâng, chính là cái tổ hợp trung tâm thương mại và tòa nhà chọc trời sang chảnh bậc nhất Tokyo mà ai ai cũng biết đấy.</p>
     <p>Vừa bước xuống xe, câu đầu tiên chị Ruka hỏi là: "Em ăn gì chưa?" Chị ấy đang hỏi về bữa tối.</p>
     <p>"Dạ chưa ạ."</p>
     <p>"Bảy giờ mới bắt đầu họp, vẫn còn dư dả một tiếng đồng hồ. Chị em mình kiếm quán cà phê nào đó lót dạ nhé."</p>
     <p>"A, dạ vâng."</p>
-    <p>Miệng thì đáp vậy nhưng tay em cứ khư khư bám lấy cái ví. Biết thế em đã đánh tiếng xin dời giờ hẹn lại 30 phút rồi tạt qua cửa hàng tiện lợi mua hộp cơm ăn vội cho xong.</p>
+    <p>Miệng thì đáp vậy nhưng tay tôi cứ khư khư bám lấy cái ví. Biết thế tôi đã đánh tiếng xin dời giờ hẹn lại 30 phút rồi tạt qua cửa hàng tiện lợi mua hộp cơm ăn vội cho xong.</p>
     <p>"À, không phải lo tiền bạc đâu. Bữa này chị bao."</p>
     <p>"Như vậy có tiện không ạ?"</p>
     <p>"Cũng tại chị quên nhắc em lót dạ trước khi đến. Từ giờ trở đi, hễ có lịch họp thì em cứ từ trường phi thẳng đến đây luôn. Nhớ là phải ăn uống nạp năng lượng đầy đủ rồi hẵng đến nhé."</p>
     <p>"Dạ vâng, em rõ rồi ạ."</p>
     <p>"Được rồi, đi thôi."</p>
-    <p>Khi hai chị em sải bước, vài tòa cao ốc xung quanh đã bắt đầu lên đèn lấp lánh trên nền trời đang ngả dần sang màu hoàng hôn. Sau khi giải quyết gọn lẹ bữa lót dạ tại một quán cà phê mà chị Ruka tình cờ tạt vào, hai chị em vội vã trực chỉ hướng phòng họp.</p>
+    <p>Khi hai chị tôi sải bước, vài tòa cao ốc xung quanh đã bắt đầu lên đèn lấp lánh trên nền trời đang ngả dần sang màu hoàng hôn. Sau khi giải quyết gọn lẹ bữa lót dạ tại một quán cà phê mà chị Ruka tình cờ tạt vào, hai chị tôi vội vã trực chỉ hướng phòng họp.</p>
 
     <hr>
 
     <p>Tại quầy lễ tân ở khu vực sảnh chính, chị Ruka dõng dạc xưng tên và chức vụ để thông báo về sự hiện diện của mình.</p>
-    <p>Nhân viên lễ tân thao tác thoăn thoắt trên màn hình thiết bị cầm tay để kiểm tra lịch hẹn, sau đó chìa ra hai chiếc thẻ ra vào dạng đeo cổ. Hóa ra, muốn vượt qua cổng an ninh ở khu vực này thì phải lủng lẳng cái thẻ đó trên cổ. Em luống cuống chạy theo sau lưng chị Ruka, người đã bắt đầu sải những bước dài.</p>
+    <p>Nhân viên lễ tân thao tác thoăn thoắt trên màn hình thiết bị cầm tay để kiểm tra lịch hẹn, sau đó chìa ra hai chiếc thẻ ra vào dạng đeo cổ. Hóa ra, muốn vượt qua cổng an ninh ở khu vực này thì phải lủng lẳng cái thẻ đó trên cổ. Tôi luống cuống chạy theo sau lưng chị Ruka, người đã bắt đầu sải những bước dài.</p>
     <p>"Lần sau có họp ở đây, chị em mình cứ hẹn nhau ở cái cổng ban nãy cho tiện nhé."</p>
     <p>"À, dạ vâng."</p>
     <p>"Trong thời gian tới, em cứ bám càng chị đi chung cho an tâm."</p>
     <p>"Dạ... vâng ạ."</p>
-    <p>Khi được hỏi liệu em có tự tin một mình xách thẻ ra vào chễm chệ đi qua cổng an ninh không, em đã phải ngậm ngùi thừa nhận rằng việc đó tạo cho em một áp lực tâm lý quá sức chịu đựng. Sao em dám cả gan làm cái chuyện động trời đó một mình được chứ. Ít nhất là vào thời điểm hiện tại.</p>
-    <p>Chị Ruka gật đầu chào mấy nhân viên an ninh mặc đồng phục bằng một cái liếc mắt sắc lẹm cùng cái hất cằm nhẹ nhàng rồi bước qua cổng một cách dứt khoát, còn em thì hồn xiêu phách lạc trước ánh mắt dò xét như mang hình viên đạn của một người đàn ông làm nhiệm vụ giám sát, nên mỗi bước đi đều mang theo sự rụt rè tột độ. Em thậm chí còn cố tình kéo cái thẻ ra vào lên vị trí dễ nhìn nhất có thể. Cảm ơn các anh đã làm việc vất vả. Nhưng em xin thề em không phải thành phần khủng bố đâu nhé?</p>
-    <p>An ninh ở đây nghiêm ngặt và gắt gao hơn gấp vạn lần so với trường học hay cái hiệu sách mà em từng làm thêm.</p>
-    <p>Hai chị em chui vào thang máy và bước ra ở tầng bảy.</p>
+    <p>Khi được hỏi liệu tôi có tự tin một mình xách thẻ ra vào chễm chệ đi qua cổng an ninh không, tôi đã phải ngậm ngùi thừa nhận rằng việc đó tạo cho tôi một áp lực tâm lý quá sức chịu đựng. Sao tôi dám cả gan làm cái chuyện động trời đó một mình được chứ. Ít nhất là vào thời điểm hiện tại.</p>
+    <p>Chị Ruka gật đầu chào mấy nhân viên an ninh mặc đồng phục bằng một cái liếc mắt sắc lẹm cùng cái hất cằm nhẹ nhàng rồi bước qua cổng một cách dứt khoát, còn tôi thì hồn xiêu phách lạc trước ánh mắt dò xét như mang hình viên đạn của một người đàn ông làm nhiệm vụ giám sát, nên mỗi bước đi đều mang theo sự rụt rè tột độ. Tôi thậm chí còn cố tình kéo cái thẻ ra vào lên vị trí dễ nhìn nhất có thể. Cảm ơn các anh đã làm việc vất vả. Nhưng tôi xin thề tôi không phải thành phần khủng bố đâu nhé?</p>
+    <p>An ninh ở đây nghiêm ngặt và gắt gao hơn gấp vạn lần so với trường học hay cái hiệu sách mà tôi từng làm thêm.</p>
+    <p>Hai chị tôi chui vào thang máy và bước ra ở tầng bảy.</p>
     <p>"Đến nơi rồi."</p>
     <p>Vừa nói, chị Ruka vừa nhấc ống nghe của chiếc điện thoại nội bộ gắn chễm chệ ngay trước cửa. Vừa bấm số kết nối xong, chị ấy dõng dạc xưng tên: "Tôi là Akihiro Ruka từ Lucca Design Studio."</p>
     <p>Cánh cửa từ từ mở ra từ phía bên trong.</p>
-    <p>Một người đàn ông lớn tuổi bước ra, có vẻ như đã quá quen mặt chị Ruka nên chú ấy nở một nụ cười rạng rỡ khi thấy chị ấy. Sau màn chào hỏi xã giao chớp nhoáng, chị Ruka bắt đầu giới thiệu em. Em cố gắng giữ sống lưng thẳng tắp rồi từ từ gập người cúi chào một cách từ tốn nhất có thể. "Cháu tên là Ayase Saki", em đã hoàn thành xuất sắc màn chào hỏi của mình.</p>
+    <p>Một người đàn ông lớn tuổi bước ra, có vẻ như đã quá quen mặt chị Ruka nên chú ấy nở một nụ cười rạng rỡ khi thấy chị ấy. Sau màn chào hỏi xã giao chớp nhoáng, chị Ruka bắt đầu giới thiệu tôi. Tôi cố gắng giữ sống lưng thẳng tắp rồi từ từ gập người cúi chào một cách từ tốn nhất có thể. "Cháu tên là Ayase Saki", tôi đã hoàn thành xuất sắc màn chào hỏi của mình.</p>
     <p>Đột nhiên, chú ấy luồn tay vào túi áo ngực.</p>
-    <p>Một tấm bảng kim loại mỏng dính—à không, hóa ra đó là một chiếc hộp đựng danh thiếp. Chú ấy rút một tấm danh thiếp từ trong chiếc hộp màu bạc ra và lịch sự đưa nó cho em bằng cả hai tay. Thôi xong đời rồi.</p>
+    <p>Một tấm bảng kim loại mỏng dính—à không, hóa ra đó là một chiếc hộp đựng danh thiếp. Chú ấy rút một tấm danh thiếp từ trong chiếc hộp màu bạc ra và lịch sự đưa nó cho tôi bằng cả hai tay. Thôi xong đời rồi.</p>
     <p>"Dạ... cháu xin lỗi, hiện tại cháu vẫn chưa có danh thiếp ạ."</p>
     <p>"Không sao, không sao đâu. Cháu cứ giữ lấy đi."</p>
-    <p>Lời xin lỗi đầy bối rối của em được chú ấy đáp lại bằng một nụ cười xuề xòa, thân thiện.</p>
+    <p>Lời xin lỗi đầy bối rối của tôi được chú ấy đáp lại bằng một nụ cười xuề xòa, thân thiện.</p>
     <p>Đỉnh thật. Có lẽ trong lòng chú ấy cũng thoáng chút bất ngờ, nhưng chú ấy đã khéo léo che giấu nó bằng câu nói: "Mời hai người vào trong," và ân cần dẫn đường.</p>
-    <p>Vừa bước chân vào trong, em vội vàng check lại tên công ty dán chình ình trên cửa. Đó là một công ty mà em chưa từng nghe tên bao giờ. Mãi sau này tìm hiểu ngọn ngành, em mới vỡ lẽ đó là một công ty quảng cáo sừng sỏ có mối quan hệ làm ăn mật thiết với các đài truyền hình.</p>
-    <p>Trên đường đi, chị Ruka ghé tai em thì thầm: "Chị sẽ hối thúc người ta làm danh thiếp cho em ngay và luôn". Em ngoan ngoãn gật đầu cái rụp.</p>
-    <p>Hai chị em được dẫn vào một phòng họp siêu to khổng lồ. Căn phòng rộng thênh thang, chắc phải cỡ mười chiếc chiếu tatami ghép lại. Nằm chễm chệ ở vị trí trung tâm là một chiếc bàn hình bầu dục siêu dài, xung quanh là những chiếc ghế được xếp thành hàng ngay ngắn. Ở phía cuối phòng treo một tấm màn chiếu bằng vải trắng tinh khôi, và một chiếc máy chiếu đang chễm chệ trên bàn. Tấm màn chiếu chỉ hắt lại ánh sáng trắng lờ mờ do máy chiếu chưa được bật lên.</p>
+    <p>Vừa bước chân vào trong, tôi vội vàng check lại tên công ty dán chình ình trên cửa. Đó là một công ty mà tôi chưa từng nghe tên bao giờ. Mãi sau này tìm hiểu ngọn ngành, tôi mới vỡ lẽ đó là một công ty quảng cáo sừng sỏ có mối quan hệ làm ăn mật thiết với các đài truyền hình.</p>
+    <p>Trên đường đi, chị Ruka ghé tai tôi thì thầm: "Chị sẽ hối thúc người ta làm danh thiếp cho em ngay và luôn". Tôi ngoan ngoãn gật đầu cái rụp.</p>
+    <p>Hai chị tôi được dẫn vào một phòng họp siêu to khổng lồ. Căn phòng rộng thênh thang, chắc phải cỡ mười chiếc chiếu tatami ghép lại. Nằm chễm chệ ở vị trí trung tâm là một chiếc bàn hình bầu dục siêu dài, xung quanh là những chiếc ghế được xếp thành hàng ngay ngắn. Ở phía cuối phòng treo một tấm màn chiếu bằng vải trắng tinh khôi, và một chiếc máy chiếu đang chễm chệ trên bàn. Tấm màn chiếu chỉ hắt lại ánh sáng trắng lờ mờ do máy chiếu chưa được bật lên.</p>
     <p>Dù phải mười phút nữa cuộc họp mới chính thức bắt đầu, nhưng một nửa số ghế trong phòng đã chật kín người.</p>
     <p>Đa phần những người tham dự đều là nam giới trạc tứ tuần, ngũ tuần, nhưng số lượng bóng hồng xuất hiện trong phòng họp cũng không hề nhỏ.</p>
     <p>[Roppongi Art Festa] là một siêu dự án có sự nhúng tay của hàng loạt các tổ chức và tập đoàn sừng sỏ như Trung tâm Nghệ thuật Quốc gia (National Art Center), Tokyo Midtown, Mori Building, và Hiệp hội Phát triển Thương mại Roppongi. Cuộc họp ngày hôm nay là buổi gặp gỡ định kỳ của ban chỉ đạo dự án khủng này.</p>
     <p>Do phải đợi các cơ quan và doanh nghiệp kết thúc giờ làm việc hành chính, nên cuộc họp mới bị đẩy xuống tận 19:00 tối.</p>
-    <p>Nhân tiện đây, em xin phép được tóm gọn lại những thông tin cốt lõi về [Roppongi Art Festa].</p>
+    <p>Nhân tiện đây, tôi xin phép được tóm gọn lại những thông tin cốt lõi về [Roppongi Art Festa].</p>
     <p>Hiểu một cách đơn giản, đây không phải là một buổi triển lãm bó hẹp trong không gian của các bảo tàng, mà là một lễ hội hoành tráng nhằm đưa các tác phẩm nghệ thuật hòa mình vào nhịp sống hối hả của thành phố và mang đến những phút giây giải trí mãn nhãn cho người dân qua lại.</p>
     <p>Không gian triển lãm nghệ thuật sẽ được trải rộng khắp một khu vực rộng lớn ngay giữa lòng thủ đô sầm uất.</p>
-    <p>Chính vì vậy, việc xin giấy phép từ các hộ kinh doanh tọa lạc trong khu vực triển lãm là điều bắt buộc, và mục tiêu cao cả hơn là lôi kéo họ cùng chung tay hợp tác. Muốn làm được điều đó, bài toán đặt ra là phải tạo ra lợi ích song phương, nghĩa là chúng em phải tìm cách dùng các tác phẩm nghệ thuật để kéo lượng khách đổ về các cửa hàng và trung tâm thương mại nườm nượp hơn.</p>
+    <p>Chính vì vậy, việc xin giấy phép từ các hộ kinh doanh tọa lạc trong khu vực triển lãm là điều bắt buộc, và mục tiêu cao cả hơn là lôi kéo họ cùng chung tay hợp tác. Muốn làm được điều đó, bài toán đặt ra là phải tạo ra lợi ích song phương, nghĩa là chúng tôi phải tìm cách dùng các tác phẩm nghệ thuật để kéo lượng khách đổ về các cửa hàng và trung tâm thương mại nườm nượp hơn.</p>
     <p>Và đó chính là tâm điểm của những cuộc tranh luận nảy lửa trong phòng họp.</p>
-    <p>Chị Ruka là người nắm giữ trọng trách định hướng sáng tạo cho toàn bộ dự án, bao gồm cả khâu thiết kế không gian và tuyển chọn các gương mặt nghệ sĩ tham gia. Đây chính là những gì em đã cất công tóm tắt lại vào ngày hôm qua trong lúc buôn chuyện với chị Satozaki.</p>
+    <p>Chị Ruka là người nắm giữ trọng trách định hướng sáng tạo cho toàn bộ dự án, bao gồm cả khâu thiết kế không gian và tuyển chọn các gương mặt nghệ sĩ tham gia. Đây chính là những gì tôi đã cất công tóm tắt lại vào ngày hôm qua trong lúc buôn chuyện với chị Satozaki.</p>
     <p>Cuộc họp khai mạc đúng giờ hoàng đạo.</p>
     <p>Nội dung cuộc họp hôm nay được máy chiếu bắn thẳng lên màn hình lớn.</p>
     <p>Một người phụ nữ đang thao thao bất tuyệt bên cạnh tập tài liệu thuyết trình (trông có vẻ được làm bằng PowerPoint) có lẽ là người đứng đầu Hiệp hội Phát triển Thương mại Roppongi. Cô ấy đeo một cặp kính gọng bạc và trông chừng độ tuổi tứ tuần. Bằng chất giọng đanh thép và rõ ràng, cô ấy trình bày số liệu về lưu lượng di chuyển của khách hàng trong khu vực. Bản báo cáo vẽ ra một bức tranh chi tiết về việc khách hàng thường tụ tập đông đúc nhất ở đâu, vào thời điểm nào, và đâu là những khu vực vắng vẻ, đìu hiu nhất.</p>
@@ -579,27 +833,27 @@
     <p>Cô ấy đính kèm những số liệu này bên cạnh bản vẽ sơ đồ triển lãm hiện tại, đồng thời đề xuất nên sắp xếp lại vị trí của một số tác phẩm nghệ thuật. Cô lập luận rằng việc đặt một tác phẩm có thiết kế hơi phá cách tại một địa điểm vốn là nơi các gia đình thường xuyên lui tới vào những ngày nhất định là một sự lựa chọn quá mạo hiểm. Thú thật, nếu ngẫm nghĩ kỹ thì lập luận của cô ấy cực kỳ sắc bén và có lý.</p>
     <p>Dĩ nhiên, phía các nghệ sĩ cũng có cái lý riêng của họ, và nếu tự ý di dời vị trí của một tác phẩm, nó sẽ kéo theo một hệ lụy dây chuyền khiến những tác phẩm khác cũng phải chịu chung số phận bị dời đi. Đó cũng là một lập luận vô cùng chính đáng.</p>
     <p>Chị Ruka kiên nhẫn lắng nghe toàn bộ những luồng ý kiến đó mà không hề đưa ra nhiều bình luận.</p>
-    <p>Dù thi thoảng chị ấy có đặt một vài câu hỏi để làm rõ những tiểu tiết, nhưng gần như không bao giờ chị ấy cao giọng. Em thu mình ngồi ngoan ngoãn cạnh chị Ruka, vắt óc cố gắng ghi chép lại mọi lời vàng ngọc thốt ra trong cuộc họp.</p>
-    <p>—Về khoản ghi chép biên bản cuộc họp. Chị Ruka đã quán triệt tinh thần cho em lúc hai chị em dùng bữa tại quán cà phê. Em không cần thiết phải chép tay lại toàn bộ nội dung cuộc họp một cách máy móc. Nếu chỉ cần một bản ghi chép chi tiết đến từng dấu chấm dấu phẩy như vậy, thà quẳng cái máy ghi âm ra đó còn nhanh hơn, trừ khi em là một cao thủ tốc ký, còn không thì đừng hòng bắt kịp mọi lời nói. Thực chất, cuộc họp này đã được ghi âm lại và mọi người hoàn toàn có thể lôi nó ra tham khảo sau. Vâng, em đã kiểm chứng điều này tận mắt khi lướt log trên không gian làm việc. Vậy câu hỏi đặt ra là, em vác mặt đến đây để làm gì?</p>
+    <p>Dù thi thoảng chị ấy có đặt một vài câu hỏi để làm rõ những tiểu tiết, nhưng gần như không bao giờ chị ấy cao giọng. Tôi thu mình ngồi ngoan ngoãn cạnh chị Ruka, vắt óc cố gắng ghi chép lại mọi lời vàng ngọc thốt ra trong cuộc họp.</p>
+    <p>—Về khoản ghi chép biên bản cuộc họp. Chị Ruka đã quán triệt tinh thần cho tôi lúc hai chị tôi dùng bữa tại quán cà phê. Tôi không cần thiết phải chép tay lại toàn bộ nội dung cuộc họp một cách máy móc. Nếu chỉ cần một bản ghi chép chi tiết đến từng dấu chấm dấu phẩy như vậy, thà quẳng cái máy ghi âm ra đó còn nhanh hơn, trừ khi tôi là một cao thủ tốc ký, còn không thì đừng hòng bắt kịp mọi lời nói. Thực chất, cuộc họp này đã được ghi âm lại và mọi người hoàn toàn có thể lôi nó ra tham khảo sau. Vâng, tôi đã kiểm chứng điều này tận mắt khi lướt log trên không gian làm việc. Vậy câu hỏi đặt ra là, tôi vác mặt đến đây để làm gì?</p>
     <p>"Nếu chỉ đơn thuần là để thảo luận, thì cứ quăng tài liệu lên máy chủ rồi cãi nhau trên Slack cho xong. Tuy nhiên, có những thứ không thể nào truyền đạt được nếu không gặp mặt trực tiếp. Và đó chính là những thứ chị muốn em ghi lại, Saki."</p>
     <p>Điểm mấu chốt cần phải đặc biệt lưu tâm chính là cảm xúc của những người tham gia cuộc họp, chị ấy nhấn mạnh.</p>
     <p>Những con chữ vô hồn được gõ trên không gian làm việc không thể truyền tải được hết mọi thông điệp. Khi con người ta giao tiếp trực tiếp với nhau, họ truyền đi những thông điệp vượt xa ý nghĩa của những câu chữ thốt ra từ miệng. Những thứ như sắc thái và bầu không khí chính là những thông điệp vô hình đó.</p>
     <p>Khi một người đưa ra ý kiến, họ đang đặt bao nhiêu tâm huyết vào đó.</p>
     <p>Đây là một vấn đề sống còn không thể thương lượng, hay chỉ đơn thuần là một ý kiến ném ra cho có lệ? Người ta hoàn toàn có thể bắt sóng được những luồng thông tin kiểu này thông qua giao tiếp trực tiếp, nhưng một khi nó được biến thành văn bản, những thông tin đó sẽ bốc hơi không tì vết. Một người khi lớn tiếng phản đối một ý kiến có thể là do họ thực sự không đồng tình với nó, nhưng cũng có thể chỉ đơn giản là do họ ngứa mắt với người đưa ra ý kiến đó. Chị Ruka tỉnh bơ tuyên bố rằng dù đây là một cuộc họp giữa những con người trưởng thành, nhưng chẳng có gì đảm bảo rằng những cảm xúc cá nhân sẽ không bị lôi vào cuộc. Chị ấy thậm chí còn châm biếm rằng người lớn đôi khi hành xử trẻ con đến mức lấy sự chuyên nghiệp ra làm tấm bình phong để che đậy cho cái tôi của mình. Chính cái giọng điệu ráo hoảnh, lạnh tanh của chị ấy khi thốt ra những lời đó mới thực sự đáng sợ. Ánh mắt của chị ấy sắc lạnh đến mức không hề có chỗ cho sự khoan nhượng.</p>
-    <p>Ban đầu em còn hơi bán tín bán nghi về tính xác thực của chuyện này, nhưng em chợt nhận ra rằng mỗi khi có một cô gái trẻ cất giọng nói (với cái tông giọng eo éo khiến em nhớ đến Melissa) đưa ra ý kiến, kiểu gì cũng có người nhíu mày khó chịu. Một người đàn ông thậm chí còn lấy bút vẽ một đường mũi tên chỉ thẳng về phía cô gái đó rồi ngoặc thêm một dấu gạch chéo to tướng. Chị Ruka giơ tay xin phép ngắt lời như thể muốn xác nhận lại thông tin, rồi bắt đầu dội một loạt câu hỏi. Người phụ nữ ban nãy còn đang hăng máu thuyết trình bỗng chốc cứng họng trước những câu hỏi sắc lẹm của chị Ruka. Lát sau, cô ấy vừa lắp bắp trả lời vừa cuống cuồng lật dở xấp tài liệu. Bầu không khí trong phòng chùng xuống hẳn, và cái nhíu mày trên trán người đàn ông kia cũng dần giãn ra....</p>
+    <p>Ban đầu tôi còn hơi bán tín bán nghi về tính xác thực của chuyện này, nhưng tôi chợt nhận ra rằng mỗi khi có một cô gái trẻ cất giọng nói (với cái tông giọng eo éo khiến tôi nhớ đến Melissa) đưa ra ý kiến, kiểu gì cũng có người nhíu mày khó chịu. Một người đàn ông thậm chí còn lấy bút vẽ một đường mũi tên chỉ thẳng về phía cô gái đó rồi ngoặc thêm một dấu gạch chéo to tướng. Chị Ruka giơ tay xin phép ngắt lời như thể muốn xác nhận lại thông tin, rồi bắt đầu dội một loạt câu hỏi. Người phụ nữ ban nãy còn đang hăng máu thuyết trình bỗng chốc cứng họng trước những câu hỏi sắc lẹm của chị Ruka. Lát sau, cô ấy vừa lắp bắp trả lời vừa cuống cuồng lật dở xấp tài liệu. Bầu không khí trong phòng chùng xuống hẳn, và cái nhíu mày trên trán người đàn ông kia cũng dần giãn ra....</p>
     <p>Có vẻ như màn chất vấn vừa rồi của chị Ruka thiên về mục đích dập tắt ngọn lửa căng thẳng hơn là thực sự muốn tìm kiếm câu trả lời.</p>
-    <p>Sau khi tinh ý nhận ra điều này, em lờ mờ nhận ra rằng chị Ruka bề ngoài có vẻ như chỉ ngồi nghe cho có tụ, nhưng thực chất chị ấy sẽ tung ra những đòn bình luận chí mạng mỗi khi cuộc họp có dấu hiệu đi chệch đường ray hoặc không khí trở nên quá ngột ngạt. Nhưng mà, chẳng phải nhiệm vụ chính của chị Ruka chỉ là Giám đốc thiết kế cho dự án thôi sao? Cớ sao chị ấy lại hành xử cứ như thể mình là vị chủ tọa đứng trong bóng tối vậy?</p>
+    <p>Sau khi tinh ý nhận ra điều này, tôi lờ mờ nhận ra rằng chị Ruka bề ngoài có vẻ như chỉ ngồi nghe cho có tụ, nhưng thực chất chị ấy sẽ tung ra những đòn bình luận chí mạng mỗi khi cuộc họp có dấu hiệu đi chệch đường ray hoặc không khí trở nên quá ngột ngạt. Nhưng mà, chẳng phải nhiệm vụ chính của chị Ruka chỉ là Giám đốc thiết kế cho dự án thôi sao? Cớ sao chị ấy lại hành xử cứ như thể mình là vị chủ tọa đứng trong bóng tối vậy?</p>
     <p>Sau khi bài thuyết trình của người đại diện Hiệp hội Phát triển Thương mại Roppongi khép lại, người chủ trì cuộc họp, kiêm luôn vai trò điều phối viên, tiếp tục mở lời mời mọi người đặt câu hỏi và đóng góp ý kiến.</p>
     <p>Chị Ruka giơ tay và đứng bật dậy.</p>
     <p>"Tôi hoàn toàn thấu hiểu những băn khoăn của cô, và tôi cũng đồng tình rằng chúng ta cần phải xem xét vấn đề này một cách thấu đáo. Chúng ta tuyệt đối không được để các hộ kinh doanh phải chịu thiệt thòi vì sự kiện này, có như vậy thì đây mới có thể trở thành một dự án mang tính bền vững và lâu dài chứ không chỉ mang tính phong trào trong năm nay."</p>
-    <p>Chị Ruka dõng dạc tuyên bố và lia mắt một vòng quanh phòng để dò xét thái độ của mọi người. Không một ai dám công khai phản đối ý kiến của chị Ruka. Thế nhưng, thái độ đón nhận lại phân hóa rõ rệt. Vài người gật gù tán thưởng nhiệt liệt, trong khi số khác lại tỏ vẻ khiên cưỡng, gượng ép. Em cố gắng ghi chép lại những quan sát này chi tiết nhất có thể. Viết thành từng câu chữ thì mất thời gian quá, nên em đành xài ký hiệu dấu tick hoặc dấu chéo cho nhanh. Em cũng tự sáng tạo ra mấy ký hiệu viết tắt cho riêng mình.</p>
-    <p>Làm sao em có thể nhớ mặt thuộc tên hết đống người tham gia cuộc họp này được, nên em chỉ còn cách ghi chú lại vị trí ngồi của họ. Em tự nhủ lát nữa phải nhờ chị Ruka check lại thông tin cho chắc cú. Thâm tâm em cực kỳ muốn giơ điện thoại lên chụp một tấm ảnh, nhưng em biết tỏng nếu làm thế thì chắc chắn sẽ bị ăn chửi sấp mặt.</p>
+    <p>Chị Ruka dõng dạc tuyên bố và lia mắt một vòng quanh phòng để dò xét thái độ của mọi người. Không một ai dám công khai phản đối ý kiến của chị Ruka. Thế nhưng, thái độ đón nhận lại phân hóa rõ rệt. Vài người gật gù tán thưởng nhiệt liệt, trong khi số khác lại tỏ vẻ khiên cưỡng, gượng ép. Tôi cố gắng ghi chép lại những quan sát này chi tiết nhất có thể. Viết thành từng câu chữ thì mất thời gian quá, nên tôi đành xài ký hiệu dấu tick hoặc dấu chéo cho nhanh. Tôi cũng tự sáng tạo ra mấy ký hiệu viết tắt cho riêng mình.</p>
+    <p>Làm sao tôi có thể nhớ mặt thuộc tên hết đống người tham gia cuộc họp này được, nên tôi chỉ còn cách ghi chú lại vị trí ngồi của họ. Tôi tự nhủ lát nữa phải nhờ chị Ruka check lại thông tin cho chắc cú. Thâm tâm tôi cực kỳ muốn giơ điện thoại lên chụp một tấm ảnh, nhưng tôi biết tỏng nếu làm thế thì chắc chắn sẽ bị ăn chửi sấp mặt.</p>
     <p>"Tuy nhiên, tôi muốn làm rõ một điểm rằng, mặc dù chúng ta sẽ mổ xẻ các phương án cụ thể trên Slack, nhưng có một vài đề xuất thay đổi vị trí tác phẩm mà cô vừa nêu ra có tính khả thi cực kỳ thấp."</p>
     <p>"Khả thi thấp.... Ý cô là sao?"</p>
     <p>Người phụ nữ lớn tuổi──người phụ nữ đeo kính gọng bạc ban nãy──lên tiếng với vẻ mặt đầy hoang mang.</p>
     <p>"Tùy thuộc vào yếu tố thời tiết và thời điểm trong ngày, sức gió tạt qua các khe hẹp giữa các tòa nhà ở khu vực đó là vô cùng khủng khiếp. Có đúng vậy không?"</p>
     <p>"……À, nhắc mới nhớ. Vâng, cô nói đúng."</p>
-    <p>Người chủ trì cuộc họp thốt lên như thể vừa mới sực nhớ ra điều gì đó, nhưng thật khó tin khi một người như chị Ruka lại có thể thuộc nằm lòng những tiểu tiết mà ngay cả người nắm rõ địa bàn như người phụ trách khu phố thương mại còn quên béng đi mất... (Sau này em mới vỡ lẽ ra là khu vực tổ chức sự kiện đã được khảo sát thực địa vô số lần vào các khung giờ và điều kiện thời tiết khác nhau).</p>
+    <p>Người chủ trì cuộc họp thốt lên như thể vừa mới sực nhớ ra điều gì đó, nhưng thật khó tin khi một người như chị Ruka lại có thể thuộc nằm lòng những tiểu tiết mà ngay cả người nắm rõ địa bàn như người phụ trách khu phố thương mại còn quên béng đi mất... (Sau này tôi mới vỡ lẽ ra là khu vực tổ chức sự kiện đã được khảo sát thực địa vô số lần vào các khung giờ và điều kiện thời tiết khác nhau).</p>
     <p>Chị Ruka tiếp tục mạch giải thích của mình.</p>
     <p>"Một số bộ sưu tập thời trang và các tác phẩm nghệ thuật không gian ba chiều sẽ rất dễ bị hư hại nếu phải chống chọi với sức gió mạnh. Do đó, phương án hoán đổi vị trí trưng bày là bất khả thi."</p>
     <p>"À, tôi hiểu rồi. Hóa ra là vậy."</p>
@@ -607,196 +861,196 @@
     <p>Sau màn chốt hạ dứt khoát, chị Ruka ngồi xuống ghế.</p>
     <p>Người điều phối tiếp tục trưng cầu dân ý, lực lượng an ninh tòa nhà và đại diện ban quản lý nghệ sĩ cũng lần lượt đưa ra những đóng góp ngắn gọn. Mọi người nhất trí sẽ tiếp tục thảo luận sâu hơn về những ý kiến này trên Slack. Hóa ra, mục tiêu tối thượng của cuộc họp này là chốt hạ phương hướng tổng thể, còn những chi tiết vụn vặt sẽ được bưng lên không gian làm việc ảo để mổ xẻ tiếp.</p>
     <p>Cuối cùng, sau khi rà soát lại tiến độ dự án, cuộc họp chính thức khép lại.</p>
-    <p>Mặc dù thời lượng diễn ra cuộc họp chỉ vỏn vẹn hai tiếng đồng hồ, nhưng não bộ của em đã phải hoạt động hết công suất đến mức nổ tung. Đây thực sự là... một công việc rút cạn sinh lực.</p>
+    <p>Mặc dù thời lượng diễn ra cuộc họp chỉ vỏn vẹn hai tiếng đồng hồ, nhưng não bộ của tôi đã phải hoạt động hết công suất đến mức nổ tung. Đây thực sự là... một công việc rút cạn sinh lực.</p>
 
     <hr>
 
-    <p>Trên đường về nhà, em lại đi chung taxi với chị Ruka.</p>
+    <p>Trên đường về nhà, tôi lại đi chung taxi với chị Ruka.</p>
     <p>"Vì chúng ta đi cùng đường, hay là để chị cho em quá giang đến tận Shibuya luôn nhé?"</p>
-    <p>Lời mời mọc quá đỗi ngọt ngào khiến em không thể cưỡng lại được.</p>
-    <p>Em xin phép chị ấy cho em xuống ở một trạm dừng thuận tiện gần nhà, và từ đó em quyết định sẽ cuốc bộ về căn hộ của mình.</p>
-    <p>Khẽ ngước mắt lên nhìn trời, một vầng trăng khuyết đang bẽn lẽn ló dạng giữa màn đêm. Khi bước chân ngang qua công viên, em hít hà được một mùi hương hoa ngai ngái hòa quyện cùng mùi ngai ngái của cỏ cây xanh tốt. Mùi hương gì thế nhỉ? Tầm này chắc là hoa tử đinh hương hoặc hoa sơn thù du chăng? Chắc lần tới có dịp đi ngang qua công viên, em sẽ cố ngó nghiêng qua hàng rào dây thép gai xem sao. Mùa hoa chớm hè đã gõ cửa tự lúc nào mà em chẳng hay.</p>
-    <p>Em cứ thế rảo bước trong khi tâm trí mải miết chạy theo những suy nghĩ miên man.</p>
-    <p>Lúc em đặt chân đến nhà thì trời cũng đã khuya lắm rồi. Em khẽ khàng cất tiếng "Con về rồi đây" (vì sợ đánh thức bố dượng), rồi ngó đầu vào phòng khách.</p>
+    <p>Lời mời mọc quá đỗi ngọt ngào khiến tôi không thể cưỡng lại được.</p>
+    <p>Tôi xin phép chị ấy cho tôi xuống ở một trạm dừng thuận tiện gần nhà, và từ đó tôi quyết định sẽ cuốc bộ về căn hộ của mình.</p>
+    <p>Khẽ ngước mắt lên nhìn trời, một vầng trăng khuyết đang bẽn lẽn ló dạng giữa màn đêm. Khi bước chân ngang qua công viên, tôi hít hà được một mùi hương hoa ngai ngái hòa quyện cùng mùi ngai ngái của cỏ cây xanh tốt. Mùi hương gì thế nhỉ? Tầm này chắc là hoa tử đinh hương hoặc hoa sơn thù du chăng? Chắc lần tới có dịp đi ngang qua công viên, tôi sẽ cố ngó nghiêng qua hàng rào dây thép gai xem sao. Mùa hoa chớm hè đã gõ cửa tự lúc nào mà tôi chẳng hay.</p>
+    <p>Tôi cứ thế rảo bước trong khi tâm trí mải miết chạy theo những suy nghĩ miên man.</p>
+    <p>Lúc tôi đặt chân đến nhà thì trời cũng đã khuya lắm rồi. Tôi khẽ khàng cất tiếng "Con về rồi đây" (vì sợ đánh thức bố dượng), rồi ngó đầu vào phòng khách.</p>
     <p>Anh Yuuta đang mải mê đọc sách trên sô pha lập tức ngẩng đầu lên.</p>
     <p>"Em về rồi đấy à. Anh nghe nói em ăn tối rồi, nhưng mà em ăn uống thế nào rồi?"</p>
-    <p>Em tự lắng nghe tiếng gọi của dạ dày. Hình như em cũng hơi đói bụng thật.</p>
+    <p>Tôi tự lắng nghe tiếng gọi của dạ dày. Hình như tôi cũng hơi đói bụng thật.</p>
     <p>"Có vẻ như dạ dày em đang đình công đòi ăn thêm chút gì đó thì phải."</p>
     <p>"Được rồi. Anh cũng mới ăn lót dạ thôi, để anh ăn cùng em cho vui."</p>
-    <p>Khoan đã, đừng nói là anh ấy đã nhịn đói để đợi em về ăn cùng đấy nhé?</p>
-    <p>Có lẽ vì nét mặt sửng sốt của em quá lộ liễu, anh Yuuta lập tức đọc vị được và phân bua ngay: "Anh đã ăn uống đàng hoàng rồi mà". Mặc dù không hoàn toàn tin tưởng vào những lời biện hộ của anh ấy, nhưng em quyết định sẽ không cằn nhằn gì thêm mà ngoan ngoãn chấp nhận.</p>
-    <p>Khi mở tủ lạnh ra kiểm tra, em tìm thấy một ít sashimi cá ngừ vằn (bonito) có vẻ như do mẹ mua về. Chắc là vì đang độ tháng Năm, mùa cá ngừ vằn đầu mùa ngon nhất. Bên cạnh đó còn có khoảng một phần ba cuộn trứng cuộn (tamagoyaki) chắc mẩm là do mẹ đích thân vào bếp.</p>
+    <p>Khoan đã, đừng nói là anh ấy đã nhịn đói để đợi tôi về ăn cùng đấy nhé?</p>
+    <p>Có lẽ vì nét mặt sửng sốt của tôi quá lộ liễu, anh Yuuta lập tức đọc vị được và phân bua ngay: "Anh đã ăn uống đàng hoàng rồi mà". Mặc dù không hoàn toàn tin tưởng vào những lời biện hộ của anh ấy, nhưng tôi quyết định sẽ không cằn nhằn gì thêm mà ngoan ngoãn chấp nhận.</p>
+    <p>Khi mở tủ lạnh ra kiểm tra, tôi tìm thấy một ít sashimi cá ngừ vằn (bonito) có vẻ như do mẹ mua về. Chắc là vì đang độ tháng Năm, mùa cá ngừ vằn đầu mùa ngon nhất. Bên cạnh đó còn có khoảng một phần ba cuộn trứng cuộn (tamagoyaki) chắc mẩm là do mẹ đích thân vào bếp.</p>
     <p>"Anh chưa ăn cái này à?"</p>
     <p>"À, ừ, đó là phần còn dư đấy. Đương nhiên là anh đã xơi phần của mình rồi."</p>
     <p>"Thế thì mình chia nhau ăn nhé."</p>
-    <p>Anh Yuuta gật đầu cái rụp rồi bắt tay vào việc hâm nóng súp miso trên bếp từ. Trong lúc đó, em lúi húi chuẩn bị tách trà và chén bát… Em còn lục lọi được một ít rau củ còn sót lại, thế là em tiện tay xào luôn để mâm cơm thêm phần xôm tụ. Em chúa ghét nhìn mâm cơm trống hơ trống hoác.</p>
+    <p>Anh Yuuta gật đầu cái rụp rồi bắt tay vào việc hâm nóng súp miso trên bếp từ. Trong lúc đó, tôi lúi húi chuẩn bị tách trà và chén bát… Tôi còn lục lọi được một ít rau củ còn sót lại, thế là tôi tiện tay xào luôn để mâm cơm thêm phần xôm tụ. Tôi chúa ghét nhìn mâm cơm trống hơ trống hoác.</p>
     <p>Sau tiếng "Itadakimasu" (Mời mọi người dùng bữa), hai đứa bắt đầu đánh chén.</p>
-    <p>"Thế nào rồi?" anh Yuuta chủ động phá vỡ bầu không khí tĩnh lặng. Anh ấy đang tò mò muốn biết cảm nhận của em về ngày đầu tiên đi làm. Suy cho cùng, vì bản thân anh Yuuta chưa từng nếm mùi đi thực tập bao giờ, nên việc anh ấy muốn tò mò xem nó có gì khác biệt so với việc đi làm thêm ở hiệu sách cũng là điều dễ hiểu.</p>
-    <p>Bản thân em cũng đang ngứa ngáy muốn kể lể, thế nên em chớp ngay lấy cơ hội ngàn vàng này để mở máy.</p>
-    <p>Thế giới mới mà em vừa đặt chân vào tràn ngập những điều vi diệu, và đối với một đứa nhà quê như em, nó mang đến một luồng sinh khí mới mẻ kèm theo một cú sốc văn hóa không hề nhẹ.</p>
-    <p>Nhưng nếu bình tâm ngẫm nghĩ lại, công việc ở hiệu sách và việc lăn lộn trong một môi trường chuyên nghiệp thực chất chẳng khác nhau là mấy. Mặc dù em không dám mạnh miệng khẳng định rằng động cơ đi làm thêm ở hiệu sách của em là hoàn toàn trong sáng, không pha tạp chút mưu đồ đen tối nào, nhưng em tự thấy mình đã cống hiến hết mình cho công việc, dẫu cho em không phải là một con mọt sách chính hiệu như anh Yuuta.</p>
-    <p>Trái lại, việc đầu quân vào văn phòng thiết kế của chị Ruka lại xuất phát từ sự đam mê thuần túy nhất trong em.</p>
-    <p>Phải chăng vì lý do đó mà những trải nghiệm của ngày hôm qua và ngày hôm nay cứ bám rễ sâu vào tâm trí em không buông.</p>
-    <p>Cứ thế, em thao thao bất tuyệt một mình mà chẳng hề hay biết. Dĩ nhiên là em phải tự biết chắt lọc thông tin, không thể bô bô kể ra những bí mật kinh doanh của công ty được.</p>
+    <p>"Thế nào rồi?" anh Yuuta chủ động phá vỡ bầu không khí tĩnh lặng. Anh ấy đang tò mò muốn biết cảm nhận của tôi về ngày đầu tiên đi làm. Suy cho cùng, vì bản thân anh Yuuta chưa từng nếm mùi đi thực tập bao giờ, nên việc anh ấy muốn tò mò xem nó có gì khác biệt so với việc đi làm thêm ở hiệu sách cũng là điều dễ hiểu.</p>
+    <p>Bản thân tôi cũng đang ngứa ngáy muốn kể lể, thế nên tôi chớp ngay lấy cơ hội ngàn vàng này để mở máy.</p>
+    <p>Thế giới mới mà tôi vừa đặt chân vào tràn ngập những điều vi diệu, và đối với một đứa nhà quê như tôi, nó mang đến một luồng sinh khí mới mẻ kèm theo một cú sốc văn hóa không hề nhẹ.</p>
+    <p>Nhưng nếu bình tâm ngẫm nghĩ lại, công việc ở hiệu sách và việc lăn lộn trong một môi trường chuyên nghiệp thực chất chẳng khác nhau là mấy. Mặc dù tôi không dám mạnh miệng khẳng định rằng động cơ đi làm thêm ở hiệu sách của tôi là hoàn toàn trong sáng, không pha tạp chút mưu đồ đen tối nào, nhưng tôi tự thấy mình đã cống hiến hết mình cho công việc, dẫu cho tôi không phải là một con mọt sách chính hiệu như anh Yuuta.</p>
+    <p>Trái lại, việc đầu quân vào văn phòng thiết kế của chị Ruka lại xuất phát từ sự đam mê thuần túy nhất trong tôi.</p>
+    <p>Phải chăng vì lý do đó mà những trải nghiệm của ngày hôm qua và ngày hôm nay cứ bám rễ sâu vào tâm trí tôi không buông.</p>
+    <p>Cứ thế, tôi thao thao bất tuyệt một mình mà chẳng hề hay biết. Dĩ nhiên là tôi phải tự biết chắt lọc thông tin, không thể bô bô kể ra những bí mật kinh doanh của công ty được.</p>
     <p>"Em xin lỗi, có vẻ em đã hơi quá đà rồi."</p>
-    <p>Em ngượng ngùng xin lỗi vì trót lỡ trớn, anh Yuuta chỉ cười xòa đáp lại: "Có sao đâu. Nhìn em vui vẻ thao thao bất tuyệt như vậy anh cũng thấy vui lây mà."</p>
-    <p>Chỉ cần nhìn thấy em vui vẻ là anh ấy đã thấy mãn nguyện rồi sao…</p>
-    <p>Bất giác, một suy nghĩ xẹt qua đầu em.</p>
-    <p>Liệu em có thể nói ra câu nói y hệt như anh Yuuta được không?</p>
+    <p>Tôi ngượng ngùng xin lỗi vì trót lỡ trớn, anh Yuuta chỉ cười xòa đáp lại: "Có sao đâu. Nhìn em vui vẻ thao thao bất tuyệt như vậy anh cũng thấy vui lây mà."</p>
+    <p>Chỉ cần nhìn thấy tôi vui vẻ là anh ấy đã thấy mãn nguyện rồi sao…</p>
+    <p>Bất giác, một suy nghĩ xẹt qua đầu tôi.</p>
+    <p>Liệu tôi có thể nói ra câu nói y hệt như anh Yuuta được không?</p>
     <p>"À thì, em tự nhiên nảy ra suy nghĩ này. Thường thì──"</p>
     <p>"──Thường thì chúng ta hiếm khi bận tâm đến trải nghiệm của người khác. Suy cho cùng thì mấy cái đó đâu có dính dáng gì đến mình đâu, đúng không?"</p>
-    <p>Nghe em nói vậy, anh Yuuta trầm ngâm suy nghĩ. Anh ấy thong thả nhấp một ngụm trà nóng, khẽ thở dài thườn thượt rồi ngửa cổ nhìn trân trân lên trần nhà. Sau vài giây lẩm bẩm trong miệng, anh ấy chậm rãi nói:</p>
+    <p>Nghe tôi nói vậy, anh Yuuta trầm ngâm suy nghĩ. Anh ấy thong thả nhấp một ngụm trà nóng, khẽ thở dài thườn thượt rồi ngửa cổ nhìn trân trân lên trần nhà. Sau vài giây lẩm bẩm trong miệng, anh ấy chậm rãi nói:</p>
     <p>"Anh lại thấy chuyện đó hết sức bình thường."</p>
-    <p>Anh Yuuta khẽ gật gù. Kế đến, anh ấy buông một câu khiến em phải tròn xoe mắt vì kinh ngạc.</p>
+    <p>Anh Yuuta khẽ gật gù. Kế đến, anh ấy buông một câu khiến tôi phải tròn xoe mắt vì kinh ngạc.</p>
     <p>"Vì chuyện đó chẳng khác nào việc nghiền ngẫm một cuốn sách cả."</p>
     <p>"…Em chưa bắt sóng được ý anh cho lắm."</p>
     <p>"Anh nghĩ mấy cuốn tiểu thuyết suy cho cùng cũng chỉ là những trang giấy kể về cuộc đời của một người dưng nước lã. Nhưng tác giả đã dày công nhào nặn để chúng ta có thể hóa thân vào nhân vật, để chúng ta có cảm giác như mình đang thực sự sống trong thế giới đó, cùng trải qua những giây phút thót tim hay nghẹt thở cùng họ. Bằng cách đó, chúng ta có thể hấp thụ được những góc nhìn và hệ tư tưởng mà nếu chỉ giam mình trong cái giếng của bản thân, chúng ta sẽ chẳng bao giờ chạm tới được."</p>
     <p>"Những góc nhìn và hệ tư tưởng mà chúng ta không thể tự mình có được…"</p>
     <p>"Anh tin rằng nó có sức mạnh mở mang tầm mắt và rèn luyện cho chúng ta khả năng đánh giá sự việc một cách khách quan."</p>
     <p>"Hóa ra anh Yuuta luôn giữ cái tư tưởng cao siêu đó khi đọc sách à…"</p>
-    <p>Khi em vừa thốt ra câu đó, ông anh trai kế ngồi đối diện bỗng nhoẻn miệng cười méo xệch.</p>
+    <p>Khi tôi vừa thốt ra câu đó, ông anh trai kế ngồi đối diện bỗng nhoẻn miệng cười méo xệch.</p>
     <p>"Không, không đâu. Anh làm gì có đủ trình độ để vừa đọc vừa suy ngẫm sâu xa đến mức đó. Anh chỉ cắm cúi đọc vì nó cuốn thôi. Nhưng mà, có lẽ khi đã ngộ ra được chân lý đó, việc ngồi nghe người khác kể lể dông dài cũng không đến nỗi là một cực hình. Giống như lúc ngồi nghe Saki kể chuyện ban nãy, tất nhiên nhìn em vui vẻ anh cũng thấy ấm lòng, nhưng bản thân câu chuyện của em cũng vô cùng thú vị. Ví dụ như cái chi tiết em phung phí tiền đi taxi mà không thèm chớp mắt chẳng hạn… rồi cả những bài học xương máu về việc phải đặc biệt lưu tâm đến những tiểu tiết nào khi ghi chép biên bản cuộc họp nữa. Ý anh là, chúng ta phải thiết lập một mạng lưới kết nối các thông tin lại với nhau, đúng không?"</p>
     <p>Anh Yuuta vốn dĩ không có chút máu nghệ thuật nào trong người.</p>
     <p>Tuy nhiên, hồi còn làm thêm ở hiệu sách, anh ấy luôn đặt mình vào vị trí của khách hàng khi ngắm nghía các kệ sách. Hệ quy chiếu của một người bán hàng và một vị khách mua hàng là hai đường thẳng song song. Đâu phải cứ chưng cuốn sách mình muốn bán ra là người ta sẽ mua; sách bán được là nhờ nó gãi đúng chỗ ngứa của khách hàng.</p>
     <p>Chính vì vậy, anh ấy luôn tìm cách nắm bắt tâm lý để kích thích ham muốn mua sắm của khách hàng.</p>
-    <p>Ra là vậy, cuối cùng em cũng đã vỡ lẽ ra một điều. Đó không phải là cái tôi ích kỷ luôn áp đặt góc nhìn của mình lên vạn vật, mà là sự linh hoạt thay đổi góc nhìn. Đó chính là tài sản quý giá nhất mà anh Yuuta đã gặt hái được từ thói quen đọc sách.</p>
-    <p>Em hồi tưởng lại hình ảnh anh Yuuta lặng lẽ ngồi nghe em dốc bầu tâm sự.</p>
+    <p>Ra là vậy, cuối cùng tôi cũng đã vỡ lẽ ra một điều. Đó không phải là cái tôi ích kỷ luôn áp đặt góc nhìn của mình lên vạn vật, mà là sự linh hoạt thay đổi góc nhìn. Đó chính là tài sản quý giá nhất mà anh Yuuta đã gặt hái được từ thói quen đọc sách.</p>
+    <p>Tôi hồi tưởng lại hình ảnh anh Yuuta lặng lẽ ngồi nghe tôi dốc bầu tâm sự.</p>
     <p>Anh ấy không chỉ đơn thuần là một người có tấm lòng bao dung, tốt bụng.</p>
-    <p>Trong lúc lắng nghe, anh ấy đã nỗ lực hết mình để đồng điệu với góc nhìn của em—cái góc nhìn của một con nhóc thực tập sinh lần đầu va vấp với đời.</p>
+    <p>Trong lúc lắng nghe, anh ấy đã nỗ lực hết mình để đồng điệu với góc nhìn của tôi—cái góc nhìn của một con nhóc thực tập sinh lần đầu va vấp với đời.</p>
     <p>Thật sự quá đỗi phi thường.</p>
-    <p>Liệu rằng khi đổi vai trò, em có thể lắng nghe những tâm tư của anh ấy bằng một thái độ trân trọng và đồng cảm như vậy không?</p>
-    <p>Một cảm giác ớn lạnh chạy dọc sống lưng, như có một bàn tay lạnh lẽo đang bóp nghẹt trái tim em…</p>
-    <p>Mỗi khi thấy anh Yuuta hào hứng kể lể chuyện của mình với một nụ cười rạng rỡ, dĩ nhiên em cũng cảm thấy vui lây. Nhưng… liệu bấy nhiêu đó đã đủ để khẳng định rằng chúng em đang thực sự "chia sẻ chung một tần số" hay chưa? Câu hỏi đó cứ lởn vởn trong tâm trí em không chịu buông.</p>
+    <p>Liệu rằng khi đổi vai trò, tôi có thể lắng nghe những tâm tư của anh ấy bằng một thái độ trân trọng và đồng cảm như vậy không?</p>
+    <p>Một cảm giác ớn lạnh chạy dọc sống lưng, như có một bàn tay lạnh lẽo đang bóp nghẹt trái tim tôi…</p>
+    <p>Mỗi khi thấy anh Yuuta hào hứng kể lể chuyện của mình với một nụ cười rạng rỡ, dĩ nhiên tôi cũng cảm thấy vui lây. Nhưng… liệu bấy nhiêu đó đã đủ để khẳng định rằng chúng tôi đang thực sự "chia sẻ chung một tần số" hay chưa? Câu hỏi đó cứ lởn vởn trong tâm trí tôi không chịu buông.</p>
     <p>Trong từ điển có một từ dùng để chỉ sự đồng cảm: Sympathy (Sự cảm thông).</p>
     <p>Nó ám chỉ những hành động thể hiện sự quan tâm, lo lắng cho người khác như thể đó là nỗi đau của chính mình.</p>
     <p>Thế nhưng, để có thể chạm đến cảnh giới của sự cảm thông, ta buộc phải đặt mình vào vị trí của người đó, và muốn làm được điều đó, ta phải biết cách nhìn nhận sự việc qua lăng kính của họ. Nếu chỉ đơn thuần nhìn thấy anh Yuuta đang kể chuyện một cách vui vẻ thôi thì chưa đủ để đạt được cảnh giới đó.</p>
     <p>Anh Yuuta vốn dĩ không có chút máu nghệ thuật nào trong người.</p>
     <p>Thế nên, khi anh ấy phán một câu xanh rờn: "Anh thấy cái đoạn em vừa kể lúc nãy cuốn phết đấy", đó không phải là một câu trả lời kiểu cho có của một kẻ ngồi nghe hời hợt.</p>
-    <p>Điều đó chứng tỏ anh ấy đã thực sự nuốt từng lời em nói vào bụng.</p>
+    <p>Điều đó chứng tỏ anh ấy đã thực sự nuốt từng lời tôi nói vào bụng.</p>
     <p>"Nhưng mà," anh Yuuta hạ giọng thì thầm.</p>
     <p>"Chắc mọi chuyện sẽ bung bét hết nếu chúng mình không thể dành thời gian ngồi tâm sự mỏng với nhau như thế này mất."</p>
     <p>"Thời gian nói chuyện ít thì có vấn đề gì nghiêm trọng lắm sao anh?"</p>
     <p>"Theo thuyết âm mưu của anh thì giao tiếp là hệ quả của một phương trình gồm hai biến số: chất lượng và số lượng. Nếu tăng chất lượng lên max ping, chúng ta có thể bù đắp được sự thiếu hụt về mặt số lượng đến một mức độ nhất định. Nhưng kiểu gì cũng sẽ có chuyện nếu số lượng bị kéo xuống quá thấp."</p>
     <p>Bất kỳ số nào nhân với 0 cũng bằng 0. Nếu một trong hai biến số mang giá trị âm, mối quan hệ sẽ xuống dốc không phanh (và thảm họa nhất là khi cả hai đều âm, lúc đó thì có gọi pháp sư toán học đến cũng chẳng thể nào làm phép biến âm thành dương trong giao tiếp được).</p>
     <p>"Vì vậy," anh Yuuta nói thêm kèm theo một nụ cười rạng rỡ. "Anh hy vọng chúng mình sẽ luôn giữ được thói quen vừa ăn vừa thủ thỉ tâm tình với nhau nhiều nhất có thể."</p>
-    <p>Em cố gắng nặn ra một nụ cười và gật đầu cái rụp, nhưng sâu thẳm bên trong, một nỗi bất an vô hình đang gặm nhấm tâm hồn em, bởi em nhận thức được sự hời hợt và nông cạn trong cách giao tiếp của mình khi đặt lên bàn cân so sánh với anh Yuuta.</p>
+    <p>Tôi cố gắng nặn ra một nụ cười và gật đầu cái rụp, nhưng sâu thẳm bên trong, một nỗi bất an vô hình đang gặm nhấm tâm hồn tôi, bởi tôi nhận thức được sự hời hợt và nông cạn trong cách giao tiếp của mình khi đặt lên bàn cân so sánh với anh Yuuta.</p>
 
     <hr>
 
-    <p>Kỳ nghỉ dài ngày đã trôi qua, và giờ đây, khi tờ lịch đã lật sang tuần thứ hai của tháng Năm, em đã dần bắt nhịp được với guồng quay của cuộc sống đại học.</p>
-    <p>Ngày hôm đó, hai cô bạn mới quen nổi hứng rủ em ra ngoài ăn trưa. Bọn họ tíu tít khoe rằng mới săn lùng được một quán bán bánh pan-kếch (pancake) siêu đỉnh, lên hình Instagram đảm bảo hút ngàn like. Món này ăn no ứ hự, đủ sức thay thế cả một bữa ăn chính chứ chẳng đùa.</p>
-    <p>Một tiết học ở trường đại học kéo dài đằng đẵng tận 90 phút. Chỉ tính riêng cái khoản thời gian thôi cũng đã gấp đôi một tiết học ở trường cấp ba rồi. Dù cho vài giảng viên tâm lý có cho nghỉ giải lao giữa giờ, nhưng việc học trên giảng đường đại học vẫn ngốn của em một lượng lớn sự tập trung và thể lực. Nếu không nạp đủ năng lượng, cái bụng đói của em sẽ biểu tình inh ỏi giữa giờ học mất. Khỏi phải nói lúc đó đầu óc sẽ đình công đến mức nào.</p>
+    <p>Kỳ nghỉ dài ngày đã trôi qua, và giờ đây, khi tờ lịch đã lật sang tuần thứ hai của tháng Năm, tôi đã dần bắt nhịp được với guồng quay của cuộc sống đại học.</p>
+    <p>Ngày hôm đó, hai cô bạn mới quen nổi hứng rủ tôi ra ngoài ăn trưa. Bọn họ tíu tít khoe rằng mới săn lùng được một quán bán bánh pan-kếch (pancake) siêu đỉnh, lên hình Instagram đảm bảo hút ngàn like. Món này ăn no ứ hự, đủ sức thay thế cả một bữa ăn chính chứ chẳng đùa.</p>
+    <p>Một tiết học ở trường đại học kéo dài đằng đẵng tận 90 phút. Chỉ tính riêng cái khoản thời gian thôi cũng đã gấp đôi một tiết học ở trường cấp ba rồi. Dù cho vài giảng viên tâm lý có cho nghỉ giải lao giữa giờ, nhưng việc học trên giảng đường đại học vẫn ngốn của tôi một lượng lớn sự tập trung và thể lực. Nếu không nạp đủ năng lượng, cái bụng đói của tôi sẽ biểu tình inh ỏi giữa giờ học mất. Khỏi phải nói lúc đó đầu óc sẽ đình công đến mức nào.</p>
     <p>Thế nên, mấy cái bánh pan-kếch bé xíu xiu ăn hương ăn hoa chẳng bõ bèn gì.</p>
-    <p>"Có điều quán hơi xa một tí," Kyouka rào trước. Cô bạn này—Mizukami Kyouka, chính là chủ nhân của cái biệt danh 'Sư phụ Gyaru' quái gở gán cho em. Mặc dù mái tóc nhuộm cam rực rỡ của Kyouka mới đúng chuẩn một nàng gyaru thứ thiệt, nhưng không hiểu sao cô nàng lại cứ khăng khăng suy tôn em lên làm 'Sư phụ Gyaru' đẳng cấp cao.</p>
+    <p>"Có điều quán hơi xa một tí," Kyouka rào trước. Cô bạn này—Mizukami Kyouka, chính là chủ nhân của cái biệt danh 'Sư phụ Gyaru' quái gở gán cho tôi. Mặc dù mái tóc nhuộm cam rực rỡ của Kyouka mới đúng chuẩn một nàng gyaru thứ thiệt, nhưng không hiểu sao cô nàng lại cứ khăng khăng suy tôn tôi lên làm 'Sư phụ Gyaru' đẳng cấp cao.</p>
     <p>Thôi dẹp chuyện đó sang một bên, quay lại vấn đề khoảng cách đến quán cà phê.</p>
     <p>"Xa cỡ nào cơ?"</p>
     <p>"Đi bộ từ ga tới quán chắc mất tầm tám phút."</p>
     <p>"Cũng khá chua đấy nhỉ."</p>
-    <p>Sau khi tra khảo kỹ càng, hóa ra cái quán đó nằm ở tận bên kia đường ray xe lửa. Tình hình này thì việc thi chạy đi dặm về đích có lẽ là một chiến thuật khôn ngoan. Nhất là khi quán sẽ chật ních người nếu chúng em lết xác tới đúng vào giờ cao điểm buổi trưa.</p>
-    <p>Điểm đến của chúng em là một tiệm cà phê nhỏ nhắn xinh xắn nằm khiêm tốn đối diện ga Myougadani.</p>
+    <p>Sau khi tra khảo kỹ càng, hóa ra cái quán đó nằm ở tận bên kia đường ray xe lửa. Tình hình này thì việc thi chạy đi dặm về đích có lẽ là một chiến thuật khôn ngoan. Nhất là khi quán sẽ chật ních người nếu chúng tôi lết xác tới đúng vào giờ cao điểm buổi trưa.</p>
+    <p>Điểm đến của chúng tôi là một tiệm cà phê nhỏ nhắn xinh xắn nằm khiêm tốn đối diện ga Myougadani.</p>
     <p>Mặt tiền quán được ốp gỗ màu nâu mộc mạc, toát lên một vẻ yên bình, mộc mạc. Cái tên tiếng Anh của quán được thiết kế bay bướm nổi bần bật ngay trên lối ra vào. Không gian bên trong khá khiêm tốn, chỉ xếp được hai bộ bàn dành cho bốn người, hai bộ dành cho hai người, và một chiếc bàn nhỏ nhắn kê sát cửa sổ. Sức chứa tối đa của quán chắc chỉ vỏn vẹn 15 đến 16 người là cùng. Sàn nhà lát gạch caro đen trắng trông vô cùng trendy. Ánh sáng trong quán được thiết kế rất có gu, không quá chói chang cũng chẳng quá u ám. Hừm, duyệt.</p>
-    <p>Tuy quán khá đông khách, nhưng chúng em vẫn xí được một bàn ngon nghẻ sau một lúc đứng đợi.</p>
-    <p>Em vớ lấy cái menu soi ngay tắp lự.</p>
+    <p>Tuy quán khá đông khách, nhưng chúng tôi vẫn xí được một bàn ngon nghẻ sau một lúc đứng đợi.</p>
+    <p>Tôi vớ lấy cái menu soi ngay tắp lự.</p>
     <p>Ra là vậy, ở đây có bán món pan-kếch ăn kèm trứng ốp la và thịt xông khói. Chốt đơn món này luôn. Tiền bánh cộng thêm tiền nước tính ra cũng ngốn mất tầm 2000 yên. Với ngân sách eo hẹp của sinh viên thì cái giá này cũng hơi chát, nhưng lâu lâu tự thưởng cho bản thân một bữa sang chảnh cũng chẳng chết ai.</p>
     <p>Thao tác order diễn ra nhanh gọn lẹ, và chỉ mười phút sau, đồ ăn đã hạ cánh an toàn trên bàn. Tốc độ phục vụ bàn thật đáng nể.</p>
     <p>Một tháp pan-kếch gồm hai tầng bánh xốp mịn màng, bên trên là những lát thịt xông khói mỏng dính và một quả trứng ốp la vàng ươm. Ở phe đối lập với trứng ốp la là một viên kem mát lạnh. Cái chất lỏng sền sệt trong cái chén nhỏ kia 100% là siro ngọt ngào rồi.</p>
-    <p>Giao diện của món này trông y chang một bữa ăn mặn, nhưng cũng có thể du di coi nó là một món đồ ngọt ăn vặt. Nếu muốn đổi gió khẩu vị, em hoàn toàn có thể rắc thêm chút muối và tiêu có sẵn trên bàn.</p>
-    <p>Khi Kyouka và cô bạn còn lại, Mayu (Kaneko Mayu), lôi bảo bối smartphone ra khỏi túi, em cũng nhanh nhảu lôi cái điện thoại của mình từ túi đeo chéo ra.</p>
-    <p>Đây là một thú vui tao nhã mới nổi của em dạo gần đây. Em đang tập tành ghi lại những khoảnh khắc đời thường vô tình lọt vào mắt xanh của mình.</p>
-    <p>Hừm, em đăm chiêu nhìn đĩa pan-kếch đang chễm chệ trước mặt.</p>
-    <p>Điều gì làm nên sự khác biệt của đĩa pan-kếch này? Em cố gắng khơi lại cảm giác đầu tiên khi chạm mắt với nó.</p>
-    <p>Tất nhiên, ấn tượng đầu tiên đập vào mắt em là nó trông cực kỳ ngon miệng, nhưng khi lia mắt đến sự kết hợp giữa pan-kếch, thịt xông khói và trứng, não em tự động nảy số: "A, lên hình chắc chắn đỉnh chóp". Đâu là lý do thực sự cho cái suy nghĩ đó...?</p>
+    <p>Giao diện của món này trông y chang một bữa ăn mặn, nhưng cũng có thể du di coi nó là một món đồ ngọt ăn vặt. Nếu muốn đổi gió khẩu vị, tôi hoàn toàn có thể rắc thêm chút muối và tiêu có sẵn trên bàn.</p>
+    <p>Khi Kyouka và cô bạn còn lại, Mayu (Kaneko Mayu), lôi bảo bối smartphone ra khỏi túi, tôi cũng nhanh nhảu lôi cái điện thoại của mình từ túi đeo chéo ra.</p>
+    <p>Đây là một thú vui tao nhã mới nổi của tôi dạo gần đây. Tôi đang tập tành ghi lại những khoảnh khắc đời thường vô tình lọt vào mắt xanh của mình.</p>
+    <p>Hừm, tôi đăm chiêu nhìn đĩa pan-kếch đang chễm chệ trước mặt.</p>
+    <p>Điều gì làm nên sự khác biệt của đĩa pan-kếch này? Tôi cố gắng khơi lại cảm giác đầu tiên khi chạm mắt với nó.</p>
+    <p>Tất nhiên, ấn tượng đầu tiên đập vào mắt tôi là nó trông cực kỳ ngon miệng, nhưng khi lia mắt đến sự kết hợp giữa pan-kếch, thịt xông khói và trứng, não tôi tự động nảy số: "A, lên hình chắc chắn đỉnh chóp". Đâu là lý do thực sự cho cái suy nghĩ đó...?</p>
     <p>"Saki-chan, bộ đĩa pan-kếch đó có thù oán gì với bồ hay sao mà bồ nhìn nó đắm đuối thế?"</p>
     <p>"Đừng bảo là pan-kếch đã hãm hại gia đình bồ, nên bồ thề sẽ không nhắm mắt xuôi tay nếu chưa diệt gọn 100 cái pan-kếch nhé? Mình nói đúng không?"</p>
-    <p>Mayu trêu chọc em bằng cái giọng tưng tửng. Bậy bạ hết sức.</p>
+    <p>Mayu trêu chọc tôi bằng cái giọng tưng tửng. Bậy bạ hết sức.</p>
     <p>"Mình chỉ đang vận công suy nghĩ xem nên chụp góc nào cho nó nghệ thôi."</p>
-    <p>Mặc dù quán không có khách xếp hàng đợi bàn, nhưng em vẫn phải đẩy nhanh tốc độ ăn uống để tránh làm phiền việc kinh doanh của người ta.</p>
-    <p>A, em bắt đầu nhìn thấu được chân lý rồi. Bí mật nằm ở sự đối xứng hoàn hảo. Nằm chễm chệ trên nền chiếc pan-kếch nướng vàng ươm là một viên kem trắng muốt, đối trọng với nó là quả trứng ốp la lòng đào với lớp lòng trắng che phủ một nửa chiếc bánh. Sự tương phản giữa sắc nâu của bánh, sắc trắng của kem và lòng trắng trứng, điểm xuyết thêm màu vàng ươm của lòng đỏ tạo nên một tổng thể vô cùng hài hòa. Rõ ràng đây là một sự sắp đặt có chủ đích của đầu bếp. Vậy nên... em quyết định xoay nhẹ chiếc đĩa để bố cục màu sắc trông nịnh mắt hơn trước khi bấm máy.</p>
-    <p>Em hít một hơi thật sâu, chuẩn bị tinh thần xông trận—thì Kyouka đột ngột rú lên: "Ê Saki-chan, chị em mình làm bô ảnh kỷ niệm đi."</p>
-    <p>Cô nàng bật chế độ camera trước rồi nhích lại gần em, miệng liên tục hô hào: "Dô dô dô." Em liếc nhìn màn hình điện thoại của Kyouka, đập vào mắt là đĩa pan-kếch hoành tráng cùng với ba cái mặt lố nhố của tụi em đang ngồi quây quần xung quanh.</p>
+    <p>Mặc dù quán không có khách xếp hàng đợi bàn, nhưng tôi vẫn phải đẩy nhanh tốc độ ăn uống để tránh làm phiền việc kinh doanh của người ta.</p>
+    <p>A, tôi bắt đầu nhìn thấu được chân lý rồi. Bí mật nằm ở sự đối xứng hoàn hảo. Nằm chễm chệ trên nền chiếc pan-kếch nướng vàng ươm là một viên kem trắng muốt, đối trọng với nó là quả trứng ốp la lòng đào với lớp lòng trắng che phủ một nửa chiếc bánh. Sự tương phản giữa sắc nâu của bánh, sắc trắng của kem và lòng trắng trứng, điểm xuyết thêm màu vàng ươm của lòng đỏ tạo nên một tổng thể vô cùng hài hòa. Rõ ràng đây là một sự sắp đặt có chủ đích của đầu bếp. Vậy nên... tôi quyết định xoay nhẹ chiếc đĩa để bố cục màu sắc trông nịnh mắt hơn trước khi bấm máy.</p>
+    <p>Tôi hít một hơi thật sâu, chuẩn bị tinh thần xông trận—thì Kyouka đột ngột rú lên: "Ê Saki-chan, chị em mình làm bô ảnh kỷ niệm đi."</p>
+    <p>Cô nàng bật chế độ camera trước rồi nhích lại gần tôi, miệng liên tục hô hào: "Dô dô dô." Tôi liếc nhìn màn hình điện thoại của Kyouka, đập vào mắt là đĩa pan-kếch hoành tráng cùng với ba cái mặt lố nhố của tụi tôi đang ngồi quây quần xung quanh.</p>
     <p>Ra là chụp selfie.</p>
-    <p>Trong thoáng chốc, em thấy toàn thân mình cứng đơ như khúc gỗ, nhưng em đã cố gắng vận nội công để giấu nhẹm đi sự lúng túng đó, khẽ hít một hơi rồi toe toét cười. Thôi thì, em cũng không còn dị ứng với trò này như trước nữa. "Yeah!" Kyouka hò hét ầm ĩ trong lúc bấm nút chụp. Mayu thậm chí còn đu trend làm cái nắp chữ V kép bằng cả hai tay nữa chứ.</p>
+    <p>Trong thoáng chốc, tôi thấy toàn thân mình cứng đơ như khúc gỗ, nhưng tôi đã cố gắng vận nội công để giấu nhẹm đi sự lúng túng đó, khẽ hít một hơi rồi toe toét cười. Thôi thì, tôi cũng không còn dị ứng với trò này như trước nữa. "Yeah!" Kyouka hò hét ầm ĩ trong lúc bấm nút chụp. Mayu thậm chí còn đu trend làm cái nắp chữ V kép bằng cả hai tay nữa chứ.</p>
 
     <p>Ký hiệu chữ V kép cơ á?</p>
-    <p>Giao diện của tụi em bây giờ trông giống hệt mấy cô sinh viên sang chảnh hay xuất hiện trên mấy trang bìa tạp chí—à, mà tụi em đúng là những cô nữ sinh đại học tỏa sáng rực rỡ thật mà (Hàng JD riêu 100%).</p>
-    <p>Sau khi con ảnh đã hạ cánh an toàn trên Instagram, cuối cùng tụi em cũng được phép càn quét đĩa thức ăn. Nói thêm một chút, bức ảnh đó chỉ được upload lên một tài khoản private, nghĩa là chỉ những người được cấp thẻ qua cửa mới có quyền chiêm ngưỡng nó. Hóa ra, việc up mấy tấm ảnh có gắn định vị lên các tài khoản public là một hành động tự sát mạng, vì ai đó có thể dễ dàng đánh hơi được tọa độ của chúng em. Em chả tin trên đời này lại rảnh rỗi sinh nông nổi đến mức đi rình rập người khác như vậy, nhưng vì vốn kiến thức về văn hóa mạng của em chỉ nằm ở mức a-ma-tơ, nên em quyết định sẽ nghe lời răm rắp.</p>
-    <p>Em dùng dao xẻo một miếng pan-kếch vừa miệng rồi bỏ thẳng vào miệng.</p>
-    <p>Khi luồng hơi nóng hổi thơm phức tỏa ra từ miếng bánh chạm vào khoang miệng, em bắt đầu nhai chầm chậm.</p>
+    <p>Giao diện của tụi tôi bây giờ trông giống hệt mấy cô sinh viên sang chảnh hay xuất hiện trên mấy trang bìa tạp chí—à, mà tụi tôi đúng là những cô nữ sinh đại học tỏa sáng rực rỡ thật mà (Hàng JD riêu 100%).</p>
+    <p>Sau khi con ảnh đã hạ cánh an toàn trên Instagram, cuối cùng tụi tôi cũng được phép càn quét đĩa thức ăn. Nói thêm một chút, bức ảnh đó chỉ được upload lên một tài khoản private, nghĩa là chỉ những người được cấp thẻ qua cửa mới có quyền chiêm ngưỡng nó. Hóa ra, việc up mấy tấm ảnh có gắn định vị lên các tài khoản public là một hành động tự sát mạng, vì ai đó có thể dễ dàng đánh hơi được tọa độ của chúng tôi. Tôi chả tin trên đời này lại rảnh rỗi sinh nông nổi đến mức đi rình rập người khác như vậy, nhưng vì vốn kiến thức về văn hóa mạng của tôi chỉ nằm ở mức a-ma-tơ, nên tôi quyết định sẽ nghe lời răm rắp.</p>
+    <p>Tôi dùng dao xẻo một miếng pan-kếch vừa miệng rồi bỏ thẳng vào miệng.</p>
+    <p>Khi luồng hơi nóng hổi thơm phức tỏa ra từ miếng bánh chạm vào khoang miệng, tôi bắt đầu nhai chầm chậm.</p>
     <p>—A, ngon tuyệt cú mèo.</p>
     <p>Độ ngọt được gia giảm cực kỳ tinh tế, không hề bị gắt cổ, phần cốt bánh thì mềm mịn như bông, cắn một phát là tan chảy ngay trên đầu lưỡi. Sự bùng nổ hương vị khi kết hợp cùng lớp thịt xông khói giòn rụm và trứng ốp la béo ngậy tạo nên một bản giao hưởng ẩm thực đánh thức mọi giác quan. Ăn cuốn thực sự. Ai mà ngờ được một quán cà phê bé tẹo nằm cách trường đại học vài bước chân lại giấu một bí kíp làm pan-kếch đỉnh cao đến thế!</p>
     <p>"Bồ moi đâu ra cái quán xịn sò này vậy?"</p>
-    <p>Em mở lời hỏi Kyouka khi cô nàng đang chuẩn bị xử lý dứt điểm đĩa pan-kếch của mình.</p>
+    <p>Tôi mở lời hỏi Kyouka khi cô nàng đang chuẩn bị xử lý dứt điểm đĩa pan-kếch của mình.</p>
     <p>"À, bồ cứ từ từ mà ăn, mình đợi bồ xử xong rồi hẵng dọn bàn cũng được."</p>
     <p>"Ưm..." *nhồm nhoàm* *nhóp nhép*. "Chuyện là thế này, người nắm giữ cuốn bách khoa toàn thư về mấy chốn ăn chơi này là Mayu đó~"</p>
-    <p>Em lập tức chuyển hướng radar sang Mayu đang ngồi ở bên trái.</p>
+    <p>Tôi lập tức chuyển hướng radar sang Mayu đang ngồi ở bên trái.</p>
     <p>Tốc độ ăn của cô nàng chậm rì rì, cứ như thể đang thưởng thức từng phân tử thức ăn một vậy.</p>
-    <p>Chiến lợi phẩm của cô nàng mới vơi đi chưa tới một phần ba. Với cái tiến độ này, liệu cô nàng có kịp chạy sô ca học buổi chiều không trời? Em bắt đầu thấy lo lo thay cho bả.</p>
-    <p>Mayu dùng ngón tay thon dài gõ nhẹ lên màn hình chiếc smartphone đang nằm ngoan ngoãn trên bàn. Cô nàng mở ứng dụng Instagram lên rồi đẩy điện thoại về phía em.</p>
-    <p>Hừm... Chắc cô nàng muốn em xem cái gì đó đây?</p>
+    <p>Chiến lợi phẩm của cô nàng mới vơi đi chưa tới một phần ba. Với cái tiến độ này, liệu cô nàng có kịp chạy sô ca học buổi chiều không trời? Tôi bắt đầu thấy lo lo thay cho bả.</p>
+    <p>Mayu dùng ngón tay thon dài gõ nhẹ lên màn hình chiếc smartphone đang nằm ngoan ngoãn trên bàn. Cô nàng mở ứng dụng Instagram lên rồi đẩy điện thoại về phía tôi.</p>
+    <p>Hừm... Chắc cô nàng muốn tôi xem cái gì đó đây?</p>
     <p>Trang Instagram của Mayu là một cuốn cẩm nang thu nhỏ lưu giữ tọa độ của tất tần tật những địa điểm mà cô nàng từng đặt chân đến, được phân loại rõ ràng theo từng khu vực, và nó đóng vai trò như một 'danh sách những nhà hàng chân ái' của chính chủ.</p>
-    <p>Em thực sự nể phục sự sáng tạo trong cách sử dụng Instagram của cô nàng. Tuy nhiên, điều khiến em sốc toàn tập không phải là cách sử dụng ứng dụng đỉnh cao, mà là việc cô nàng đã từng check-in ở vô số nhà hàng sang chảnh và đắt đỏ. Đâu ai rảnh rỗi đi chôm ảnh mạng về sống ảo làm gì, nên kho tàng ảnh đồ sộ này chứng tỏ cô nàng là khách quen của mấy chỗ đó—chưa kể, lâu lâu lại có vài tấm ảnh cô nàng tự sướng lọt vào khung hình, nên tính xác thực là không thể bàn cãi.</p>
+    <p>Tôi thực sự nể phục sự sáng tạo trong cách sử dụng Instagram của cô nàng. Tuy nhiên, điều khiến tôi sốc toàn tập không phải là cách sử dụng ứng dụng đỉnh cao, mà là việc cô nàng đã từng check-in ở vô số nhà hàng sang chảnh và đắt đỏ. Đâu ai rảnh rỗi đi chôm ảnh mạng về sống ảo làm gì, nên kho tàng ảnh đồ sộ này chứng tỏ cô nàng là khách quen của mấy chỗ đó—chưa kể, lâu lâu lại có vài tấm ảnh cô nàng tự sướng lọt vào khung hình, nên tính xác thực là không thể bàn cãi.</p>
     <p>"Ưm... cái bức ảnh này, đây là một set ăn sáng đặc trưng của một quán cà phê ở tận Nagoya phải không?"</p>
-    <p>Kyouka ngồi đối diện em buột miệng hỏi: "Thật á?", nhưng em dám lấy danh dự ra cá là cái kiểu ăn sáng kỳ quái này chắc chắn có xuất xứ từ Nagoya. Chứ đâu ra cái kiểu trét cả đống mứt đậu đỏ lên bánh mì nướng như thế.</p>
+    <p>Kyouka ngồi đối diện tôi buột miệng hỏi: "Thật á?", nhưng tôi dám lấy danh dự ra cá là cái kiểu ăn sáng kỳ quái này chắc chắn có xuất xứ từ Nagoya. Chứ đâu ra cái kiểu trét cả đống mứt đậu đỏ lên bánh mì nướng như thế.</p>
     <p>"Còn cái tiệm cà phê này hình như là ở Kanazawa. Mình vẫn nhớ in đậm cái hình dáng kỳ cục của cái ly đựng parfait này. Mình từng vô tình thấy nó trên mạng xã hội và thấy hay hay nên mới mò mẫm tìm địa chỉ."</p>
     <p>Thường thì ly parfait sẽ có dáng cao ráo, thanh mảnh, nhưng cái ly thủy tinh này lại trông giống như... một khoanh bánh baumkuchen bị cắt ngang ấy? Hình dáng nó y xì như vậy luôn. Nhìn ngang thì thấy rành rành mấy miếng trái cây và kem tươi ép chặt vào thành ly, tạo thành những họa tiết trang trí vô cùng bắt mắt.</p>
     <p>"Hê. Đáng yêu xỉu. Lên hình cứ gọi là nét căng, nhỉ."</p>
     <p>Đó là một sự thật không thể chối cãi, nhưng cái đáng nói ở đây là—.</p>
     <p>"Bồ đi lượn lờ khắp nơi và gom được một rổ ảnh xịn sò... nhưng mà địa điểm check-in thì cứ nhảy loạn cào cào lên... Bồ có sở thích đam mê xê dịch à?"</p>
-    <p>Khi nghe em hỏi câu đó, Mayu chỉ mỉm cười và chậm rãi lắc đầu.</p>
+    <p>Khi nghe tôi hỏi câu đó, Mayu chỉ mỉm cười và chậm rãi lắc đầu.</p>
     <p>Sau khi nuốt trôi ngụm thức ăn, cô nàng mới từ tốn cất lời.</p>
     <p>"Chỉ là mình được người ta rủ rê đi cùng thôi."</p>
-    <p>Em nghiêng đầu bối rối vì não chưa kịp load hết ẩn ý trong câu nói của cô nàng.</p>
+    <p>Tôi nghiêng đầu bối rối vì não chưa kịp load hết ẩn ý trong câu nói của cô nàng.</p>
     <p>"Chắc là mấy chuyến du lịch cùng gia đình ha?"</p>
-    <p>Em chỉ thuận miệng nói ra những gì mình nghĩ, nhưng cô nàng lập tức lắc đầu phủ nhận không thương tiếc.</p>
+    <p>Tôi chỉ thuận miệng nói ra những gì mình nghĩ, nhưng cô nàng lập tức lắc đầu phủ nhận không thương tiếc.</p>
     <p>"À há, hiểu rồi, hiểu rồi nha!"</p>
-    <p>Có vẻ như Kyouka đã nhanh chóng giải mã được cái thông điệp rối rắm mà não em vẫn đang báo lỗi. Cô nàng nhoẻn miệng cười tinh quái và tuyên bố xanh rờn:</p>
+    <p>Có vẻ như Kyouka đã nhanh chóng giải mã được cái thông điệp rối rắm mà não tôi vẫn đang báo lỗi. Cô nàng nhoẻn miệng cười tinh quái và tuyên bố xanh rờn:</p>
     <p>"Người bao nuôi bồ đi chơi là Papa, chuẩn chưa?"</p>
-    <p>...Cái này thì có khác gì mấy chuyến du hí cùng gia đình mà em vừa nhắc đến đâu?</p>
+    <p>...Cái này thì có khác gì mấy chuyến du hí cùng gia đình mà tôi vừa nhắc đến đâu?</p>
     <p>Thế nhưng, Mayu lại không hề phản bác. Cô nàng chỉ đáp lại bằng một nụ cười đầy ẩn ý.</p>
     <p>"Uầy, cháy thế~. Mình GATO với bồ quá đi mất!"</p>
     <p>"Hả? Khoan đã. Mình đang bị loạn não rồi đây này."</p>
-    <p>Thấy em phản ứng như người từ hành tinh khác rơi xuống, Kyouka tròn mắt kinh ngạc thốt lên: "Đừng nói là Sư phụ chỉ cắm rễ với duy nhất một anh chàng thôi nhé? Ôi mẹ ơi, tin sốc!"</p>
+    <p>Thấy tôi phản ứng như người từ hành tinh khác rơi xuống, Kyouka tròn mắt kinh ngạc thốt lên: "Đừng nói là Sư phụ chỉ cắm rễ với duy nhất một anh chàng thôi nhé? Ôi mẹ ơi, tin sốc!"</p>
     <p>Từ từ đã. Sốc ở cái chỗ nào cơ?</p>
     <p>"Thì Sư phụ gyaru mà lại, chắc chắn kinh nghiệm tình trường phải dày dặn, thay bồ như thay áo chứ? Bồ phải biết cách vờn mấy vệ tinh vây quanh mình như bỡn chứ hả?"</p>
     <p>"Mình đã công khai là hoa có chủ rồi, thì cớ gì mình phải đi làm cái trò mèo đó."</p>
-    <p>Thấy em khẳng định chắc nịch như đinh đóng cột, Kyouka há hốc mồm kinh ngạc. ...Xem ra em cần phải tổ chức một buổi họp báo khẩn cấp để tẩy trắng cái danh hiệu ‘sư phụ gyaru’ rẻ rách mà cô nàng tự phong cho em ngay và luôn.</p>
+    <p>Thấy tôi khẳng định chắc nịch như đinh đóng cột, Kyouka há hốc mồm kinh ngạc. ...Xem ra tôi cần phải tổ chức một buổi họp báo khẩn cấp để tẩy trắng cái danh hiệu ‘sư phụ gyaru’ rẻ rách mà cô nàng tự phong cho tôi ngay và luôn.</p>
     <p>"N-Nói tóm lại là, mình đã từng tuyên bố là mình đã có người thương, nhưng trái tim mình chỉ có duy nhất một ngăn dành cho người đó, và không có chỗ cho kẻ thứ ba."</p>
-    <p>Lý lẽ của Melissa là trái tim cô nàng quá rộng lớn để chỉ chứa chấp hình bóng của một người đàn ông, và mặc dù hiện tại em chưa thể tìm ra lý lẽ sắc bén để phản biện lại cái tư tưởng đó, nhưng cá nhân em thấy việc chung tình với một người là đã quá đủ để đau đầu rồi. Thêm nữa, cái viễn cảnh phải đi quản lý một lúc cả dàn hậu cung nghe thôi đã thấy mệt mỏi rã rời.</p>
-    <p>Mà thôi, em không có nhu cầu mang chuyện tình cảm của mình ra làm đề tài bàn tán.</p>
+    <p>Lý lẽ của Melissa là trái tim cô nàng quá rộng lớn để chỉ chứa chấp hình bóng của một người đàn ông, và mặc dù hiện tại tôi chưa thể tìm ra lý lẽ sắc bén để phản biện lại cái tư tưởng đó, nhưng cá nhân tôi thấy việc chung tình với một người là đã quá đủ để đau đầu rồi. Thêm nữa, cái viễn cảnh phải đi quản lý một lúc cả dàn hậu cung nghe thôi đã thấy mệt mỏi rã rời.</p>
+    <p>Mà thôi, tôi không có nhu cầu mang chuyện tình cảm của mình ra làm đề tài bàn tán.</p>
     <p>Kyouka vươn vai rồi đan hai tay ra sau gáy. Cô nàng ngả người ra phía sau lưng ghế, thủng thẳng nói:</p>
     <p>"Nói chung là, dù là Sư phụ hay Mayu thì cũng đều là những thần tượng mà mình hâm mộ sát đất. Ước gì mình được như hai bồ!"</p>
     <p>Ủa, vậy có nghĩa là Kyouka đang ế chỏng gọng, còn Mayu thì đã có bến đỗ rồi sao?</p>
     <p>Mayu lại tiếp tục điệu nhảy múa trên màn hình điện thoại.</p>
-    <p>Em liếc mắt nghía qua, trên màn hình hiện lên một cái app gì đó là lạ chứ không phải Instagram.</p>
+    <p>Tôi liếc mắt nghía qua, trên màn hình hiện lên một cái app gì đó là lạ chứ không phải Instagram.</p>
     <p>"Đó là app MachiApp. Mình cũng có xài cái này. Của mình đây nè."</p>
-    <p>Vừa nói, Kyouka vừa bấm bấm điện thoại và chìa cái ứng dụng đó ra cho em xem. Nhưng mà lạ thay, giao diện của nó trông khác một trời một vực so với cái ứng dụng mà Mayu vừa dùng.</p>
+    <p>Vừa nói, Kyouka vừa bấm bấm điện thoại và chìa cái ứng dụng đó ra cho tôi xem. Nhưng mà lạ thay, giao diện của nó trông khác một trời một vực so với cái ứng dụng mà Mayu vừa dùng.</p>
     <p>MachiApp...</p>
-    <p>Hừm, em đã từng nghe lỏm được cái thuật ngữ này ở đâu đó rồi. Nó là từ viết tắt của "Matching Application/Ứng dụng ghép đôi".</p>
+    <p>Hừm, tôi đã từng nghe lỏm được cái thuật ngữ này ở đâu đó rồi. Nó là từ viết tắt của "Matching Application/Ứng dụng ghép đôi".</p>
     <p>Hiểu một cách nôm na thì đây là một ứng dụng gán ghép những người xa lạ lại với nhau. Nếu gọi nó là phiên bản 4.0 của trò [mai mối] truyền thống thì cũng không sai.</p>
     <p>"Cái khái niệm mai mối cổ lỗ sĩ đó lùi vào dĩ vãng lâu rồi Sư phụ ơi! Thời buổi này người ta xài app để làm đủ thứ chuyện trên trời dưới đất cơ!"</p>
     <p>"Mình cấm bồ gọi mình là Sư phụ. Bọn mình bằng tuổi nhau mà. Bồ gọi thế làm mình có cảm giác như mình bị già đi chục tuổi ấy."</p>
-    <p>Nghe em sạc cho một trận, cô nàng liền rối rít xin lỗi. Kyouka đúng là một cô nàng nghĩ gì nói nấy.</p>
+    <p>Nghe tôi sạc cho một trận, cô nàng liền rối rít xin lỗi. Kyouka đúng là một cô nàng nghĩ gì nói nấy.</p>
     <p>"Thôi được rồi, từ giờ mình sẽ đổi xưng hô thành Gyaru-sensei (Cô giáo Gyaru)."</p>
     <p>Cái đó thì có khác gì nhau đâu hả giời!</p>
     <p>"Cái tên đó cũng bị cấm cửa nốt."</p>
     <p>"Bồ cứ réo tên cúng cơm của mình ra mà gọi."</p>
     <p>"Chán bồ ghê? Trong khi mình đang sùng bái bồ như một vị thần. Thôi được rồi... chiều bồ luôn. Này, Saki."</p>
-    <p>Em gật đầu cái rụp tỏ vẻ ưng ý rồi mới quay lại chủ đề chính đang bị bỏ ngỏ. Ủa mà nãy giờ mình đang nói về cái gì ấy nhỉ?</p>
-    <p>Em ngoái đầu sang nhìn Mayu.</p>
+    <p>Tôi gật đầu cái rụp tỏ vẻ ưng ý rồi mới quay lại chủ đề chính đang bị bỏ ngỏ. Ủa mà nãy giờ mình đang nói về cái gì ấy nhỉ?</p>
+    <p>Tôi ngoái đầu sang nhìn Mayu.</p>
     <p>Cô nàng vừa mới xử xong đĩa pan-kếch của mình. Sau khi thong thả nhấp một ngụm trà đá, cô nàng mới nhẹ nhàng cất lời.</p>
     <p>"Tóm lại là, mình được một người quen rủ rê đi chơi cùng."</p>
-    <p>Cô nàng thả một nụ cười dịu dàng kèm theo câu nói đó. Em vẫn mù mờ chưa hiểu hết thâm ý trong câu nói đó là gì, nhưng Kyouka lại tiếp tục đong đưa câu chuyện với Mayu.</p>
+    <p>Cô nàng thả một nụ cười dịu dàng kèm theo câu nói đó. Tôi vẫn mù mờ chưa hiểu hết thâm ý trong câu nói đó là gì, nhưng Kyouka lại tiếp tục đong đưa câu chuyện với Mayu.</p>
     <p>"Thế hóa ra người đó là Papa chứ gì nữa, đúng không?"</p>
     <p>"Bồ bớt phát ngôn hàm hồ đi. Với lại, hạ cái volume xuống dùm cái."</p>
     <p>Sau màn nhắc nhở nhẹ nhàng, Mayu lại treo một nụ cười mỉm chi đầy ẩn ý trên môi.</p>
 
     <hr>
 
-    <p>Trong lúc tận hưởng tách cà phê sau bữa ăn, tâm trí em cứ lẩn quẩn quanh cuộc hội thoại vừa rồi của hai cô nàng.</p>
+    <p>Trong lúc tận hưởng tách cà phê sau bữa ăn, tâm trí tôi cứ lẩn quẩn quanh cuộc hội thoại vừa rồi của hai cô nàng.</p>
     <p>Vậy túm cái váy lại là, Mayu được một ông 'Papa' quen qua app hẹn hò bao trọn gói cho những chuyến du hí đến các quán cà phê sang chảnh trên khắp bản đồ Nhật Bản, và vì đó không phải là chuyến đi chơi cùng gia đình, suy ra ông 'Papa' đó hoàn toàn không phải là phụ thân ruột thịt của cô nàng.</p>
     <p>...Cái mớ bòng bong này nghĩa là sao?</p>
     <p>"Mình... vẫn chưa load kịp. Chẳng lẽ mấy người quen nhau qua app hẹn hò là cứ thế kéo nhau đi du lịch luôn à?"</p>
-    <p>Trước câu hỏi ngây ngô của em, Kyouka trầm ngâm một lát rồi mới bắt đầu khai sáng cho em.</p>
+    <p>Trước câu hỏi ngây ngô của tôi, Kyouka trầm ngâm một lát rồi mới bắt đầu khai sáng cho tôi.</p>
     <p>Theo lời cô nàng, app hẹn hò thời nay là một mớ hỗn lốn chuyên đi mai mối cho người dùng dựa trên đủ mọi nhu cầu thượng vàng hạ cám, từ tìm người yêu, tìm bạn đời cho đến kết bạn tâm giao. Không phải ai lên đó cũng chỉ chăm chăm tìm kiếm tình yêu.</p>
     <p>"Nó giống như một cái mạng xã hội để kết nối những con người cùng chung chí hướng hoặc sở thích, và cái chức năng 'mai mối' mà bồ nhắc tới lúc nãy chỉ là một phần nổi của tảng băng chìm thôi. Nói đơn giản thế này nhé, tùy vào chức năng của từng app, bọn mình có thể lập nguyên một cái group đi phượt khám phá mấy di tích lịch sử chẳng hạn."</p>
     <p>"Hê, ra là thế..."</p>
@@ -811,60 +1065,65 @@
     <p>"Người ta gọi nó là trò 'papa-katsu.' Tất nhiên không phải ai chơi app này cũng hùa theo cái trào lưu đó, và vô số người cảm thấy gai mắt khi thấy cái app bị biến tướng thành một mớ hỗn độn như vậy. Nhưng bồ biết đấy, một khi tiếng ác đã đồn xa thì muốn gột rửa cũng còn khướt."</p>
     <p>Papa... katsu ư?</p>
     <p>"Ủa? Bồ chưa từng nghe danh trò 'papa-katsu' bao giờ hả Saki?"</p>
-    <p>Em chỉ biết gật đầu thừa nhận một cách thành thật.</p>
-    <p>Kyouka trố mắt nhìn em như sinh vật lạ. Giống như cô nàng không thể tin được rằng giữa cái thế kỷ 21 này lại có người mù tịt về mấy cái khái niệm đó.</p>
+    <p>Tôi chỉ biết gật đầu thừa nhận một cách thành thật.</p>
+    <p>Kyouka trố mắt nhìn tôi như sinh vật lạ. Giống như cô nàng không thể tin được rằng giữa cái thế kỷ 21 này lại có người mù tịt về mấy cái khái niệm đó.</p>
     <p>"Quả nhiên là học bá trường Suisei có khác... trường bồ đúng là một cái lò đào tạo tinh hoa. Khai thật đi, bồ là thiên kim tiểu thư nhà đài các phải không?"</p>
-    <p>Làm gì có chuyện đó, em chỉ là một con nhóc thường dân nghèo rớt mồng tơi thôi. Em cũng từng nghe phong phanh qua cái từ đó rồi. Trong đầu em cũng lờ mờ hình dung ra được nó là cái quái gì. Nhưng nếu em cứ gân cổ lên cãi là em rành rọt về mấy cái chuyện này lắm, nhỡ đâu lại gây ra một vụ hiểu lầm động trời nữa thì toang, nên thôi tốt nhất là cứ giả ngu cho lành.</p>
+    <p>Làm gì có chuyện đó, tôi chỉ là một con nhóc thường dân nghèo rớt mồng tơi thôi. Tôi cũng từng nghe phong phanh qua cái từ đó rồi. Trong đầu tôi cũng lờ mờ hình dung ra được nó là cái quái gì. Nhưng nếu tôi cứ gân cổ lên cãi là tôi rành rọt về mấy cái chuyện này lắm, nhỡ đâu lại gây ra một vụ hiểu lầm động trời nữa thì toang, nên thôi tốt nhất là cứ giả ngu cho lành.</p>
     <p>"Mình cứ đinh ninh là bồ đang nắm trong tay tấm bằng thạc sĩ ngành gyaru học cơ đấy."</p>
     <p>"Mình đào đâu ra cái thứ đó."</p>
     <p>"Thôi được rồi, để Kyouka tớ đây bổ túc kiến thức cho bồ. Nó được định nghĩa là 'một hoạt động viện trợ kinh tế được thiết lập dựa trên thỏa thuận ngầm giữa những cô nàng tuổi teen cần tiền và những ông chú lắm tiền nhiều của muốn dang tay cưu mang họ.'"</p>
-    <p>Cô nàng bắn rap giải thích một tràng trơn tru như máy khâu. Dù nghe qua thì sặc mùi giang hồ, nhưng suy cho cùng cô nàng cũng là sinh viên của trường đại học danh giá Tsukinomiya, nên em không tiếc lời khen ngợi cái khả năng trình bày vấn đề đâu ra đấy của cô nàng.</p>
+    <p>Cô nàng bắn rap giải thích một tràng trơn tru như máy khâu. Dù nghe qua thì sặc mùi giang hồ, nhưng suy cho cùng cô nàng cũng là sinh viên của trường đại học danh giá Tsukinomiya, nên tôi không tiếc lời khen ngợi cái khả năng trình bày vấn đề đâu ra đấy của cô nàng.</p>
     <p>Nhưng mà khoan đã, cái định nghĩa cô nàng vừa đọc—ý nó là sao? Hoạt động viện trợ dựa trên thỏa thuận ngầm...?</p>
-    <p>Trong khi não em đang hoạt động hết công suất để phân tích dữ liệu, thì Kyouka lại tỏ vẻ vô cùng đắc ý với màn thuyết trình của mình. Mayu liền cất giọng nói dịu dàng như rót mật vào tai để giải thích thêm.</p>
+    <p>Trong khi não tôi đang hoạt động hết công suất để phân tích dữ liệu, thì Kyouka lại tỏ vẻ vô cùng đắc ý với màn thuyết trình của mình. Mayu liền cất giọng nói dịu dàng như rót mật vào tai để giải thích thêm.</p>
     <p>"Hiểu nôm na là thế này, mấy ông chú đại gia dư tiền lắm của sẽ phát lộc cho bọn mình tầm 10.000 yên hoặc 20.000 yên."</p>
     <p>20.000 yên á... Hả, 20.000 yên lận? Chém đẹp thế!</p>
-    <p>Vừa nghe thấy con số đó, thứ đầu tiên làm em sốc óc chính là số tiền quá khủng. Em thừa biết là cô nàng nhận được tiền viện trợ, nhưng bộ cô nàng túng quẫn đến mức phải đi xin xỏ một khoản tiền lớn đến vậy sao?</p>
+    <p>Vừa nghe thấy con số đó, thứ đầu tiên làm tôi sốc óc chính là số tiền quá khủng. Tôi thừa biết là cô nàng nhận được tiền viện trợ, nhưng bộ cô nàng túng quẫn đến mức phải đi xin xỏ một khoản tiền lớn đến vậy sao?</p>
     <p>"Mình xin lỗi, nhưng cho mình cắt ngang một chút nhé? Mayu, bồ nhận số tiền lớn như thế để làm gì vậy?"</p>
     <p>"Hả?... À, có vẻ như Kyouka đã dùng những lời lẽ quá hoa mỹ để tẩy trắng cho cái trò 'papa-katsu' này, nên chắc bồ đang bị hiểu sai vấn đề rồi."</p>
     <p>"Mình tham gia 'papa-katsu' không phải vì đói rách đâu nha?"</p>
     <p>"Saki đúng là ngây thơ vô số tội mà~."</p>
-    <p>Trong chớp mắt, nụ cười của Mayu bỗng đánh rơi mất cái vẻ ngọt ngào thường ngày, thay vào đó, cô nàng nheo mắt lại như thể đang chiêm ngưỡng một món đồ trang sức quý giá nào đó, rồi mỉm cười với em. Nhưng mà lúc đó em đang bị sốc toàn tập nên chẳng màng đến việc giải mã nụ cười đầy ẩn ý đó. Với lại, em cũng thầm mong cô nàng bớt gọi em là đồ ngây thơ đi, vì đơn giản là em không rành mấy cái mánh lới mờ ám của người lớn thôi mà.</p>
+    <p>Trong chớp mắt, nụ cười của Mayu bỗng đánh rơi mất cái vẻ ngọt ngào thường ngày, thay vào đó, cô nàng nheo mắt lại như thể đang chiêm ngưỡng một món đồ trang sức quý giá nào đó, rồi mỉm cười với tôi. Nhưng mà lúc đó tôi đang bị sốc toàn tập nên chẳng màng đến việc giải mã nụ cười đầy ẩn ý đó. Với lại, tôi cũng thầm mong cô nàng bớt gọi tôi là đồ ngây thơ đi, vì đơn giản là tôi không rành mấy cái mánh lới mờ ám của người lớn thôi mà.</p>
     <p>"Cuộc sống của mình vẫn đang rất màu hồng, và mình chả có cái lý do gì để phải đi xin tiền bố thí cả. Nhà mình cũng không đến nỗi phải chạy ăn từng bữa. Tiền học phí mình cũng đóng đủ không thiếu một cắc. Nên nếu bắt buộc phải đưa ra lý do, thì có lẽ là vì mình muốn nâng cấp bữa trưa của mình cho nó sang chảnh hơn một chút, hoặc là để tậu thêm mấy bộ cánh hàng hiệu thôi? Cỡ Saki thì chắc dư sức hiểu được mấy cái nhu cầu chính đáng này đúng không?"</p>
     <p>Dứt lời, cô nàng nở một nụ cười vô cùng đài các.</p>
-    <p>... Ra là vậy, cô nàng không hề rơi vào cảnh túng quẫn. Tạ ơn trời đất. Em đã suýt nghĩ đến chuyện khuyên cô nàng nên ra căng tin trường ăn cơm bụi cho nó tiết kiệm.</p>
+    <p>... Ra là vậy, cô nàng không hề rơi vào cảnh túng quẫn. Tạ ơn trời đất. Tôi đã suýt nghĩ đến chuyện khuyên cô nàng nên ra căng tin trường ăn cơm bụi cho nó tiết kiệm.</p>
     <p>Nhưng nếu sự thật đúng là như vậy, nếu mọi thứ chỉ là một bản hợp đồng thỏa thuận ngầm—.</p>
     <p>"Vậy là, mấy ông chú mà bồ cất công trò chuyện sẽ chi tiền để bồ thỏa mãn những cái thú vui nho nhỏ của mình, kiểu như bao bồ một bữa ăn hay trả tiền cho vài ba câu chuyện phím à?"</p>
     <p>Mayu khẽ nhún vai rồi thủng thẳng đáp lời.</p>
     <p>"Chà, bồ tóm gọn vấn đề cũng chuẩn phết đấy. Đứng trên lập trường của mình mà nói, mình chỉ đơn thuần là muốn có một cục tiền để tiêu xài rủng rỉnh thôi. Mình chỉ thích được đắp lụa lên người. Mình chỉ muốn có những bữa trưa chanh sả. Làm thế thì có chết ai đâu, đúng không? Nếu nghĩ thoáng ra một chút, thì việc mình đang làm chẳng khác nào một công việc part-time lương khủng nhằm mục đích cày tiền để nâng cấp ngoại hình," Mayu chốt hạ.</p>
     <p>Công việc part-time lương khủng...</p>
-    <p>Vừa nghe thấy mấy chữ đó, một đoạn ký ức tồi tệ về cái 'công việc part-time lương khủng' mà em từng định liều mình dấn thân vào trong quá khứ bỗng chốc ùa về.</p>
+    <p>Vừa nghe thấy mấy chữ đó, một đoạn ký ức tồi tệ về cái 'công việc part-time lương khủng' mà tôi từng định liều mình dấn thân vào trong quá khứ bỗng chốc ùa về.</p>
     <p>"Hả? À, mình xin lỗi. Não mình vừa mới lag mất vài giây... Cho mình hỏi tế nhị xíu nhé, một tuần bồ cày cuốc cái nghề này mấy tiếng vậy?"</p>
     <p>"Ờ thì... Để xem nào, tầm khoảng 2 đến 3 tiếng vào mấy ngày cuối tuần."</p>
     <p>Mayu vừa dứt lời, Kyouka lập tức nhảy xổ vào vạch trần.</p>
     <p>"Xạo sự vừa thôi má~! Đi qua đêm mà bảo mất có 2, 3 tiếng, ít nhất cũng phải đi tong nửa ngày."</p>
     <p>"Cái chủ đề tăng ca thâu đêm suốt sáng đó cấm tuyệt đối không được đào bới lúc mặt trời còn đang chiếu sáng. Bây giờ đang là ban ngày ban mặt, bồ không thấy sao? Quay lại chuyện chính, nếu quy đổi ra tiền lương theo giờ, thì con số đó rơi vào khoảng 7.000 đến 8.000 yên."</p>
     <p>"Nếu mỗi ngày cày 2 tiếng, vị chi là đút túi 20.000 yên. Tính sơ sơ một tháng sương sương cũng phải kiếm được 80.000 yên. Nếu chỉ trông chờ vào khoản thu nhập lèo tèo đó, e là không đủ sống."</p>
-    <p>Em vừa buột miệng nói dứt câu, nét mặt Kyouka liền biến dạng vì kinh ngạc. Em cũng chả biết tại sao cô nàng lại sốc đến vậy, nhưng lúc đó não em đang mải xử lý một đống thông tin khác nên cũng chẳng thèm bận tâm đến biểu cảm của bả. Nhớ lại thời cấp ba, cái lý do khiến em lao đầu đi tìm mấy công việc part-time lương trên trời là vì em không muốn trở thành gánh nặng tài chính cho mẹ. Giờ ngẫm lại mới thấy suy nghĩ lúc đó của mình thật ngây thơ và ngốc nghếch, nhưng thời điểm đó, em đã từng mơ mộng viển vông về việc sẽ moi được một khoản tiền khổng lồ như thế từ túi anh Yuuta. Vậy nên, cái con số 80.000 yên một tháng đó nó ám ảnh em đến tận bây giờ.</p>
-    <p>Rốt cuộc thì, em đã ngoan ngoãn đi làm thêm ở hiệu sách, với mức lương bèo bọt 1.200 yên một giờ. Cứ cho là em cày cuốc từ 5 giờ chiều đến 9 giờ tối, vị chi là 4 tiếng, thì tiền công em nhận được là 4.800 yên. Nếu tuần cày 2 buổi, tổng thu nhập sương sương sẽ rơi vào khoảng 10.000 yên. Cuối tuần thì em có thể quật cường làm luôn 8 tiếng, nhờ có thêm trợ cấp làm thêm giờ ngày nghỉ nên số tiền nhận được cũng xấp xỉ 10.000 yên. Vị chi một tuần em kiếm được tầm 20.000 yên. Cộng dồn lại thì một tháng em cũng đút túi được 80.000 yên. Trùng khớp hoàn toàn với con số mà em hằng khao khát. Mặc dù công việc này chẳng giúp em đổi đời, nhưng nó dạy cho em một bài học đắt giá rằng trên đời này làm quái gì có cái công việc part-time nào ngồi mát ăn bát vàng. Và nếu em mà cầm 80.000 yên của anh Yuuta, đồng nghĩa với việc anh ấy sẽ phải cống nạp toàn bộ số tiền lương làm thêm ở hiệu sách cho em... Giờ nghĩ lại cái ý tưởng điên rồ mà em từng vạch ra ngày đó, em vẫn còn thấy lạnh sống lưng.</p>
-    <p>Nhưng ngặt một nỗi, số tiền ít ỏi đó chỉ đủ để vá víu thêm cho các khoản sinh hoạt phí, và sau khi nghiên cứu kỹ càng bảng học phí đại học, em mới cay đắng nhận ra rằng nó chỉ như muối bỏ bể. Đừng nói đến việc trang trải học phí, ngay cả việc vác balo ra ngoài ở riêng cũng là một giấc mơ xa xỉ. Nhưng nếu em cắm đầu cắm cổ cày thêm giờ, em sẽ chẳng còn thời gian để ôn luyện thi vào cái trường đại học mà em hằng mơ ước. Đó là một nước đi đâm bang và đi ngược lại với mục tiêu ban đầu.</p>
+    <p>Tôi vừa buột miệng nói dứt câu, nét mặt Kyouka liền biến dạng vì kinh ngạc. Tôi cũng chả biết tại sao cô nàng lại sốc đến vậy, nhưng lúc đó não tôi đang mải xử lý một đống thông tin khác nên cũng chẳng thèm bận tâm đến biểu cảm của bả. Nhớ lại thời cấp ba, cái lý do khiến tôi lao đầu đi tìm mấy công việc part-time lương trên trời là vì tôi không muốn trở thành gánh nặng tài chính cho mẹ. Giờ ngẫm lại mới thấy suy nghĩ lúc đó của mình thật ngây thơ và ngốc nghếch, nhưng thời điểm đó, tôi đã từng mơ mộng viển vông về việc sẽ moi được một khoản tiền khổng lồ như thế từ túi anh Yuuta. Vậy nên, cái con số 80.000 yên một tháng đó nó ám ảnh tôi đến tận bây giờ.</p>
+    <p>Rốt cuộc thì, tôi đã ngoan ngoãn đi làm thêm ở hiệu sách, với mức lương bèo bọt 1.200 yên một giờ. Cứ cho là tôi cày cuốc từ 5 giờ chiều đến 9 giờ tối, vị chi là 4 tiếng, thì tiền công tôi nhận được là 4.800 yên. Nếu tuần cày 2 buổi, tổng thu nhập sương sương sẽ rơi vào khoảng 10.000 yên. Cuối tuần thì tôi có thể quật cường làm luôn 8 tiếng, nhờ có thêm trợ cấp làm thêm giờ ngày nghỉ nên số tiền nhận được cũng xấp xỉ 10.000 yên. Vị chi một tuần tôi kiếm được tầm 20.000 yên. Cộng dồn lại thì một tháng tôi cũng đút túi được 80.000 yên. Trùng khớp hoàn toàn với con số mà tôi hằng khao khát. Mặc dù công việc này chẳng giúp tôi đổi đời, nhưng nó dạy cho tôi một bài học đắt giá rằng trên đời này làm quái gì có cái công việc part-time nào ngồi mát ăn bát vàng. Và nếu tôi mà cầm 80.000 yên của anh Yuuta, đồng nghĩa với việc anh ấy sẽ phải cống nạp toàn bộ số tiền lương làm thêm ở hiệu sách cho tôi... Giờ nghĩ lại cái ý tưởng điên rồ mà tôi từng vạch ra ngày đó, tôi vẫn còn thấy lạnh sống lưng.</p>
+    <p>Nhưng ngặt một nỗi, số tiền ít ỏi đó chỉ đủ để vá víu thêm cho các khoản sinh hoạt phí, và sau khi nghiên cứu kỹ càng bảng học phí đại học, tôi mới cay đắng nhận ra rằng nó chỉ như muối bỏ bể. Đừng nói đến việc trang trải học phí, ngay cả việc vác balo ra ngoài ở riêng cũng là một giấc mơ xa xỉ. Nhưng nếu tôi cắm đầu cắm cổ cày thêm giờ, tôi sẽ chẳng còn thời gian để ôn luyện thi vào cái trường đại học mà tôi hằng mơ ước. Đó là một nước đi đâm bang và đi ngược lại với mục tiêu ban đầu.</p>
     <p>"A, nhưng mà nếu mỗi ngày bồ cày 2 tiếng, mà làm full cả hai ngày cuối tuần, thì thu nhập sẽ nhân đôi. Khéo khi mình cũng có thể rặn ra được hai tiếng đồng hồ vào những ngày trong tuần. Tính ra là có thể cày được ba buổi ngày thường và hai buổi cuối tuần. Nếu cứ mỗi cuốc bồ chém đẹp 20.000 yên và duy trì phong độ làm năm cuốc một tuần, thì tổng thu nhập đã cán mốc 100.000 yên. Một tháng sương sương kiếm được 400.000 yên... Cơ mà, trừ đi tiền thuế má các kiểu, chắc số tiền cầm về tay sẽ bị hao hụt một chút. Chưa kể..."</p>
     <p>"Stop, stop ngay, ủa Saki? Nãy giờ bồ đang lảm nhảm cái gì thế hả?"</p>
-    <p>Em giật thót mình ngẩng đầu lên thì thấy Kyouka đang trưng ra một nụ cười sượng trân kèm theo chữ "ngầu". Còn Mayu thì mặt nghệt ra—mắc mớ gì hai người này lại có cái biểu cảm khó đỡ vậy?</p>
+    <p>Tôi giật thót mình ngẩng đầu lên thì thấy Kyouka đang trưng ra một nụ cười sượng trân kèm theo chữ "ngầu". Còn Mayu thì mặt nghệt ra—mắc mớ gì hai người này lại có cái biểu cảm khó đỡ vậy?</p>
     <p>"Tự nhiên cái chủ đề nó lái sang chuyện làm giàu không khó hồi nào vậy?"</p>
     <p>"Nếu nắm trong tay số tiền khủng cỡ đó, mình dư sức tự lo học phí mà không cần ngửa tay xin tiền phụ huynh, biết đâu chừng còn dư dả dọn ra ở riêng nữa. Nhưng mà, nghĩ thôi đã thấy gian nan rồi. Mình chả thể nào nặn ra được cái kịch bản trò chuyện nào đủ sức làm hài lòng cái kẻ đã chi tiền bao nuôi mình. Cái giá 20.000 yên cho hai tiếng đồng hồ bán nước bọt quả thực là một nhiệm vụ bất khả thi."</p>
-    <p>Mẹ em cũng từng làm cái nghề tương tự như vậy. Mẹ từng kể cho em nghe về cái thời còn đi làm bartender. Ngoài việc phải tung hứng pha chế mấy ly cocktail, mẹ còn phải kiêm luôn vai trò bác sĩ tâm lý bất đắc dĩ cho khách hàng. Mẹ làm việc đến tận khuya khoắt, chắc cũng phải ngót nghét tám tiếng một ngày. Và mấy ngày lễ tết, cuối tuần mới là thời điểm hốt bạc, nên mẹ chẳng bao giờ có khái niệm nghỉ lễ. Nhìn vào mấy cuốn sổ ghi chép thu chi của mẹ, em đoán lương của mẹ chắc tầm ba đến bốn trăm nghìn yên.</p>
-    <p>Nghĩa là, thu nhập theo giờ của một cô nàng làm nghề 'sugar baby' full-time thậm chí còn vượt xa mức lương đi làm của mẹ em. Thế thì kỹ năng chém gió phải đạt đến cái trình độ siêu phàm nào mới xứng đáng với cái giá đó...</p>
+    <p>Mẹ tôi cũng từng làm cái nghề tương tự như vậy. Mẹ từng kể cho tôi nghe về cái thời còn đi làm bartender. Ngoài việc phải tung hứng pha chế mấy ly cocktail, mẹ còn phải kiêm luôn vai trò bác sĩ tâm lý bất đắc dĩ cho khách hàng. Mẹ làm việc đến tận khuya khoắt, chắc cũng phải ngót nghét tám tiếng một ngày. Và mấy ngày lễ tết, cuối tuần mới là thời điểm hốt bạc, nên mẹ chẳng bao giờ có khái niệm nghỉ lễ. Nhìn vào mấy cuốn sổ ghi chép thu chi của mẹ, tôi đoán lương của mẹ chắc tầm ba đến bốn trăm nghìn yên.</p>
+    <p>Nghĩa là, thu nhập theo giờ của một cô nàng làm nghề 'sugar baby' full-time thậm chí còn vượt xa mức lương đi làm của mẹ tôi. Thế thì kỹ năng chém gió phải đạt đến cái trình độ siêu phàm nào mới xứng đáng với cái giá đó...</p>
     <p>"Mình nào có phải xài não để duy trì mấy cuộc trò chuyện cân não cỡ đó đâu~."</p>
     <p>"Đối với bọn họ, việc được hầu chuyện với mấy em gái trẻ trung phơi phới là món hời nhất rồi."</p>
     <p>"Chỉ cần là mấy em gái trẻ tuổi là duyệt hết. Mấy cái râu ria khác, chắc nặn ra thêm nụ cười là xong. Nói tóm lại, đó cũng chỉ là một thứ vũ khí nhan sắc xài tạm thời thôi~."</p>
-    <p>Nói đoạn, cô nàng lại tung ra một nụ cười ngọt lịm như đường. Nhan sắc của cô nàng đúng là không đùa được đâu. Chỉ cần nhìn cái điệu cười e ấp, dịu dàng của Mayu thôi cũng đủ làm trái tim người ta tan chảy rồi. Bản thân em cũng phải công nhận điều đó, nhưng mà......</p>
+    <p>Nói đoạn, cô nàng lại tung ra một nụ cười ngọt lịm như đường. Nhan sắc của cô nàng đúng là không đùa được đâu. Chỉ cần nhìn cái điệu cười e ấp, dịu dàng của Mayu thôi cũng đủ làm trái tim người ta tan chảy rồi. Bản thân tôi cũng phải công nhận điều đó, nhưng mà......</p>
     <p>Cái nụ cười đó lấy cơ sở gì để định giá lên tới 20.000 yên?</p>
-    <p>Em bị cái sự tò mò vô bờ bến này hành hạ đến mức chữ nghĩa của bài giảng buổi chiều cứ thế bay từ tai này sang tai kia.</p>
-    <p>...Chắc tối nay về phải thỉnh giáo anh Yuuta mới được. Em có linh cảm rằng anh ấy sẽ tìm ra được lời giải đáp cho cái bài toán hóc búa này. Mặc dù làm thế thì có hơi ỷ lại vào anh ấy quá... </p>
+    <p>Tôi bị cái sự tò mò vô bờ bến này hành hạ đến mức chữ nghĩa của bài giảng buổi chiều cứ thế bay từ tai này sang tai kia.</p>
+    <p>...Chắc tối nay về phải thỉnh giáo anh Yuuta mới được. Tôi có linh cảm rằng anh ấy sẽ tìm ra được lời giải đáp cho cái bài toán hóc búa này. Mặc dù làm thế thì có hơi ỷ lại vào anh ấy quá... </p>
 
     <script>
         (function() {
-            // Word count
+            // ── Scroll Progress Bar ──
+            var progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            // ── Word Count ──
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -873,16 +1132,16 @@
                     total += t.split(/\s+/).length;
                 }
             }
-
             var h1 = document.querySelector('h1');
             if (h1) {
                 var wc = document.createElement('div');
                 wc.className = 'word-count';
                 wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
-                h1.parentNode.insertBefore(wc, h1.nextSibling);
+                var nextEl = h1.nextElementSibling;
+                h1.parentNode.insertBefore(wc, nextEl && nextEl.tagName === 'H2' ? nextEl.nextSibling : h1.nextSibling);
             }
 
-            // Floating nav
+            // ── Floating Nav ──
             var navs = document.querySelectorAll('.chapter-nav');
             if (navs.length > 0) {
                 var src = navs[0];
@@ -906,7 +1165,7 @@
                 }
                 document.body.appendChild(floatNav);
 
-                // Toggle tab (PC)
+                // Toggle tab
                 var toggle = document.createElement('div');
                 toggle.className = 'nav-toggle';
                 toggle.id = 'navToggle';
@@ -914,7 +1173,6 @@
                 document.body.appendChild(toggle);
 
                 var isOpen = false;
-
                 function toggleNav() {
                     isOpen = !isOpen;
                     floatNav.classList.toggle('visible', isOpen);
@@ -927,7 +1185,6 @@
                     toggleNav();
                 });
 
-                // Mobile: tap anywhere to toggle
                 var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 if (isMobile) {
                     document.addEventListener('click', function(e) {
@@ -937,7 +1194,83 @@
                     });
                 }
             }
+
+            // ── Scroll to Top Button ──
+            var scrollBtn = document.createElement('div');
+            scrollBtn.className = 'scroll-top';
+            scrollBtn.innerHTML = '\u2191';
+            scrollBtn.title = 'V\u1ec1 \u0111\u1ea7u trang';
+            document.body.appendChild(scrollBtn);
+
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ── Scroll Events ──
+            window.addEventListener('scroll', function() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progressBar.style.width = progress + '%';
+                scrollBtn.classList.toggle('visible', scrollTop > 400);
+            }, { passive: true });
         })();
+    </script>
+
+    <script>
+    (function() {
+        var themes = [
+            { id: 'default', label: 'M\u1eb7c \u0111\u1ecbnh', color: 'linear-gradient(135deg, #7c5cbf, #a78bfa)' },
+            { id: 'gray', label: 'X\u00e1m', color: '#555' },
+            { id: 'black', label: '\u0110en', color: '#111' },
+            { id: 'white', label: 'Tr\u1eafng', color: '#eee' }
+        ];
+
+        var saved = localStorage.getItem('gimai-theme') || 'default';
+
+        var picker = document.createElement('div');
+        picker.className = 'theme-picker';
+
+        var btn = document.createElement('div');
+        btn.className = 'theme-picker-btn';
+        btn.innerHTML = '\uD83C\uDFA8';
+        btn.title = '\u0110\u1ed5i giao di\u1ec7n';
+
+        var opts = document.createElement('div');
+        opts.className = 'theme-options';
+
+        themes.forEach(function(t) {
+            var o = document.createElement('div');
+            o.className = 'theme-option' + (t.id === saved ? ' active' : '');
+            o.style.background = t.color;
+            o.title = t.label;
+            if (t.id === 'white') o.style.border = '2px solid #ccc';
+            o.addEventListener('click', function(e) {
+                e.stopPropagation();
+                themes.forEach(function(th) { document.body.classList.remove('theme-' + th.id); });
+                if (t.id !== 'default') document.body.classList.add('theme-' + t.id);
+                localStorage.setItem('gimai-theme', t.id);
+                opts.querySelectorAll('.theme-option').forEach(function(el) { el.classList.remove('active'); });
+                o.classList.add('active');
+            });
+            opts.appendChild(o);
+        });
+
+        var open = false;
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            open = !open;
+            opts.classList.toggle('visible', open);
+        });
+
+        document.addEventListener('click', function() {
+            if (open) { open = false; opts.classList.remove('visible'); }
+        });
+
+        picker.appendChild(opts);
+        picker.appendChild(btn);
+        document.body.appendChild(picker);
+    })();
     </script>
 </body>
 </html>
