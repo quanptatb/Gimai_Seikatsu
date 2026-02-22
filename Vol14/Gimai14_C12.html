@@ -67,15 +67,113 @@
             padding: 8px 16px;
         }
     
+        .chapter-nav {
+            display: none !important;
+        }
+
         .word-count {
             text-align: center;
-            color: #888;
+            color: #777;
             font-size: 13px;
-            margin: 15px 0;
+            margin: 0 0 30px;
             padding: 8px 16px;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.04);
             border-radius: 8px;
             letter-spacing: 0.5px;
+        }
+
+        .floating-nav {
+            position: fixed;
+            right: -240px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .floating-nav.visible {
+            right: 16px;
+        }
+
+        .floating-nav a,
+        .floating-nav .nav-disabled {
+            display: block;
+            padding: 12px 22px;
+            background: rgba(35, 35, 35, 0.96);
+            color: #bbb;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 13px;
+            text-align: center;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            min-width: 150px;
+        }
+
+        .floating-nav a:hover {
+            color: #fff;
+            background: rgba(55, 55, 55, 0.96);
+            border-color: rgba(255,255,255,0.18);
+        }
+
+        .floating-nav .nav-disabled {
+            color: #555;
+            cursor: default;
+        }
+
+        .nav-toggle {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+            width: 26px;
+            height: 54px;
+            background: rgba(55, 55, 55, 0.75);
+            border-radius: 8px 0 0 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 11px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-right: none;
+            user-select: none;
+        }
+
+        .nav-toggle:hover {
+            background: rgba(75, 75, 75, 0.9);
+            color: #fff;
+            width: 30px;
+        }
+
+        .nav-toggle.shifted {
+            right: 210px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+
+            .floating-nav {
+                top: auto;
+                bottom: 20px;
+                transform: none;
+                right: -240px;
+            }
+
+            .floating-nav.visible {
+                right: 12px;
+            }
         }
     </style>
 </head>
@@ -258,10 +356,9 @@
         <a href="Gimai14_C13.html">Ch&#432;&#417;ng sau &rarr;</a>
     </div>
 
-
-    <div class="word-count" id="wordCount"></div>
     <script>
         (function() {
+            // Word count
             var ps = document.querySelectorAll('p');
             var total = 0;
             for (var i = 0; i < ps.length; i++) {
@@ -270,7 +367,70 @@
                     total += t.split(/\s+/).length;
                 }
             }
-            document.getElementById('wordCount').textContent = '\u2702 T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
+
+            var h1 = document.querySelector('h1');
+            if (h1) {
+                var wc = document.createElement('div');
+                wc.className = 'word-count';
+                wc.textContent = '\u270E T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
+                h1.parentNode.insertBefore(wc, h1.nextSibling);
+            }
+
+            // Floating nav
+            var navs = document.querySelectorAll('.chapter-nav');
+            if (navs.length > 0) {
+                var src = navs[0];
+                var floatNav = document.createElement('div');
+                floatNav.className = 'floating-nav';
+                floatNav.id = 'floatingNav';
+
+                for (var j = 0; j < src.children.length; j++) {
+                    var ch = src.children[j];
+                    var el;
+                    if (ch.tagName === 'A') {
+                        el = document.createElement('a');
+                        el.href = ch.getAttribute('href');
+                        el.innerHTML = ch.innerHTML;
+                    } else {
+                        el = document.createElement('span');
+                        el.className = 'nav-disabled';
+                        el.innerHTML = ch.innerHTML;
+                    }
+                    floatNav.appendChild(el);
+                }
+                document.body.appendChild(floatNav);
+
+                // Toggle tab (PC)
+                var toggle = document.createElement('div');
+                toggle.className = 'nav-toggle';
+                toggle.id = 'navToggle';
+                toggle.innerHTML = '\u25C0';
+                document.body.appendChild(toggle);
+
+                var isOpen = false;
+
+                function toggleNav() {
+                    isOpen = !isOpen;
+                    floatNav.classList.toggle('visible', isOpen);
+                    toggle.classList.toggle('shifted', isOpen);
+                    toggle.innerHTML = isOpen ? '\u25B6' : '\u25C0';
+                }
+
+                toggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleNav();
+                });
+
+                // Mobile: tap anywhere to toggle
+                var isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+                if (isMobile) {
+                    document.addEventListener('click', function(e) {
+                        if (!floatNav.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+                            toggleNav();
+                        }
+                    });
+                }
+            }
         })();
     </script>
 </body>
