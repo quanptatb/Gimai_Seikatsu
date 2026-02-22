@@ -66,6 +66,17 @@
             color: #555;
             padding: 8px 16px;
         }
+    
+        .word-count {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin: 15px 0;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
@@ -151,5 +162,20 @@
         <a href="Gimai14_C11.html">Ch&#432;&#417;ng sau &rarr;</a>
     </div>
 
+
+    <div class="word-count" id="wordCount"></div>
+    <script>
+        (function() {
+            var ps = document.querySelectorAll('p');
+            var total = 0;
+            for (var i = 0; i < ps.length; i++) {
+                var t = ps[i].textContent.trim();
+                if (t.length > 0) {
+                    total += t.split(/\s+/).length;
+                }
+            }
+            document.getElementById('wordCount').textContent = '\u2702 T\u1ed5ng s\u1ed1 t\u1eeb: ' + total.toLocaleString('vi-VN');
+        })();
+    </script>
 </body>
 </html>
