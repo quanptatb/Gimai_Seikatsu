@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumo Desu ga, Nani ka? — Mục Lục</title>
+    <meta name="description" content="Kumo Desu ga, Nani ka? - Tôi là nhện, có sao không? Đọc truyện light novel tiếng Việt.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0f1923;
+            background-image:
+                radial-gradient(ellipse at 20% 50%, rgba(16, 85, 70, 0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(20, 60, 90, 0.2) 0%, transparent 50%);
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* ─── Header ─── */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 20px;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2d8b70, transparent);
+            margin: 24px auto 0;
+            border-radius: 2px;
+        }
+
+        .hero h1 {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #c8f0e0, #50c8aa, #2d8b70);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #6a9b8a;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero .spider-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+            opacity: 0.6;
+            animation: dangle 3s ease-in-out infinite;
+        }
+
+        @keyframes dangle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-4px) rotate(2deg); }
+            75% { transform: translateY(4px) rotate(-2deg); }
+        }
+
+        /* ─── Search ─── */
+        .search-container {
+            max-width: 500px;
+            margin: 24px auto 10px;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 18px 12px 44px;
+            border-radius: 12px;
+            border: 1px solid rgba(80, 200, 170, 0.15);
+            background: rgba(255, 255, 255, 0.04);
+            color: #e0e0e0;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: #4a7a6a;
+        }
+
+        .search-box:focus {
+            border-color: rgba(80, 200, 170, 0.4);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 20px rgba(45, 139, 112, 0.1);
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4a7a6a;
+            font-size: 16px;
+            pointer-events: none;
+        }
+
+        .search-count {
+            text-align: center;
+            color: #4a7a6a;
+            font-size: 13px;
+            margin-top: 8px;
+            min-height: 20px;
+            transition: opacity 0.3s;
+        }
+
+        /* ─── Stats ─── */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 16px auto 30px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #50c8aa;
+            font-family: 'Noto Serif', serif;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #5a8a7a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ─── Main Container ─── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        /* ─── Arc Section ─── */
+        .arc {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .arc:nth-child(2) { animation-delay: 0.08s; }
+        .arc:nth-child(3) { animation-delay: 0.16s; }
+        .arc:nth-child(4) { animation-delay: 0.24s; }
+        .arc:nth-child(5) { animation-delay: 0.32s; }
+
+        .arc-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .arc-info {
+            flex-shrink: 0;
+        }
+
+        .arc-label {
+            font-family: 'Noto Serif', serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #50c8aa;
+        }
+
+        .arc-title {
+            font-family: 'Noto Serif', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #d0f0e0;
+        }
+
+        .arc-count {
+            font-size: 0.75rem;
+            color: #5a8a7a;
+            margin-top: 2px;
+        }
+
+        .arc-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(80, 200, 170, 0.4), transparent);
+        }
+
+        .arc-toggle {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(80, 200, 170, 0.1);
+            border: 1px solid rgba(80, 200, 170, 0.2);
+            color: #50c8aa;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .arc-header:hover .arc-toggle {
+            background: rgba(80, 200, 170, 0.2);
+            transform: scale(1.1);
+        }
+
+        .arc-toggle.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .arc-header:hover .arc-toggle.collapsed {
+            transform: rotate(-90deg) scale(1.1);
+        }
+
+        /* ─── Chapter Grid ─── */
+        .chapters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 10px;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s ease;
+        }
+
+        .chapters.hidden {
+            max-height: 0 !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ─── Chapter Card ─── */
+        .chapter-card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: #b0d0c5;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(80, 200, 170, 0.08);
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow: hidden;
+        }
+
+        .chapter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2d8b70, #50c8aa);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+        }
+
+        .chapter-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(80, 200, 170, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(45, 139, 112, 0.12);
+        }
+
+        .chapter-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .chapter-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #5a8a7a;
+            margin-bottom: 3px;
+        }
+
+        .chapter-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #d0f0e0;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .chapter-card:hover .chapter-name {
+            color: #ffffff;
+        }
+
+        /* Special cards */
+        .chapter-card.side-story {
+            border-color: rgba(251, 191, 36, 0.12);
+        }
+
+        .chapter-card.side-story::before {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+        }
+
+        .chapter-card.side-story .chapter-label {
+            color: #c9a020;
+        }
+
+        .chapter-card.illustration {
+            border-color: rgba(96, 165, 250, 0.12);
+        }
+
+        .chapter-card.illustration::before {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .chapter-card.illustration .chapter-label {
+            color: #60a5fa;
+        }
+
+        .chapter-card.special {
+            border-color: rgba(244, 114, 182, 0.12);
+        }
+
+        .chapter-card.special::before {
+            background: linear-gradient(90deg, #ec4899, #f472b6);
+        }
+
+        .chapter-card.special .chapter-label {
+            color: #f472b6;
+        }
+
+        .chapter-card.hidden-search {
+            display: none;
+        }
+
+        /* ─── Back Link ─── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #50c8aa;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #7edbbe;
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #2a4a3f;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ─── Series Switcher ─── */
+        .series-switcher {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.5s ease both;
+        }
+
+        .series-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 24px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            min-width: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .series-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .series-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .series-card .series-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .series-card .series-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .series-card .series-name {
+            font-family: 'Noto Serif', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .series-card .series-sub {
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        /* Active card (current series — Kumo teal) */
+        .series-card.active {
+            background: rgba(80, 200, 170, 0.1);
+            border: 1px solid rgba(80, 200, 170, 0.3);
+            cursor: default;
+            box-shadow: 0 4px 20px rgba(45, 139, 112, 0.1);
+        }
+
+        .series-card.active::before {
+            background: linear-gradient(90deg, #2d8b70, #50c8aa);
+            transform: scaleX(1);
+        }
+
+        .series-card.active .series-name {
+            color: #c8f0e0;
+        }
+
+        .series-card.active .series-sub {
+            color: #6a9b8a;
+        }
+
+        .series-card.active::after {
+            content: 'Đang đọc';
+            position: absolute;
+            top: 8px; right: 12px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #50c8aa;
+            background: rgba(80, 200, 170, 0.12);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        /* Inactive card (link) — Gimai purple theme */
+        .series-card.link-gimai {
+            background: rgba(167, 139, 250, 0.04);
+            border: 1px solid rgba(167, 139, 250, 0.12);
+            color: #d4c8e8;
+        }
+
+        .series-card.link-gimai::before {
+            background: linear-gradient(90deg, #7c5cbf, #a78bfa);
+        }
+
+        .series-card.link-gimai .series-name {
+            color: #e8d5f5;
+        }
+
+        .series-card.link-gimai .series-sub {
+            color: #9b8fb8;
+        }
+
+        .series-card.link-gimai:hover {
+            background: rgba(167, 139, 250, 0.1);
+            border-color: rgba(167, 139, 250, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(124, 92, 191, 0.15);
+        }
+
+        /* ─── Animations ─── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 500px) {
+            .chapters {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 40px 16px 16px;
+            }
+
+            .arc-title {
+                font-size: 1.2rem;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .series-switcher {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0 16px;
+            }
+
+            .series-card {
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <span class="spider-icon">🕷️</span>
+        <h1>蜘蛛ですが、なにか？</h1>
+        <p class="subtitle">Kumo Desu ga, Nani ka? — Mục Lục</p>
+    </header>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-box" id="searchBox" placeholder="Tìm chương...">
+        </div>
+        <div class="search-count" id="searchCount"></div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="series-switcher">
+        <a href="../index.html" class="series-card link-gimai">
+            <span class="series-icon">📖</span>
+            <div class="series-info">
+                <span class="series-name">義妹生活</span>
+                <span class="series-sub">Gimai Seikatsu</span>
+            </div>
+        </a>
+        <div class="series-card active">
+            <span class="series-icon">🕷️</span>
+            <div class="series-info">
+                <span class="series-name">蜘蛛ですが、なにか？</span>
+                <span class="series-sub">Kumo Desu ga, Nani ka?</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container" id="mainContainer">
+        <div style="text-align: center; padding: 40px; color: #5a8a7a;">Đang tải...</div>
+    </main>
+
+    <footer class="footer">
+        Kumo Desu ga, Nani ka? — 蜘蛛ですが、なにか？
+    </footer>
+
+    <script>
+        // Load arc data and build the page
+        fetch('arc_data.json')
+            .then(function(r) { return r.json(); })
+            .then(function(arcs) {
+                buildPage(arcs);
+            })
+            .catch(function(e) {
+                // Fallback: try inline
+                console.error('Failed to load arc_data.json:', e);
+                document.getElementById('mainContainer').innerHTML =
+                    '<p style="text-align:center;color:#c44;">Không thể tải dữ liệu. Vui lòng mở từ web server.</p>';
+            });
+
+        function classifyChapter(title, file) {
+            var t = title.toLowerCase();
+            var f = file.toLowerCase();
+            if (/^tập \d+/.test(t)) return 'illustration';
+            if (/^s\d+/.test(t) || /^ss/.test(t) || /side/i.test(t)) return 'side-story';
+            if (/halloween|valentine|oshiete|bách khoa|dong-thoi-gian|ngam-la-mua-thu/i.test(t) || /halloween|valentine|oshiete/i.test(f)) return 'special';
+            if (/huyet|huyết|oni\b|oni-/i.test(t) && !/chương|chap|chuong/i.test(t)) return 'side-story';
+            if (/cuoc-hop|cuộc họp|dai-chien.*ve|tinh-toan-sai/i.test(f)) return 'side-story';
+            return 'normal';
+        }
+
+        function getChapterLabel(title) {
+            // Extract chapter number or type
+            var m = title.match(/[Cc]h(?:ương|ap|uong)\s*(\d+)/);
+            if (m) return 'Chương ' + m[1];
+            m = title.match(/^S(\d+)/i);
+            if (m) return 'Side Story ' + m[1];
+            m = title.match(/^Tập (\d+)/);
+            if (m) return 'Minh họa Tập ' + m[1];
+            if (/oni/i.test(title)) return 'Oni';
+            if (/huyet|huyết/i.test(title)) return 'Huyết';
+            if (/oshiete/i.test(title)) return 'Extra';
+            return 'Chương';
+        }
+
+        function buildPage(arcs) {
+            var container = document.getElementById('mainContainer');
+            container.innerHTML = '';
+
+            var totalChapters = 0;
+            arcs.forEach(function(arc) { totalChapters += arc.chapters.length; });
+
+            // Stats
+            var statsEl = document.getElementById('stats');
+            statsEl.innerHTML =
+                '<div class="stat-item"><div class="stat-value">' + totalChapters + '</div><div class="stat-label">Chương</div></div>' +
+                '<div class="stat-item"><div class="stat-value">' + arcs.length + '</div><div class="stat-label">Arc</div></div>';
+
+            // Build arcs
+            arcs.forEach(function(arc, arcIdx) {
+                var section = document.createElement('section');
+                section.className = 'arc';
+                if (arcIdx < 5) section.style.animationDelay = (arcIdx * 0.08) + 's';
+
+                // Header
+                var header = document.createElement('div');
+                header.className = 'arc-header';
+                header.onclick = function() { toggleArc(this); };
+                header.innerHTML =
+                    '<div class="arc-info">' +
+                        '<div class="arc-label">Arc ' + (arcIdx + 1) + '</div>' +
+                        '<div class="arc-title">' + arc.name + '</div>' +
+                        '<div class="arc-count">' + arc.chapters.length + ' chương</div>' +
+                    '</div>' +
+                    '<div class="arc-line"></div>' +
+                    '<div class="arc-toggle">▾</div>';
+                section.appendChild(header);
+
+                // Chapters grid
+                var grid = document.createElement('div');
+                grid.className = 'chapters';
+                grid.id = 'arc_' + arcIdx;
+
+                arc.chapters.forEach(function(ch) {
+                    var cardType = classifyChapter(ch.title, ch.file || '');
+                    var label = getChapterLabel(ch.title);
+
+                    var a = document.createElement('a');
+                    a.href = 'chapters/' + ch.file;
+                    a.className = 'chapter-card' + (cardType !== 'normal' ? ' ' + cardType : '');
+                    a.setAttribute('data-title', ch.title.toLowerCase());
+                    a.innerHTML =
+                        '<div class="chapter-label">' + label + '</div>' +
+                        '<div class="chapter-name">' + ch.title + '</div>';
+                    grid.appendChild(a);
+                });
+
+                section.appendChild(grid);
+                container.appendChild(section);
+
+                // Set initial max-height
+                requestAnimationFrame(function() {
+                    grid.style.maxHeight = grid.scrollHeight + 'px';
+                });
+            });
+
+            // Setup search
+            setupSearch();
+        }
+
+        function toggleArc(header) {
+            var chapters = header.nextElementSibling;
+            var toggle = header.querySelector('.arc-toggle');
+
+            if (chapters.classList.contains('hidden')) {
+                chapters.style.maxHeight = chapters.scrollHeight + 'px';
+                chapters.classList.remove('hidden');
+                toggle.classList.remove('collapsed');
+            } else {
+                chapters.style.maxHeight = chapters.scrollHeight + 'px';
+                requestAnimationFrame(function() {
+                    chapters.classList.add('hidden');
+                    toggle.classList.add('collapsed');
+                });
+            }
+        }
+
+        function setupSearch() {
+            var searchBox = document.getElementById('searchBox');
+            var searchCount = document.getElementById('searchCount');
+            var debounceTimer;
+
+            searchBox.addEventListener('input', function() {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(function() {
+                    var query = searchBox.value.toLowerCase().trim();
+                    var cards = document.querySelectorAll('.chapter-card');
+                    var visible = 0;
+
+                    cards.forEach(function(card) {
+                        var title = card.getAttribute('data-title') || '';
+                        if (!query || title.indexOf(query) !== -1) {
+                            card.classList.remove('hidden-search');
+                            visible++;
+                        } else {
+                            card.classList.add('hidden-search');
+                        }
+                    });
+
+                    if (query) {
+                        searchCount.textContent = 'Tìm thấy ' + visible + ' kết quả';
+
+                        // Expand all arcs when searching
+                        document.querySelectorAll('.chapters.hidden').forEach(function(ch) {
+                            ch.style.maxHeight = ch.scrollHeight + 'px';
+                            ch.classList.remove('hidden');
+                            var toggle = ch.previousElementSibling.querySelector('.arc-toggle');
+                            if (toggle) toggle.classList.remove('collapsed');
+                        });
+                    } else {
+                        searchCount.textContent = '';
+                    }
+
+                    // Update max-heights
+                    document.querySelectorAll('.chapters').forEach(function(ch) {
+                        if (!ch.classList.contains('hidden')) {
+                            ch.style.maxHeight = ch.scrollHeight + 'px';
+                        }
+                    });
+                }, 200);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

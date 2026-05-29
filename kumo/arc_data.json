@@ -1,0 +1,2932 @@
+[
+  {
+    "name": "Ngoại Truyện",
+    "chapters": [
+      {
+        "title": "Tập 1",
+        "src": "c36725-tap-1.html",
+        "file": "c36725-tap-1.html"
+      },
+      {
+        "title": "Tập 2",
+        "src": "c36726-tap-2.html",
+        "file": "c36726-tap-2.html"
+      },
+      {
+        "title": "Tập 3",
+        "src": "c36727-tap-3.html",
+        "file": "c36727-tap-3.html"
+      },
+      {
+        "title": "Tập 4",
+        "src": "c36728-tap-4.html",
+        "file": "c36728-tap-4.html"
+      },
+      {
+        "title": "Tập 5",
+        "src": "c36729-tap-5.html",
+        "file": "c36729-tap-5.html"
+      },
+      {
+        "title": "Tập 6",
+        "src": "c36730-tap-6.html",
+        "file": "c36730-tap-6.html"
+      },
+      {
+        "title": "Tập 7",
+        "src": "c36731-tap-7.html",
+        "file": "c36731-tap-7.html"
+      },
+      {
+        "title": "Tập 8",
+        "src": "c36732-tap-8.html",
+        "file": "c36732-tap-8.html"
+      },
+      {
+        "title": "Tập 9 (mới nhất)",
+        "src": "c36733-tap-9-moi-nhat.html",
+        "file": "c36733-tap-9-moi-nhat.html"
+      }
+    ]
+  },
+  {
+    "name": "Khởi Đầu",
+    "chapters": [
+      {
+        "title": "Chương 1- Lời Mở Đầu",
+        "src": "c10363-chuong-1-loi-mo-dau.html",
+        "file": "c10363-chuong-1-loi-mo-dau.html"
+      },
+      {
+        "title": "Chương 2 - Coi Bộ Tôi là Quái Vật",
+        "src": "c10364-chuong-2-coi-bo-toi-la-quai-vat.html",
+        "file": "c10364-chuong-2-coi-bo-toi-la-quai-vat.html"
+      },
+      {
+        "title": "Chương 3 - Đã có lúc tôi nghĩ “Giám Định” là một kĩ năng bá đạo",
+        "src": "c10365-chuong-3-da-co-luc-toi-nghi-giam-dinh-la-mot-ki-nang-ba-dao.html",
+        "file": "c10365-chuong-3-da-co-luc-toi-nghi-giam-dinh-la-mot-ki-nang-ba-dao.html"
+      },
+      {
+        "title": "Chương 4 - Lần đầu tiên khám phá một mê cung",
+        "src": "c10366-chuong-4-lan-dau-tien-kham-pha-mot-me-cung.html",
+        "file": "c10366-chuong-4-lan-dau-tien-kham-pha-mot-me-cung.html"
+      },
+      {
+        "title": "Chương 5 - Chương mới, ngôi nhà mới",
+        "src": "c10367-chuong-5-chuong-moi-ngoi-nha-moi.html",
+        "file": "c10367-chuong-5-chuong-moi-ngoi-nha-moi.html"
+      },
+      {
+        "title": "Chương 6 - Sau khi ăn xong thì không hối hận",
+        "src": "c10368-chuong-6-sau-khi-an-xong-thi-khong-hoi-han.html",
+        "file": "c10368-chuong-6-sau-khi-an-xong-thi-khong-hoi-han.html"
+      },
+      {
+        "title": "Chương 7 - Kì nghỉ 24 tiếng quanh năm",
+        "src": "c10369-chuong-7-ki-nghi-24-tieng-quanh-nam.html",
+        "file": "c10369-chuong-7-ki-nghi-24-tieng-quanh-nam.html"
+      },
+      {
+        "title": "Chương 8 - Một con nhện không thông minh thì chỉ là một con nhện bình thường.",
+        "src": "c10370-chuong-8-mot-con-nhen-khong-thong-minh-thi-chi-la-mot-con-nhen-binh-thuong.html",
+        "file": "c10370-chuong-8-mot-con-nhen-khong-thong-minh-thi-chi-la-mot-con-nhen-binh-thuong.html"
+      },
+      {
+        "title": "Chương 9 - Kiểm tra Skill",
+        "src": "c10371-chuong-9-kiem-tra-skill.html",
+        "file": "c10371-chuong-9-kiem-tra-skill.html"
+      },
+      {
+        "title": "Chương 10 - Lên cấp!",
+        "src": "c10372-chuong-10-len-cap.html",
+        "file": "c10372-chuong-10-len-cap.html"
+      },
+      {
+        "title": "S1: Ngày mà cuộc sống bình thường kết thúc.",
+        "src": "c10373-s1-ngay-ma-cuoc-song-binh-thuong-ket-thuc.html",
+        "file": "c10373-s1-ngay-ma-cuoc-song-binh-thuong-ket-thuc.html"
+      }
+    ]
+  },
+  {
+    "name": "Mê Cung Hạ Tầng",
+    "chapters": [
+      {
+        "title": "Chương 11 - I~to maki maki i~to maki maki♪",
+        "src": "c10374-chuong-11-ito-maki-maki-ito-maki-maki.html",
+        "file": "c10374-chuong-11-ito-maki-maki-ito-maki-maki.html"
+      },
+      {
+        "title": "Chương 12 - Một cuộc hội ngộ cảm động(lol)",
+        "src": "c10375-chuong-12-mot-cuoc-hoi-ngo-cam-donglol.html",
+        "file": "c10375-chuong-12-mot-cuoc-hoi-ngo-cam-donglol.html"
+      },
+      {
+        "title": "Chương 13 - Tôi nhận được một danh hiệu đáng khinh",
+        "src": "c10376-chuong-13-toi-nhan-duoc-mot-danh-hieu-dang-khinh.html",
+        "file": "c10376-chuong-13-toi-nhan-duoc-mot-danh-hieu-dang-khinh.html"
+      },
+      {
+        "title": "Chương 14- Chương tổng quan về quá trình tái cấu trúc",
+        "src": "c10377-chuong-14-chuong-tong-quan-ve-qua-trinh-tai-cau-truc.html",
+        "file": "c10377-chuong-14-chuong-tong-quan-ve-qua-trinh-tai-cau-truc.html"
+      },
+      {
+        "title": "Chương 15 - Lúc mà thiên đường của tôi đã biến mất",
+        "src": "c10378-chuong-15-luc-ma-thien-duong-cua-toi-da-bien-mat.html",
+        "file": "c10378-chuong-15-luc-ma-thien-duong-cua-toi-da-bien-mat.html"
+      },
+      {
+        "title": "Chương 16 - Rời tổ",
+        "src": "c10379-chuong-16-roi-to.html",
+        "file": "c10379-chuong-16-roi-to.html"
+      },
+      {
+        "title": "Chương 17 - Tôi đã chơi bẩn đường đường chính chính",
+        "src": "c10380-chuong-17-toi-da-choi-ban-duong-duong-chinh-chinh.html",
+        "file": "c10380-chuong-17-toi-da-choi-ban-duong-duong-chinh-chinh.html"
+      },
+      {
+        "title": "Chương 18 - Hồi máu hoàn toàn sau khi ngủ ở nhà nghỉ chỉ tồn tại trong game",
+        "src": "c10381-chuong-18-hoi-mau-hoan-toan-sau-khi-ngu-o-nha-nghi-chi-ton-tai-trong-game.html",
+        "file": "c10381-chuong-18-hoi-mau-hoan-toan-sau-khi-ngu-o-nha-nghi-chi-ton-tai-trong-game.html"
+      },
+      {
+        "title": "Chương 19 - Nếu không trúng thì không thành vấn đề!",
+        "src": "c10382-chuong-19-neu-khong-trung-thi-khong-thanh-van-de.html",
+        "file": "c10382-chuong-19-neu-khong-trung-thi-khong-thanh-van-de.html"
+      },
+      {
+        "title": "Chương 20 - Ta là con nhện, ngay sau lưng mi",
+        "src": "c10383-chuong-20-ta-la-con-nhen-ngay-sau-lung-mi.html",
+        "file": "c10383-chuong-20-ta-la-con-nhen-ngay-sau-lung-mi.html"
+      },
+      {
+        "title": "S2: Tứ Hoàng Tử",
+        "src": "c10384-s2-tu-hoang-tu.html",
+        "file": "c10384-s2-tu-hoang-tu.html"
+      },
+      {
+        "title": "Chương 21 - HP MP SP",
+        "src": "c10385-chuong-21-hp-mp-sp.html",
+        "file": "c10385-chuong-21-hp-mp-sp.html"
+      },
+      {
+        "title": "Chương 22 - Thí nghiệm tơ nhện",
+        "src": "c10386-chuong-22-thi-nghiem-to-nhen.html",
+        "file": "c10386-chuong-22-thi-nghiem-to-nhen.html"
+      },
+      {
+        "title": "Chương 23 - Tôi xin lỗi vì đã quá đáng. Nên hãy tha lỗi cho tôi!",
+        "src": "c10387-chuong-23-toi-xin-loi-vi-da-qua-dang-nen-hay-tha-loi-cho-toi.html",
+        "file": "c10387-chuong-23-toi-xin-loi-vi-da-qua-dang-nen-hay-tha-loi-cho-toi.html"
+      },
+      {
+        "title": "Chương 24 - Yếu ớt",
+        "src": "c10388-chuong-24-yeu-ot.html",
+        "file": "c10388-chuong-24-yeu-ot.html"
+      },
+      {
+        "title": "Chương 25 - Con rắn ngon lành",
+        "src": "c10389-chuong-25-con-ran-ngon-lanh.html",
+        "file": "c10389-chuong-25-con-ran-ngon-lanh.html"
+      },
+      {
+        "title": "Chương 26 - Kế hoạch Khử-Hikki.",
+        "src": "c10390-chuong-26-ke-hoach-khu-hikki.html",
+        "file": "c10390-chuong-26-ke-hoach-khu-hikki.html"
+      },
+      {
+        "title": "Chương 27 - Tôi sẽ tiến hóa!",
+        "src": "c10391-chuong-27-toi-se-tien-hoa.html",
+        "file": "c10391-chuong-27-toi-se-tien-hoa.html"
+      },
+      {
+        "title": "Chương 28 - Ăn ăn ăn",
+        "src": "c10392-chuong-28-an-an-an.html",
+        "file": "c10392-chuong-28-an-an-an.html"
+      },
+      {
+        "title": "Chương 29 - Ngay cả khi tiến hóa thì chuyện tôi cần phải vẫn là y như cũ.",
+        "src": "c10393-chuong-29-ngay-ca-khi-tien-hoa-thi-chuyen-toi-can-phai-van-la-y-nhu-cu.html",
+        "file": "c10393-chuong-29-ngay-ca-khi-tien-hoa-thi-chuyen-toi-can-phai-van-la-y-nhu-cu.html"
+      },
+      {
+        "title": "Chương 30 - Học skill mới nào!",
+        "src": "c10394-chuong-30-hoc-skill-moi-nao.html",
+        "file": "c10394-chuong-30-hoc-skill-moi-nao.html"
+      },
+      {
+        "title": "S3 Huyền Ảo",
+        "src": "c10407-s3-huyen-ao.html",
+        "file": "c10407-s3-huyen-ao.html"
+      }
+    ]
+  },
+  {
+    "name": "Mê Cung Trung Tầng",
+    "chapters": [
+      {
+        "title": "Chương 31 - Tôi học được skill mới",
+        "src": "c10408-chuong-31-toi-hoc-duoc-skill-moi.html",
+        "file": "c10408-chuong-31-toi-hoc-duoc-skill-moi.html"
+      },
+      {
+        "title": "Chương 32 - Giai đoạn phát triển?",
+        "src": "c10409-chuong-32-giai-doan-phat-trien.html",
+        "file": "c10409-chuong-32-giai-doan-phat-trien.html"
+      },
+      {
+        "title": "Chương 33 - “Giám Định”-san nghiêm túc",
+        "src": "c10410-chuong-33-giam-dinh-san-nghiem-tuc.html",
+        "file": "c10410-chuong-33-giam-dinh-san-nghiem-tuc.html"
+      },
+      {
+        "title": "Chương 34 - Giai đoạn phát triển - phần hai",
+        "src": "c10411-chuong-34-giai-doan-phat-trien-phan-hai.html",
+        "file": "c10411-chuong-34-giai-doan-phat-trien-phan-hai.html"
+      },
+      {
+        "title": "Chương 35 - Vậy nên đừng có mà quá hổ báo",
+        "src": "c10412-chuong-35-vay-nen-dung-co-ma-qua-ho-bao.html",
+        "file": "c10412-chuong-35-vay-nen-dung-co-ma-qua-ho-bao.html"
+      },
+      {
+        "title": "S4 Ma Pháp",
+        "src": "c10413-s4-ma-phap.html",
+        "file": "c10413-s4-ma-phap.html"
+      },
+      {
+        "title": "Chương 36 - Tình huống vô vọng",
+        "src": "c10414-chuong-36-tinh-huong-vo-vong.html",
+        "file": "c10414-chuong-36-tinh-huong-vo-vong.html"
+      },
+      {
+        "title": "Chương 37 - Đau khổ",
+        "src": "c10415-chuong-37-dau-kho.html",
+        "file": "c10415-chuong-37-dau-kho.html"
+      },
+      {
+        "title": "Chương 38 - Nhện vs Ong ①",
+        "src": "c10416-chuong-38-nhen-vs-ong.html",
+        "file": "c10416-chuong-38-nhen-vs-ong.html"
+      },
+      {
+        "title": "Chương 39 - Nhện vs Ong ②",
+        "src": "c10417-chuong-39-nhen-vs-ong.html",
+        "file": "c10417-chuong-39-nhen-vs-ong.html"
+      },
+      {
+        "title": "Chương 40: Nhện vs Ong ③",
+        "src": "c10418-chuong-40-nhen-vs-ong.html",
+        "file": "c10418-chuong-40-nhen-vs-ong.html"
+      },
+      {
+        "title": "S5: Đá Giám Định",
+        "src": "c10419-s5-da-giam-dinh.html",
+        "file": "c10419-s5-da-giam-dinh.html"
+      },
+      {
+        "title": "Chương 41: Tôi đã lên cấp như mong muốn!",
+        "src": "c10420-chuong-41-toi-da-len-cap-nhu-mong-muon.html",
+        "file": "c10420-chuong-41-toi-da-len-cap-nhu-mong-muon.html"
+      },
+      {
+        "title": "Chương 42: Nhện vs Ong ④",
+        "src": "c10421-chuong-42-nhen-vs-ong.html",
+        "file": "c10421-chuong-42-nhen-vs-ong.html"
+      },
+      {
+        "title": "Chương 43: Nhện vs Rồng Đất….. Ể?",
+        "src": "c10422-chuong-43-nhen-vs-rong-dat-e.html",
+        "file": "c10422-chuong-43-nhen-vs-rong-dat-e.html"
+      },
+      {
+        "title": "Chương 44: Thoát khỏi nơi tuyệt vọng",
+        "src": "c10423-chuong-44-thoat-khoi-noi-tuyet-vong.html",
+        "file": "c10423-chuong-44-thoat-khoi-noi-tuyet-vong.html"
+      },
+      {
+        "title": "Chương 45: Đại Mê Cung Elro – Tầng Hạ",
+        "src": "c10424-chuong-45-dai-me-cung-elro-tang-ha.html",
+        "file": "c10424-chuong-45-dai-me-cung-elro-tang-ha.html"
+      },
+      {
+        "title": "S6: Chỉ số",
+        "src": "c10425-s6-chi-so.html",
+        "file": "c10425-s6-chi-so.html"
+      },
+      {
+        "title": "Chương 46: Kẻ mạnh nhất là kẻ sống sót, hay tôi tưởng thế, nhưng…",
+        "src": "c10426-chuong-46-ke-manh-nhat-la-ke-song-sot-hay-toi-tuong-the-nhung.html",
+        "file": "c10426-chuong-46-ke-manh-nhat-la-ke-song-sot-hay-toi-tuong-the-nhung.html"
+      },
+      {
+        "title": "Chương 47: Độc Độc",
+        "src": "c10427-chuong-47-doc-doc.html",
+        "file": "c10427-chuong-47-doc-doc.html"
+      },
+      {
+        "title": "Chương 48: Ngã ba?",
+        "src": "c10428-chuong-48-nga-ba.html",
+        "file": "c10428-chuong-48-nga-ba.html"
+      },
+      {
+        "title": "Chương 49: “Giám Định”-san, cậu thực sự là một skill bá đạo mà",
+        "src": "c10429-chuong-49-giam-dinh-san-cau-thuc-su-la-mot-skill-ba-dao-ma.html",
+        "file": "c10429-chuong-49-giam-dinh-san-cau-thuc-su-la-mot-skill-ba-dao-ma.html"
+      },
+      {
+        "title": "Chương 50: Mahou Shoujo Magica Kumoko ☆",
+        "src": "c10430-chuong-50-mahou-shoujo-magica-kumoko.html",
+        "file": "c10430-chuong-50-mahou-shoujo-magica-kumoko.html"
+      },
+      {
+        "title": "S7: Con gái Công Tước",
+        "src": "c10431-s7-con-gai-cong-tuoc.html",
+        "file": "c10431-s7-con-gai-cong-tuoc.html"
+      },
+      {
+        "title": "Chương 51: Biết được sức chiến đấu của kẻ thù thật tốt nhỉ?",
+        "src": "c10432-chuong-51-biet-duoc-suc-chien-dau-cua-ke-thu-that-tot-nhi.html",
+        "file": "c10432-chuong-51-biet-duoc-suc-chien-dau-cua-ke-thu-that-tot-nhi.html"
+      },
+      {
+        "title": "Chương 52: Dây nhợ và buồn bã và cao hứng và",
+        "src": "c10433-chuong-52-day-nho-va-buon-ba-va-cao-hung-va.html",
+        "file": "c10433-chuong-52-day-nho-va-buon-ba-va-cao-hung-va.html"
+      },
+      {
+        "title": "Chương 53: Tôi đã trở nên mạnh hơn dù chỉ là một chút",
+        "src": "c10434-chuong-53-toi-da-tro-nen-manh-hon-du-chi-la-mot-chut.html",
+        "file": "c10434-chuong-53-toi-da-tro-nen-manh-hon-du-chi-la-mot-chut.html"
+      },
+      {
+        "title": "Chương 54: Kế hoạch giấc ngủ ngon vĩ đại",
+        "src": "c10435-chuong-54-ke-hoach-giac-ngu-ngon-vi-dai.html",
+        "file": "c10435-chuong-54-ke-hoach-giac-ngu-ngon-vi-dai.html"
+      },
+      {
+        "title": "Chương 55: Cuộc chiến phòng vệ cách mặt đất 100m",
+        "src": "c10436-chuong-55-cuoc-chien-phong-ve-cach-mat-dat-100m.html",
+        "file": "c10436-chuong-55-cuoc-chien-phong-ve-cach-mat-dat-100m.html"
+      },
+      {
+        "title": "S8: Từ Điển Bách Khoa Skill",
+        "src": "c10437-s8-tu-dien-bach-khoa-skill.html",
+        "file": "c10437-s8-tu-dien-bach-khoa-skill.html"
+      },
+      {
+        "title": "Chương 56: Cuộc chiến phòng vệ cách mặt đất 100m ②",
+        "src": "c10438-chuong-56-cuoc-chien-phong-ve-cach-mat-dat-100m.html",
+        "file": "c10438-chuong-56-cuoc-chien-phong-ve-cach-mat-dat-100m.html"
+      },
+      {
+        "title": "Chương 57: Cuộc chiến phòng vệ cách mặt đất 100m ③",
+        "src": "c10439-chuong-57-cuoc-chien-phong-ve-cach-mat-dat-100m.html",
+        "file": "c10439-chuong-57-cuoc-chien-phong-ve-cach-mat-dat-100m.html"
+      },
+      {
+        "title": "Chương 58: Cuộc chiến phòng vệ cách mặt đất 100m④",
+        "src": "c10440-chuong-58-cuoc-chien-phong-ve-cach-mat-dat-100m.html",
+        "file": "c10440-chuong-58-cuoc-chien-phong-ve-cach-mat-dat-100m.html"
+      },
+      {
+        "title": "Chương 59: Cuộc chiến phòng vệ cách mặt đất 100m ⑤",
+        "src": "c10441-chuong-59-cuoc-chien-phong-ve-cach-mat-dat-100m.html",
+        "file": "c10441-chuong-59-cuoc-chien-phong-ve-cach-mat-dat-100m.html"
+      },
+      {
+        "title": "Chương 60: Cuộc chiến phòng vệ cách mặt đất 100m - Kết",
+        "src": "c10442-chuong-60-cuoc-chien-phong-ve-cach-mat-dat-100m-ket.html",
+        "file": "c10442-chuong-60-cuoc-chien-phong-ve-cach-mat-dat-100m-ket.html"
+      },
+      {
+        "title": "S9 Điểm skill",
+        "src": "c10443-s9-diem-skill.html",
+        "file": "c10443-s9-diem-skill.html"
+      }
+    ]
+  },
+  {
+    "name": "Mê Cung Thượng Tầng",
+    "chapters": [
+      {
+        "title": "Chương 61: Tôi sắp tiến hóa! Phần 2",
+        "src": "c10444-chuong-61-toi-sap-tien-hoa-phan-2.html",
+        "file": "c10444-chuong-61-toi-sap-tien-hoa-phan-2.html"
+      },
+      {
+        "title": "Chương 62: Nhện Độc",
+        "src": "c10445-chuong-62-nhen-doc.html",
+        "file": "c10445-chuong-62-nhen-doc.html"
+      },
+      {
+        "title": "Chương 63: “Giám Định”-san, không, là “Giám Định”-sama!",
+        "src": "c10446-chuong-63-giam-dinh-san-khong-la-giam-dinh-sama.html",
+        "file": "c10446-chuong-63-giam-dinh-san-khong-la-giam-dinh-sama.html"
+      },
+      {
+        "title": "Chương 64: “Giám Định”-sama đúng là một người thông minh mà",
+        "src": "c10447-chuong-64-giam-dinh-sama-dung-la-mot-nguoi-thong-minh-ma.html",
+        "file": "c10447-chuong-64-giam-dinh-sama-dung-la-mot-nguoi-thong-minh-ma.html"
+      },
+      {
+        "title": "Chương 65: Kiêu Hãnh",
+        "src": "c10448-chuong-65-kieu-hanh.html",
+        "file": "c10448-chuong-65-kieu-hanh.html"
+      },
+      {
+        "title": "S10: Nhị Hoàng Tử",
+        "src": "c10449-s10-nhi-hoang-tu.html",
+        "file": "c10449-s10-nhi-hoang-tu.html"
+      },
+      {
+        "title": "Chương 66: Hết skill này đến skill khác",
+        "src": "c10450-chuong-66-het-skill-nay-den-skill-khac.html",
+        "file": "c10450-chuong-66-het-skill-nay-den-skill-khac.html"
+      },
+      {
+        "title": "Chương 67: Một kẻ thù đáng gờm xuất hiện! Đó là “Kiểm Định”!",
+        "src": "c10451-chuong-67-mot-ke-thu-dang-gom-xuat-hien-do-la-kiem-dinh.html",
+        "file": "c10451-chuong-67-mot-ke-thu-dang-gom-xuat-hien-do-la-kiem-dinh.html"
+      },
+      {
+        "title": "Chương 68: Rời khỏi Tầng Hạ",
+        "src": "c10452-chuong-68-roi-khoi-tang-ha.html",
+        "file": "c10452-chuong-68-roi-khoi-tang-ha.html"
+      },
+      {
+        "title": "Chap 69: Đại Mê Cung Elro- Tầng Trung",
+        "src": "c10453-chap-69-dai-me-cung-elro-tang-trung.html",
+        "file": "c10453-chap-69-dai-me-cung-elro-tang-trung.html"
+      },
+      {
+        "title": "Chương 70: Thời điểm cày cuốc",
+        "src": "c10454-chuong-70-thoi-diem-cay-cuoc.html",
+        "file": "c10454-chuong-70-thoi-diem-cay-cuoc.html"
+      },
+      {
+        "title": "Y1: Anh Hùng và đức vua",
+        "src": "c10455-y1-anh-hung-va-duc-vua.html",
+        "file": "c10455-y1-anh-hung-va-duc-vua.html"
+      },
+      {
+        "title": "Chương 71: Cày cấp",
+        "src": "c10456-chuong-71-cay-cap.html",
+        "file": "c10456-chuong-71-cay-cap.html"
+      },
+      {
+        "title": "Chương 72: Kết quả cày cấp",
+        "src": "c10457-chuong-72-ket-qua-cay-cap.html",
+        "file": "c10457-chuong-72-ket-qua-cay-cap.html"
+      },
+      {
+        "title": "Chương 73: Death flag bất ngờ",
+        "src": "c10458-chuong-73-death-flag-bat-ngo.html",
+        "file": "c10458-chuong-73-death-flag-bat-ngo.html"
+      },
+      {
+        "title": "Chương 74: Bắt đầu chinh phục Tầng Trung",
+        "src": "c10459-chuong-74-bat-dau-chinh-phuc-tang-trung.html",
+        "file": "c10459-chuong-74-bat-dau-chinh-phuc-tang-trung.html"
+      },
+      {
+        "title": "Chương 75: Tự mình làm vài thứ thì cũng bỏ qua được thôi, nhưng nhiều lúc khi thấy người khác làm th",
+        "src": "c10460-chuong-75-tu-minh-lam-vai-thu-thi-cung-bo-qua-duoc-thoi-nhung-nhieu-luc-khi-thay-nguoi-khac-lam-the-thi-lai-buc-minh-dung-khong.html",
+        "file": "c10460-chuong-75-tu-minh-lam-vai-thu-thi-cung-bo-qua-duoc-thoi-nhung-nhieu-luc-khi-thay-nguoi-khac-lam-the-thi-lai-buc-minh-dung-khong.html"
+      },
+      {
+        "title": "S11: Cô gái Elf",
+        "src": "c10461-s11-co-gai-elf.html",
+        "file": "c10461-s11-co-gai-elf.html"
+      },
+      {
+        "title": "Chương 76: Hãy trở nên nóng hơn nào!",
+        "src": "c10462-chuong-76-hay-tro-nen-nong-hon-nao.html",
+        "file": "c10462-chuong-76-hay-tro-nen-nong-hon-nao.html"
+      },
+      {
+        "title": "Chương 77: Số 7 xui xẻo",
+        "src": "c10463-chuong-77-so-7-xui-xeo.html",
+        "file": "c10463-chuong-77-so-7-xui-xeo.html"
+      },
+      {
+        "title": "Chương 78: …Là một skill cực kì tốt",
+        "src": "c10464-chuong-78-la-mot-skill-cuc-ki-tot.html",
+        "file": "c10464-chuong-78-la-mot-skill-cuc-ki-tot.html"
+      },
+      {
+        "title": "Chương 79: Một con nhện mà có toàn danh hiệu nguy hiểm là sao?",
+        "src": "c10465-chuong-79-mot-con-nhen-ma-co-toan-danh-hieu-nguy-hiem-la-sao.html",
+        "file": "c10465-chuong-79-mot-con-nhen-ma-co-toan-danh-hieu-nguy-hiem-la-sao.html"
+      },
+      {
+        "title": "Chương 80: Nhện vs Thằn Lằn Lửa ①",
+        "src": "c10466-chuong-80-nhen-vs-than-lan-lua.html",
+        "file": "c10466-chuong-80-nhen-vs-than-lan-lua.html"
+      },
+      {
+        "title": "S12: Học Viện",
+        "src": "c10467-s12-hoc-vien.html",
+        "file": "c10467-s12-hoc-vien.html"
+      },
+      {
+        "title": "Chương 81: Nhện vs Thằn Lằn Lửa ②",
+        "src": "c10468-chuong-81-nhen-vs-than-lan-lua.html",
+        "file": "c10468-chuong-81-nhen-vs-than-lan-lua.html"
+      },
+      {
+        "title": "Chương 82: Nhện vs Thằn Lằn Lửa ③",
+        "src": "c10469-chuong-82-nhen-vs-than-lan-lua.html",
+        "file": "c10469-chuong-82-nhen-vs-than-lan-lua.html"
+      },
+      {
+        "title": "Chương 83: Nhện vs Thằn Lằn Lửa ④",
+        "src": "c10470-chuong-83-nhen-vs-than-lan-lua.html",
+        "file": "c10470-chuong-83-nhen-vs-than-lan-lua.html"
+      },
+      {
+        "title": "Chap 84: Nhện vs Thằn Lằn Lửa ⑤",
+        "src": "c10471-chap-84-nhen-vs-than-lan-lua.html",
+        "file": "c10471-chap-84-nhen-vs-than-lan-lua.html"
+      },
+      {
+        "title": "Chương 85: Nhện vs Thằn Lằn Lửa (Kết)",
+        "src": "c10472-chuong-85-nhen-vs-than-lan-lua-ket.html",
+        "file": "c10472-chuong-85-nhen-vs-than-lan-lua-ket.html"
+      },
+      {
+        "title": "S13: Thánh Nữ và Kiếm Vương",
+        "src": "c10473-s13-thanh-nu-va-kiem-vuong.html",
+        "file": "c10473-s13-thanh-nu-va-kiem-vuong.html"
+      },
+      {
+        "title": "Chương 86: Nhảy múa mừng chiến thắng",
+        "src": "c10474-chuong-86-nhay-mua-mung-chien-thang.html",
+        "file": "c10474-chuong-86-nhay-mua-mung-chien-thang.html"
+      },
+      {
+        "title": "Chương 87: Tôi sẽ tiến hóa! Phần 3",
+        "src": "c10475-chuong-87-toi-se-tien-hoa-phan-3.html",
+        "file": "c10475-chuong-87-toi-se-tien-hoa-phan-3.html"
+      },
+      {
+        "title": "Chương 88: Zoa Ere",
+        "src": "c10476-chuong-88-zoa-ere.html",
+        "file": "c10476-chuong-88-zoa-ere.html"
+      },
+      {
+        "title": "Chương 89: Những thay đổi sau khi tiến hóa",
+        "src": "c10477-chuong-89-nhung-thay-doi-sau-khi-tien-hoa.html",
+        "file": "c10477-chuong-89-nhung-thay-doi-sau-khi-tien-hoa.html"
+      },
+      {
+        "title": "Chương 90: Điềm Tĩnh",
+        "src": "c10478-chuong-90-diem-tinh.html",
+        "file": "c10478-chuong-90-diem-tinh.html"
+      },
+      {
+        "title": "K1: Con gái Công Tước",
+        "src": "c10479-k1-con-gai-cong-tuoc.html",
+        "file": "c10479-k1-con-gai-cong-tuoc.html"
+      },
+      {
+        "title": "Chương 91: “Kiểm Định”-san, cậu đã là một đối thủ đáng gờm",
+        "src": "c10480-chuong-91-kiem-dinh-san-cau-da-la-mot-doi-thu-dang-gom.html",
+        "file": "c10480-chuong-91-kiem-dinh-san-cau-da-la-mot-doi-thu-dang-gom.html"
+      },
+      {
+        "title": "Chương 92: Lần nữa tôi lại cắt đứt một thứ vô dụng.",
+        "src": "c10481-chuong-92-lan-nua-toi-lai-cat-dut-mot-thu-vo-dung.html",
+        "file": "c10481-chuong-92-lan-nua-toi-lai-cat-dut-mot-thu-vo-dung.html"
+      },
+      {
+        "title": "Chương 93: Cái thứ kéo dài xuyên qua một Tầng",
+        "src": "c10482-chuong-93-cai-thu-keo-dai-xuyen-qua-mot-tang.html",
+        "file": "c10482-chuong-93-cai-thu-keo-dai-xuyen-qua-mot-tang.html"
+      },
+      {
+        "title": "Chương 94: Núi cao còn có núi cao hơn, vậy hãy nhắm mục tiêu lên núi cao hơn",
+        "src": "c10483-chuong-94-nui-cao-con-co-nui-cao-hon-vay-hay-nham-muc-tieu-len-nui-cao-hon.html",
+        "file": "c10483-chuong-94-nui-cao-con-co-nui-cao-hon-vay-hay-nham-muc-tieu-len-nui-cao-hon.html"
+      },
+      {
+        "title": "Chương 95: Chủng loại cao cấp",
+        "src": "c10484-chuong-95-chung-loai-cao-cap.html",
+        "file": "c10484-chuong-95-chung-loai-cao-cap.html"
+      },
+      {
+        "title": "S14: Cuộc sống học viện",
+        "src": "c10485-s14-cuoc-song-hoc-vien.html",
+        "file": "c10485-s14-cuoc-song-hoc-vien.html"
+      },
+      {
+        "title": "Chương 96: Tôi suy nghĩ, nên tôi tồn tại. Tôi hoạt động, nên tôi tồn tại. Tôi là tôi và chính bản th",
+        "src": "c10486-chuong-96-toi-suy-nghi-nen-toi-ton-tai-toi-hoat-dong-nen-toi-ton-tai-toi-la-toi-va-chinh-ban-than-toi-nen-toi-ton-tai.html",
+        "file": "c10486-chuong-96-toi-suy-nghi-nen-toi-ton-tai-toi-hoat-dong-nen-toi-ton-tai-toi-la-toi-va-chinh-ban-than-toi-nen-toi-ton-tai.html"
+      },
+      {
+        "title": "Chương 97: Tám mắt",
+        "src": "c10487-chuong-97-tam-mat.html",
+        "file": "c10487-chuong-97-tam-mat.html"
+      },
+      {
+        "title": "Chương 98: Nhìn mắt tôi nè!",
+        "src": "c10488-chuong-98-nhin-mat-toi-ne.html",
+        "file": "c10488-chuong-98-nhin-mat-toi-ne.html"
+      },
+      {
+        "title": "Chương 99: Vì tên kia là một kẻ ngốc, nên tôi phải tự mình cố gắng vì bản thân mình",
+        "src": "c10489-chuong-99-vi-ten-kia-la-mot-ke-ngoc-nen-toi-phai-tu-minh-co-gang-vi-ban-than-minh.html",
+        "file": "c10489-chuong-99-vi-ten-kia-la-mot-ke-ngoc-nen-toi-phai-tu-minh-co-gang-vi-ban-than-minh.html"
+      },
+      {
+        "title": "Chương 100: Ồ? Tình trạng của “Giám Định”-sama…?",
+        "src": "c10490-chuong-100-o-tinh-trang-cua-giam-dinh-sama.html",
+        "file": "c10490-chuong-100-o-tinh-trang-cua-giam-dinh-sama.html"
+      },
+      {
+        "title": "S15: Cấp độ Chủ",
+        "src": "c10491-s15-cap-do-chu.html",
+        "file": "c10491-s15-cap-do-chu.html"
+      }
+    ]
+  },
+  {
+    "name": "Ra Khỏi Mê Cung",
+    "chapters": [
+      {
+        "title": "Chương 101: Tri Thức",
+        "src": "c10492-chuong-101-tri-thuc.html",
+        "file": "c10492-chuong-101-tri-thuc.html"
+      },
+      {
+        "title": "Chương 102: “Tri Thức”-sama thật là tuyệt vời",
+        "src": "c10493-chuong-102-tri-thuc-sama-that-la-tuyet-voi.html",
+        "file": "c10493-chuong-102-tri-thuc-sama-that-la-tuyet-voi.html"
+      },
+      {
+        "title": "Chương 103: Magica Kumoko☆lại xuất hiện",
+        "src": "c10494-chuong-103-magica-kumokolai-xuat-hien.html",
+        "file": "c10494-chuong-103-magica-kumokolai-xuat-hien.html"
+      },
+      {
+        "title": "Chương 104: Chiến Binh Đa Dụng Hệ Nhện được trang bị Ma Pháp",
+        "src": "c10495-chuong-104-chien-binh-da-dung-he-nhen-duoc-trang-bi-ma-phap.html",
+        "file": "c10495-chuong-104-chien-binh-da-dung-he-nhen-duoc-trang-bi-ma-phap.html"
+      },
+      {
+        "title": "Chương 105: Một Hikki có nghĩ tới việc đi ra ngoài bao giờ?",
+        "src": "c10496-chuong-105-mot-hikki-co-nghi-toi-viec-di-ra-ngoai-bao-gio.html",
+        "file": "c10496-chuong-105-mot-hikki-co-nghi-toi-viec-di-ra-ngoai-bao-gio.html"
+      },
+      {
+        "title": "S16: Sự hỗn loạn trong bóng tối yên bình",
+        "src": "c10497-s16-su-hon-loan-trong-bong-toi-yen-binh.html",
+        "file": "c10497-s16-su-hon-loan-trong-bong-toi-yen-binh.html"
+      },
+      {
+        "title": "Chương 106: Con lươn lần nữa xuất hiện",
+        "src": "c10498-chuong-106-con-luon-lan-nua-xuat-hien.html",
+        "file": "c10498-chuong-106-con-luon-lan-nua-xuat-hien.html"
+      },
+      {
+        "title": "Chương 107: Chủ nhân của biển lửa ①",
+        "src": "c10499-chuong-107-chu-nhan-cua-bien-lua.html",
+        "file": "c10499-chuong-107-chu-nhan-cua-bien-lua.html"
+      },
+      {
+        "title": "Chương 108: Chủ Nhân của biển lửa②",
+        "src": "c10500-chuong-108-chu-nhan-cua-bien-lua.html",
+        "file": "c10500-chuong-108-chu-nhan-cua-bien-lua.html"
+      },
+      {
+        "title": "Chương 109: Kẻ mang đến sợ hãi",
+        "src": "c10501-chuong-109-ke-mang-den-so-hai.html",
+        "file": "c10501-chuong-109-ke-mang-den-so-hai.html"
+      },
+      {
+        "title": "Chương 110: Những gì đạt được sau khi giết con Á Long Lửa",
+        "src": "c10502-chuong-110-nhung-gi-dat-duoc-sau-khi-giet-con-a-long-lua.html",
+        "file": "c10502-chuong-110-nhung-gi-dat-duoc-sau-khi-giet-con-a-long-lua.html"
+      },
+      {
+        "title": "B1: Cận thần của Ma Vương thở dài trong cuộc họp",
+        "src": "c10503-b1-can-than-cua-ma-vuong-tho-dai-trong-cuoc-hop.html",
+        "file": "c10503-b1-can-than-cua-ma-vuong-tho-dai-trong-cuoc-hop.html"
+      },
+      {
+        "title": "Y2: Và cuộc chiến tranh bắt đầu",
+        "src": "c10504-y2-va-cuoc-chien-tranh-bat-dau.html",
+        "file": "c10504-y2-va-cuoc-chien-tranh-bat-dau.html"
+      },
+      {
+        "title": "Đại Chiến Người-Quỷ ①",
+        "src": "c10505-dai-chien-nguoi-quy.html",
+        "file": "c10505-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "Đại Chiến Người-Quỷ ②",
+        "src": "c10506-dai-chien-nguoi-quy.html",
+        "file": "c10506-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "Đại Chiến Người-Quỷ ③",
+        "src": "c10507-dai-chien-nguoi-quy.html",
+        "file": "c10507-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "Đại Chiến Người-Quỷ ④",
+        "src": "c10508-dai-chien-nguoi-quy.html",
+        "file": "c10508-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "Đại Chiến Người-Quỷ ⑤",
+        "src": "c10509-dai-chien-nguoi-quy.html",
+        "file": "c10509-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "S17: Giọng nói thông báo sự sụp đổ",
+        "src": "c10510-s17-giong-noi-thong-bao-su-sup-do.html",
+        "file": "c10510-s17-giong-noi-thong-bao-su-sup-do.html"
+      },
+      {
+        "title": "Bí Mật Đại Chiến Người-Quỷ",
+        "src": "c10511-bi-mat-dai-chien-nguoi-quy.html",
+        "file": "c10511-bi-mat-dai-chien-nguoi-quy.html"
+      },
+      {
+        "title": "Chương 111: Món ăn ngon",
+        "src": "c11267-chuong-111-mon-an-ngon.html",
+        "file": "c11267-chuong-111-mon-an-ngon.html"
+      },
+      {
+        "title": "Chương 112: Quái vật biến thành kim loại",
+        "src": "c11268-chuong-112-quai-vat-bien-thanh-kim-loai.html",
+        "file": "c11268-chuong-112-quai-vat-bien-thanh-kim-loai.html"
+      },
+      {
+        "title": "Chương 113: Nhện vs Rồng Lửa ①",
+        "src": "c11269-chuong-113-nhen-vs-rong-lua.html",
+        "file": "c11269-chuong-113-nhen-vs-rong-lua.html"
+      },
+      {
+        "title": "Chương 114: Nhện vs Rồng Lửa ②",
+        "src": "c11270-chuong-114-nhen-vs-rong-lua.html",
+        "file": "c11270-chuong-114-nhen-vs-rong-lua.html"
+      },
+      {
+        "title": "Chương 115: Nhện vs Rồng Lửa ③",
+        "src": "c11271-chuong-115-nhen-vs-rong-lua.html",
+        "file": "c11271-chuong-115-nhen-vs-rong-lua.html"
+      },
+      {
+        "title": "S18: Anh Hùng mới",
+        "src": "c11272-s18-anh-hung-moi.html",
+        "file": "c11272-s18-anh-hung-moi.html"
+      },
+      {
+        "title": "Chương 116: Nhện vs Rồng Lửa ④",
+        "src": "c11273-chuong-116-nhen-vs-rong-lua.html",
+        "file": "c11273-chuong-116-nhen-vs-rong-lua.html"
+      },
+      {
+        "title": "Chương 117: Thợ Săn Rồng",
+        "src": "c11274-chuong-117-tho-san-rong.html",
+        "file": "c11274-chuong-117-tho-san-rong.html"
+      },
+      {
+        "title": "Chương 118: Ý nghĩa của việc giết một con Rồng",
+        "src": "c11275-chuong-118-y-nghia-cua-viec-giet-mot-con-rong.html",
+        "file": "c11275-chuong-118-y-nghia-cua-viec-giet-mot-con-rong.html"
+      },
+      {
+        "title": "Chương 119: Bắn laze từ mắt! Có điều tôi không làm đâu",
+        "src": "c11276-chuong-119-ban-laze-tu-mat-co-dieu-toi-khong-lam-dau.html",
+        "file": "c11276-chuong-119-ban-laze-tu-mat-co-dieu-toi-khong-lam-dau.html"
+      },
+      {
+        "title": "Chương 120: Admin",
+        "src": "c11277-chuong-120-admin.html",
+        "file": "c11277-chuong-120-admin.html"
+      },
+      {
+        "title": "S19: Julius",
+        "src": "c11278-s19-julius.html",
+        "file": "c11278-s19-julius.html"
+      },
+      {
+        "title": "Chương 121: Cứ quên chuyện đó đi cho nhanh",
+        "src": "c11279-chuong-121-cu-quen-chuyen-do-di-cho-nhanh.html",
+        "file": "c11279-chuong-121-cu-quen-chuyen-do-di-cho-nhanh.html"
+      },
+      {
+        "title": "Chương 122: Bay bay bay",
+        "src": "c11280-chuong-122-bay-bay-bay.html",
+        "file": "c11280-chuong-122-bay-bay-bay.html"
+      },
+      {
+        "title": "Chương 123: Tôi có được Sức Mạnh Rồng! Uhahaha!",
+        "src": "c11281-chuong-123-toi-co-duoc-suc-manh-rong-uhahaha.html",
+        "file": "c11281-chuong-123-toi-co-duoc-suc-manh-rong-uhahaha.html"
+      },
+      {
+        "title": "Chương 124: Tầng Thượng, tôi đã trở về!",
+        "src": "c11282-chuong-124-tang-thuong-toi-da-tro-ve.html",
+        "file": "c11282-chuong-124-tang-thuong-toi-da-tro-ve.html"
+      },
+      {
+        "title": "Chương 125: Chiên ngập dầu!",
+        "src": "c11283-chuong-125-chien-ngap-dau.html",
+        "file": "c11283-chuong-125-chien-ngap-dau.html"
+      },
+      {
+        "title": "S20: Sụp Đổ",
+        "src": "c11287-s20-sup-do.html",
+        "file": "c11287-s20-sup-do.html"
+      },
+      {
+        "title": "Chương 126: Rượt bắt thật sự, người “bị” chính là con nhện",
+        "src": "c11284-chuong-126-ruot-bat-that-su-nguoi-bi-chinh-la-con-nhen.html",
+        "file": "c11284-chuong-126-ruot-bat-that-su-nguoi-bi-chinh-la-con-nhen.html"
+      },
+      {
+        "title": "Đội điều tra sự bất thường ở Đại Mê Cung Elro ①",
+        "src": "c11285-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html",
+        "file": "c11285-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Đội điều tra sự bất thường ở Đại Mê Cung Elro ②",
+        "src": "c11286-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html",
+        "file": "c11286-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Đội điều tra sự bất thường ở Đại Mê Cung Elro ③",
+        "src": "c11289-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html",
+        "file": "c11289-doi-dieu-tra-su-bat-thuong-o-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Chương 127: Hãy cho tôi thấy khả năng của một con người",
+        "src": "c11398-chuong-127-hay-cho-toi-thay-kha-nang-cua-mot-con-nguoi.html",
+        "file": "c11398-chuong-127-hay-cho-toi-thay-kha-nang-cua-mot-con-nguoi.html"
+      },
+      {
+        "title": "Chương 128: Không nên nhân từ với kẻ khác",
+        "src": "c11399-chuong-128-khong-nen-nhan-tu-voi-ke-khac.html",
+        "file": "c11399-chuong-128-khong-nen-nhan-tu-voi-ke-khac.html"
+      },
+      {
+        "title": "Chương 129: Tôi sắp tiến hóa! Phần 4",
+        "src": "c11400-chuong-129-toi-sap-tien-hoa-phan-4.html",
+        "file": "c11400-chuong-129-toi-sap-tien-hoa-phan-4.html"
+      },
+      {
+        "title": "Chap 130: Cấm Kị",
+        "src": "c11401-chap-130-cam-ki.html",
+        "file": "c11401-chap-130-cam-ki.html"
+      },
+      {
+        "title": "K2: Sự ngoan cố cuối cùng của một người đàn ông",
+        "src": "c11402-k2-su-ngoan-co-cuoi-cung-cua-mot-nguoi-dan-ong.html",
+        "file": "c11402-k2-su-ngoan-co-cuoi-cung-cua-mot-nguoi-dan-ong.html"
+      },
+      {
+        "title": "B2: Maou-sama cảm thấy kinh hãi",
+        "src": "c11403-b2-maou-sama-cam-thay-kinh-hai.html",
+        "file": "c11403-b2-maou-sama-cam-thay-kinh-hai.html"
+      },
+      {
+        "title": "Chương 131: Tôi thua rồi",
+        "src": "c11404-chuong-131-toi-thua-roi.html",
+        "file": "c11404-chuong-131-toi-thua-roi.html"
+      },
+      {
+        "title": "Chương 132: Những gì được chuẩn bị để giết Rồng Đất Kaguna",
+        "src": "c11405-chuong-132-nhung-gi-duoc-chuan-bi-de-giet-rong-dat-kaguna.html",
+        "file": "c11405-chuong-132-nhung-gi-duoc-chuan-bi-de-giet-rong-dat-kaguna.html"
+      },
+      {
+        "title": "Chap 133: Số 1 thì Trâu, Số 2 thì Nhanh",
+        "src": "c11406-chap-133-so-1-thi-trau-so-2-thi-nhanh.html",
+        "file": "c11406-chap-133-so-1-thi-trau-so-2-thi-nhanh.html"
+      },
+      {
+        "title": "Chương 134: Kẻ thù tự nhiên của loài nhện",
+        "src": "c11407-chuong-134-ke-thu-tu-nhien-cua-loai-nhen.html",
+        "file": "c11407-chuong-134-ke-thu-tu-nhien-cua-loai-nhen.html"
+      },
+      {
+        "title": "Chương 135: Nhện vs Nhện ①",
+        "src": "c11408-chuong-135-nhen-vs-nhen.html",
+        "file": "c11408-chuong-135-nhen-vs-nhen.html"
+      },
+      {
+        "title": "S21: Sự thật của thế giới",
+        "src": "c11409-s21-su-that-cua-the-gioi.html",
+        "file": "c11409-s21-su-that-cua-the-gioi.html"
+      },
+      {
+        "title": "Chương 136: Nhện vs Nhện ②",
+        "src": "c11410-chuong-136-nhen-vs-nhen.html",
+        "file": "c11410-chuong-136-nhen-vs-nhen.html"
+      },
+      {
+        "title": "Chương 137: Nhện vs Nhện ③",
+        "src": "c11411-chuong-137-nhen-vs-nhen.html",
+        "file": "c11411-chuong-137-nhen-vs-nhen.html"
+      },
+      {
+        "title": "Chương 138: Nhện vs Rồng Đất Alaba ①",
+        "src": "c11412-chuong-138-nhen-vs-rong-dat-alaba.html",
+        "file": "c11412-chuong-138-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chương 139: Nhện vs Rồng Đất Alaba ②",
+        "src": "c11413-chuong-139-nhen-vs-rong-dat-alaba.html",
+        "file": "c11413-chuong-139-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chương 140: Nhện vs Rồng Đất Alaba ③",
+        "src": "c11414-chuong-140-nhen-vs-rong-dat-alaba.html",
+        "file": "c11414-chuong-140-nhen-vs-rong-dat-alaba.html"
+      }
+    ]
+  },
+  {
+    "name": "Ma Vương Trỗi Dậy",
+    "chapters": [
+      {
+        "title": "Chương 141: Nhện vs Rồng Đất Alaba ④",
+        "src": "c11415-chuong-141-nhen-vs-rong-dat-alaba.html",
+        "file": "c11415-chuong-141-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chương 142: Nhện vs Rồng Đất Alaba ⑤",
+        "src": "c11416-chuong-142-nhen-vs-rong-dat-alaba.html",
+        "file": "c11416-chuong-142-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chương 143: Nhện vs Rồng Đất Alaba ⑥",
+        "src": "c11417-chuong-143-nhen-vs-rong-dat-alaba.html",
+        "file": "c11417-chuong-143-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chương 144: Nhện vs Rồng Đất Alaba ⑦",
+        "src": "c11418-chuong-144-nhen-vs-rong-dat-alaba.html",
+        "file": "c11418-chuong-144-nhen-vs-rong-dat-alaba.html"
+      },
+      {
+        "title": "Chap 145: Mặt đất lún xuống",
+        "src": "c11419-chap-145-mat-dat-lun-xuong.html",
+        "file": "c11419-chap-145-mat-dat-lun-xuong.html"
+      },
+      {
+        "title": "Cuộc chiến ở Thủ Đô Hoàng Gia ①",
+        "src": "c11420-cuoc-chien-o-thu-do-hoang-gia.html",
+        "file": "c11420-cuoc-chien-o-thu-do-hoang-gia.html"
+      },
+      {
+        "title": "Cuộc chiến ở Thủ Đô Hoàng Gia ②",
+        "src": "c11421-cuoc-chien-o-thu-do-hoang-gia.html",
+        "file": "c11421-cuoc-chien-o-thu-do-hoang-gia.html"
+      },
+      {
+        "title": "Cuộc chiến ở Thủ Đô Hoàng Gia ③",
+        "src": "c11422-cuoc-chien-o-thu-do-hoang-gia.html",
+        "file": "c11422-cuoc-chien-o-thu-do-hoang-gia.html"
+      },
+      {
+        "title": "Chương 146: Tôi thấy muốn bệnh",
+        "src": "c11423-chuong-146-toi-thay-muon-benh.html",
+        "file": "c11423-chuong-146-toi-thay-muon-benh.html"
+      },
+      {
+        "title": "Ác mộng của Đại Mê Cung ①",
+        "src": "c11424-ac-mong-cua-dai-me-cung.html",
+        "file": "c11424-ac-mong-cua-dai-me-cung.html"
+      },
+      {
+        "title": "Ác mộng của Đại Mê Cung②",
+        "src": "c11425-ac-mong-cua-dai-me-cung.html",
+        "file": "c11425-ac-mong-cua-dai-me-cung.html"
+      },
+      {
+        "title": "Ác mộng của Đại Mê Cung ③",
+        "src": "c11426-ac-mong-cua-dai-me-cung.html",
+        "file": "c11426-ac-mong-cua-dai-me-cung.html"
+      },
+      {
+        "title": "Ác mộng của Đại Mê Cung ④",
+        "src": "c11427-ac-mong-cua-dai-me-cung.html",
+        "file": "c11427-ac-mong-cua-dai-me-cung.html"
+      },
+      {
+        "title": "Chương 147: Vậy ra, đây là những gì con người có thể làm",
+        "src": "c11428-chuong-147-vay-ra-day-la-nhung-gi-con-nguoi-co-the-lam.html",
+        "file": "c11428-chuong-147-vay-ra-day-la-nhung-gi-con-nguoi-co-the-lam.html"
+      },
+      {
+        "title": "Chương 148: Tôi sắp tiến hóa! Phần 5",
+        "src": "c11429-chuong-148-toi-sap-tien-hoa-phan-5.html",
+        "file": "c11429-chuong-148-toi-sap-tien-hoa-phan-5.html"
+      },
+      {
+        "title": "Chương 149: Xin chào, chị là Ác Thần đây",
+        "src": "c11430-chuong-149-xin-chao-chi-la-ac-than-day.html",
+        "file": "c11430-chuong-149-xin-chao-chi-la-ac-than-day.html"
+      },
+      {
+        "title": "Chương 150: Các ngươi chỉ là Anh Hùng và Ma Vương mà thôi, đừng có mà hổ báo!",
+        "src": "c11431-chuong-150-cac-nguoi-chi-la-anh-hung-va-ma-vuong-ma-thoi-dung-co-ma-ho-bao.html",
+        "file": "c11431-chuong-150-cac-nguoi-chi-la-anh-hung-va-ma-vuong-ma-thoi-dung-co-ma-ho-bao.html"
+      },
+      {
+        "title": "S22: Đến làng Elf",
+        "src": "c11432-s22-den-lang-elf.html",
+        "file": "c11432-s22-den-lang-elf.html"
+      },
+      {
+        "title": "Chương 151: Ra ngoài",
+        "src": "c11433-chuong-151-ra-ngoai.html",
+        "file": "c11433-chuong-151-ra-ngoai.html"
+      },
+      {
+        "title": "Chương 152: Con nhện một mình đi chu du khắp nơi",
+        "src": "c11434-chuong-152-con-nhen-mot-minh-di-chu-du-khap-noi.html",
+        "file": "c11434-chuong-152-con-nhen-mot-minh-di-chu-du-khap-noi.html"
+      },
+      {
+        "title": "Chương 153: Trò chuyện cùng Kuro",
+        "src": "c11435-chuong-153-tro-chuyen-cung-kuro.html",
+        "file": "c11435-chuong-153-tro-chuyen-cung-kuro.html"
+      },
+      {
+        "title": "Chương 154: Đồ ăn rừng",
+        "src": "c11436-chuong-154-do-an-rung.html",
+        "file": "c11436-chuong-154-do-an-rung.html"
+      },
+      {
+        "title": "Chương 155: Lí do đi leo núi vì ở đó có thức ăn ngon",
+        "src": "c11437-chuong-155-li-do-di-leo-nui-vi-o-do-co-thuc-an-ngon.html",
+        "file": "c11437-chuong-155-li-do-di-leo-nui-vi-o-do-co-thuc-an-ngon.html"
+      },
+      {
+        "title": "S23: Đi vào Đại Mê Cung Elro",
+        "src": "c11438-s23-di-vao-dai-me-cung-elro.html",
+        "file": "c11438-s23-di-vao-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Chương 156: Là biển đó!",
+        "src": "c11439-chuong-156-la-bien-do.html",
+        "file": "c11439-chuong-156-la-bien-do.html"
+      },
+      {
+        "title": "Chương 157: Câu cá biển",
+        "src": "c11440-chuong-157-cau-ca-bien.html",
+        "file": "c11440-chuong-157-cau-ca-bien.html"
+      },
+      {
+        "title": "Chương 158: Tôi cứ tưởng đó là một làng chài, hóa ra nó là một làng nông",
+        "src": "c11441-chuong-158-toi-cu-tuong-do-la-mot-lang-chai-hoa-ra-no-la-mot-lang-nong.html",
+        "file": "c11441-chuong-158-toi-cu-tuong-do-la-mot-lang-chai-hoa-ra-no-la-mot-lang-nong.html"
+      },
+      {
+        "title": "Chương 159: Trộm vặt &gt; Ăn cướp",
+        "src": "c11442-chuong-159-trom-vat-an-cuop.html",
+        "file": "c11442-chuong-159-trom-vat-an-cuop.html"
+      },
+      {
+        "title": "Chương 160: Công Chúa Ma Cà Rồng",
+        "src": "c11443-chuong-160-cong-chua-ma-ca-rong.html",
+        "file": "c11443-chuong-160-cong-chua-ma-ca-rong.html"
+      },
+      {
+        "title": "S24: Chinh phục Đại Mê Cung Elro ①",
+        "src": "c11444-s24-chinh-phuc-dai-me-cung-elro.html",
+        "file": "c11444-s24-chinh-phuc-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Chap 161: Thị trấn",
+        "src": "c11445-chap-161-thi-tran.html",
+        "file": "c11445-chap-161-thi-tran.html"
+      },
+      {
+        "title": "Chương 162: Thưa Ông hoặc Bà, tôi vừa chuyển nhà",
+        "src": "c11446-chuong-162-thua-ong-hoac-ba-toi-vua-chuyen-nha.html",
+        "file": "c11446-chuong-162-thua-ong-hoac-ba-toi-vua-chuyen-nha.html"
+      },
+      {
+        "title": "Chương 163: Tôn sùng tôi đi, ca ngợi tôi đi",
+        "src": "c11447-chuong-163-ton-sung-toi-di-ca-ngoi-toi-di.html",
+        "file": "c11447-chuong-163-ton-sung-toi-di-ca-ngoi-toi-di.html"
+      },
+      {
+        "title": "Chương 164: Đấng Cứu Thế kén chọn",
+        "src": "c11448-chuong-164-dang-cuu-the-ken-chon.html",
+        "file": "c11448-chuong-164-dang-cuu-the-ken-chon.html"
+      },
+      {
+        "title": "Chương 165: Là một lời nguyền đó",
+        "src": "c11449-chuong-165-la-mot-loi-nguyen-do.html",
+        "file": "c11449-chuong-165-la-mot-loi-nguyen-do.html"
+      },
+      {
+        "title": "S25: Chinh phục Đại Mê Cung Elro ②",
+        "src": "c11450-s25-chinh-phuc-dai-me-cung-elro.html",
+        "file": "c11450-s25-chinh-phuc-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Chương 166: Cắn nuốt Mẹ",
+        "src": "c11451-chuong-166-can-nuot-me.html",
+        "file": "c11451-chuong-166-can-nuot-me.html"
+      },
+      {
+        "title": "Chương 167: Con nhện nổi loạn",
+        "src": "c11452-chuong-167-con-nhen-noi-loan.html",
+        "file": "c11452-chuong-167-con-nhen-noi-loan.html"
+      },
+      {
+        "title": "Chương 168: Viết hết những gì tôi cần nhớ vào một quyển sách rồi ăn nó",
+        "src": "c11453-chuong-168-viet-het-nhung-gi-toi-can-nho-vao-mot-quyen-sach-roi-an-no.html",
+        "file": "c11453-chuong-168-viet-het-nhung-gi-toi-can-nho-vao-mot-quyen-sach-roi-an-no.html"
+      },
+      {
+        "title": "Chương 169: Hết đồ tế rồi",
+        "src": "c11454-chuong-169-het-do-te-roi.html",
+        "file": "c11454-chuong-169-het-do-te-roi.html"
+      },
+      {
+        "title": "Chương 170: Ma Vương Ariel",
+        "src": "c11455-chuong-170-ma-vuong-ariel.html",
+        "file": "c11455-chuong-170-ma-vuong-ariel.html"
+      },
+      {
+        "title": "S26: Chinh Phục Đại Mê Cung Elro ③",
+        "src": "c11456-s26-chinh-phuc-dai-me-cung-elro.html",
+        "file": "c11456-s26-chinh-phuc-dai-me-cung-elro.html"
+      },
+      {
+        "title": "Thánh Ngữ Giáo và Nữ Thần Giáo",
+        "src": "c11457-thanh-ngu-giao-va-nu-than-giao.html",
+        "file": "c11457-thanh-ngu-giao-va-nu-than-giao.html"
+      },
+      {
+        "title": "Chương 171: Các người thực sự nghĩ tôi không trốn thoát Ma Vương nổi à?",
+        "src": "c11458-chuong-171-cac-nguoi-thuc-su-nghi-toi-khong-tron-thoat-ma-vuong-noi-a.html",
+        "file": "c11458-chuong-171-cac-nguoi-thuc-su-nghi-toi-khong-tron-thoat-ma-vuong-noi-a.html"
+      },
+      {
+        "title": "Chương 172 Tôi để mấy đứa Nhóc hầu hạ mình",
+        "src": "c11459-chuong-172-toi-de-may-dua-nhoc-hau-ha-minh.html",
+        "file": "c11459-chuong-172-toi-de-may-dua-nhoc-hau-ha-minh.html"
+      },
+      {
+        "title": "Chương 173: Ăn bám",
+        "src": "c11460-chuong-173-an-bam.html",
+        "file": "c11460-chuong-173-an-bam.html"
+      },
+      {
+        "title": "Chương 174: Đăng kí làm đệ tử",
+        "src": "c11461-chuong-174-dang-ki-lam-de-tu.html",
+        "file": "c11461-chuong-174-dang-ki-lam-de-tu.html"
+      },
+      {
+        "title": "Đi ba ngàn dặm tìm Sư Phụ",
+        "src": "c11462-di-ba-ngan-dam-tim-su-phu.html",
+        "file": "c11462-di-ba-ngan-dam-tim-su-phu.html"
+      },
+      {
+        "title": "Pháp sư, đệ tử",
+        "src": "c11463-phap-su-de-tu.html",
+        "file": "c11463-phap-su-de-tu.html"
+      },
+      {
+        "title": "Chương 175: Hồi sinh!",
+        "src": "c11464-chuong-175-hoi-sinh.html",
+        "file": "c11464-chuong-175-hoi-sinh.html"
+      },
+      {
+        "title": "S27: Tàn Dư của Ác Mộng",
+        "src": "c11465-s27-tan-du-cua-ac-mong.html",
+        "file": "c11465-s27-tan-du-cua-ac-mong.html"
+      },
+      {
+        "title": "Chương 176: Phân thân nói chuyện",
+        "src": "c11466-chuong-176-phan-than-noi-chuyen.html",
+        "file": "c11466-chuong-176-phan-than-noi-chuyen.html"
+      },
+      {
+        "title": "Chương 177: Bên trong Ma Vương",
+        "src": "c11467-chuong-177-ben-trong-ma-vuong.html",
+        "file": "c11467-chuong-177-ben-trong-ma-vuong.html"
+      },
+      {
+        "title": "Chương 178: Ma Vương vs Rồng Đất",
+        "src": "c11468-chuong-178-ma-vuong-vs-rong-dat.html",
+        "file": "c11468-chuong-178-ma-vuong-vs-rong-dat.html"
+      },
+      {
+        "title": "Chương 179: Ma Vương Tham Ăn Chủ",
+        "src": "c11469-chuong-179-ma-vuong-tham-an-chu.html",
+        "file": "c11469-chuong-179-ma-vuong-tham-an-chu.html"
+      },
+      {
+        "title": "Chương 180: Phân thân hành động",
+        "src": "c11470-chuong-180-phan-than-hanh-dong.html",
+        "file": "c11470-chuong-180-phan-than-hanh-dong.html"
+      },
+      {
+        "title": "S28: Thoát khỏi Đại Mê Cung Elro",
+        "src": "c11471-s28-thoat-khoi-dai-me-cung-elro.html",
+        "file": "c11471-s28-thoat-khoi-dai-me-cung-elro.html"
+      }
+    ]
+  },
+  {
+    "name": "Chuẩn Bị Chiến Tranh",
+    "chapters": [
+      {
+        "title": "Chương 181: Mọi chuyện trở nên tồi tệ",
+        "src": "c11472-chuong-181-moi-chuyen-tro-nen-toi-te.html",
+        "file": "c11472-chuong-181-moi-chuyen-tro-nen-toi-te.html"
+      },
+      {
+        "title": "Chương 182: Kiểm tra chiến trường",
+        "src": "c11473-chuong-182-kiem-tra-chien-truong.html",
+        "file": "c11473-chuong-182-kiem-tra-chien-truong.html"
+      },
+      {
+        "title": "Chương 183: Nhân Loại rác rưởi",
+        "src": "c11474-chuong-183-nhan-loai-rac-ruoi.html",
+        "file": "c11474-chuong-183-nhan-loai-rac-ruoi.html"
+      },
+      {
+        "title": "Chương 184: Bây giờ, là lúc để cầu Chúa đó",
+        "src": "c11475-chuong-184-bay-gio-la-luc-de-cau-chua-do.html",
+        "file": "c11475-chuong-184-bay-gio-la-luc-de-cau-chua-do.html"
+      },
+      {
+        "title": "Chương 185: Anh Hùng nhỏ bé",
+        "src": "c11476-chuong-185-anh-hung-nho-be.html",
+        "file": "c11476-chuong-185-anh-hung-nho-be.html"
+      },
+      {
+        "title": "S29: Cống hiến",
+        "src": "c11477-s29-cong-hien.html",
+        "file": "c11477-s29-cong-hien.html"
+      },
+      {
+        "title": "Chương 186: Arachne",
+        "src": "c11478-chuong-186-arachne.html",
+        "file": "c11478-chuong-186-arachne.html"
+      },
+      {
+        "title": "Chương 187: Khả năng giao tiếp",
+        "src": "c11479-chuong-187-kha-nang-giao-tiep.html",
+        "file": "c11479-chuong-187-kha-nang-giao-tiep.html"
+      },
+      {
+        "title": "Chương 188: Đói quá",
+        "src": "c11480-chuong-188-doi-qua.html",
+        "file": "c11480-chuong-188-doi-qua.html"
+      },
+      {
+        "title": "Chương 189: Kiểm tra khả năng cơ thể",
+        "src": "c11481-chuong-189-kiem-tra-kha-nang-co-the.html",
+        "file": "c11481-chuong-189-kiem-tra-kha-nang-co-the.html"
+      },
+      {
+        "title": "Chương 190: Món ăn ngon",
+        "src": "c11482-chuong-190-mon-an-ngon.html",
+        "file": "c11482-chuong-190-mon-an-ngon.html"
+      },
+      {
+        "title": "Làng Elf ①",
+        "src": "c11483-lang-elf.html",
+        "file": "c11483-lang-elf.html"
+      },
+      {
+        "title": "Làng Elf ②",
+        "src": "c11484-lang-elf.html",
+        "file": "c11484-lang-elf.html"
+      },
+      {
+        "title": "Làng Elf ③",
+        "src": "c11485-lang-elf.html",
+        "file": "c11485-lang-elf.html"
+      },
+      {
+        "title": "Bởi vì tôi là một giáo viên",
+        "src": "c11486-boi-vi-toi-la-mot-giao-vien.html",
+        "file": "c11486-boi-vi-toi-la-mot-giao-vien.html"
+      },
+      {
+        "title": "Chương 191: Tsuchigumo",
+        "src": "c11487-chuong-191-tsuchigumo.html",
+        "file": "c11487-chuong-191-tsuchigumo.html"
+      },
+      {
+        "title": "Chương 192: Câu cá biển phần 2",
+        "src": "c11488-chuong-192-cau-ca-bien-phan-2.html",
+        "file": "c11488-chuong-192-cau-ca-bien-phan-2.html"
+      },
+      {
+        "title": "Chương 193: Admin than thở",
+        "src": "c11489-chuong-193-admin-than-tho.html",
+        "file": "c11489-chuong-193-admin-than-tho.html"
+      },
+      {
+        "title": "Chương 194: Ma Vương nói chuyện",
+        "src": "c11490-chuong-194-ma-vuong-noi-chuyen.html",
+        "file": "c11490-chuong-194-ma-vuong-noi-chuyen.html"
+      },
+      {
+        "title": "Chương 195: Những gì đã thay đổi",
+        "src": "c11491-chuong-195-nhung-gi-da-thay-doi.html",
+        "file": "c11491-chuong-195-nhung-gi-da-thay-doi.html"
+      },
+      {
+        "title": "Trước cuộc đại chiến",
+        "src": "c11492-truoc-cuoc-dai-chien.html",
+        "file": "c11492-truoc-cuoc-dai-chien.html"
+      },
+      {
+        "title": "Chương 196: Không phải là con nhện, mà là con kiến",
+        "src": "c11493-chuong-196-khong-phai-la-con-nhen-ma-la-con-kien.html",
+        "file": "c11493-chuong-196-khong-phai-la-con-nhen-ma-la-con-kien.html"
+      },
+      {
+        "title": "Chương 197: Có kho báu được chôn dưới lòng đất?",
+        "src": "c11494-chuong-197-co-kho-bau-duoc-chon-duoi-long-dat.html",
+        "file": "c11494-chuong-197-co-kho-bau-duoc-chon-duoi-long-dat.html"
+      },
+      {
+        "title": "Chương 198: Di tích dưới lòng đất",
+        "src": "c11495-chuong-198-di-tich-duoi-long-dat.html",
+        "file": "c11495-chuong-198-di-tich-duoi-long-dat.html"
+      },
+      {
+        "title": "Chương 199: Quân đoàn robot",
+        "src": "c11496-chuong-199-quan-doan-robot.html",
+        "file": "c11496-chuong-199-quan-doan-robot.html"
+      },
+      {
+        "title": "Chương 200: Chiến lợi phẩm",
+        "src": "c11497-chuong-200-chien-loi-pham.html",
+        "file": "c11497-chuong-200-chien-loi-pham.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ①",
+        "src": "c11498-cuoc-chien-o-lang-elf.html",
+        "file": "c11498-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ②",
+        "src": "c11499-cuoc-chien-o-lang-elf.html",
+        "file": "c11499-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở làng Elf ③",
+        "src": "c11500-cuoc-chien-o-lang-elf.html",
+        "file": "c11500-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở làng Elf ④",
+        "src": "c11501-cuoc-chien-o-lang-elf.html",
+        "file": "c11501-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở làng Elf ⑤",
+        "src": "c11502-cuoc-chien-o-lang-elf.html",
+        "file": "c11502-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑥",
+        "src": "c11503-cuoc-chien-o-lang-elf.html",
+        "file": "c11503-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑦",
+        "src": "c11504-cuoc-chien-o-lang-elf.html",
+        "file": "c11504-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑧",
+        "src": "c11505-cuoc-chien-o-lang-elf.html",
+        "file": "c11505-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑨",
+        "src": "c11506-cuoc-chien-o-lang-elf.html",
+        "file": "c11506-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑩",
+        "src": "c11507-cuoc-chien-o-lang-elf.html",
+        "file": "c11507-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑪",
+        "src": "c11508-cuoc-chien-o-lang-elf.html",
+        "file": "c11508-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 201: Ma Vương và con Chúa",
+        "src": "c11509-chap-201-ma-vuong-va-con-chua.html",
+        "file": "c11509-chap-201-ma-vuong-va-con-chua.html"
+      },
+      {
+        "title": "Chap 202: Thần",
+        "src": "c11510-chap-202-than.html",
+        "file": "c11510-chap-202-than.html"
+      },
+      {
+        "title": "Chap 203: Khu vực không người",
+        "src": "c11511-chap-203-khu-vuc-khong-nguoi.html",
+        "file": "c11511-chap-203-khu-vuc-khong-nguoi.html"
+      },
+      {
+        "title": "Chap 204: Dễ dàng",
+        "src": "c11512-chap-204-de-dang.html",
+        "file": "c11512-chap-204-de-dang.html"
+      },
+      {
+        "title": "Chap 205: Ma Vương được Thần hỗ trợ",
+        "src": "c11513-chap-205-ma-vuong-duoc-than-ho-tro.html",
+        "file": "c11513-chap-205-ma-vuong-duoc-than-ho-tro.html"
+      },
+      {
+        "title": "Oni 1: Sasajima Kyouya",
+        "src": "c11514-oni-1-sasajima-kyouya.html",
+        "file": "c11514-oni-1-sasajima-kyouya.html"
+      },
+      {
+        "title": "Giới thiệu nhân vật",
+        "src": "c11515-gioi-thieu-nhan-vat.html",
+        "file": "c11515-gioi-thieu-nhan-vat.html"
+      },
+      {
+        "title": "Chương 206: Trắng và Đen",
+        "src": "c11516-chuong-206-trang-va-den.html",
+        "file": "c11516-chuong-206-trang-va-den.html"
+      },
+      {
+        "title": "Chap 207: Bắt đầu",
+        "src": "c11517-chap-207-bat-dau.html",
+        "file": "c11517-chap-207-bat-dau.html"
+      },
+      {
+        "title": "Huyết 1: Negishi Akiko",
+        "src": "c11518-huyet-1-negishi-akiko.html",
+        "file": "c11518-huyet-1-negishi-akiko.html"
+      },
+      {
+        "title": "Huyết 2: Làm lại",
+        "src": "c11519-huyet-2-lam-lai.html",
+        "file": "c11519-huyet-2-lam-lai.html"
+      },
+      {
+        "title": "Huyết 3: Cuộc gặp gỡ với con nhện",
+        "src": "c11520-huyet-3-cuoc-gap-go-voi-con-nhen.html",
+        "file": "c11520-huyet-3-cuoc-gap-go-voi-con-nhen.html"
+      },
+      {
+        "title": "Oni 2: Yêu Tinh Lùn",
+        "src": "c11521-oni-2-yeu-tinh-lun.html",
+        "file": "c11521-oni-2-yeu-tinh-lun.html"
+      },
+      {
+        "title": "Huyết 4: Đếm ngược tới sự tuyệt vọng",
+        "src": "c11522-huyet-4-dem-nguoc-toi-su-tuyet-vong.html",
+        "file": "c11522-huyet-4-dem-nguoc-toi-su-tuyet-vong.html"
+      },
+      {
+        "title": "Huyết 5: Chiến thuật để sống sót",
+        "src": "c11523-huyet-5-chien-thuat-de-song-sot.html",
+        "file": "c11523-huyet-5-chien-thuat-de-song-sot.html"
+      },
+      {
+        "title": "Huyết 6: Sự thay đổi bất ngờ",
+        "src": "c11593-huyet-6-su-thay-doi-bat-ngo.html",
+        "file": "c11593-huyet-6-su-thay-doi-bat-ngo.html"
+      },
+      {
+        "title": "Huyết 7: Chiến tranh",
+        "src": "c11594-huyet-7-chien-tranh.html",
+        "file": "c11594-huyet-7-chien-tranh.html"
+      },
+      {
+        "title": "Huyết 8: Lựa chọn",
+        "src": "c11595-huyet-8-lua-chon.html",
+        "file": "c11595-huyet-8-lua-chon.html"
+      },
+      {
+        "title": "Oni 3: Chế tạo vũ khí",
+        "src": "c11627-oni-3-che-tao-vu-khi.html",
+        "file": "c11627-oni-3-che-tao-vu-khi.html"
+      },
+      {
+        "title": "Huyết 9: Người hầu",
+        "src": "c11628-huyet-9-nguoi-hau.html",
+        "file": "c11628-huyet-9-nguoi-hau.html"
+      },
+      {
+        "title": "Huyết 10: Người phụ nữ kì lạ và người phụ nữ nguy hiểm",
+        "src": "c11629-huyet-10-nguoi-phu-nu-ki-la-va-nguoi-phu-nu-nguy-hiem.html",
+        "file": "c11629-huyet-10-nguoi-phu-nu-ki-la-va-nguoi-phu-nu-nguy-hiem.html"
+      },
+      {
+        "title": "Chap 208: Tiêu chuẩn của thế giới giả tưởng và lần gặp gỡ đầu tiên",
+        "src": "c11630-chap-208-tieu-chuan-cua-the-gioi-gia-tuong-va-lan-gap-go-dau-tien.html",
+        "file": "c11630-chap-208-tieu-chuan-cua-the-gioi-gia-tuong-va-lan-gap-go-dau-tien.html"
+      },
+      {
+        "title": "Chương 209: Công việc an ủi người hầu Vampire",
+        "src": "c11700-chuong-209-cong-viec-an-ui-nguoi-hau-vampire.html",
+        "file": "c11700-chuong-209-cong-viec-an-ui-nguoi-hau-vampire.html"
+      },
+      {
+        "title": "Chương 210: Công việc an ủi chủ nhân Vampire",
+        "src": "c11701-chuong-210-cong-viec-an-ui-chu-nhan-vampire.html",
+        "file": "c11701-chuong-210-cong-viec-an-ui-chu-nhan-vampire.html"
+      },
+      {
+        "title": "Oni 4: Đặt tên",
+        "src": "c11718-oni-4-dat-ten.html",
+        "file": "c11718-oni-4-dat-ten.html"
+      },
+      {
+        "title": "Huyết 11: Tôi nên làm gì khi mà bạn cùng lớp của tôi luân hồi thành một con quái vật?",
+        "src": "c11719-huyet-11-toi-nen-lam-gi-khi-ma-ban-cung-lop-cua-toi-luan-hoi-thanh-mot-con-quai-vat.html",
+        "file": "c11719-huyet-11-toi-nen-lam-gi-khi-ma-ban-cung-lop-cua-toi-luan-hoi-thanh-mot-con-quai-vat.html"
+      },
+      {
+        "title": "Huyết 12: Thánh Ngôn Giáo và tộc Elf",
+        "src": "c11721-huyet-12-thanh-ngon-giao-va-toc-elf.html",
+        "file": "c11721-huyet-12-thanh-ngon-giao-va-toc-elf.html"
+      },
+      {
+        "title": "Huyết 13: Ghen Tị",
+        "src": "c11809-huyet-13-ghen-ti.html",
+        "file": "c11809-huyet-13-ghen-ti.html"
+      },
+      {
+        "title": "Huyết 14: Lời nói dối và sự thật",
+        "src": "c11810-huyet-14-loi-noi-doi-va-su-that_split_000.html",
+        "file": "c11810-huyet-14-loi-noi-doi-va-su-that.html"
+      },
+      {
+        "title": "Huyết 15: Chính thức tuyên bố cảnh cáo việc lạm dụng bé gái",
+        "src": "c11811-huyet-15-chinh-thuc-tuyen-bo-canh-cao-viec-lam-dung-be-gai.html",
+        "file": "c11811-huyet-15-chinh-thuc-tuyen-bo-canh-cao-viec-lam-dung-be-gai.html"
+      },
+      {
+        "title": "Oni 5: Những người bị chà đạp",
+        "src": "c11812-oni-5-nhung-nguoi-bi-cha-dap.html",
+        "file": "c11812-oni-5-nhung-nguoi-bi-cha-dap.html"
+      },
+      {
+        "title": "Huyết 16: Trên đường đi",
+        "src": "c11813-huyet-16-tren-duong-di.html",
+        "file": "c11813-huyet-16-tren-duong-di.html"
+      },
+      {
+        "title": "Huyết 17: Ma Vương có tiền",
+        "src": "c11830-huyet-17-ma-vuong-co-tien.html",
+        "file": "c11830-huyet-17-ma-vuong-co-tien.html"
+      },
+      {
+        "title": "Huyết 18: Hiệu Ứng Bất Thường「Bợm Rượu」",
+        "src": "c11831-huyet-18-hieu-ung-bat-thuongbom-ruou.html",
+        "file": "c11831-huyet-18-hieu-ung-bat-thuongbom-ruou.html"
+      },
+      {
+        "title": "Chương 211: Kế hoạch huấn luyện Vampire",
+        "src": "c12017-chuong-211-ke-hoach-huan-luyen-vampire.html",
+        "file": "c12017-chuong-211-ke-hoach-huan-luyen-vampire.html"
+      },
+      {
+        "title": "Chương 212: Maou-sama nấu ăn 3 tiếng",
+        "src": "c12018-chuong-212-maou-sama-nau-an-3-tieng.html",
+        "file": "c12018-chuong-212-maou-sama-nau-an-3-tieng.html"
+      },
+      {
+        "title": "Oni 6: Nô lệ",
+        "src": "c12019-oni-6-no-le.html",
+        "file": "c12019-oni-6-no-le.html"
+      },
+      {
+        "title": "Huyết 19: Trong ngoài đều nguy hiểm",
+        "src": "c12020-huyet-19-trong-ngoai-deu-nguy-hiem.html",
+        "file": "c12020-huyet-19-trong-ngoai-deu-nguy-hiem.html"
+      },
+      {
+        "title": "Huyết 20: Goshujin-sama là kẻ ác độc",
+        "src": "c12043-huyet-20-goshujin-sama-la-ke-ac-doc.html",
+        "file": "c12043-huyet-20-goshujin-sama-la-ke-ac-doc.html"
+      },
+      {
+        "title": "Huyết 21: Ba năm",
+        "src": "c12044-huyet-21-ba-nam.html",
+        "file": "c12044-huyet-21-ba-nam.html"
+      },
+      {
+        "title": "Báo cáo thường xuyên giữa Ma Vương và Admin",
+        "src": "c12109-bao-cao-thuong-xuyen-giua-ma-vuong-va-admin.html",
+        "file": "c12109-bao-cao-thuong-xuyen-giua-ma-vuong-va-admin.html"
+      },
+      {
+        "title": "Giáo Hoàng và Admin",
+        "src": "c12110-giao-hoang-va-admin.html",
+        "file": "c12110-giao-hoang-va-admin.html"
+      },
+      {
+        "title": "Oni 7: Chế Tạo Vũ Khí Thần Kì",
+        "src": "c12111-oni-7-che-tao-vu-khi-than-ki.html",
+        "file": "c12111-oni-7-che-tao-vu-khi-than-ki.html"
+      },
+      {
+        "title": "Huyết 22: Quỷ…",
+        "src": "c12167-huyet-22-quy.html",
+        "file": "c12167-huyet-22-quy.html"
+      },
+      {
+        "title": "Huyết 23: Nghe đâu nếu tôi được luân hồi thì tôi phải đi học ở học viện Ma Pháp",
+        "src": "c12168-huyet-23-nghe-dau-neu-toi-duoc-luan-hoi-thi-toi-phai-di-hoc-o-hoc-vien-ma-phap.html",
+        "file": "c12168-huyet-23-nghe-dau-neu-toi-duoc-luan-hoi-thi-toi-phai-di-hoc-o-hoc-vien-ma-phap.html"
+      },
+      {
+        "title": "Huyết 24: Nhập học",
+        "src": "c12221-huyet-24-nhap-hoc.html",
+        "file": "c12221-huyet-24-nhap-hoc.html"
+      },
+      {
+        "title": "Huyết 25: Hình như tôi vừa làm xong event phá hủy hôn ước của người khác như một nữ chính, nhưng mà",
+        "src": "c12223-huyet-25-hinh-nhu-toi-vua-lam-xong-event-pha-huy-hon-uoc-cua-nguoi-khac-nhu-mot-nu-chinh-nhung-ma-toi-khong-nho-minh-co-bi-bat-nat-bao-gio-toi-phai-lam-sao-day_split_000.html",
+        "file": "c12223-huyet-25-hinh-nhu-toi-vua-lam-xong-event-pha-huy-hon-uoc-cua-nguoi-khac-nhu-mot-nu-chinh-nhung-ma-toi-khong-nho-minh-co-bi-bat-nat-bao-gio-toi-phai-lam-sao-day.html"
+      },
+      {
+        "title": "Huyết 26: Dòng máu Oni(yêu quái)",
+        "src": "c12281-huyet-26-dong-mau-oniyeu-quai.html",
+        "file": "c12281-huyet-26-dong-mau-oniyeu-quai.html"
+      },
+      {
+        "title": "Oni 8: Thịnh Nộ",
+        "src": "c12282-oni-8-thinh-no.html",
+        "file": "c12282-oni-8-thinh-no.html"
+      },
+      {
+        "title": "Chiếc đèn kéo quân của người triệu hồi sư",
+        "src": "c12311-chiec-den-keo-quan-cua-nguoi-trieu-hoi-su.html",
+        "file": "c12311-chiec-den-keo-quan-cua-nguoi-trieu-hoi-su.html"
+      },
+      {
+        "title": "Lời đồn của các Thám Hiểm Giả",
+        "src": "c12312-loi-don-cua-cac-tham-hiem-gia.html",
+        "file": "c12312-loi-don-cua-cac-tham-hiem-gia.html"
+      },
+      {
+        "title": "Thám Hiểm Giả vs Chằng Tinh",
+        "src": "c12338-tham-hiem-gia-vs-chang-tinh_split_000.html",
+        "file": "c12338-tham-hiem-gia-vs-chang-tinh.html"
+      },
+      {
+        "title": "Hiệp Sĩ Đế Quốc vs Chằng Tinh",
+        "src": "c12339-hiep-si-de-quoc-vs-chang-tinh.html",
+        "file": "c12339-hiep-si-de-quoc-vs-chang-tinh.html"
+      },
+      {
+        "title": "Già gân x2 vs Chằng Tinh",
+        "src": "c12375-gia-gan-x2-vs-chang-tinh.html",
+        "file": "c12375-gia-gan-x2-vs-chang-tinh.html"
+      },
+      {
+        "title": "Oni 9: Tĩnh Lặng",
+        "src": "c12376-oni-9-tinh-lang.html",
+        "file": "c12376-oni-9-tinh-lang.html"
+      },
+      {
+        "title": "Kiếm Vương và người pháp sư",
+        "src": "c12415-kiem-vuong-va-nguoi-phap-su.html",
+        "file": "c12415-kiem-vuong-va-nguoi-phap-su.html"
+      },
+      {
+        "title": "Giáo Hoàng và Ninja",
+        "src": "c12416-giao-hoang-va-ninja.html",
+        "file": "c12416-giao-hoang-va-ninja.html"
+      },
+      {
+        "title": "Đất nước ở nơi giao thoa",
+        "src": "c12471-dat-nuoc-o-noi-giao-thoa.html",
+        "file": "c12471-dat-nuoc-o-noi-giao-thoa.html"
+      },
+      {
+        "title": "Kiếm Vương đời trước",
+        "src": "c12472-kiem-vuong-doi-truoc.html",
+        "file": "c12472-kiem-vuong-doi-truoc.html"
+      },
+      {
+        "title": "Kiếm Thần vs Chằng Tinh",
+        "src": "c12515-kiem-than-vs-chang-tinh.html",
+        "file": "c12515-kiem-than-vs-chang-tinh.html"
+      },
+      {
+        "title": "Oni 10: Tịch mịch",
+        "src": "c12516-oni-10-tich-mich.html",
+        "file": "c12516-oni-10-tich-mich.html"
+      },
+      {
+        "title": "Oni vs Oni ①",
+        "src": "c12538-oni-vs-oni.html",
+        "file": "c12538-oni-vs-oni.html"
+      },
+      {
+        "title": "Oni vs Oni ②",
+        "src": "c12539-oni-vs-oni.html",
+        "file": "c12539-oni-vs-oni.html"
+      },
+      {
+        "title": "Oni vs Oni ③",
+        "src": "c12587-oni-vs-oni.html",
+        "file": "c12587-oni-vs-oni.html"
+      },
+      {
+        "title": "Oni Vs Oni ④",
+        "src": "c12588-oni-vs-oni.html",
+        "file": "c12588-oni-vs-oni.html"
+      },
+      {
+        "title": "Oni Vs Oni ⑤",
+        "src": "c12609-oni-vs-oni.html",
+        "file": "c12609-oni-vs-oni.html"
+      },
+      {
+        "title": "Oni vs Oni ⑥",
+        "src": "c12610-oni-vs-oni.html",
+        "file": "c12610-oni-vs-oni.html"
+      },
+      {
+        "title": "Chap 213: Kế hoạch huấn luyện Vampire - tiếp tục",
+        "src": "c12631-chap-213-ke-hoach-huan-luyen-vampire-tiep-tuc.html",
+        "file": "c12631-chap-213-ke-hoach-huan-luyen-vampire-tiep-tuc.html"
+      },
+      {
+        "title": "Chap 214: Những gì tôi có thể làm hiện tại",
+        "src": "c12632-chap-214-nhung-gi-toi-co-the-lam-hien-tai-xem.html",
+        "file": "c12632-chap-214-nhung-gi-toi-co-the-lam-hien-tai-xem.html"
+      },
+      {
+        "title": "Chap 215: Làm như tôi sẽ sống ở thế giới này! Tôi về nhà đây!",
+        "src": "c12688-chap-215-lam-nhu-toi-se-song-o-the-gioi-nay-toi-ve-nha-day.html",
+        "file": "c12688-chap-215-lam-nhu-toi-se-song-o-the-gioi-nay-toi-ve-nha-day.html"
+      },
+      {
+        "title": "Chap 216: Tạm thời trở về",
+        "src": "c12689-chap-216-tam-thoi-tro-ve.html",
+        "file": "c12689-chap-216-tam-thoi-tro-ve.html"
+      },
+      {
+        "title": "Chap 217: Wakaba Hiiro",
+        "src": "c12691-chap-217-wakaba-hiiro.html",
+        "file": "c12691-chap-217-wakaba-hiiro.html"
+      },
+      {
+        "title": "Chap 218: Một hầu gái xuất hiện",
+        "src": "c12714-chap-218-mot-hau-gai-xuat-hien.html",
+        "file": "c12714-chap-218-mot-hau-gai-xuat-hien.html"
+      },
+      {
+        "title": "Chap 219: Kết quả (phân thân)rèn luyện",
+        "src": "c12716-chap-219-ket-qua-phan-thanren-luyen.html",
+        "file": "c12716-chap-219-ket-qua-phan-thanren-luyen.html"
+      },
+      {
+        "title": "Chap 220: Bên kia vùng núi tuyết",
+        "src": "c12736-chap-220-ben-kia-vung-nui-tuyet.html",
+        "file": "c12736-chap-220-ben-kia-vung-nui-tuyet.html"
+      },
+      {
+        "title": "Oshiete, D-sensei! Bài 1",
+        "src": "c12737-hay-day-chung-em-biet-di-d-sensei-bai-1.html",
+        "file": "c12737-hay-day-chung-em-biet-di-d-sensei-bai-1.html"
+      }
+    ]
+  },
+  {
+    "name": "Đại Chiến",
+    "chapters": [
+      {
+        "title": "Chap 221: Nhật kí quan sát bé Vampire",
+        "src": "c12759-chap-221-nhat-ki-quan-sat-be-vampire.html",
+        "file": "c12759-chap-221-nhat-ki-quan-sat-be-vampire.html"
+      },
+      {
+        "title": "Chap 222: Nước cà chua tốt cho sức khỏe mỗi ngày",
+        "src": "c12760-chap-222-nuoc-ca-chua-tot-cho-suc-khoe-moi-ngay.html",
+        "file": "c12760-chap-222-nuoc-ca-chua-tot-cho-suc-khoe-moi-ngay.html"
+      },
+      {
+        "title": "Chap 223: Chuyến đi kết thúc",
+        "src": "c12780-chap-223-chuyen-di-ket-thuc.html",
+        "file": "c12780-chap-223-chuyen-di-ket-thuc.html"
+      },
+      {
+        "title": "Chap 224: Đại Công Tước",
+        "src": "c12781-chap-224-dai-cong-tuoc.html",
+        "file": "c12781-chap-224-dai-cong-tuoc.html"
+      },
+      {
+        "title": "Chap 225: Hành động bí mật, bí mật hành động",
+        "src": "c12830-chap-225-hanh-dong-bi-mat-bi-mat-hanh-dong.html",
+        "file": "c12830-chap-225-hanh-dong-bi-mat-bi-mat-hanh-dong.html"
+      },
+      {
+        "title": "Chap 226: Hành động bí mật, bí mật hành động, hành động bí mật",
+        "src": "c12831-chap-226-hanh-dong-bi-mat-bi-mat-hanh-dong-hanh-dong-bi-mat.html",
+        "file": "c12831-chap-226-hanh-dong-bi-mat-bi-mat-hanh-dong-hanh-dong-bi-mat.html"
+      },
+      {
+        "title": "Chap 227: Muốn ăn thì lăn vào bếp",
+        "src": "c12852-chap-227-muon-an-thi-lan-vao-bep.html",
+        "file": "c12852-chap-227-muon-an-thi-lan-vao-bep.html"
+      },
+      {
+        "title": "SS Giáng Sinh",
+        "src": "c12855-ss-giang-sinh.html",
+        "file": "c12855-ss-giang-sinh.html"
+      },
+      {
+        "title": "Chap 228 Tạiiiiii saoooo!?",
+        "src": "c12875-chap-228-taiiiiii-saoooo.html",
+        "file": "c12875-chap-228-taiiiiii-saoooo.html"
+      },
+      {
+        "title": "Chap 229: Kẻ chủ mưu",
+        "src": "c12904-chap-229-ke-chu-muu.html",
+        "file": "c12904-chap-229-ke-chu-muu.html"
+      },
+      {
+        "title": "Chap 230: Tôi đã quá ngây thơ rồi",
+        "src": "c12905-chap-230-toi-da-qua-ngay-tho-roi_split_000.html",
+        "file": "c12905-chap-230-toi-da-qua-ngay-tho-roi.html"
+      },
+      {
+        "title": "Chap 231: Chiến thuật thống trị bằng sự sợ hãi",
+        "src": "c12935-chap-231-chien-thuat-thong-tri-bang-su-so-hai.html",
+        "file": "c12935-chap-231-chien-thuat-thong-tri-bang-su-so-hai.html"
+      },
+      {
+        "title": "Chap 232: Con chồn và con nhện cố gắng lừa lẫn nhau",
+        "src": "c12936-chuong-22_split_000.html",
+        "file": "c12936-chuong-22.html"
+      },
+      {
+        "title": "Chap 233: Những bé Mật vàng đen tối",
+        "src": "c12948-chap-233-nhung-be-mat-vang-den-toi.html",
+        "file": "c12948-chap-233-nhung-be-mat-vang-den-toi.html"
+      },
+      {
+        "title": "Chap 234: Oni của sự Ghen Tị và Oni của sự Thịnh Nộ",
+        "src": "c12949-chap-234-oni-cua-su-ghen-ti-va-oni-cua-su-thinh-no.html",
+        "file": "c12949-chap-234-oni-cua-su-ghen-ti-va-oni-cua-su-thinh-no.html"
+      },
+      {
+        "title": "Chap 235: G-giúp với!",
+        "src": "c12964-chap-235-g-giup-voi.html",
+        "file": "c12964-chap-235-g-giup-voi.html"
+      },
+      {
+        "title": "Chap 236: Con Rồng, cái hố và một kiểu thợ săn quái vật gì đó…",
+        "src": "c12965-chap-236-con-rong-cai-ho-va-mot-kieu-tho-san-quai-vat-gi-do_split_000.html",
+        "file": "c12965-chap-236-con-rong-cai-ho-va-mot-kieu-tho-san-quai-vat-gi-do.html"
+      },
+      {
+        "title": "Chap 237: Quá nhiều event khiến việc xử lí flag quá mệt mỏi",
+        "src": "c13001-chap-237-qua-nhieu-event-khien-viec-xu-li-flag-qua-met-moi.html",
+        "file": "c13001-chap-237-qua-nhieu-event-khien-viec-xu-li-flag-qua-met-moi.html"
+      },
+      {
+        "title": "Chap 238: Học viện x2",
+        "src": "c13002-chap-238-hoc-vien-x2-xem.html",
+        "file": "c13002-chap-238-hoc-vien-x2-xem.html"
+      },
+      {
+        "title": "Chap 239: Cuộc sống học viện nhiều trắc trở",
+        "src": "c13058-chap-239-cuoc-song-hoc-vien-nhieu-trac-tro.html",
+        "file": "c13058-chap-239-cuoc-song-hoc-vien-nhieu-trac-tro.html"
+      },
+      {
+        "title": "Chap 240: Danh hiệu Anh Hùng",
+        "src": "c13059-chap-240-danh-hieu-anh-hung.html",
+        "file": "c13059-chap-240-danh-hieu-anh-hung.html"
+      },
+      {
+        "title": "Một ngày tồi tệ của vị Thống Lĩnh",
+        "src": "c13112-mot-ngay-toi-te-cua-vi-thong-linh.html",
+        "file": "c13112-mot-ngay-toi-te-cua-vi-thong-linh.html"
+      },
+      {
+        "title": "Chap 241: Tên hề trên sân khấu",
+        "src": "c13113-chap-241-ten-he-tren-san-khau.html",
+        "file": "c13113-chap-241-ten-he-tren-san-khau.html"
+      },
+      {
+        "title": "Chap 242: Sự cống hiến của kẻ ngu muội",
+        "src": "c13133-chap-242-su-cong-hien-cua-ke-ngu-muoi.html",
+        "file": "c13133-chap-242-su-cong-hien-cua-ke-ngu-muoi.html"
+      },
+      {
+        "title": "Chap 243: Mấy cái tên đầu óc không bình thường này thật là…",
+        "src": "c13157-chap-243-may-cai-ten-dau-oc-khong-binh-thuong-nay-that-la.html",
+        "file": "c13157-chap-243-may-cai-ten-dau-oc-khong-binh-thuong-nay-that-la.html"
+      },
+      {
+        "title": "Chap 244: Cô bé Yandere Imouto này lậm tình quá rồi tôi không nói lí với cô ta được",
+        "src": "c13186-chap-244-co-be-yandere-imouto-nay-lam-tinh-qua-roi-toi-khong-noi-li-voi-co-ta-duoc.html",
+        "file": "c13186-chap-244-co-be-yandere-imouto-nay-lam-tinh-qua-roi-toi-khong-noi-li-voi-co-ta-duoc.html"
+      },
+      {
+        "title": "Chap 245: Hãy bắt đầu bằng “seiza” nào",
+        "src": "c13200-chap-245-hay-bat-dau-bang-seiza-nao.html",
+        "file": "c13200-chap-245-hay-bat-dau-bang-seiza-nao.html"
+      },
+      {
+        "title": "SS: Mì soba giao thừa",
+        "src": "c13201-ss-mi-soba-giao-thua_split_000.html",
+        "file": "c13201-ss-mi-soba-giao-thua.html"
+      },
+      {
+        "title": "Chap 246: Tôi không thể ngừng cười được",
+        "src": "c13234-chap-246-toi-khong-the-ngung-cuoi-duoc.html",
+        "file": "c13234-chap-246-toi-khong-the-ngung-cuoi-duoc.html"
+      },
+      {
+        "title": "Chap 247: Cô gái trẻ phản diện rơi nước mắt",
+        "src": "c13316-chap-247-co-gai-tre-phan-dien-roi-nuoc-mat.html",
+        "file": "c13316-chap-247-co-gai-tre-phan-dien-roi-nuoc-mat.html"
+      },
+      {
+        "title": "Chap 248: Bản chất của một Vampire",
+        "src": "c13356-chap-248-ban-chat-cua-mot-vampire.html",
+        "file": "c13356-chap-248-ban-chat-cua-mot-vampire.html"
+      },
+      {
+        "title": "Chap 249: Tới nào oni ơi, oni à",
+        "src": "c13401-chap-249-toi-nao-oni-oi-oni-a.html",
+        "file": "c13401-chap-249-toi-nao-oni-oi-oni-a.html"
+      },
+      {
+        "title": "Chap 250: Rượt bắt cùng Oni",
+        "src": "c13420-chap-250-ruot-bat-cung-oni.html",
+        "file": "c13420-chap-250-ruot-bat-cung-oni.html"
+      },
+      {
+        "title": "Chap 251: Đáng sợ hơn cả Oni",
+        "src": "c13482-chap-251-dang-so-hon-ca-oni.html",
+        "file": "c13482-chap-251-dang-so-hon-ca-oni.html"
+      },
+      {
+        "title": "Chap 252: Lời nguyền của sự bao dung",
+        "src": "c13483-chap-252-loi-nguyen-cua-su-bao-dung.html",
+        "file": "c13483-chap-252-loi-nguyen-cua-su-bao-dung.html"
+      },
+      {
+        "title": "Chap 253: TỚI LÚC TRỪNG PHẠT ( thật đó)",
+        "src": "c13575-chap-235-toi-luc-trung-phat-that-do_split_000.html",
+        "file": "c13575-chap-235-toi-luc-trung-phat-that-do.html"
+      },
+      {
+        "title": "Chap 254: Con Oni, con nhện",
+        "src": "c13584-chap-254-con-oni-con-nhen.html",
+        "file": "c13584-chap-254-con-oni-con-nhen.html"
+      },
+      {
+        "title": "Chap 255: Giới hạn của tôi là ba câu một lần!",
+        "src": "c13598-chap-255-gioi-han-cua-toi-la-ba-cau-mot-lan.html",
+        "file": "c13598-chap-255-gioi-han-cua-toi-la-ba-cau-mot-lan.html"
+      },
+      {
+        "title": "Chap 256: Tôi lượm một người đàn ông về nhà, cho anh ta ở lại đi &lt; CLGT!?",
+        "src": "c13617-chap-256-toi-luom-mot-nguoi-dan-ong-ve-nha-cho-anh-ta-o-lai-di-clgt_split_000.html",
+        "file": "c13617-chap-256-toi-luom-mot-nguoi-dan-ong-ve-nha-cho-anh-ta-o-lai-di-clgt.html"
+      },
+      {
+        "title": "Huyết 27: Quỷ Máu",
+        "src": "c13622-huyet-27-quy-mau.html",
+        "file": "c13622-huyet-27-quy-mau.html"
+      },
+      {
+        "title": "Oni 11: Tình trạng hiện tại",
+        "src": "c13631-oni-11-tinh-trang-hien-tai.html",
+        "file": "c13631-oni-11-tinh-trang-hien-tai.html"
+      },
+      {
+        "title": "Huyết 28: Tái ngộ",
+        "src": "c13659-huyet-28-tai-ngo.html",
+        "file": "c13659-huyet-28-tai-ngo.html"
+      },
+      {
+        "title": "Oni 12: Khó xử",
+        "src": "c13660-oni-12-kho-xu.html",
+        "file": "c13660-oni-12-kho-xu.html"
+      },
+      {
+        "title": "Huyết 29: Chưng hửng",
+        "src": "c13661-huyet-29-chung-hung.html",
+        "file": "c13661-huyet-29-chung-hung.html"
+      },
+      {
+        "title": "Oni 13: Kháng",
+        "src": "c13671-oni-13-khang.html",
+        "file": "c13671-oni-13-khang.html"
+      },
+      {
+        "title": "Huyết 30: Khó chịu",
+        "src": "c13674-huyet-30-kho-chiu.html",
+        "file": "c13674-huyet-30-kho-chiu.html"
+      },
+      {
+        "title": "Chap 257: Chữ viết thật tuyệt vời",
+        "src": "c13682-chap-257-chu-viet-that-tuyet-voi.html",
+        "file": "c13682-chap-257-chu-viet-that-tuyet-voi.html"
+      },
+      {
+        "title": "Những dòng suy nghĩ của Giáo hoàng",
+        "src": "c13687-nhung-dong-suy-nghi-cua-giao-hoang_split_000.html",
+        "file": "c13687-nhung-dong-suy-nghi-cua-giao-hoang.html"
+      },
+      {
+        "title": "Sự đau khổ của Giáo hoàng",
+        "src": "c13720-su-dau-kho-cua-giao-hoang.html",
+        "file": "c13720-su-dau-kho-cua-giao-hoang.html"
+      },
+      {
+        "title": "Chap 258: Hồi sinh công chúa Vampire",
+        "src": "c13721-chap-258-hoi-sinh-cong-chua-vampire.html",
+        "file": "c13721-chap-258-hoi-sinh-cong-chua-vampire.html"
+      },
+      {
+        "title": "Chap 259: Maou-sama đáng sợ",
+        "src": "c13733-chap-259-maou-sama-dang-so.html",
+        "file": "c13733-chap-259-maou-sama-dang-so.html"
+      },
+      {
+        "title": "Oni 14: Lựa chọn",
+        "src": "c13741-oni-14-lua-chon.html",
+        "file": "c13741-oni-14-lua-chon.html"
+      },
+      {
+        "title": "Huyết 31: Xấu tính",
+        "src": "c13742-huyet-31-xau-tinh.html",
+        "file": "c13742-huyet-31-xau-tinh.html"
+      },
+      {
+        "title": "Chap 260: Ai là người tạo nên sự hỗn loạn này vậy!?",
+        "src": "c13753-chap-260-ai-la-nguoi-tao-nen-su-hon-loan-nay-vay.html",
+        "file": "c13753-chap-260-ai-la-nguoi-tao-nen-su-hon-loan-nay-vay.html"
+      },
+      {
+        "title": "Oni 15: Á Nhân",
+        "src": "c13754-oni-15-a-nhan.html",
+        "file": "c13754-oni-15-a-nhan.html"
+      },
+      {
+        "title": "Huyết 32: Ăn vạ",
+        "src": "c13774-huyet-32-an-va_split_000.html",
+        "file": "c13774-huyet-32-an-va.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ①",
+        "src": "c13776-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13776-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ②",
+        "src": "c13786-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13786-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ③",
+        "src": "c13797-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13797-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ④",
+        "src": "c13813-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13813-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ⑤",
+        "src": "c13822-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13822-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ⑥",
+        "src": "c13901-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13901-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ⑦",
+        "src": "c13905-cuoc-hop-khong-chinh-thuc_split_000.html",
+        "file": "c13905-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ⑧",
+        "src": "c13908-cuoc-hop-khong-chinh-thuc_split_000.html",
+        "file": "c13908-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức ⑨",
+        "src": "c13915-cuoc-hop-khong-chinh-thuc.html",
+        "file": "c13915-cuoc-hop-khong-chinh-thuc.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức - ẩn",
+        "src": "c13921-cuoc-hop-khong-chinh-thuc-an.html",
+        "file": "c13921-cuoc-hop-khong-chinh-thuc-an.html"
+      },
+      {
+        "title": "Oni 16: Chính nghĩa?",
+        "src": "c13960-oni-16-chinh-nghia.html",
+        "file": "c13960-oni-16-chinh-nghia.html"
+      },
+      {
+        "title": "Huyết 33: Kiếp này và kiếp trước",
+        "src": "c13965-huyet-33-kiep-nay-va-kiep-truoc.html",
+        "file": "c13965-huyet-33-kiep-nay-va-kiep-truoc.html"
+      },
+      {
+        "title": "Oni 17: Kẻ yếu là miếng thịt, kẻ mạnh là người ăn",
+        "src": "c13969-oni-17-ke-yeu-la-mieng-thit-ke-manh-la-nguoi-an_split_000.html",
+        "file": "c13969-oni-17-ke-yeu-la-mieng-thit-ke-manh-la-nguoi-an.html"
+      }
+    ]
+  },
+  {
+    "name": "Cuộc Chiến Ở Làng Elf",
+    "chapters": [
+      {
+        "title": "Chap 261: Rượu là phương thuốc tốt nhất",
+        "src": "c14030-chap-261-ruou-la-phuong-thuoc-tot-nhat.html",
+        "file": "c14030-chap-261-ruou-la-phuong-thuoc-tot-nhat.html"
+      },
+      {
+        "title": "Chap 262: Muốn qua khỏi chỗ này thì hãy đánh bại ta trước đã!",
+        "src": "c14034-chap-262-muon-qua-khoi-cho-nay-thi-hay-danh-bai-ta-truoc-da.html",
+        "file": "c14034-chap-262-muon-qua-khoi-cho-nay-thi-hay-danh-bai-ta-truoc-da.html"
+      },
+      {
+        "title": "Chap 263: Tôi không chịu nổi caffeine",
+        "src": "c14051-chap-263-toi-khong-chiu-noi-caffeine.html",
+        "file": "c14051-chap-263-toi-khong-chiu-noi-caffeine.html"
+      },
+      {
+        "title": "Chap 264: Bản thể có công việc",
+        "src": "c14057-chap-264-ban-the-co-cong-viec.html",
+        "file": "c14057-chap-264-ban-the-co-cong-viec.html"
+      },
+      {
+        "title": "Chap 265: Ma Vương là NEET nhưng không phải là kẻ ẩn dật",
+        "src": "c14058-chap-265-ma-vuong-la-neet-nhung-khong-phai-la-ke-an-dat.html",
+        "file": "c14058-chap-265-ma-vuong-la-neet-nhung-khong-phai-la-ke-an-dat.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức thứ hai ①",
+        "src": "c14059-chap-265-ma-vuong-la-neet-nhung-khong-phai-la-ke-an-dat.html",
+        "file": "c14059-chap-265-ma-vuong-la-neet-nhung-khong-phai-la-ke-an-dat.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức thứ hai ②",
+        "src": "c14060-cuoc-hop-khong-chinh-thuc-thu-hai.html",
+        "file": "c14060-cuoc-hop-khong-chinh-thuc-thu-hai.html"
+      },
+      {
+        "title": "Ma Vương và Giáo hoàng",
+        "src": "c14061-ma-vuong-va-giao-hoang.html",
+        "file": "c14061-ma-vuong-va-giao-hoang.html"
+      },
+      {
+        "title": "Oni và Ninja",
+        "src": "c14116-oni-va-ninja.html",
+        "file": "c14116-oni-va-ninja.html"
+      },
+      {
+        "title": "Vampire, Oni và Ninja",
+        "src": "c14154-vampire-oni-va-ninja.html",
+        "file": "c14154-vampire-oni-va-ninja.html"
+      },
+      {
+        "title": "Chap 266: Thậm chí còn không cần phải ở đây",
+        "src": "c14159-chap-266-tham-chi-con-khong-can-phai-o-day.html",
+        "file": "c14159-chap-266-tham-chi-con-khong-can-phai-o-day.html"
+      },
+      {
+        "title": "Chap 267: Tình trạng hiện tại của người luân hồi",
+        "src": "c14184-chap-267-tinh-trang-hien-tai-cua-nguoi-luan-hoi.html",
+        "file": "c14184-chap-267-tinh-trang-hien-tai-cua-nguoi-luan-hoi.html"
+      },
+      {
+        "title": "Chap 268: Bề mặt bị che giấu",
+        "src": "c14196-chap-268-be-mat-bi-che-giau_split_000.html",
+        "file": "c14196-chap-268-be-mat-bi-che-giau.html"
+      },
+      {
+        "title": "Chap 269: Lựa chọn của từng người",
+        "src": "c14207-chap-269-lua-chon-cua-tung-nguoi.html",
+        "file": "c14207-chap-269-lua-chon-cua-tung-nguoi.html"
+      },
+      {
+        "title": "Chap 270: Chỉ với chút trang bị này chúng ta có ổn không vậy?",
+        "src": "c14236-chap-270-chi-voi-chut-trang-bi-nay-chung-ta-co-on-khong-vay.html",
+        "file": "c14236-chap-270-chi-voi-chut-trang-bi-nay-chung-ta-co-on-khong-vay.html"
+      },
+      {
+        "title": "Chap 271: Quân Đoàn Mười đáng gờm",
+        "src": "c14257-chap-271-quan-doan-muoi-dang-gom_split_000.html",
+        "file": "c14257-chap-271-quan-doan-muoi-dang-gom.html"
+      },
+      {
+        "title": "Chap 272: Nhảy múa ở cuộc họp",
+        "src": "c14283-chap-272-nhay-mua-o-cuoc-hop.html",
+        "file": "c14283-chap-272-nhay-mua-o-cuoc-hop.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Tagawa Kunihiko",
+        "src": "c14284-dai-chien-nguoi-quy-ve-tagawa-kunihiko.html",
+        "file": "c14284-dai-chien-nguoi-quy-ve-tagawa-kunihiko.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Kushitani Asaka và Aurel",
+        "src": "c14292-dai-chien-nguoi-quy-ve-kushitani-asaka-va-aurel.html",
+        "file": "c14292-dai-chien-nguoi-quy-ve-kushitani-asaka-va-aurel.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Merazofis",
+        "src": "c14321-dai-chien-nguoi-quy-ve-merazofis.html",
+        "file": "c14321-dai-chien-nguoi-quy-ve-merazofis.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Ronant",
+        "src": "c14354-dai-chien-nguoi-quy-ve-ronant.html",
+        "file": "c14354-dai-chien-nguoi-quy-ve-ronant.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Wrath",
+        "src": "c14371-dai-chien-nguoi-quy-ve-wrath.html",
+        "file": "c14371-dai-chien-nguoi-quy-ve-wrath.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Sophia",
+        "src": "c14408-dai-chien-nguoi-quy-ve-sophia.html",
+        "file": "c14408-dai-chien-nguoi-quy-ve-sophia.html"
+      },
+      {
+        "title": "Đại chiến Người-Quỷ: Về Blow",
+        "src": "c14410-dai-chien-nguoi-quy-ve-blow.html",
+        "file": "c14410-dai-chien-nguoi-quy-ve-blow.html"
+      },
+      {
+        "title": "Chap 273: Quan sát cuộc chiến tranh",
+        "src": "c14425-chap-273-quan-sat-cuoc-chien-tranh.html",
+        "file": "c14425-chap-273-quan-sat-cuoc-chien-tranh.html"
+      },
+      {
+        "title": "Chap 274: Giết chết Anh Hùng",
+        "src": "c14435-chap-274-giet-chet-anh-hung.html",
+        "file": "c14435-chap-274-giet-chet-anh-hung.html"
+      },
+      {
+        "title": "Chap 275: Đại Chiến Người-Quỷ kết thúc",
+        "src": "c14461-chap-275-dai-chien-nguoi-quy-ket-thuc.html",
+        "file": "c14461-chap-275-dai-chien-nguoi-quy-ket-thuc.html"
+      },
+      {
+        "title": "Chap 276: Bà ơi, đừng cố quá sức mà!",
+        "src": "c14509-chap-276-ba-oi-dung-co-qua-suc-ma.html",
+        "file": "c14509-chap-276-ba-oi-dung-co-qua-suc-ma.html"
+      },
+      {
+        "title": "Chap 277: Tiếp tục hành động bí mật",
+        "src": "c14526-chap-277-tiep-tuc-hanh-dong-bi-mat.html",
+        "file": "c14526-chap-277-tiep-tuc-hanh-dong-bi-mat.html"
+      },
+      {
+        "title": "Chap 278: Cách để lừa đẹp một imouto bro-con",
+        "src": "c14530-chap-278-cach-de-lua-dep-mot-imouto-bro-con.html",
+        "file": "c14530-chap-278-cach-de-lua-dep-mot-imouto-bro-con.html"
+      },
+      {
+        "title": "Chap 279: Từng từng Từng Từng từng",
+        "src": "c14545-chap-279-tung-tung-tung-tung-tung_split_000.html",
+        "file": "c14545-chap-279-tung-tung-tung-tung-tung.html"
+      },
+      {
+        "title": "Chap 280: Tàn cuộc trận chiến tranh",
+        "src": "c14570-chap-280-tan-cuoc-tran-chien-tranh.html",
+        "file": "c14570-chap-280-tan-cuoc-tran-chien-tranh.html"
+      },
+      {
+        "title": "Tính toán sai lầm của thủ lĩnh Elf",
+        "src": "c14582-tinh-toan-sai-lam-cua-thu-linh-elf.html",
+        "file": "c14582-tinh-toan-sai-lam-cua-thu-linh-elf.html"
+      },
+      {
+        "title": "Huyết 34: Không hẳn là chiến tranh, mà là khủng bố",
+        "src": "c14601-huyet-34-khong-han-la-chien-tranh-ma-la-khung-bo.html",
+        "file": "c14601-huyet-34-khong-han-la-chien-tranh-ma-la-khung-bo.html"
+      },
+      {
+        "title": "Oni 18: Một biển xác chết",
+        "src": "c14607-oni-18-mot-bien-xac-chet.html",
+        "file": "c14607-oni-18-mot-bien-xac-chet.html"
+      },
+      {
+        "title": "Chap 281: Tôi có nên xé chúng rách không?",
+        "src": "c14625-chap-281-toi-co-nen-xe-chung-rach-khong.html",
+        "file": "c14625-chap-281-toi-co-nen-xe-chung-rach-khong.html"
+      },
+      {
+        "title": "Chap 282: Tôi sẽ xé cho chúng rách ra",
+        "src": "c14626-chap-282-toi-se-xe-cho-chung-rach-ra.html",
+        "file": "c14626-chap-282-toi-se-xe-cho-chung-rach-ra.html"
+      },
+      {
+        "title": "Ngực nhỏ là biểu tượng của sự trường tồn theo thời gian!",
+        "src": "c14632-nguc-nho-la-bieu-tuong-cua-su-truong-ton-theo-thoi-gian.html",
+        "file": "c14632-nguc-nho-la-bieu-tuong-cua-su-truong-ton-theo-thoi-gian.html"
+      },
+      {
+        "title": "Chap 283: Chúng bị xé rách rồi",
+        "src": "c14637-chap-283-chung-bi-xe-rach-roi.html",
+        "file": "c14637-chap-283-chung-bi-xe-rach-roi.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức thứ ba ①",
+        "src": "c14661-cuoc-hop-khong-chinh-thuc-thu-ba.html",
+        "file": "c14661-cuoc-hop-khong-chinh-thuc-thu-ba.html"
+      },
+      {
+        "title": "Cuộc họp không chính thức thứ ba ②",
+        "src": "c14689-cuoc-hop-khong-chinh-thuc-thu-ba.html",
+        "file": "c14689-cuoc-hop-khong-chinh-thuc-thu-ba.html"
+      },
+      {
+        "title": "SS- Halloween",
+        "src": "c14722-ss-halloween.html",
+        "file": "c14722-ss-halloween.html"
+      },
+      {
+        "title": "Oni(Quái Vật) Thịnh Nộ",
+        "src": "c14723-oniquai-vat-thinh-no.html",
+        "file": "c14723-oniquai-vat-thinh-no.html"
+      },
+      {
+        "title": "Oni(Quái Vật) Điên Cuồng",
+        "src": "c14731-oniquai-vat-dien-cuong.html",
+        "file": "c14731-oniquai-vat-dien-cuong.html"
+      },
+      {
+        "title": "Say xỉn",
+        "src": "c14732-say-xin.html",
+        "file": "c14732-say-xin.html"
+      },
+      {
+        "title": "Huyết 35: Sau khi mọi chuyện kết thúc",
+        "src": "c14738-huyet-35-sau-moi-chuyen-ket-thuc.html",
+        "file": "c14738-huyet-35-sau-moi-chuyen-ket-thuc.html"
+      },
+      {
+        "title": "Oni 19: Kết thúc không có gì sau đó",
+        "src": "c14740-oni-19-ket-thuc-khong-co-gi-sau-do.html",
+        "file": "c14740-oni-19-ket-thuc-khong-co-gi-sau-do.html"
+      },
+      {
+        "title": "SS: Valentine",
+        "src": "c14741-ss-valentine.html",
+        "file": "c14741-ss-valentine.html"
+      },
+      {
+        "title": "Chap 284: Sự sụp đổ của một vương quốc",
+        "src": "c14754-chap-284-su-sup-do-cua-mot-vuong-quoc_split_000.html",
+        "file": "c14754-chap-284-su-sup-do-cua-mot-vuong-quoc.html"
+      },
+      {
+        "title": "Chap 285: Nhìn sao cũng thấy, cậu ta chính là nữ chính",
+        "src": "c14759-chap-285-nhin-sao-cung-thay-cau-ta-chinh-la-nu-chinh.html",
+        "file": "c14759-chap-285-nhin-sao-cung-thay-cau-ta-chinh-la-nu-chinh.html"
+      },
+      {
+        "title": "Chap 286: Mạnh dạn đi diễu hành trong lãnh thổ của kẻ thù",
+        "src": "c14770-chap-286-manh-dan-di-dieu-hanh-trong-lanh-tho-cua-ke-thu.html",
+        "file": "c14770-chap-286-manh-dan-di-dieu-hanh-trong-lanh-tho-cua-ke-thu.html"
+      },
+      {
+        "title": "Chap 287: Cái ông già này hơi khó hiểu",
+        "src": "c14792-chap-287-cai-ong-gia-nay-hoi-kho-hieu.html",
+        "file": "c14792-chap-287-cai-ong-gia-nay-hoi-kho-hieu.html"
+      },
+      {
+        "title": "Chap 288: Người hộ vệ",
+        "src": "c14816-chap-288-nguoi-ho-ve.html",
+        "file": "c14816-chap-288-nguoi-ho-ve.html"
+      },
+      {
+        "title": "Ngắm lá mùa thu",
+        "src": "c14821-ngam-la-mua-thu.html",
+        "file": "c14821-ngam-la-mua-thu.html"
+      },
+      {
+        "title": "Chap 289: TAS",
+        "src": "c14865-chap-289-tas_split_000.html",
+        "file": "c14865-chap-289-tas.html"
+      },
+      {
+        "title": "Chap 290: Trước cuộc chiến ở Làng Elf",
+        "src": "c14887-chap-290-truoc-cuoc-chien-o-lang-elf-xem.html",
+        "file": "c14887-chap-290-truoc-cuoc-chien-o-lang-elf-xem.html"
+      },
+      {
+        "title": "Chap 291: Cuộc chiến ở Làng Elf ①",
+        "src": "c14896-chap-291-cuoc-chien-o-lang-elf.html",
+        "file": "c14896-chap-291-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 292: Cuộc chiến ở Làng Elf ②",
+        "src": "c14904-chap-292-cuoc-chien-o-lang-elf.html",
+        "file": "c14904-chap-292-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 293: Cuộc chiến ở Làng Elf ③",
+        "src": "c14955-chap-293-cuoc-chien-o-lang-elf.html",
+        "file": "c14955-chap-293-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 294: Cuộc chiến ở Làng Elf ④",
+        "src": "c15006-chap-294-cuoc-chien-o-lang-elf.html",
+        "file": "c15006-chap-294-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 295: Cuộc chiến ở Làng Elf ⑤",
+        "src": "c15029-chap-295-cuoc-chien-o-lang-elf.html",
+        "file": "c15029-chap-295-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑥",
+        "src": "c15030-cuoc-chien-o-lang-elf_split_000.html",
+        "file": "c15030-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Cuộc chiến ở Làng Elf ⑦",
+        "src": "c15111-cuoc-chien-o-lang-elf_split_000.html",
+        "file": "c15111-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 296: Cuộc chiến ở Làng Elf ⑧",
+        "src": "c15294-chap-296-cuoc-chien-o-lang-elf-xem_split_000.html",
+        "file": "c15294-chap-296-cuoc-chien-o-lang-elf-xem.html"
+      },
+      {
+        "title": "Chap 297: Cuộc chiến ở Làng Elf ⑨",
+        "src": "c15297-chap-297-cuoc-chien-o-lang-elf_split_000.html",
+        "file": "c15297-chap-297-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 298: Cuộc chiến ở Làng Elf ⑩",
+        "src": "c15348-chap-298-cuoc-chien-o-lang-elf.html",
+        "file": "c15348-chap-298-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 299: Cuộc chiến ở Làng Elf ⑪",
+        "src": "c15443-chap-299-cuoc-chien-o-lang-elf.html",
+        "file": "c15443-chap-299-cuoc-chien-o-lang-elf.html"
+      },
+      {
+        "title": "Chap 300: Cuộc chiến kết thúc, và rồi…",
+        "src": "c15444-chap-300-cuoc-chien-ket-thuc-va-roi.html",
+        "file": "c15444-chap-300-cuoc-chien-ket-thuc-va-roi.html"
+      },
+      {
+        "title": "Chàng trai trẻ thấy một giấc mơ",
+        "src": "c15524-chang-trai-tre-thay-mot-giac-mo_split_000.html",
+        "file": "c15524-chang-trai-tre-thay-mot-giac-mo.html"
+      },
+      {
+        "title": "Arc quá khứ ①",
+        "src": "c15582-arc-qua-khu_split_000.html",
+        "file": "c15582-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc quá khứ ②",
+        "src": "c18483-arc-qua-khu_split_000.html",
+        "file": "c18483-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc quá khứ ③",
+        "src": "c18546-arc-qua-khu.html",
+        "file": "c18546-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc quá khứ ④",
+        "src": "c18564-arc-qua-khu.html",
+        "file": "c18564-arc-qua-khu.html"
+      },
+      {
+        "title": "Oshiete, D-sensei! Bài 2",
+        "src": "c18589-oshiete-d-sensei-bai-2_split_000.html",
+        "file": "c18589-oshiete-d-sensei-bai-2.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑤",
+        "src": "c18625-arc-qua-khu.html",
+        "file": "c18625-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑥",
+        "src": "c18652-arc-qua-khu.html",
+        "file": "c18652-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑦",
+        "src": "c18673-arc-qua-khu.html",
+        "file": "c18673-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑧",
+        "src": "c18709-arc-qua-khu.html",
+        "file": "c18709-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑨",
+        "src": "c18742-arc-qua-khu.html",
+        "file": "c18742-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑩",
+        "src": "c19027-arc-qua-khu.html",
+        "file": "c19027-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc quá khứ ⑪",
+        "src": "c19619-arc-qua-khu.html",
+        "file": "c19619-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑫",
+        "src": "c20033-arc-qua-khu.html",
+        "file": "c20033-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑬",
+        "src": "c22638-arc-qua-khu.html",
+        "file": "c22638-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑭",
+        "src": "c22678-arc-qua-khu.html",
+        "file": "c22678-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑮",
+        "src": "c22739-arc-qua-khu.html",
+        "file": "c22739-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑯",
+        "src": "c23119-arc-qua-khu.html",
+        "file": "c23119-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑰",
+        "src": "c23167-arc-qua-khu.html",
+        "file": "c23167-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑱",
+        "src": "c23338-arc-qua-khu.html",
+        "file": "c23338-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑲",
+        "src": "c23380-arc-qua-khu.html",
+        "file": "c23380-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ⑳",
+        "src": "c23444-arc-qua-khu.html",
+        "file": "c23444-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉑",
+        "src": "c23559-arc-qua-khu.html",
+        "file": "c23559-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉒",
+        "src": "c23666-arc-qua-khu.html",
+        "file": "c23666-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉓",
+        "src": "c23705-arc-qua-khu.html",
+        "file": "c23705-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉔",
+        "src": "c23727-arc-qua-khu.html",
+        "file": "c23727-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉕",
+        "src": "c23753-arc-qua-khu.html",
+        "file": "c23753-arc-qua-khu.html"
+      },
+      {
+        "title": "Arc Quá Khứ ㉖",
+        "src": "c23771-arc-qua-khu.html",
+        "file": "c23771-arc-qua-khu.html"
+      },
+      {
+        "title": "Hồi tưởng quá khứ: Ariel",
+        "src": "c23850-hoi-tuong-qua-khu-ariel_split_000.html",
+        "file": "c23850-hoi-tuong-qua-khu-ariel.html"
+      },
+      {
+        "title": "Hồi tưởng quá khứ: Gyurie",
+        "src": "c23855-hoi-tuong-qua-khu-gyurie_split_000.html",
+        "file": "c23855-hoi-tuong-qua-khu-gyurie.html"
+      },
+      {
+        "title": "Giới thiệu nhân vật 2",
+        "src": "c24018-gioi-thieu-nhan-vat-2.html",
+        "file": "c24018-gioi-thieu-nhan-vat-2.html"
+      },
+      {
+        "title": "Oshiete D-sensei! Bài số 3",
+        "src": "c24040-oshiete-d-sensei-bai-so-3_split_000.html",
+        "file": "c24040-oshiete-d-sensei-bai-so-3.html"
+      }
+    ]
+  },
+  {
+    "name": "Hồi Kết",
+    "chapters": [
+      {
+        "title": "Chương 301: Vì nửa năm trời không xuất hiện nên tôi gặp ác mộng",
+        "src": "c24053-chuong-301-vi-nua-nam-troi-khong-xuat-hien-nen-toi-gap-ac-mong.html",
+        "file": "c24053-chuong-301-vi-nua-nam-troi-khong-xuat-hien-nen-toi-gap-ac-mong.html"
+      },
+      {
+        "title": "Chap 302: Từng núi xác chết ở khắp nơi",
+        "src": "c24072-chap-302-tung-nui-xac-chet-o-khap-noi_split_000.html",
+        "file": "c24072-chap-302-tung-nui-xac-chet-o-khap-noi.html"
+      },
+      {
+        "title": "Chap 303: Bữa sáng với một Vampire dậy sớm",
+        "src": "c24077-chap-303-bua-sang-voi-mot-vampire-day-som_split_000.html",
+        "file": "c24077-chap-303-bua-sang-voi-mot-vampire-day-som.html"
+      },
+      {
+        "title": "Chap 304: Những người luân hồi",
+        "src": "c24109-chap-304-nhung-nguoi-luan-hoi.html",
+        "file": "c24109-chap-304-nhung-nguoi-luan-hoi.html"
+      },
+      {
+        "title": "Chap 305: Cuộc họp giữa những người luân hồi",
+        "src": "c24129-chap-305-cuoc-hop-giua-nhung-nguoi-luan-hoi.html",
+        "file": "c24129-chap-305-cuoc-hop-giua-nhung-nguoi-luan-hoi.html"
+      },
+      {
+        "title": "S30: Cấm Kị",
+        "src": "c24156-s30-cam-ki.html",
+        "file": "c24156-s30-cam-ki.html"
+      },
+      {
+        "title": "Chap 306: Gặp mặt",
+        "src": "c24173-chap-306-gap-mat.html",
+        "file": "c24173-chap-306-gap-mat.html"
+      },
+      {
+        "title": "Chap 307: Phát nổ",
+        "src": "c24187-chap-307-phat-no.html",
+        "file": "c24187-chap-307-phat-no.html"
+      },
+      {
+        "title": "Chap 308: Những gì cô ấy đã làm được",
+        "src": "c24228-chap-308-nhung-gi-co-ay-da-lam-duoc.html",
+        "file": "c24228-chap-308-nhung-gi-co-ay-da-lam-duoc.html"
+      },
+      {
+        "title": "Chap 309: Một con chim bị nhốt trong lồng có hạnh phúc không?",
+        "src": "c24252-chap-309-mot-con-chim-bi-nhot-trong-long-co-hanh-phuc-khong.html",
+        "file": "c24252-chap-309-mot-con-chim-bi-nhot-trong-long-co-hanh-phuc-khong.html"
+      },
+      {
+        "title": "Chap 310: Tội ác và Trừng phạt, Sự sống và Cái chết",
+        "src": "c24351-chap-310-toi-ac-va-trung-phat-su-song-va-cai-chet_split_000.html",
+        "file": "c24351-chap-310-toi-ac-va-trung-phat-su-song-va-cai-chet.html"
+      },
+      {
+        "title": "S31: Sinh mạng",
+        "src": "c24621-s31-sinh-mang_split_000.html",
+        "file": "c24621-s31-sinh-mang.html"
+      },
+      {
+        "title": "Chap 311: Giới hạn của sự kiên nhẫn (Toilet)",
+        "src": "c26752-chap-311-gioi-han-cua-su-kien-nhan-toilet.html",
+        "file": "c26752-chap-311-gioi-han-cua-su-kien-nhan-toilet.html"
+      },
+      {
+        "title": "Chap 312: Giới hạn của sự kiên nhẫn (Buồn chán)",
+        "src": "c26754-chap-312-gioi-han-cua-su-kien-nhan-buon-chan.html",
+        "file": "c26754-chap-312-gioi-han-cua-su-kien-nhan-buon-chan.html"
+      },
+      {
+        "title": "Chap 313: Cô công chúa làm mọi chuyện theo ý mình thích",
+        "src": "c26755-chap-313-co-cong-chua-lam-moi-chuyen-theo-y-minh-thich.html",
+        "file": "c26755-chap-313-co-cong-chua-lam-moi-chuyen-theo-y-minh-thich.html"
+      },
+      {
+        "title": "Chap 314: Quăng bom",
+        "src": "c27822-chap-314-quang-bom.html",
+        "file": "c27822-chap-314-quang-bom.html"
+      },
+      {
+        "title": "Chap 315: Hi vọng trở về nhà",
+        "src": "c27825-chap-315-hi-vong-tro-ve-nha.html",
+        "file": "c27825-chap-315-hi-vong-tro-ve-nha.html"
+      },
+      {
+        "title": "S32: Tái sinh",
+        "src": "c28234-s32-tai-sinh.html",
+        "file": "c28234-s32-tai-sinh.html"
+      },
+      {
+        "title": "Oshiete D-sensei! Bài 4",
+        "src": "c28235-oshiete-d-sensei-bai-4.html",
+        "file": "c28235-oshiete-d-sensei-bai-4.html"
+      },
+      {
+        "title": "Chap 316: Có người đang nhìn hướng này như muốn làm đồng đội của tôi",
+        "src": "c28250-chap-316-co-nguoi-dang-nhin-huong-nay-nhu-muon-lam-ban-cua-toi.html",
+        "file": "c28250-chap-316-co-nguoi-dang-nhin-huong-nay-nhu-muon-lam-ban-cua-toi.html"
+      },
+      {
+        "title": "Chap 317: Bạn bè",
+        "src": "c32467-chap-317-ban-be.html",
+        "file": "c32467-chap-317-ban-be.html"
+      },
+      {
+        "title": "Chap 318: Chúng ta không phải là đồng bạn sao!?",
+        "src": "c32524-chap-318-chung-ta-khong-phai-la-dong-ban-sao.html",
+        "file": "c32524-chap-318-chung-ta-khong-phai-la-dong-ban-sao.html"
+      },
+      {
+        "title": "Chap 319: Nếu ý tốt có thể cứu thế giới thì chúng ta đã không phải khổ",
+        "src": "c32537-chap-319-neu-y-tot-co-the-cuu-the-gioi-thi-chung-ta-da-khong-phai-kho.html",
+        "file": "c32537-chap-319-neu-y-tot-co-the-cuu-the-gioi-thi-chung-ta-da-khong-phai-kho.html"
+      },
+      {
+        "title": "Chap 320: Không phải là lỗi của người nào cả. Trừ ngươi, Po, ngươi không phải là người",
+        "src": "c32565-chap-320-khong-phai-la-loi-cua-nguoi-nao-ca-tru-nguoi-po-nguoi-khong-phai-la-nguoi.html",
+        "file": "c32565-chap-320-khong-phai-la-loi-cua-nguoi-nao-ca-tru-nguoi-po-nguoi-khong-phai-la-nguoi.html"
+      },
+      {
+        "title": "S33: Anh em",
+        "src": "c32601-s33-anh-em.html",
+        "file": "c32601-s33-anh-em.html"
+      },
+      {
+        "title": "Chap 322: Một người lẽ ra chỉ là nhân vật phụ",
+        "src": "c32854-chap-322-mot-nguoi-le-ra-chi-la-nhan-vat-phu.html",
+        "file": "c32854-chap-322-mot-nguoi-le-ra-chi-la-nhan-vat-phu.html"
+      },
+      {
+        "title": "Chap 321: Cháy nhà",
+        "src": "c32675-chap-321-chay-nha.html",
+        "file": "c32675-chap-321-chay-nha.html"
+      },
+      {
+        "title": "Chap 323: Anh Hùng và Giáo Hoàng",
+        "src": "c32896-chap-323-anh-hung-va-giao-hoang.html",
+        "file": "c32896-chap-323-anh-hung-va-giao-hoang.html"
+      },
+      {
+        "title": "Chap 324: Nếu đã tuyên bố là sẽ phá đảo thì cấm coi hướng dẫn",
+        "src": "c32956-chap-324-neu-da-tuyen-bo-la-se-pha-dao-thi-cam-coi-huong-dan.html",
+        "file": "c32956-chap-324-neu-da-tuyen-bo-la-se-pha-dao-thi-cam-coi-huong-dan.html"
+      },
+      {
+        "title": "Chap 325: Không phải lỗi của Sensei mà!",
+        "src": "c33470-chap-325-khong-phai-loi-cua-sensei-ma.html",
+        "file": "c33470-chap-325-khong-phai-loi-cua-sensei-ma.html"
+      },
+      {
+        "title": "S34 Điểm ngoặt",
+        "src": "c34737-s34-diem-ngoat.html",
+        "file": "c34737-s34-diem-ngoat.html"
+      },
+      {
+        "title": "Chap 326: Xui xẻo không được giải “Game tệ nhất trong năm”",
+        "src": "c34759-chuong-34.html",
+        "file": "c34759-chuong-34.html"
+      },
+      {
+        "title": "Chap 327: Ước gì tôi có Skill Thuyết Phục!",
+        "src": "c36253-chap-327-uoc-gi-toi-co-skill-thuyet-phuc.html",
+        "file": "c36253-chap-327-uoc-gi-toi-co-skill-thuyet-phuc.html"
+      },
+      {
+        "title": "Chap 328: Nói rõ Trắng Đen",
+        "src": "c36299-chap-328-noi-ro-trang-den.html",
+        "file": "c36299-chap-328-noi-ro-trang-den.html"
+      },
+      {
+        "title": "Chap 329: Cách để giết Thần",
+        "src": "c36466-chap-329-cach-de-giet-than.html",
+        "file": "c36466-chap-329-cach-de-giet-than.html"
+      },
+      {
+        "title": "Chap 330: Tả thì nghe nhàm nhưng thực tế quá trình khổ lắm đó",
+        "src": "c36641-chap-330-ta-thi-nghe-nham-nhung-thuc-te-qua-trinh-kho-lam-do.html",
+        "file": "c36641-chap-330-ta-thi-nghe-nham-nhung-thuc-te-qua-trinh-kho-lam-do.html"
+      },
+      {
+        "title": "Trận chiến của Hắc Long",
+        "src": "c39922-tran-chien-cua-hac-long.html",
+        "file": "c39922-tran-chien-cua-hac-long.html"
+      },
+      {
+        "title": "S35: Hai lựa chọn",
+        "src": "c40501-s35-hai-lua-chon.html",
+        "file": "c40501-s35-hai-lua-chon.html"
+      },
+      {
+        "title": "Q&amp;A 1",
+        "src": "c10395-qa-1.html",
+        "file": "c10395-qa-1.html"
+      },
+      {
+        "title": "Q&amp;A 2",
+        "src": "c10396-qa-2.html",
+        "file": "c10396-qa-2.html"
+      },
+      {
+        "title": "Q&amp;A 3",
+        "src": "c10397-qa-3.html",
+        "file": "c10397-qa-3.html"
+      },
+      {
+        "title": "Q&amp;A 4",
+        "src": "c10398-qa-4.html",
+        "file": "c10398-qa-4.html"
+      },
+      {
+        "title": "Q&amp;A 5",
+        "src": "c10400-qa-5.html",
+        "file": "c10400-qa-5.html"
+      },
+      {
+        "title": "Q&amp;A 6",
+        "src": "c10402-qa-6.html",
+        "file": "c10402-qa-6.html"
+      },
+      {
+        "title": "Q&amp;A 7",
+        "src": "c10401-qa-7.html",
+        "file": "c10401-qa-7.html"
+      },
+      {
+        "title": "Q&amp;A 8",
+        "src": "c10403-qa-8.html",
+        "file": "c10403-qa-8.html"
+      },
+      {
+        "title": "Q&amp;A 9",
+        "src": "c10405-qa-9.html",
+        "file": "c10405-qa-9.html"
+      },
+      {
+        "title": "Q&amp;A 10",
+        "src": "c10406-qa-10.html",
+        "file": "c10406-qa-10.html"
+      },
+      {
+        "title": "Dòng thời gian",
+        "src": "c14860-dong-thoi-gian.html",
+        "file": "c14860-dong-thoi-gian.html"
+      },
+      {
+        "title": "Extra: Bách Khoa Ma Vật ①",
+        "src": "c10399-extra-bach-khoa-ma-vat.html",
+        "file": "c10399-extra-bach-khoa-ma-vat.html"
+      },
+      {
+        "title": "Extra: Bách Khoa Ma Vật ②",
+        "src": "c10404-extra-bach-khoa-ma-vat.html",
+        "file": "c10404-extra-bach-khoa-ma-vat.html"
+      }
+    ]
+  }
+]
